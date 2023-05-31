@@ -12,12 +12,15 @@ struct ContentView: View {
 //    @Environment(\.managedObjectContext) private var viewContext
 
     @State private var output: FortuneOutput? = nil
+    
     var body: some View {
         VStack{
-            InputView()
-            OutputView(prefacture: $output)
-        }.onChange(of: output) { newValue in
-            print("\(newValue)")
+            InputView(output: $output)
+            
+            if let luckyPrefecture = output{
+                OutputView(prefacture: luckyPrefecture)
+            }
+            
         }
     }
     

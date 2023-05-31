@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct InputView: View {
+    
+    @Binding var output:FortuneOutput?
+    
     @State private var name: String = ""
     @State private var birthday = Date()
     @State private var bloodType: ABOBloodType = .a
@@ -33,8 +36,14 @@ struct InputView: View {
                 let today = YearMonthDay(from: Date() )
             
                 let input = FortuneInput(name: self.name, birthday: birthday, bloodType: self.bloodType, today: today)
-                
-                fetchLuckyPrefecture(input: input)
+                Task{
+                    do {
+                        let result = try await fetchLuckyPrefecture(input: input)
+                        output = try result.get()
+                    }catch{
+                        print(error)
+                    }
+                }
             }
             
         }
@@ -42,7 +51,9 @@ struct InputView: View {
 }
 
 struct InputView_Previews: PreviewProvider {
+    @State static var luckeyPrefacture:FortuneOutput? = FortuneOutput(name: "徳島県", brief: "徳島県（とくしまけん）は、日本の四国地方に位置する県。県庁所在地は徳島市。\n※出典: フリー百科事典『ウィキペディア（Wikipedia）』", capital: "徳島市", citizenDay: nil, hasCoastLine: true, logoUrl: URL(string: "https://japan-map.com/wp-content/uploads/tokushima.png")!)
+    
     static var previews: some View {
-        InputView()
+        InputView(output:$luckeyPrefacture)
     }
 }

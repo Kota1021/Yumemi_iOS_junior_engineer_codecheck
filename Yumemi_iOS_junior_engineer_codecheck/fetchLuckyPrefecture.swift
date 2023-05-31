@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-func fetchLuckyPrefecture(input:FortuneInput){
+func fetchLuckyPrefecture(input:FortuneInput) async throws -> Result<FortuneOutput, AFError> {
     print("fetchAPI called")
     let api = FortuneAPI()
     
@@ -20,23 +20,7 @@ func fetchLuckyPrefecture(input:FortuneInput){
     let decoder = JSONDecoder()
     decoder.keyDecodingStrategy = .convertFromSnakeCase
     
-    AF.request(api.url, method: .post, parameters: input, encoder: .json(encoder: encoder), headers: api.headers)
-        .responseDecodable(of: FortuneOutput.self,decoder: decoder){ response in
-            print("api requested")
-            
-            switch response.result {
-            case .success:
-                if let result = response.value {
-                    print("fortune output not nil")
-                    let output:FortuneOutput = result
-                    print(output)
-                    
-                } else {
-                    print("fortune output nil")
-                }
-            case .failure(let error):
-                print(error)
-            }
-            
-        }
+    let result = await AF.request(api.url, method: .post, parameters: input, encoder: .json(encoder: encoder), headers: api.headers).serializingDecodable(FortuneOutput.self, decoder: decoder).result
+    
+    return result
 }
