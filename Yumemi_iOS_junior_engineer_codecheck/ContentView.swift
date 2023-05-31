@@ -17,25 +17,26 @@ struct ContentView: View {
     @State private var errorInFetchingFortune:AFError? = nil
     
     var body: some View {
-        VStack{
-            InputView(output: $output)
-            
-            if let luckyPrefecture = self.luckyPrefecture{
-                OutputView(prefacture: luckyPrefecture)
-            }
-            if let errorInFetchingFortune = self.errorInFetchingFortune{
-                ErrorView(error:errorInFetchingFortune)
-            }
-            
-        }.onChange(of: output) { newValue in
-            do{
-                errorInFetchingFortune = nil
-                luckyPrefecture = try output?.get()
-            }catch{
-                luckyPrefecture = nil
-                errorInFetchingFortune = error as? AFError
-            }
-        }
+        ViewForResearch()
+//        VStack{
+//            InputView(output: $output)
+//
+//            if let luckyPrefecture = self.luckyPrefecture{
+//                OutputView(prefacture: luckyPrefecture)
+//            }
+//            if let errorInFetchingFortune = self.errorInFetchingFortune{
+//                ErrorView(error:errorInFetchingFortune)
+//            }
+//
+//        }.onChange(of: output) { newValue in
+//            do{
+//                errorInFetchingFortune = nil
+//                luckyPrefecture = try output?.get()
+//            }catch{
+//                luckyPrefecture = nil
+//                errorInFetchingFortune = error as? AFError
+//            }
+//        }
 //        .onAppear{
 //            errorFetcher()
 //        }
