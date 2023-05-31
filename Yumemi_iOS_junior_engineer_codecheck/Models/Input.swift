@@ -30,3 +30,7 @@ enum ABOBloodType:String,Codable{
     case ab = "ab"
     case o = "o"
 }
+//conform to CaseIterable and Identifiable to be used in ForEach
+extension ABOBloodType:CaseIterable,Identifiable{
+    var id: String { rawValue }
+}
