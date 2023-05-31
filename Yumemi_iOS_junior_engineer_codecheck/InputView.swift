@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import Alamofire
 
 struct InputView: View {
     
-    @Binding var output:FortuneOutput?
+    @Binding var output:Result<LuckyPrefacture, AFError>?
     
     @State private var name: String = ""
     @State private var birthday = Date()
@@ -37,12 +38,7 @@ struct InputView: View {
             
                 let input = FortuneInput(name: self.name, birthday: birthday, bloodType: self.bloodType, today: today)
                 Task{
-                    do {
-                        let result = try await fetchLuckyPrefecture(input: input)
-                        output = try result.get()
-                    }catch{
-                        print(error)
-                    }
+                    output = await fetchLuckyPrefecture(input: input)
                 }
             }
             
@@ -51,9 +47,9 @@ struct InputView: View {
 }
 
 struct InputView_Previews: PreviewProvider {
-    @State static var luckeyPrefacture:FortuneOutput? = FortuneOutput(name: "徳島県", brief: "徳島県（とくしまけん）は、日本の四国地方に位置する県。県庁所在地は徳島市。\n※出典: フリー百科事典『ウィキペディア（Wikipedia）』", capital: "徳島市", citizenDay: nil, hasCoastLine: true, logoUrl: URL(string: "https://japan-map.com/wp-content/uploads/tokushima.png")!)
+    @State static var output:Result<LuckyPrefacture, AFError>?
     
     static var previews: some View {
-        InputView(output:$luckeyPrefacture)
+        InputView(output:$output)
     }
 }

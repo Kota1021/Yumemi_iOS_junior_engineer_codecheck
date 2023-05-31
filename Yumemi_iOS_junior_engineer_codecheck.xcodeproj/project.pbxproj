@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		671A35252A27462900F6358D /* OutputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A35242A27462900F6358D /* OutputView.swift */; };
+		671A35272A2759FD00F6358D /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A35262A2759FD00F6358D /* ErrorView.swift */; };
+		671A352E2A276A5700F6358D /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A352D2A276A5700F6358D /* LicenseView.swift */; };
 		676ABFFA2A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */; };
 		676ABFFC2A270E94009F34E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ABFFB2A270E94009F34E9 /* ContentView.swift */; };
 		676ABFFE2A270E95009F34E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 676ABFFD2A270E95009F34E9 /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 
 /* Begin PBXFileReference section */
 		671A35242A27462900F6358D /* OutputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputView.swift; sourceTree = "<group>"; };
+		671A35262A2759FD00F6358D /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		671A352D2A276A5700F6358D /* LicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
 		676ABFF62A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yumemi_iOS_junior_engineer_codecheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yumemi_iOS_junior_engineer_codecheckApp.swift; sourceTree = "<group>"; };
 		676ABFFB2A270E94009F34E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -114,9 +118,11 @@
 			children = (
 				676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */,
 				676ABFFB2A270E94009F34E9 /* ContentView.swift */,
+				671A35262A2759FD00F6358D /* ErrorView.swift */,
 				671A35242A27462900F6358D /* OutputView.swift */,
 				677A70F52A2722AE00582D2C /* InputView.swift */,
 				676AC0322A27135D009F34E9 /* fetchLuckyPrefecture.swift */,
+				671A352D2A276A5700F6358D /* LicenseView.swift */,
 				676AC0312A2711FB009F34E9 /* Models */,
 				676ABFFD2A270E95009F34E9 /* Assets.xcassets */,
 				676AC0022A270E95009F34E9 /* Persistence.swift */,
@@ -175,6 +181,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				671A352C2A276A3800F6358D /* PBXTargetDependency */,
 			);
 			name = Yumemi_iOS_junior_engineer_codecheck;
 			packageProductDependencies = (
@@ -307,6 +314,8 @@
 				677A70F62A2722AE00582D2C /* InputView.swift in Sources */,
 				676AC0292A2710FA009F34E9 /* FortuneAPI.swift in Sources */,
 				676AC0062A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.xcdatamodeld in Sources */,
+				671A352E2A276A5700F6358D /* LicenseView.swift in Sources */,
+				671A35272A2759FD00F6358D /* ErrorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +339,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		671A352C2A276A3800F6358D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 671A352B2A276A3800F6358D /* PrepareLicenseList */;
+		};
 		676AC00D2A270E95009F34E9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 676ABFF52A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheck */;
@@ -633,6 +646,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		671A35282A276A1600F6358D /* XCRemoteSwiftPackageReference "LicenseList" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cybozu/LicenseList";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.1;
+			};
+		};
 		676AC02A2A271115009F34E9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -644,6 +665,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		671A352B2A276A3800F6358D /* PrepareLicenseList */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 671A35282A276A1600F6358D /* XCRemoteSwiftPackageReference "LicenseList" */;
+			productName = "plugin:PrepareLicenseList";
+		};
 		676AC02B2A271115009F34E9 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 676AC02A2A271115009F34E9 /* XCRemoteSwiftPackageReference "Alamofire" */;
