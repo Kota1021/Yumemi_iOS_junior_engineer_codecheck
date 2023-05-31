@@ -11,7 +11,7 @@ import Alamofire
 func fetchAPITest(){
     let api = FortuneAPI()
     let birthday = YearMonthDay(year: 2000, month: 1, day: 1)
-    let today = YearMonthDay(year: 2020, month: 1, day: 1)
+    let today = YearMonthDay(year: 2022, month: 5, day: 1)
     
     let input = FortuneInput(name: "John Doe", birthday: birthday, bloodType: .a, today: today)
     
@@ -30,7 +30,10 @@ func fetchAPITest(){
             switch response.result {
             case .success:
                 if let result = response.value {
-                    print("fortune: \(result)")
+                    print("fortune output not nil")
+                    let output:FortuneOutput = result
+                    print(output)
+                    
                 } else {
                     print("fortune output nil")
                 }
