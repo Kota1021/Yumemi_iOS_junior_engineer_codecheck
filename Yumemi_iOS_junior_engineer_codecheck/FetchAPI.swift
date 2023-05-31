@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-func fetchAPI(input:FortuneInput){
+func fetchAPITest(input:FortuneInput){
     print("fetchAPI called")
     let api = FortuneAPI()
 //

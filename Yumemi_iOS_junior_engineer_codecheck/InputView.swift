@@ -34,7 +34,7 @@ struct InputView: View {
             
                 let input = FortuneInput(name: self.name, birthday: birthday, bloodType: self.bloodType, today: today)
                 
-                fetchAPI(input: input)
+                fetchAPITest(input: input)
             }
             
         }
