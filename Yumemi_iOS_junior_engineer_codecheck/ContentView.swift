@@ -12,8 +12,12 @@ struct ContentView: View {
 //    @Environment(\.managedObjectContext) private var viewContext
 
     var body: some View {
-        Text("hello")
+        //まずはAPIを叩く最低限の機能を作成
+        Button("API test"){
+            fetchAPITest()
+        }
     }
+    
 
 }
 

@@ -16,6 +16,11 @@
 		676AC0102A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AC00F2A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheckTests.swift */; };
 		676AC01A2A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AC0192A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheckUITests.swift */; };
 		676AC01C2A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheckUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AC01B2A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheckUITestsLaunchTests.swift */; };
+		676AC0292A2710FA009F34E9 /* FortuneAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AC0282A2710FA009F34E9 /* FortuneAPI.swift */; };
+		676AC02C2A271115009F34E9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 676AC02B2A271115009F34E9 /* Alamofire */; };
+		676AC02E2A27113B009F34E9 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AC02D2A27113B009F34E9 /* Input.swift */; };
+		676AC0302A2711F5009F34E9 /* Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AC02F2A2711F5009F34E9 /* Output.swift */; };
+		676AC0332A27135D009F34E9 /* FetchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AC0322A27135D009F34E9 /* FetchAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +53,10 @@
 		676AC0152A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheckUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Yumemi_iOS_junior_engineer_codecheckUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		676AC0192A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheckUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yumemi_iOS_junior_engineer_codecheckUITests.swift; sourceTree = "<group>"; };
 		676AC01B2A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheckUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yumemi_iOS_junior_engineer_codecheckUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		676AC0282A2710FA009F34E9 /* FortuneAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneAPI.swift; sourceTree = "<group>"; };
+		676AC02D2A27113B009F34E9 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		676AC02F2A2711F5009F34E9 /* Output.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Output.swift; sourceTree = "<group>"; };
+		676AC0322A27135D009F34E9 /* FetchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				676AC02C2A271115009F34E9 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +110,8 @@
 			children = (
 				676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */,
 				676ABFFB2A270E94009F34E9 /* ContentView.swift */,
+				676AC0322A27135D009F34E9 /* FetchAPI.swift */,
+				676AC0312A2711FB009F34E9 /* Models */,
 				676ABFFD2A270E95009F34E9 /* Assets.xcassets */,
 				676AC0022A270E95009F34E9 /* Persistence.swift */,
 				676AC0042A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.xcdatamodeld */,
@@ -133,6 +145,16 @@
 			path = Yumemi_iOS_junior_engineer_codecheckUITests;
 			sourceTree = "<group>";
 		};
+		676AC0312A2711FB009F34E9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				676AC0282A2710FA009F34E9 /* FortuneAPI.swift */,
+				676AC02D2A27113B009F34E9 /* Input.swift */,
+				676AC02F2A2711F5009F34E9 /* Output.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -149,6 +171,9 @@
 			dependencies = (
 			);
 			name = Yumemi_iOS_junior_engineer_codecheck;
+			packageProductDependencies = (
+				676AC02B2A271115009F34E9 /* Alamofire */,
+			);
 			productName = Yumemi_iOS_junior_engineer_codecheck;
 			productReference = 676ABFF62A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.app */;
 			productType = "com.apple.product-type.application";
@@ -221,6 +246,9 @@
 				Base,
 			);
 			mainGroup = 676ABFED2A270E94009F34E9;
+			packageReferences = (
+				676AC02A2A271115009F34E9 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 676ABFF72A270E94009F34E9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -263,9 +291,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				676AC02E2A27113B009F34E9 /* Input.swift in Sources */,
 				676AC0032A270E95009F34E9 /* Persistence.swift in Sources */,
 				676ABFFC2A270E94009F34E9 /* ContentView.swift in Sources */,
+				676AC0302A2711F5009F34E9 /* Output.swift in Sources */,
 				676ABFFA2A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift in Sources */,
+				676AC0332A27135D009F34E9 /* FetchAPI.swift in Sources */,
+				676AC0292A2710FA009F34E9 /* FortuneAPI.swift in Sources */,
 				676AC0062A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -591,6 +623,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		676AC02A2A271115009F34E9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		676AC02B2A271115009F34E9 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 676AC02A2A271115009F34E9 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		676AC0042A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.xcdatamodeld */ = {
