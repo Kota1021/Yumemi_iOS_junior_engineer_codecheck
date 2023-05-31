@@ -16,22 +16,9 @@ struct ViewForResearch: View {
     @State private var birthday:Date = Date()
     @State private var bloodType:ABOBloodType = .a
     
-    @FocusState private var isTextFieldFocused:Bool{
-        didSet{
-            if oldValue{
-                focusedField = .name
-            }
-        }
-    }
-    @State private var focusedField:FocusedField? = nil{
-        didSet{
-            if oldValue == .birthday || oldValue == .bloodType {
-                isTextFieldFocused = false
-            }
-        }
-    }
-    
-    
+    @FocusState private var isTextFieldFocused:Bool
+    @State private var isBirthdayPickerDisplayed = false
+    @State private var isBloodTypePickerDisplayed = false
     
     var body: some View {
         GeometryReader{ geo in
@@ -75,7 +62,7 @@ struct ViewForResearch: View {
                             Spacer()
                         }.contentShape(Rectangle() )
                         .onTapGesture {
-                            focusedField = .birthday
+                            focus(at: .birthday)
                         }
                         
                         HStack{
@@ -84,7 +71,7 @@ struct ViewForResearch: View {
                             Spacer()
                         }.contentShape(Rectangle() )
                         .onTapGesture {
-                            focusedField = .bloodType
+                            focus(at: .bloodType)
                         }
                     }.background(
                         RoundedRectangle(cornerRadius: 8)
@@ -93,18 +80,13 @@ struct ViewForResearch: View {
                         .padding(.bottom)
                         .padding(.horizontal)
                     
-                    switch focusedField {
-
-                    case .none,.name:
-                        EmptyView()
-
-                    case .birthday:
+                    if isBirthdayPickerDisplayed{
                         DatePicker("Birthday", selection: $birthday,displayedComponents: [.date])
-                                        .datePickerStyle(.wheel)
-                                        .labelsHidden()
-                                        
-
-                    case .bloodType:
+                            .datePickerStyle(.wheel)
+                            .labelsHidden()
+                        
+                    }
+                    if isBloodTypePickerDisplayed{
                         Picker("BloodType", selection: $bloodType){
                             ForEach(ABOBloodType.allCases){  bloodType in
                                 Text(bloodType.rawValue).tag(bloodType)
@@ -118,12 +100,29 @@ struct ViewForResearch: View {
         
     }
     
-    enum FocusedField:Hashable{
+    private func focus(at field:FocusedField){
+        withAnimation{
+            switch field{
+            case .name:
+                isTextFieldFocused = true
+                isBirthdayPickerDisplayed = false
+                isBloodTypePickerDisplayed = false
+                
+            case .birthday:
+                isTextFieldFocused = false
+                isBirthdayPickerDisplayed = true
+                isBloodTypePickerDisplayed = false
+                
+            case .bloodType:
+                isTextFieldFocused = false
+                isBirthdayPickerDisplayed = false
+                isBloodTypePickerDisplayed = true
+            }
+        }
+    }
+    
+    private enum FocusedField:Hashable{
         case name, birthday, bloodType
-        
-        var isNameInFocus:Bool{ self == .name }
-        var isBirthdayInFocus:Bool{ self == .birthday }
-        var isBloodTypeInFocus:Bool{ self == .bloodType }
     }
 }
 
