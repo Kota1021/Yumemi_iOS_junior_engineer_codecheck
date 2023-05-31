@@ -17,12 +17,13 @@ struct InputView: View {
     @State private var bloodType: ABOBloodType = .a
     
     var body: some View {
-        //inputViewを作成
         VStack{
             TextField("Name", text: $name)
+                .border(.pink)
             
             DatePicker("Birthday", selection: $birthday,displayedComponents: [.date])
                 .datePickerStyle(.wheel)
+                .labelsHidden()
                 
             Picker("BloodType", selection: $bloodType){
                 ForEach(ABOBloodType.allCases){  bloodType in

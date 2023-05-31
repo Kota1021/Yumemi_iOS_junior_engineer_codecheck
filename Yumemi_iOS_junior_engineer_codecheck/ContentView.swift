@@ -37,24 +37,24 @@ struct ContentView: View {
             }
         }
 //        .onAppear{
-//            errorGenerator()
+//            errorFetcher()
 //        }
     }
     
-    func errorGenerator(){
-        // generates an intended error for testing ErrorView
-        let name = "AAA"
-        let birthday = YearMonthDay(year: 111, month: 111, day: 111)
-        let bloodType = ABOBloodType.a
-        print("bloodtype: \(bloodType)")
-        let today = YearMonthDay(from: Date() )
-
-        let input = FortuneInput(name: name, birthday: birthday, bloodType: bloodType, today: today)
-        
-        Task{
-            output = await fetchLuckyPrefecture(input: input)
-        }
-    }
+//    func errorFetcher(){
+//        // generates an intended error for testing ErrorView
+//        let name = "AAA"
+//        let birthday = YearMonthDay(year: 111, month: 111, day: 111)
+//        let bloodType = ABOBloodType.a
+//        print("bloodtype: \(bloodType)")
+//        let today = YearMonthDay(from: Date() )
+//
+//        let input = FortuneInput(name: name, birthday: birthday, bloodType: bloodType, today: today)
+//
+//        Task{
+//            output = await fetchLuckyPrefecture(input: input)
+//        }
+//    }
 
 }
 
