@@ -8,19 +8,29 @@
 import Foundation
 
 struct FortuneInput:Encodable{
-    let name:String // no more than 127 characters
-    let birthday:YearMonthDay
-    let bloodType:ABOBloodType
-    let today:YearMonthDay
+    public let name:String // no more than 127 characters
+    public let birthday:YearMonthDay
+    public let bloodType:ABOBloodType
+    public let today:YearMonthDay
     
-    var isValid:Bool{ !name.isEmpty && name.count < 128 }
+    public var isValid:Bool{ !name.isEmpty && name.count < 128 }
 
 }
 
 struct YearMonthDay:Codable{
-    let year:Int
-    let month:Int
-    let day:Int
+    public let year:Int
+    public let month:Int
+    public let day:Int
+}
+
+extension YearMonthDay{
+    init(from date:Date){
+        let calendar = Calendar.current
+        
+        self.year = calendar.component(.year, from: date)
+        self.month = calendar.component(.month, from: date)
+        self.day = calendar.component(.day, from: date)
+    }
 }
 
 // Now only considering ABO blood group. not RH etc...

@@ -8,12 +8,11 @@
 import Foundation
 import Alamofire
 
-func fetchAPITest(){
+func fetchAPI(input:FortuneInput){
+    print("fetchAPI called")
     let api = FortuneAPI()
-    let birthday = YearMonthDay(year: 2000, month: 1, day: 1)
-    let today = YearMonthDay(year: 2022, month: 5, day: 1)
-    
-    let input = FortuneInput(name: "John Doe", birthday: birthday, bloodType: .a, today: today)
+//
+//    let input = FortuneInput(name: "John Doe", birthday: birthday, bloodType: .a, today: today)
     
     /// If you set JSONDecoder.keyDecodingStrategy's value into .convertFromSnakeCase, it will automatically change snake_case into camelCase, and vice versa.
     /// Thus no need for CordingKeys.       cf. https://zenn.dev/u_dai/articles/af5e2bf083b0dc

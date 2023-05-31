@@ -21,6 +21,7 @@
 		676AC02E2A27113B009F34E9 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AC02D2A27113B009F34E9 /* Input.swift */; };
 		676AC0302A2711F5009F34E9 /* Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AC02F2A2711F5009F34E9 /* Output.swift */; };
 		676AC0332A27135D009F34E9 /* FetchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AC0322A27135D009F34E9 /* FetchAPI.swift */; };
+		677A70F62A2722AE00582D2C /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677A70F52A2722AE00582D2C /* InputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		676AC02D2A27113B009F34E9 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		676AC02F2A2711F5009F34E9 /* Output.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Output.swift; sourceTree = "<group>"; };
 		676AC0322A27135D009F34E9 /* FetchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAPI.swift; sourceTree = "<group>"; };
+		677A70F52A2722AE00582D2C /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 			children = (
 				676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */,
 				676ABFFB2A270E94009F34E9 /* ContentView.swift */,
+				677A70F52A2722AE00582D2C /* InputView.swift */,
 				676AC0322A27135D009F34E9 /* FetchAPI.swift */,
 				676AC0312A2711FB009F34E9 /* Models */,
 				676ABFFD2A270E95009F34E9 /* Assets.xcassets */,
@@ -297,6 +300,7 @@
 				676AC0302A2711F5009F34E9 /* Output.swift in Sources */,
 				676ABFFA2A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift in Sources */,
 				676AC0332A27135D009F34E9 /* FetchAPI.swift in Sources */,
+				677A70F62A2722AE00582D2C /* InputView.swift in Sources */,
 				676AC0292A2710FA009F34E9 /* FortuneAPI.swift in Sources */,
 				676AC0062A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.xcdatamodeld in Sources */,
 			);
