@@ -9,12 +9,18 @@ import Foundation
 
 ///prefacture
 struct FortuneOutput:Decodable{
-    let name:String
-    let brief:String
-    let capital:String
-    let citizenDay:MonthDay?
-    let hasCoastLine:Bool
-    let logoUrl:URL
+    public let name:String
+    public let brief:String
+    public let capital:String
+    public let citizenDay:MonthDay?
+    public let hasCoastLine:Bool
+    public let logoUrl:URL
+}
+
+extension FortuneOutput:Equatable{
+    static func == (lhs: FortuneOutput, rhs: FortuneOutput) -> Bool {
+        lhs.name == rhs.name
+    }
 }
 
 
@@ -23,3 +29,17 @@ struct MonthDay:Codable{
     let day:Int
 }
 
+extension MonthDay{
+    public func toString()->String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "dMMM", options: 0, locale: Locale(identifier: "ja_JP"))
+        return formatter.string(from: self.toDate())
+    }
+    
+    public func toDate()->Date{
+        let calendar = Calendar(identifier: .gregorian)
+        let dateComponents = DateComponents(month: self.month, day: self.day)
+        guard let date = calendar.date(from: dateComponents ) else{ fatalError("invalid date") }
+        return date
+    }
+}

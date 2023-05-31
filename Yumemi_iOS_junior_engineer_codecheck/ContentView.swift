@@ -11,8 +11,14 @@ import CoreData
 struct ContentView: View {
 //    @Environment(\.managedObjectContext) private var viewContext
 
+    @State private var output: FortuneOutput? = nil
     var body: some View {
-        InputView()
+        VStack{
+            InputView()
+            OutputView(prefacture: $output)
+        }.onChange(of: output) { newValue in
+            print("\(newValue)")
+        }
     }
     
 
