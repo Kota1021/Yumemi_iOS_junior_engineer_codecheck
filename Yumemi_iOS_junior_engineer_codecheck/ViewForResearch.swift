@@ -42,7 +42,7 @@ struct ViewForResearch: View {
                         }
                     }
                     .onTapGesture {
-                        isTextFieldFocused = false
+                        focus(at: .none)
                     }
                 
                 VStack{
@@ -53,7 +53,10 @@ struct ViewForResearch: View {
                                 .focused($isTextFieldFocused)
                                 .padding()
                             Spacer()
-                        }
+                        }.contentShape(Rectangle() )
+                            .onTapGesture {
+                                focus(at: .name)
+                            }
                         
                         
                         HStack{
@@ -75,7 +78,7 @@ struct ViewForResearch: View {
                         }
                     }.background(
                         RoundedRectangle(cornerRadius: 8)
-                            .foregroundColor(Color("Background") )
+                            .foregroundColor(Color(.systemBackground) )
                     )
                         .padding(.bottom)
                         .padding(.horizontal)
@@ -84,6 +87,9 @@ struct ViewForResearch: View {
                         DatePicker("Birthday", selection: $birthday,displayedComponents: [.date])
                             .datePickerStyle(.wheel)
                             .labelsHidden()
+                            .frame(width: geo.size.width)
+                            .background(Color("keyboardBackground") )
+                            
                         
                     }
                     if isBloodTypePickerDisplayed{
@@ -92,6 +98,7 @@ struct ViewForResearch: View {
                                 Text(bloodType.rawValue).tag(bloodType)
                             }
                         }.pickerStyle(.wheel)
+                            .background(Color("keyboardBackground") )
                     }
                     
                 }
@@ -100,9 +107,13 @@ struct ViewForResearch: View {
         
     }
     
-    private func focus(at field:FocusedField){
+    private func focus(at field:FocusedField?){
         withAnimation{
             switch field{
+            case .none:
+                isTextFieldFocused = false
+                isBirthdayPickerDisplayed = false
+                isBloodTypePickerDisplayed = false
             case .name:
                 isTextFieldFocused = true
                 isBirthdayPickerDisplayed = false
