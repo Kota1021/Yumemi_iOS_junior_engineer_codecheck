@@ -12,7 +12,7 @@ struct FortuneInput:Encodable{
     public let birthday:YearMonthDay
     public let bloodType:ABOBloodType
     public let today:YearMonthDay
-    
+
     public var isValid:Bool{ !name.isEmpty && name.count < 128 }
 
 }

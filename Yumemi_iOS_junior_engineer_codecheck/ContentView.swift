@@ -8,104 +8,55 @@
 import SwiftUI
 import CoreData
 import Alamofire
-import VTabView
 
 struct ContentView: View {
-//    @Environment(\.managedObjectContext) private var viewContext
+    //    @Environment(\.managedObjectContext) private var viewContext
     
-    init() {
-         UIScrollView.appearance().bounces = false
-      }
-
-    @State private var output: Result<LuckyPrefecture, AFError>? = nil
-    @State private var luckyPrefecture:LuckyPrefecture? = nil
-    
-    private var luckyPrefectureImageInfoSets:[PrefectureImageInfo]?{
-        guard let prefecture = luckyPrefecture else{ return nil }
-        let prefCode = prefectureCode(from: prefecture.name)
-        guard let prefCode = prefCode else{
-            print("prefCode nil. prefecture: \(prefecture)")
-            return nil }
-       return  PrefectureImageInfoSets().infoSets(of: prefCode)
-    }
-    
-    @State private var errorInFetchingFortune:AFError? = nil
+    @State private var output: Result<Prefecture, AFError>? = nil
+    @State private var fetchPrefectureButtonTapped = false
     @State private var displayedPage = Pages.input
     
     var body: some View {
         
-        ZStack{
-            BackgroundView()
-            
-            // this GeometryReader helps InputView to move input forms upwards when keyboard is displayed.
-            GeometryReader{ geo in
-                
-                // this ScrollView wraps VTabView so that VTabView can fill the screen to the full. cf.https://stackoverflow.com/questions/62593923/edgesignoringsafearea-on-tabview-with-pagetabviewstyle-not-working
-                ScrollView (.horizontal,showsIndicators: false){
-                    VTabView(selection: $displayedPage){
-                        InputView(output: $output, geometry:geo).tag(Pages.input)
-                        
-                        if let luckyPrefecture = self.luckyPrefecture{
-                            PrefectureView(prefacture: luckyPrefecture, imagesInfo:luckyPrefectureImageInfoSets!).tag(Pages.output)
-                        }
-                        if let errorInFetchingFortune = self.errorInFetchingFortune{
-                            ErrorView(error:errorInFetchingFortune).tag(Pages.output)
-                        }
-//                        MapView().tag(Pages.map)
-                        HistoryView().tag(Pages.history)
-                    }.frame(
-                        width: UIScreen.main.bounds.width ,
-                        height: UIScreen.main.bounds.height
-                    )
-                    .tabViewStyle(.page(indexDisplayMode: .never))
-                } .ignoresSafeArea(.all)
+        /// this GeometryReader helps InputView to move input forms upwards when keyboard is displayed.
+        /// InputView is inside MaximumVerticalPageView, which ignores safe area.
+        GeometryReader{ geo in
+            MaximumVerticalPageView(selection: $displayedPage){
+                    InputView(output: $output,
+                              fetchButtonTapped: $fetchPrefectureButtonTapped,
+                              geometry:geo)
+                    .tag(Pages.input)
+                    OutputView(output: $output)
+                    .tag(Pages.output)
+                    HistoryView()
+                    .tag(Pages.history)
             }
-        }
-        .onChange(of: output) { newValue in
-            do{
-                errorInFetchingFortune = nil
-                luckyPrefecture = try output?.get()
-            }catch{
-                luckyPrefecture = nil
-                errorInFetchingFortune = error as? AFError
-            }
-            Task{
-                Thread.sleep(forTimeInterval: 0.5)
-                withAnimation{
-                    displayedPage = .output
+        }.background( BackgroundView() )
+            .onChange(of: fetchPrefectureButtonTapped) { tapped in
+                print("button tapped observed in ContentView")
+                if tapped{
+                    print("fetchPrefectureButtonTapped true")
+                    Task{
+                        try? await Task.sleep(nanoseconds:0_300_000_000)
+                        withAnimation{
+                            displayedPage = .output
+                        }
+                    }
                 }
+                fetchPrefectureButtonTapped = false
             }
-        }
-//        .onAppear{
-//            errorFetcher()
-//        }
     }
-    
-//    func errorFetcher(){
-//        // generates an intended error for testing ErrorView
-//        let name = "AAA"
-//        let birthday = YearMonthDay(year: 111, month: 111, day: 111)
-//        let bloodType = ABOBloodType.a
-//        print("bloodtype: \(bloodType)")
-//        let today = YearMonthDay(from: Date() )
-//
-//        let input = FortuneInput(name: name, birthday: birthday, bloodType: bloodType, today: today)
-//
-//        Task{
-//            output = await fetchLuckyPrefecture(input: input)
-//        }
-//    }
     
     private enum Pages{
         case input, output, history
     }
-
+    
 }
 
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            //.environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        //.environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

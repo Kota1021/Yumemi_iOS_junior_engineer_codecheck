@@ -16,6 +16,13 @@
 		672DB20B2A28CE5A0041BD60 /* InputForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB20A2A28CE5A0041BD60 /* InputForm.swift */; };
 		672DB20E2A28D09D0041BD60 /* FetchLuckyPrefectureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB20D2A28D09D0041BD60 /* FetchLuckyPrefectureButton.swift */; };
 		672DB2102A28D9570041BD60 /* ImagePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB20F2A28D9570041BD60 /* ImagePageView.swift */; };
+		672DB2122A28DD330041BD60 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB2112A28DD330041BD60 /* InfoView.swift */; };
+		672DB2172A28E8710041BD60 /* OutputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB2162A28E8710041BD60 /* OutputView.swift */; };
+		672DB21A2A28EC0D0041BD60 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB2192A28EC0D0041BD60 /* Error.swift */; };
+		672DB21C2A28EE150041BD60 /* MaximumVerticalPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB21B2A28EE150041BD60 /* MaximumVerticalPageView.swift */; };
+		672DB2202A2909C10041BD60 /* japan.png in Resources */ = {isa = PBXBuildFile; fileRef = 672DB21F2A2909C10041BD60 /* japan.png */; };
+		672DB2222A290B2D0041BD60 /* 2270.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 672DB2212A290B2D0041BD60 /* 2270.jpg */; };
+		672DB2242A290CCC0041BD60 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 672DB2232A290CCC0041BD60 /* photo.png */; };
 		676ABFFA2A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */; };
 		676ABFFC2A270E94009F34E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ABFFB2A270E94009F34E9 /* ContentView.swift */; };
 		676ABFFE2A270E95009F34E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 676ABFFD2A270E95009F34E9 /* Assets.xcassets */; };
@@ -65,6 +72,13 @@
 		672DB20A2A28CE5A0041BD60 /* InputForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputForm.swift; sourceTree = "<group>"; };
 		672DB20D2A28D09D0041BD60 /* FetchLuckyPrefectureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLuckyPrefectureButton.swift; sourceTree = "<group>"; };
 		672DB20F2A28D9570041BD60 /* ImagePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePageView.swift; sourceTree = "<group>"; };
+		672DB2112A28DD330041BD60 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		672DB2162A28E8710041BD60 /* OutputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputView.swift; sourceTree = "<group>"; };
+		672DB2192A28EC0D0041BD60 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		672DB21B2A28EE150041BD60 /* MaximumVerticalPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaximumVerticalPageView.swift; sourceTree = "<group>"; };
+		672DB21F2A2909C10041BD60 /* japan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = japan.png; sourceTree = "<group>"; };
+		672DB2212A290B2D0041BD60 /* 2270.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2270.jpg; sourceTree = "<group>"; };
+		672DB2232A290CCC0041BD60 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
 		676ABFF62A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yumemi_iOS_junior_engineer_codecheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yumemi_iOS_junior_engineer_codecheckApp.swift; sourceTree = "<group>"; };
 		676ABFFB2A270E94009F34E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -120,7 +134,8 @@
 			children = (
 				671A35242A27462900F6358D /* PrefectureView.swift */,
 				672DB20F2A28D9570041BD60 /* ImagePageView.swift */,
-				672DB2082A28B86E0041BD60 /* BriefCardView.swift */,
+				676EA8C92A28584E005C455B /* MapView.swift */,
+				672DB2132A28DD4A0041BD60 /* Info */,
 				672DB2032A2893610041BD60 /* LoadJson.swift */,
 				672DB2052A2893B90041BD60 /* PrefectureImageInfo.swift */,
 			);
@@ -135,6 +150,25 @@
 				672DB20D2A28D09D0041BD60 /* FetchLuckyPrefectureButton.swift */,
 			);
 			path = Input;
+			sourceTree = "<group>";
+		};
+		672DB2132A28DD4A0041BD60 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				672DB2112A28DD330041BD60 /* InfoView.swift */,
+				672DB2082A28B86E0041BD60 /* BriefCardView.swift */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
+		672DB2182A28EB0B0041BD60 /* Output */ = {
+			isa = PBXGroup;
+			children = (
+				672DB2162A28E8710041BD60 /* OutputView.swift */,
+				672DB2072A28975F0041BD60 /* Prefecture */,
+				671A35262A2759FD00F6358D /* ErrorView.swift */,
+			);
+			path = Output;
 			sourceTree = "<group>";
 		};
 		676ABFED2A270E94009F34E9 = {
@@ -162,14 +196,12 @@
 			children = (
 				676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */,
 				676ABFFB2A270E94009F34E9 /* ContentView.swift */,
+				672DB21B2A28EE150041BD60 /* MaximumVerticalPageView.swift */,
 				676EA8CD2A285ACD005C455B /* BackgroundView.swift */,
-				672DB2072A28975F0041BD60 /* Prefecture */,
-				671A35262A2759FD00F6358D /* ErrorView.swift */,
-				676EA8C92A28584E005C455B /* MapView.swift */,
+				672DB20C2A28CE5F0041BD60 /* Input */,
+				672DB2182A28EB0B0041BD60 /* Output */,
 				676EA8CB2A285853005C455B /* HistoryView.swift */,
 				671A352D2A276A5700F6358D /* LicenseView.swift */,
-				672DB20C2A28CE5F0041BD60 /* Input */,
-				676AC0322A27135D009F34E9 /* fetchLuckyPrefecture.swift */,
 				676AC0312A2711FB009F34E9 /* Models */,
 				676EA9112A288BBD005C455B /* Resources */,
 				676AC0022A270E95009F34E9 /* Persistence.swift */,
@@ -207,9 +239,11 @@
 		676AC0312A2711FB009F34E9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				676AC0322A27135D009F34E9 /* fetchLuckyPrefecture.swift */,
 				676AC0282A2710FA009F34E9 /* FortuneAPI.swift */,
 				676AC02D2A27113B009F34E9 /* Input.swift */,
 				676AC02F2A2711F5009F34E9 /* Output.swift */,
+				672DB2192A28EC0D0041BD60 /* Error.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -217,7 +251,10 @@
 		676EA9112A288BBD005C455B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				672DB2232A290CCC0041BD60 /* photo.png */,
+				672DB21F2A2909C10041BD60 /* japan.png */,
 				676ABFFD2A270E95009F34E9 /* Assets.xcassets */,
+				672DB2212A290B2D0041BD60 /* 2270.jpg */,
 				676EA90F2A288B79005C455B /* find47images.json */,
 			);
 			path = Resources;
@@ -338,7 +375,10 @@
 			files = (
 				676AC0012A270E95009F34E9 /* Preview Assets.xcassets in Resources */,
 				676EA9102A288B79005C455B /* find47images.json in Resources */,
+				672DB2242A290CCC0041BD60 /* photo.png in Resources */,
+				672DB2222A290B2D0041BD60 /* 2270.jpg in Resources */,
 				676ABFFE2A270E95009F34E9 /* Assets.xcassets in Resources */,
+				672DB2202A2909C10041BD60 /* japan.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +406,7 @@
 				672DB2102A28D9570041BD60 /* ImagePageView.swift in Sources */,
 				672DB20B2A28CE5A0041BD60 /* InputForm.swift in Sources */,
 				676AC02E2A27113B009F34E9 /* Input.swift in Sources */,
+				672DB2172A28E8710041BD60 /* OutputView.swift in Sources */,
 				676AC0032A270E95009F34E9 /* Persistence.swift in Sources */,
 				672DB2092A28B86E0041BD60 /* BriefCardView.swift in Sources */,
 				676ABFFC2A270E94009F34E9 /* ContentView.swift in Sources */,
@@ -375,8 +416,11 @@
 				672DB20E2A28D09D0041BD60 /* FetchLuckyPrefectureButton.swift in Sources */,
 				676ABFFA2A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift in Sources */,
 				676EA90A2A2876E1005C455B /* InputView.swift in Sources */,
+				672DB21C2A28EE150041BD60 /* MaximumVerticalPageView.swift in Sources */,
+				672DB2122A28DD330041BD60 /* InfoView.swift in Sources */,
 				671A35252A27462900F6358D /* PrefectureView.swift in Sources */,
 				676AC0332A27135D009F34E9 /* fetchLuckyPrefecture.swift in Sources */,
+				672DB21A2A28EC0D0041BD60 /* Error.swift in Sources */,
 				676EA8CC2A285853005C455B /* HistoryView.swift in Sources */,
 				676EA8CA2A28584E005C455B /* MapView.swift in Sources */,
 				676EA8CE2A285ACD005C455B /* BackgroundView.swift in Sources */,

@@ -9,14 +9,13 @@ import SwiftUI
 
 struct BackgroundView: View {
     @Environment(\ .colorScheme)var colorScheme
-//    let viewSize:CGSize
+    
     var body: some View {
         GeometryReader{ geo in
             Image(colorScheme == .light ? "4181" : "1583")
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
-//                .frame(width: viewSize.width, height: viewSize.height)
                 .frame(width: geo.size.width, height: geo.size.height)
                 .offset(x: colorScheme == .light ? 160 : -250, y: 0)// on iPhone 14 pro
                 .overlay{
@@ -36,9 +35,6 @@ struct BackgroundView: View {
 
 struct BackgroundView_Previews: PreviewProvider {
     static var previews: some View {
-//        GeometryReader{ geo in
             BackgroundView()
-//            BackgroundView(viewSize:geo.size)
-//        }
     }
 }

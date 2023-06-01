@@ -22,6 +22,7 @@ struct ImagePageView: View {
                             .clipped()
                     } placeholder: {
                         ProgressView()
+                            .frame(width: viewSize.width, height: 300)
                     }
                     
                     HStack{

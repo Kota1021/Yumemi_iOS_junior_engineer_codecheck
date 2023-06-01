@@ -9,7 +9,8 @@ import SwiftUI
 import Alamofire
 
 struct InputView: View {
-    @Binding var output:Result<LuckyPrefecture, AFError>?
+    @Binding var output:Result<Prefecture, AFError>?
+    @Binding var fetchButtonTapped:Bool
     let geometry:GeometryProxy
     
     @State private var name:String = ""
@@ -29,6 +30,8 @@ struct InputView: View {
     
     @State private var isFetchFortuneButtonDisplayed = false
     
+//    @State private var input = FortuneInput()
+    
     
     var body: some View {
         //        GeometryReader{ geometry in
@@ -36,6 +39,7 @@ struct InputView: View {
             Spacer()
             VStack{
                 InputForm("Name"){
+//                    TextField("John Doe",text: $input.name)
                     TextField("John Doe",text: $name)
                         .multilineTextAlignment(.trailing)
                         .submitLabel(.next)
@@ -48,18 +52,30 @@ struct InputView: View {
                 InputForm("Birthday"){
                     Text("\(YearMonthDay(from: self.birthday).toString())")
                     
-                }.shadow(color: isBirthdayFocused ? .white : .clear, radius: 8)
-                    .onTapGesture { focus(at: .birthday) }
+                }
+                .shadow(color: isBirthdayFocused ? .white : .clear, radius: 8)
+                .onTapGesture { focus(at: .birthday) }
                 
                 InputForm("Blood Type"){
+//                    Text(input.bloodType.rawValue)
                     Text(bloodType.rawValue)
                     
-                }.shadow(color: isBloodTypeFocused ? .white : .clear, radius: 8)
+                }
+                .shadow(color: isBloodTypeFocused ? .white : .clear, radius: 8)
                     .onTapGesture { focus(at: .bloodType) }
                 
                 if isFetchFortuneButtonDisplayed{
                     Button{
-                        fetchLucyPrefecture()
+                        fetchLuckyPrefecture()
+                        fetchButtonTapped = true
+//                        print("fetch button tapped")
+//                        print("input: \(input)")
+//                        if input.isValid{
+//                            Task{
+//                                output = await Yumemi_iOS_junior_engineer_codecheck
+//                                    .fetchLuckyPrefecture(input: input)
+//                            }
+//                        }
                     }label:{
                         Image(systemName: "paperplane.fill")
                             .resizable()
@@ -70,13 +86,13 @@ struct InputView: View {
                         .shadow(color: .white ,radius: 8)
                 }
             }
+            // this padding allows this view to adopt to keyboard hight.
             .padding(.bottom, isTextFieldFocused ? geometry.safeAreaInsets.bottom : 40)
-            
-            
             
             
             if isBirthdayFocused{
                 DatePicker("Birthday", selection: $birthday,displayedComponents: [.date])
+//                DatePicker("Birthday", selection: $birthday,displayedComponents: [.date])
                     .datePickerStyle(.wheel)
                     .labelsHidden()
                     .frame(width: geometry.size.width)
@@ -94,7 +110,7 @@ struct InputView: View {
                         self.hasDayChanged = true
                     }
                     .onChange(of: hasYearChanged && hasMonthChanged && hasDayChanged) { hasYearMonthDayChanged in
-                        //rough　probability　of changing all of Year,Month and Day ==  59/60(year) * 11/12(month) * 29/30(day)
+                        //rough　probability　of changing all of Year,Month and Day is 87%.  59/60(year) * 11/12(month) * 29/30(day)
                         //releasing around 87% of individuals from an effort to change focus
                         if hasYearMonthDayChanged{ focus(at: .bloodType) }
                     }
@@ -161,29 +177,34 @@ struct InputView: View {
         case name, birthday, bloodType
     }
     
-    private func fetchLucyPrefecture(){
+    private func fetchLuckyPrefecture(){
         print("fetch button tapped")
         let birthday = YearMonthDay(from: self.birthday)
         let today = YearMonthDay(from: Date() )
-        
+
         let input = FortuneInput(name: self.name,
                                  birthday: birthday,
                                  bloodType: self.bloodType,
                                  today: today)
-        print("input: \(input)")
-        Task{
-            output = await fetchLuckyPrefecture(input: input)
+        if input.isValid{
+            print("input: \(input)")
+            Task{ 
+                output = await Yumemi_iOS_junior_engineer_codecheck.fetchLuckyPrefecture(input: input)
+            }
+        }else{
+            print("input invalid")
         }
     }
 }
 
 struct ViewForResearch_Previews: PreviewProvider {
-    @State static private var output: Result<LuckyPrefecture, AFError>? = nil
+    @State static private var output: Result<Prefecture, AFError>? = nil
+    @State static private var fetchButtonTapped = false
     static var previews: some View {
         GeometryReader{geo in
             //            ViewForResearch(output:$output)
             //            ViewForResearch(viewSize: geo.size, output:$output)
-            InputView(output:$output, geometry: geo)
+            InputView(output:$output, fetchButtonTapped: $fetchButtonTapped, geometry: geo)
         }
     }
 }
