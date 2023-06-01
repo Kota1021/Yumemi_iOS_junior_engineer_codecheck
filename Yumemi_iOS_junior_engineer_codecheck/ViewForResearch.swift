@@ -12,8 +12,13 @@ struct ViewForResearch: View {
     @Environment(\ .colorScheme)var colorScheme
     @State private var output: Result<LuckyPrefacture, AFError>? = nil
     @State private var name:String = ""
-    @State private var test:String = ""
+    
     @State private var birthday:Date = Date()
+    private let calendar = Calendar(identifier: .gregorian)
+    @State private var hasYearChanged = false
+    @State private var hasMonthChanged = false
+    @State private var hasDayChanged = false
+    
     @State private var bloodType:ABOBloodType = .a
     
     @FocusState private var isTextFieldFocused:Bool
@@ -52,6 +57,10 @@ struct ViewForResearch: View {
                             TextField("name",text: $name)
                                 .focused($isTextFieldFocused)
                                 .padding()
+                                .submitLabel(.next)
+                                .onSubmit {
+                                    focus(at: .birthday)
+                                }
                             Spacer()
                         }.contentShape(Rectangle() )
                             .onTapGesture {
@@ -89,7 +98,24 @@ struct ViewForResearch: View {
                             .labelsHidden()
                             .frame(width: geo.size.width)
                             .background(Color("keyboardBackground") )
-                            
+                            .transition(.move(edge: .bottom))
+                            .onChange(of: calendar.component(.year, from: birthday)) { _ in
+                                self.hasYearChanged = true
+                            }
+                            .onChange(of: calendar.component(.month, from: birthday)) { _ in
+                                self.hasMonthChanged = true
+                            }
+                            .onChange(of: calendar.component(.day, from: birthday)) { _ in
+                                self.hasDayChanged = true
+                            }
+                            .onChange(of: hasYearChanged && hasMonthChanged && hasDayChanged) { hasYearMonthDayChanged in
+                                if hasYearMonthDayChanged{ focus(at: .bloodType) }
+                            }
+                            .onDisappear{
+                                self.hasYearChanged = false
+                                self.hasMonthChanged = false
+                                self.hasDayChanged = false
+                            }
                         
                     }
                     if isBloodTypePickerDisplayed{
@@ -99,6 +125,7 @@ struct ViewForResearch: View {
                             }
                         }.pickerStyle(.wheel)
                             .background(Color("keyboardBackground") )
+                            .transition(.move(edge: .bottom))
                     }
                     
                 }
@@ -109,27 +136,25 @@ struct ViewForResearch: View {
     
     private func focus(at field:FocusedField?){
         withAnimation{
+            
+                    isTextFieldFocused = false
+                    isBirthdayPickerDisplayed = false
+                    isBloodTypePickerDisplayed = false
+            
             switch field{
             case .none:
-                isTextFieldFocused = false
-                isBirthdayPickerDisplayed = false
-                isBloodTypePickerDisplayed = false
+                break
             case .name:
                 isTextFieldFocused = true
-                isBirthdayPickerDisplayed = false
-                isBloodTypePickerDisplayed = false
                 
             case .birthday:
-                isTextFieldFocused = false
                 isBirthdayPickerDisplayed = true
-                isBloodTypePickerDisplayed = false
                 
             case .bloodType:
-                isTextFieldFocused = false
-                isBirthdayPickerDisplayed = false
                 isBloodTypePickerDisplayed = true
             }
         }
+        
     }
     
     private enum FocusedField:Hashable{
