@@ -28,6 +28,8 @@ struct ContentView: View {
                 if let errorInFetchingFortune = self.errorInFetchingFortune{
                     ErrorView(error:errorInFetchingFortune).tag(Pages.output)
                 }
+                MapView().tag(Pages.map)
+                HistoryView().tag(Pages.history)
             }.tabViewStyle(.page(indexDisplayMode: .always))
                 
                 

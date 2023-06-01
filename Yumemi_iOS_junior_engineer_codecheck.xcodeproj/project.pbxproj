@@ -26,6 +26,9 @@
 		676AC0302A2711F5009F34E9 /* Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AC02F2A2711F5009F34E9 /* Output.swift */; };
 		676AC0332A27135D009F34E9 /* fetchLuckyPrefecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AC0322A27135D009F34E9 /* fetchLuckyPrefecture.swift */; };
 		676EA8C42A285572005C455B /* VTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 676EA8C32A285572005C455B /* VTabView */; };
+		676EA8CA2A28584E005C455B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676EA8C92A28584E005C455B /* MapView.swift */; };
+		676EA8CC2A285853005C455B /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676EA8CB2A285853005C455B /* HistoryView.swift */; };
+		676EA8CE2A285ACD005C455B /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676EA8CD2A285ACD005C455B /* BackgroundView.swift */; };
 		677A70F62A2722AE00582D2C /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677A70F52A2722AE00582D2C /* InputView.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +70,9 @@
 		676AC02D2A27113B009F34E9 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		676AC02F2A2711F5009F34E9 /* Output.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Output.swift; sourceTree = "<group>"; };
 		676AC0322A27135D009F34E9 /* fetchLuckyPrefecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fetchLuckyPrefecture.swift; sourceTree = "<group>"; };
+		676EA8C92A28584E005C455B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		676EA8CB2A285853005C455B /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		676EA8CD2A285ACD005C455B /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		677A70F52A2722AE00582D2C /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,12 +135,15 @@
 			children = (
 				676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */,
 				676ABFFB2A270E94009F34E9 /* ContentView.swift */,
+				676EA8CD2A285ACD005C455B /* BackgroundView.swift */,
 				67450FBF2A27864F00DAC98D /* ViewForResearch.swift */,
 				671A35262A2759FD00F6358D /* ErrorView.swift */,
 				671A35242A27462900F6358D /* OutputView.swift */,
 				677A70F52A2722AE00582D2C /* InputView.swift */,
-				676AC0322A27135D009F34E9 /* fetchLuckyPrefecture.swift */,
+				676EA8C92A28584E005C455B /* MapView.swift */,
+				676EA8CB2A285853005C455B /* HistoryView.swift */,
 				671A352D2A276A5700F6358D /* LicenseView.swift */,
+				676AC0322A27135D009F34E9 /* fetchLuckyPrefecture.swift */,
 				67450FC32A278BC100DAC98D /* Resources */,
 				676AC0312A2711FB009F34E9 /* Models */,
 				676ABFFD2A270E95009F34E9 /* Assets.xcassets */,
@@ -326,7 +335,10 @@
 				676ABFFA2A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift in Sources */,
 				671A35252A27462900F6358D /* OutputView.swift in Sources */,
 				676AC0332A27135D009F34E9 /* fetchLuckyPrefecture.swift in Sources */,
+				676EA8CC2A285853005C455B /* HistoryView.swift in Sources */,
+				676EA8CA2A28584E005C455B /* MapView.swift in Sources */,
 				677A70F62A2722AE00582D2C /* InputView.swift in Sources */,
+				676EA8CE2A285ACD005C455B /* BackgroundView.swift in Sources */,
 				676AC0292A2710FA009F34E9 /* FortuneAPI.swift in Sources */,
 				676AC0062A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.xcdatamodeld in Sources */,
 				671A352E2A276A5700F6358D /* LicenseView.swift in Sources */,
