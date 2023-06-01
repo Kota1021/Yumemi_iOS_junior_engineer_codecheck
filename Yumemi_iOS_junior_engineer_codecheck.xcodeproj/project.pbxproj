@@ -12,6 +12,7 @@
 		671A352E2A276A5700F6358D /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A352D2A276A5700F6358D /* LicenseView.swift */; };
 		672DB2042A2893610041BD60 /* LoadJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB2032A2893610041BD60 /* LoadJson.swift */; };
 		672DB2062A2893B90041BD60 /* PrefectureImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB2052A2893B90041BD60 /* PrefectureImageInfo.swift */; };
+		672DB2092A28B86E0041BD60 /* BriefCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB2082A28B86E0041BD60 /* BriefCardView.swift */; };
 		676ABFFA2A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */; };
 		676ABFFC2A270E94009F34E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ABFFB2A270E94009F34E9 /* ContentView.swift */; };
 		676ABFFE2A270E95009F34E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 676ABFFD2A270E95009F34E9 /* Assets.xcassets */; };
@@ -57,6 +58,7 @@
 		671A352D2A276A5700F6358D /* LicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
 		672DB2032A2893610041BD60 /* LoadJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadJson.swift; sourceTree = "<group>"; };
 		672DB2052A2893B90041BD60 /* PrefectureImageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefectureImageInfo.swift; sourceTree = "<group>"; };
+		672DB2082A28B86E0041BD60 /* BriefCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BriefCardView.swift; sourceTree = "<group>"; };
 		676ABFF62A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yumemi_iOS_junior_engineer_codecheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yumemi_iOS_junior_engineer_codecheckApp.swift; sourceTree = "<group>"; };
 		676ABFFB2A270E94009F34E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				671A35242A27462900F6358D /* PrefectureView.swift */,
+				672DB2082A28B86E0041BD60 /* BriefCardView.swift */,
 				672DB2032A2893610041BD60 /* LoadJson.swift */,
 				672DB2052A2893B90041BD60 /* PrefectureImageInfo.swift */,
 			);
@@ -345,6 +348,7 @@
 			files = (
 				676AC02E2A27113B009F34E9 /* Input.swift in Sources */,
 				676AC0032A270E95009F34E9 /* Persistence.swift in Sources */,
+				672DB2092A28B86E0041BD60 /* BriefCardView.swift in Sources */,
 				676ABFFC2A270E94009F34E9 /* ContentView.swift in Sources */,
 				672DB2042A2893610041BD60 /* LoadJson.swift in Sources */,
 				676AC0302A2711F5009F34E9 /* Output.swift in Sources */,

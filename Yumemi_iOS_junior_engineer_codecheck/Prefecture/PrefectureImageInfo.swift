@@ -6,22 +6,28 @@
 //
 
 import Foundation
-//Json
-
-struct PrefectureImageInfo: Codable {
+struct PrefectureImageInfo: Decodable {
     let id: String
-    let urlImage: String
+    let url: URL
     let title: String
     let author: String
-    let prefCode: String
+    let prefCodeStr: String// ここがIntで受け取りたいが、JSONがprefCode: "44"のようになっている。
     let pref:String
+    
+    var prefCode:Int{
+        if let prefCode = Int(prefCodeStr){
+            return prefCode
+        }else{
+            fatalError("prefCodeStr cannot be transformed into Int. prefCodeStr: \(prefCodeStr)")
+        }
+    }
     
     private enum CodingKeys: String, CodingKey {
         case id
-        case urlImage = "url_image"
+        case url = "url_image"
         case title
         case author
-        case prefCode = "pref_code"
+        case prefCodeStr = "pref_code"
         case pref
     }
 }
@@ -31,7 +37,7 @@ struct PrefectureImageInfoSets{
     let imageInfoSets:[PrefectureImageInfo] = load("find47images.json")
     
     public func infoSets(of prefectureCode: Int)-> [PrefectureImageInfo]{
-        return imageInfoSets//.filter{$0.prefCode == prefectureCode }
+        return imageInfoSets.filter{$0.prefCode == prefectureCode }
     }
 }
 
@@ -87,166 +93,3 @@ func prefectureCode(from prefecture:String)->Int?{
     default: return nil
     }
 }
-
-// made by ChatGPT, needs to check.
-//enum Prefecture: Int {
-//    case hokkaido
-//    case aomori
-//    case iwate
-//    case miyagi
-//    case akita
-//    case yamagata
-//    case fukushima
-//    case ibaraki
-//    case tochigi
-//    case gunma
-//    case saitama
-//    case chiba
-//    case tokyo
-//    case kanagawa
-//    case niigata
-//    case toyama
-//    case ishikawa
-//    case fukui
-//    case yamanashi
-//    case nagano
-//    case gifu
-//    case shizuoka
-//    case aichi
-//    case mie
-//    case shiga
-//    case kyoto
-//    case osaka
-//    case hyogo
-//    case nara
-//    case wakayama
-//    case tottori
-//    case shimane
-//    case okayama
-//    case hiroshima
-//    case yamaguchi
-//    case tokushima
-//    case kagawa
-//    case ehime
-//    case kochi
-//    case fukuoka
-//    case saga
-//    case nagasaki
-//    case kumamoto
-//    case oita
-//    case miyazaki
-//    case kagoshima
-//    case okinawa
-//
-//    var code:Int{
-//        switch self{
-//        case .hokkaido: return 1
-//        case .aomori: return 2
-//        case .iwate: return 3
-//        case .miyagi: return 4
-//        case .akita: return 5
-//        case .yamagata: return 6
-//        case .fukushima: return 7
-//        case .ibaraki: return 8
-//        case .tochigi: return 9
-//        case .gunma: return 10
-//        case .saitama: return 11
-//        case .chiba: return 12
-//        case .tokyo: return 13
-//        case .kanagawa: return 14
-//        case .niigata: return 15
-//        case .toyama: return 16
-//        case .ishikawa: return 17
-//        case .fukui: return 18
-//        case .yamanashi: return 19
-//        case .nagano: return 20
-//        case .gifu: return 21
-//        case .shizuoka: return 22
-//        case .aichi: return 23
-//        case .mie: return 24
-//        case .shiga: return 25
-//        case .kyoto: return 26
-//        case .osaka: return 27
-//        case .hyogo: return 28
-//        case .nara: return 29
-//        case .wakayama: return 30
-//        case .tottori: return 31
-//        case .shimane: return 32
-//        case .okayama: return 33
-//        case .hiroshima: return 34
-//        case .yamaguchi: return 35
-//        case .tokushima: return 36
-//        case .kagawa: return 37
-//        case .ehime: return 38
-//        case .kochi: return 39
-//        case .fukuoka: return 40
-//        case .saga: return 41
-//        case .nagasaki: return 42
-//        case .kumamoto: return 43
-//        case .oita: return 44
-//        case .miyazaki: return 45
-//        case .kagoshima: return 46
-//        case .okinawa: return 47
-//        }
-//
-//    }
-//
-//    var alphabetName: String {
-//        switch self {
-//        case .hokkaido: return "Hokkaido"
-//        case .aomori: return "Aomori"
-//        case .iwate: return "Iwate"
-//        case .miyagi: return "Miyagi"
-//        case .akita: return "Akita"
-//        case .yamagata: return "Yamagata"
-//        case .fukushima: return "Fukushima"
-//        case .ibaraki: return "Ibaraki"
-//        case .tochigi: return "Tochigi"
-//        case .gunma: return "Gunma"
-//        case .saitama: return "Saitama"
-//        case .chiba: return "Chiba"
-//        case .tokyo: return "Tokyo"
-//        case .kanagawa: return "Kanagawa"
-//        case .niigata: return "Niigata"
-//        case .toyama: return "Toyama"
-//        case .ishikawa: return "Ishikawa"
-//        case .fukui: return "Fukui"
-//        case .yamanashi: return "Yamanashi"
-//        case .nagano: return "Nagano"
-//        case .gifu: return "Gifu"
-//        case .shizuoka: return "Shizuoka"
-//        case .aichi: return "Aichi"
-//        case .mie: return "Mie"
-//        case .shiga: return "Shiga"
-//        case .kyoto: return "Kyoto"
-//        case .osaka: return "Osaka"
-//        case .hyogo: return "Hyogo"
-//        case .nara: return "Nara"
-//        case .wakayama: return "Wakayama"
-//        case .tottori: return "Tottori"
-//        case .shimane: return "Shimane"
-//        case .okayama: return "Okayama"
-//        case .hiroshima: return "Hiroshima"
-//        case .yamaguchi: return "Yamaguchi"
-//        case .tokushima: return "Tokushima"
-//        case .kagawa: return "Kagawa"
-//        case .ehime: return "Ehime"
-//        case .kochi: return "Kochi"
-//        case .fukuoka: return "Fukuoka"
-//        case .saga: return "Saga"
-//        case .nagasaki: return "Nagasaki"
-//        case .kumamoto: return "Kumamoto"
-//        case .oita: return "Oita"
-//        case .miyazaki: return "Miyazaki"
-//        case .kagoshima: return "Kagoshima"
-//        case .okinawa: return "Okinawa"
-//        }
-//    }
-//
-//    func from(string:String)->Prefecture{
-//        switch string{
-//
-//        }
-//    }
-//}
-
