@@ -17,32 +17,11 @@ struct PrefectureView: View {
     var body: some View {
         GeometryReader{proxy in
             VStack{
-                TabView{
-                    ForEach(0..<3){index in
-                        VStack{
-                            AsyncImage(url: imagesInfo[index].url){ image in
-                                image
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: proxy.size.width,height: 300)
-                                    .clipped()
-                            } placeholder: {
-                                ProgressView()
-                            }
-                            
-                            HStack{
-                                Text("\"\(imagesInfo[index].title)\" © \(imagesInfo[index].author) \n(Licensed under CC BY 4.0)")
-                                Spacer()
-                            }.padding()
-                        }
-                    }
-                }.tabViewStyle(.page)
-                    .frame(height: 450)
+                ImagePageView(imagesInfo: imagesInfo, viewSize: proxy.size)
                 
-                Group{
+                VStack(alignment: .leading){
                     HStack{
                         Text(prefacture.name)
-                        //                        .foregroundColor(.white)
                             .fontWeight(.black)
                             .font(.system(size: 60))
                             .shadow(radius: 20)
@@ -55,27 +34,24 @@ struct PrefectureView: View {
                         } placeholder: {
                             ProgressView()
                         }
-                        Spacer()
                     }.frame(height: 100)
                     
                     HStack(spacing: 0){
                         Text("県庁所在地：　")
                         Text("\(prefacture.capital)")
-                        Spacer()
                     }
                     HStack(spacing: 0){
                         Text("市民の日：　")
                         Text(prefacture.citizenDay?.toString() ?? "なし")
-                        Spacer()
                     }
                     HStack(spacing: 0){
                         Text("海：　")
                         Text(prefacture.hasCoastLine ? "あり":"なし")
-                        Spacer()
                     }
-                    
+                    Text("概要：")
+                        .padding(.top)
                     VStack{
-                        Text("概要：　" + prefacture.brief )
+                        Text( prefacture.brief )
                             .truncationMode(.middle)
                         HStack{
                             Spacer()
@@ -90,27 +66,22 @@ struct PrefectureView: View {
                     }
                     .onTapGesture {}//this empty .onTapGesture() helps ParentView's ScrollView to work smoothly
                     .onLongPressGesture(minimumDuration: 0.2) {
-                        isBreafViewExpanded = true
+                        withAnimation{
+                            isBreafViewExpanded = true
+                        }
                         UIImpactFeedbackGenerator(style: .heavy)
                             .impactOccurred()
                     }
-                    .padding(.vertical)
+                    .padding(.bottom)
                     
                 }.padding(.horizontal)
             }.blur(radius: isBreafViewExpanded ? 10 : 0)
                 .overlay{
                     if isBreafViewExpanded{
-                        BriefCardView(breaf: prefacture.brief)
-                            .padding()
-                            .background(
-                                Rectangle()
-                                    .frame(width: proxy.size.width, height: proxy.size.height)
-                                    .foregroundColor(.clear)
-                                    .contentShape(Rectangle())
-                                    .onTapGesture {
-                                        isBreafViewExpanded = false
-                                    }
-                            )
+                        BriefCardView(isDisplayed: $isBreafViewExpanded,
+                                      text: prefacture.brief,
+                                      viewSize: proxy.size)
+                            
                     }
                 }
             
@@ -135,3 +106,5 @@ struct OutputView_Previews: PreviewProvider {
         PrefectureView(prefacture:luckyPrefecture, imagesInfo: luckyPrefectureImageInfoSets!)
     }
 }
+
+

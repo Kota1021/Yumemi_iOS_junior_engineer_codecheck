@@ -8,19 +8,35 @@
 import SwiftUI
 
 struct BriefCardView: View {
-    let breaf:String
+    @Binding var isDisplayed:Bool
+    let text:String
+    let viewSize:CGSize
+    
     var body: some View {
-        Text(breaf)
+        Text(text)
             .padding()
             .background(
                 RoundedRectangle(cornerRadius: 8).foregroundColor(Color(.secondarySystemBackground)))
-            
+            .transition(AnyTransition.scale.combined(with:.move(edge: .bottom)))
+            .padding()
+            .background(
+                Rectangle()
+                    .frame(width: viewSize.width, height: viewSize.height)
+                    .foregroundColor(.clear)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        withAnimation{
+                            isDisplayed = false
+                        }
+                    }
+            )
     }
 }
 
 struct BriefView_Previews: PreviewProvider {
+    @State static var isDisplayed = true
     static let text = "aaaaaaaaaaaaa"
     static var previews: some View {
-        BriefCardView(breaf:text)
+        BriefCardView(isDisplayed:$isDisplayed ,text:text,viewSize:CGSize(width: 100, height: 100))
     }
 }

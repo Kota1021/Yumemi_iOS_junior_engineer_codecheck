@@ -18,7 +18,6 @@ struct ContentView: View {
       }
 
     @State private var output: Result<LuckyPrefecture, AFError>? = nil
-//     private let prefectureImageInfoSets = PrefectureImageInfoSets()
     @State private var luckyPrefecture:LuckyPrefecture? = nil
     
     private var luckyPrefectureImageInfoSets:[PrefectureImageInfo]?{
@@ -38,10 +37,10 @@ struct ContentView: View {
         ZStack{
             BackgroundView()
             
-            // this GeometryReader helps ViewForResearch to move input forms upwards when keyboard is displayed.
+            // this GeometryReader helps InputView to move input forms upwards when keyboard is displayed.
             GeometryReader{ geo in
                 
-                // this ScrollView wraps VtabView so that it can fill the screen to the full. cf.https://stackoverflow.com/questions/62593923/edgesignoringsafearea-on-tabview-with-pagetabviewstyle-not-working
+                // this ScrollView wraps VTabView so that VTabView can fill the screen to the full. cf.https://stackoverflow.com/questions/62593923/edgesignoringsafearea-on-tabview-with-pagetabviewstyle-not-working
                 ScrollView (.horizontal,showsIndicators: false){
                     VTabView(selection: $displayedPage){
                         InputView(output: $output, geometry:geo).tag(Pages.input)
@@ -52,7 +51,7 @@ struct ContentView: View {
                         if let errorInFetchingFortune = self.errorInFetchingFortune{
                             ErrorView(error:errorInFetchingFortune).tag(Pages.output)
                         }
-                        MapView().tag(Pages.map)
+//                        MapView().tag(Pages.map)
                         HistoryView().tag(Pages.history)
                     }.frame(
                         width: UIScreen.main.bounds.width ,
@@ -98,7 +97,7 @@ struct ContentView: View {
 //    }
     
     private enum Pages{
-        case input, output, map, history
+        case input, output, history
     }
 
 }

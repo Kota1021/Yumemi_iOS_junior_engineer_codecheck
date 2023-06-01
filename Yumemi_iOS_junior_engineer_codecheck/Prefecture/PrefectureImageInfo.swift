@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct PrefectureImageInfo: Decodable {
+struct PrefectureImageInfo: Decodable,Identifiable {
     let id: String
     let url: URL
     let title: String
@@ -31,6 +31,7 @@ struct PrefectureImageInfo: Decodable {
         case pref
     }
 }
+
 
 
 struct PrefectureImageInfoSets{

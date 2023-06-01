@@ -13,6 +13,9 @@
 		672DB2042A2893610041BD60 /* LoadJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB2032A2893610041BD60 /* LoadJson.swift */; };
 		672DB2062A2893B90041BD60 /* PrefectureImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB2052A2893B90041BD60 /* PrefectureImageInfo.swift */; };
 		672DB2092A28B86E0041BD60 /* BriefCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB2082A28B86E0041BD60 /* BriefCardView.swift */; };
+		672DB20B2A28CE5A0041BD60 /* InputForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB20A2A28CE5A0041BD60 /* InputForm.swift */; };
+		672DB20E2A28D09D0041BD60 /* FetchLuckyPrefectureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB20D2A28D09D0041BD60 /* FetchLuckyPrefectureButton.swift */; };
+		672DB2102A28D9570041BD60 /* ImagePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB20F2A28D9570041BD60 /* ImagePageView.swift */; };
 		676ABFFA2A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */; };
 		676ABFFC2A270E94009F34E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ABFFB2A270E94009F34E9 /* ContentView.swift */; };
 		676ABFFE2A270E95009F34E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 676ABFFD2A270E95009F34E9 /* Assets.xcassets */; };
@@ -59,6 +62,9 @@
 		672DB2032A2893610041BD60 /* LoadJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadJson.swift; sourceTree = "<group>"; };
 		672DB2052A2893B90041BD60 /* PrefectureImageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefectureImageInfo.swift; sourceTree = "<group>"; };
 		672DB2082A28B86E0041BD60 /* BriefCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BriefCardView.swift; sourceTree = "<group>"; };
+		672DB20A2A28CE5A0041BD60 /* InputForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputForm.swift; sourceTree = "<group>"; };
+		672DB20D2A28D09D0041BD60 /* FetchLuckyPrefectureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLuckyPrefectureButton.swift; sourceTree = "<group>"; };
+		672DB20F2A28D9570041BD60 /* ImagePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePageView.swift; sourceTree = "<group>"; };
 		676ABFF62A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yumemi_iOS_junior_engineer_codecheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yumemi_iOS_junior_engineer_codecheckApp.swift; sourceTree = "<group>"; };
 		676ABFFB2A270E94009F34E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -113,11 +119,22 @@
 			isa = PBXGroup;
 			children = (
 				671A35242A27462900F6358D /* PrefectureView.swift */,
+				672DB20F2A28D9570041BD60 /* ImagePageView.swift */,
 				672DB2082A28B86E0041BD60 /* BriefCardView.swift */,
 				672DB2032A2893610041BD60 /* LoadJson.swift */,
 				672DB2052A2893B90041BD60 /* PrefectureImageInfo.swift */,
 			);
 			path = Prefecture;
+			sourceTree = "<group>";
+		};
+		672DB20C2A28CE5F0041BD60 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				676EA9092A2876E1005C455B /* InputView.swift */,
+				672DB20A2A28CE5A0041BD60 /* InputForm.swift */,
+				672DB20D2A28D09D0041BD60 /* FetchLuckyPrefectureButton.swift */,
+			);
+			path = Input;
 			sourceTree = "<group>";
 		};
 		676ABFED2A270E94009F34E9 = {
@@ -151,7 +168,7 @@
 				676EA8C92A28584E005C455B /* MapView.swift */,
 				676EA8CB2A285853005C455B /* HistoryView.swift */,
 				671A352D2A276A5700F6358D /* LicenseView.swift */,
-				676EA9092A2876E1005C455B /* InputView.swift */,
+				672DB20C2A28CE5F0041BD60 /* Input */,
 				676AC0322A27135D009F34E9 /* fetchLuckyPrefecture.swift */,
 				676AC0312A2711FB009F34E9 /* Models */,
 				676EA9112A288BBD005C455B /* Resources */,
@@ -346,6 +363,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				672DB2102A28D9570041BD60 /* ImagePageView.swift in Sources */,
+				672DB20B2A28CE5A0041BD60 /* InputForm.swift in Sources */,
 				676AC02E2A27113B009F34E9 /* Input.swift in Sources */,
 				676AC0032A270E95009F34E9 /* Persistence.swift in Sources */,
 				672DB2092A28B86E0041BD60 /* BriefCardView.swift in Sources */,
@@ -353,6 +372,7 @@
 				672DB2042A2893610041BD60 /* LoadJson.swift in Sources */,
 				676AC0302A2711F5009F34E9 /* Output.swift in Sources */,
 				672DB2062A2893B90041BD60 /* PrefectureImageInfo.swift in Sources */,
+				672DB20E2A28D09D0041BD60 /* FetchLuckyPrefectureButton.swift in Sources */,
 				676ABFFA2A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift in Sources */,
 				676EA90A2A2876E1005C455B /* InputView.swift in Sources */,
 				671A35252A27462900F6358D /* PrefectureView.swift in Sources */,
@@ -532,8 +552,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -541,9 +560,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kotaroMatsumoto2000.Yumemi-iOS-junior-engineer-codecheck";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -561,8 +583,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -570,9 +591,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kotaroMatsumoto2000.Yumemi-iOS-junior-engineer-codecheck";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
