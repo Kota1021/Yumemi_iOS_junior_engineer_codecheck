@@ -12,7 +12,7 @@ struct InputView: View {
     
 //    let viewSize:CGSize
     
-    @Binding var output:Result<LuckyPrefacture, AFError>?
+    @Binding var output:Result<LuckyPrefecture, AFError>?
     let geometry:GeometryProxy
     
     @State private var name:String = ""
@@ -214,7 +214,7 @@ struct InputView: View {
 }
 
 struct ViewForResearch_Previews: PreviewProvider {
-    @State static private var output: Result<LuckyPrefacture, AFError>? = nil
+    @State static private var output: Result<LuckyPrefecture, AFError>? = nil
     static var previews: some View {
         GeometryReader{geo in
 //            ViewForResearch(output:$output)

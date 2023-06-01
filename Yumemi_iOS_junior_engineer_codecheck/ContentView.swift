@@ -17,8 +17,19 @@ struct ContentView: View {
          UIScrollView.appearance().bounces = false
       }
 
-    @State private var output: Result<LuckyPrefacture, AFError>? = nil
-    @State private var luckyPrefecture:LuckyPrefacture? = nil
+    @State private var output: Result<LuckyPrefecture, AFError>? = nil
+//     private let prefectureImageInfoSets = PrefectureImageInfoSets()
+    @State private var luckyPrefecture:LuckyPrefecture? = nil
+    
+    private var luckyPrefectureImageInfoSets:[PrefectureImageInfo]?{
+        guard let prefecture = luckyPrefecture else{ return nil }
+        let prefCode = prefectureCode(from: prefecture.name)
+        guard let prefCode = prefCode else{
+            print("prefCode nil. prefecture: \(prefecture)")
+            return nil }
+       return  PrefectureImageInfoSets().infoSets(of: prefCode)
+    }
+    
     @State private var errorInFetchingFortune:AFError? = nil
     @State private var displayedPage = Pages.input
     
@@ -36,7 +47,7 @@ struct ContentView: View {
                         InputView(output: $output, geometry:geo).tag(Pages.input)
                         
                         if let luckyPrefecture = self.luckyPrefecture{
-                            PrefectureView(prefacture: luckyPrefecture).tag(Pages.output)
+                            PrefectureView(prefacture: luckyPrefecture, imagesInfo:luckyPrefectureImageInfoSets!).tag(Pages.output)
                         }
                         if let errorInFetchingFortune = self.errorInFetchingFortune{
                             ErrorView(error:errorInFetchingFortune).tag(Pages.output)
@@ -65,16 +76,7 @@ struct ContentView: View {
                     displayedPage = .output
                 }
             }
-//            isOutputSheetDisplayed = true
         }
-//        .sheet(isPresented: $isOutputSheetDisplayed) {
-//            if let luckyPrefecture = self.luckyPrefecture{
-//                OutputView(prefacture: luckyPrefecture)
-//            }
-//            if let errorInFetchingFortune = self.errorInFetchingFortune{
-//                ErrorView(error:errorInFetchingFortune)
-//            }
-//        }
 //        .onAppear{
 //            errorFetcher()
 //        }
