@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		671A35252A27462900F6358D /* OutputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A35242A27462900F6358D /* OutputView.swift */; };
+		671A35252A27462900F6358D /* PrefectureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A35242A27462900F6358D /* PrefectureView.swift */; };
 		671A35272A2759FD00F6358D /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A35262A2759FD00F6358D /* ErrorView.swift */; };
 		671A352E2A276A5700F6358D /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A352D2A276A5700F6358D /* LicenseView.swift */; };
 		67450FC02A27864F00DAC98D /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67450FBF2A27864F00DAC98D /* InputView.swift */; };
@@ -50,7 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		671A35242A27462900F6358D /* OutputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputView.swift; sourceTree = "<group>"; };
+		671A35242A27462900F6358D /* PrefectureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefectureView.swift; sourceTree = "<group>"; };
 		671A35262A2759FD00F6358D /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		671A352D2A276A5700F6358D /* LicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
 		67450FBF2A27864F00DAC98D /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
@@ -103,13 +103,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		67450FC32A278BC100DAC98D /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		676ABFED2A270E94009F34E9 = {
 			isa = PBXGroup;
 			children = (
@@ -137,14 +130,13 @@
 				676ABFFB2A270E94009F34E9 /* ContentView.swift */,
 				676EA8CD2A285ACD005C455B /* BackgroundView.swift */,
 				67450FBF2A27864F00DAC98D /* InputView.swift */,
+				671A35242A27462900F6358D /* PrefectureView.swift */,
 				671A35262A2759FD00F6358D /* ErrorView.swift */,
-				671A35242A27462900F6358D /* OutputView.swift */,
 				676EA8C92A28584E005C455B /* MapView.swift */,
 				676EA8CB2A285853005C455B /* HistoryView.swift */,
 				671A352D2A276A5700F6358D /* LicenseView.swift */,
 				676EA9092A2876E1005C455B /* InputView.swift */,
 				676AC0322A27135D009F34E9 /* fetchLuckyPrefecture.swift */,
-				67450FC32A278BC100DAC98D /* Resources */,
 				676AC0312A2711FB009F34E9 /* Models */,
 				676ABFFD2A270E95009F34E9 /* Assets.xcassets */,
 				676AC0022A270E95009F34E9 /* Persistence.swift */,
@@ -334,7 +326,7 @@
 				676AC0302A2711F5009F34E9 /* Output.swift in Sources */,
 				676ABFFA2A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift in Sources */,
 				676EA90A2A2876E1005C455B /* InputView.swift in Sources */,
-				671A35252A27462900F6358D /* OutputView.swift in Sources */,
+				671A35252A27462900F6358D /* PrefectureView.swift in Sources */,
 				676AC0332A27135D009F34E9 /* fetchLuckyPrefecture.swift in Sources */,
 				676EA8CC2A285853005C455B /* HistoryView.swift in Sources */,
 				676EA8CA2A28584E005C455B /* MapView.swift in Sources */,

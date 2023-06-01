@@ -12,6 +12,10 @@ import VTabView
 
 struct ContentView: View {
 //    @Environment(\.managedObjectContext) private var viewContext
+    
+    init() {
+         UIScrollView.appearance().bounces = false
+      }
 
     @State private var output: Result<LuckyPrefacture, AFError>? = nil
     @State private var luckyPrefecture:LuckyPrefacture? = nil
@@ -27,12 +31,12 @@ struct ContentView: View {
             GeometryReader{ geo in
                 
                 // this ScrollView wraps VtabView so that it can fill the screen to the full. cf.https://stackoverflow.com/questions/62593923/edgesignoringsafearea-on-tabview-with-pagetabviewstyle-not-working
-                ScrollView (.horizontal){
+                ScrollView (.horizontal,showsIndicators: false){
                     VTabView(selection: $displayedPage){
                         InputView(output: $output, geometry:geo).tag(Pages.input)
                         
                         if let luckyPrefecture = self.luckyPrefecture{
-                            OutputView(prefacture: luckyPrefecture).tag(Pages.output)
+                            PrefectureView(prefacture: luckyPrefecture).tag(Pages.output)
                         }
                         if let errorInFetchingFortune = self.errorInFetchingFortune{
                             ErrorView(error:errorInFetchingFortune).tag(Pages.output)
