@@ -9,8 +9,10 @@ import SwiftUI
 import Alamofire
 
 struct ViewForResearch: View {
+    
     @Environment(\ .colorScheme)var colorScheme
-    @State private var output: Result<LuckyPrefacture, AFError>? = nil
+    @Binding var output:Result<LuckyPrefacture, AFError>?
+    
     @State private var name:String = ""
     
     @State private var birthday:Date = Date()
@@ -25,7 +27,6 @@ struct ViewForResearch: View {
     @FocusState private var isTextFieldFocused:Bool
     @State private var isBirthdayFocused = false
     @State private var isBloodTypeFocused = false
-//    private var isAnyFieldFocused:Bool{ isTextFieldFocused || isBirthdayFocused || isBloodTypeFocused }
     
     @State private var isFetchFortuneButtonDisplayed = false
 
@@ -39,7 +40,6 @@ struct ViewForResearch: View {
                     .ignoresSafeArea()
                     .frame(width: geo.size.width, height: geo.size.height)
                     .offset(x: colorScheme == .light ? 160 : -250, y: 0)// on iPhone 14 pro
-                
                     .overlay{
                         VStack{
                             Text("Lucky Prefecture")
@@ -59,13 +59,18 @@ struct ViewForResearch: View {
                     Spacer()
                     Group{
                         HStack{
-                            TextField("name",text: $name)
+//                            HStack{
+                                Text("Name")
+                                Spacer()
+//                            }.frame(width: 100)
+                            TextField("John Doe",text: $name)
                                 .focused($isTextFieldFocused)
-                                .padding()
+                                .multilineTextAlignment(.trailing)
                                 .submitLabel(.next)
                                 .onSubmit { focus(at: .birthday) }
-                            Spacer()
-                        }
+                            
+//                            Spacer()
+                        }.padding()
                         .background(
                             RoundedRectangle(cornerRadius: 8)
                                 .foregroundColor(Color(.systemGray6) )
@@ -75,10 +80,14 @@ struct ViewForResearch: View {
                         .onTapGesture { focus(at: .name) }
                         
                         HStack{
-                            Text("birthday")
-                                .padding()
+//                            HStack{
+                            Text("Birthday")
                             Spacer()
-                        }
+//                            }.frame(width: 100)
+                            Text("\(YearMonthDay(from: self.birthday).toString())")
+//                            Spacer()
+                            
+                        }.padding()
                         .background(
                             RoundedRectangle(cornerRadius: 8)
                                 .foregroundColor(Color(.systemGray6) )
@@ -88,10 +97,13 @@ struct ViewForResearch: View {
                         .onTapGesture { focus(at: .birthday) }
                         
                         HStack{
-                            Text("blood type")
-                                .padding()
-                            Spacer()
-                        }
+//                            HStack{
+                                Text("Blood Type")
+                                Spacer()
+//                            }.frame(width: 100)
+                            Text(bloodType.rawValue)
+//                            Spacer()
+                        }.padding()
                         .background(
                             RoundedRectangle(cornerRadius: 8)
                                 .foregroundColor(Color(.systemGray6) )
@@ -105,7 +117,21 @@ struct ViewForResearch: View {
                         
                     
                     if isFetchFortuneButtonDisplayed{
-                        Button{}label:{
+                        Button{
+                            print("fetch button tapped")
+                            let birthday = YearMonthDay(from: self.birthday)
+                            print("bloodtype: \(bloodType)")
+                            let today = YearMonthDay(from: Date() )
+                        
+                            let input = FortuneInput(name: self.name,
+                                                     birthday: birthday,
+                                                     bloodType: self.bloodType,
+                                                     today: today)
+                            print("input: \(input)")
+                            Task{
+                                output = await fetchLuckyPrefecture(input: input)
+                            }
+                        }label:{
                             Image(systemName: "paperplane.fill")
                                 .resizable()
                                 .frame(width: 50, height: 50)
@@ -191,7 +217,8 @@ struct ViewForResearch: View {
 }
 
 struct ViewForResearch_Previews: PreviewProvider {
+    @State static private var output: Result<LuckyPrefacture, AFError>? = nil
     static var previews: some View {
-        ViewForResearch()
+        ViewForResearch(output:$output)
     }
 }

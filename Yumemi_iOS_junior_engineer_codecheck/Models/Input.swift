@@ -33,6 +33,21 @@ extension YearMonthDay{
     }
 }
 
+extension YearMonthDay{
+    public func toString()->String{
+        let calendar = Calendar.current
+        let formatter = DateFormatter()
+        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyydMMM", options: 0, locale: Locale(identifier: "ja_JP"))
+        return formatter.string(from: self.toDate())
+    }
+    private func toDate()->Date{
+        let calendar = Calendar(identifier: .gregorian)
+        let dateComponents = DateComponents(year:self.year, month: self.month, day: self.day)
+        guard let date = calendar.date(from: dateComponents ) else{ fatalError("invalid date") }
+        return date
+    }
+}
+
 // Now only considering ABO blood group. not RH etc...
 enum ABOBloodType:String,Codable{
     case a = "a"

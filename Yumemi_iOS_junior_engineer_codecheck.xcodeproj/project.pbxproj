@@ -25,6 +25,7 @@
 		676AC02E2A27113B009F34E9 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AC02D2A27113B009F34E9 /* Input.swift */; };
 		676AC0302A2711F5009F34E9 /* Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AC02F2A2711F5009F34E9 /* Output.swift */; };
 		676AC0332A27135D009F34E9 /* fetchLuckyPrefecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AC0322A27135D009F34E9 /* fetchLuckyPrefecture.swift */; };
+		676EA8C42A285572005C455B /* VTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 676EA8C32A285572005C455B /* VTabView */; };
 		677A70F62A2722AE00582D2C /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677A70F52A2722AE00582D2C /* InputView.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				676EA8C42A285572005C455B /* VTabView in Frameworks */,
 				676AC02C2A271115009F34E9 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,6 +199,7 @@
 			name = Yumemi_iOS_junior_engineer_codecheck;
 			packageProductDependencies = (
 				676AC02B2A271115009F34E9 /* Alamofire */,
+				676EA8C32A285572005C455B /* VTabView */,
 			);
 			productName = Yumemi_iOS_junior_engineer_codecheck;
 			productReference = 676ABFF62A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.app */;
@@ -272,6 +275,7 @@
 			mainGroup = 676ABFED2A270E94009F34E9;
 			packageReferences = (
 				676AC02A2A271115009F34E9 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				676EA8C22A285572005C455B /* XCRemoteSwiftPackageReference "swiftui-vertical-tab-view" */,
 			);
 			productRefGroup = 676ABFF72A270E94009F34E9 /* Products */;
 			projectDirPath = "";
@@ -674,6 +678,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		676EA8C22A285572005C455B /* XCRemoteSwiftPackageReference "swiftui-vertical-tab-view" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-vertical-tab-view.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -686,6 +698,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 676AC02A2A271115009F34E9 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		676EA8C32A285572005C455B /* VTabView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 676EA8C22A285572005C455B /* XCRemoteSwiftPackageReference "swiftui-vertical-tab-view" */;
+			productName = VTabView;
 		};
 /* End XCSwiftPackageProductDependency section */
 
