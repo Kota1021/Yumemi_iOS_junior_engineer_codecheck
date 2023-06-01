@@ -10,8 +10,9 @@ import Alamofire
 
 struct ViewForResearch: View {
     
-    @Environment(\ .colorScheme)var colorScheme
+//    let viewSize:CGSize
     @Binding var output:Result<LuckyPrefacture, AFError>?
+    
     
     @State private var name:String = ""
     
@@ -33,28 +34,6 @@ struct ViewForResearch: View {
     
     var body: some View {
         GeometryReader{ geo in
-            ZStack{
-                Image(colorScheme == .light ? "4181" : "1583")
-                    .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea()
-                    .frame(width: geo.size.width, height: geo.size.height)
-                    .offset(x: colorScheme == .light ? 160 : -250, y: 0)// on iPhone 14 pro
-                    .overlay{
-                        VStack{
-                            Text("Lucky Prefecture")
-                                .foregroundColor(.white)
-                                .fontWeight(.black)
-                                .font(.largeTitle)
-                                .shadow(radius: 8)
-                                .padding(.top, 40)
-                            Spacer()
-                        }
-                    }
-                    .onTapGesture {
-                        focus(at: .none)
-                    }
-                
                 VStack{
                     Spacer()
                     Group{
@@ -146,7 +125,9 @@ struct ViewForResearch: View {
                             .datePickerStyle(.wheel)
                             .labelsHidden()
                             .frame(width: geo.size.width)
+//                            .frame(width: viewSize.width)
                             .background(Color("keyboardBackground") )
+                            .ignoresSafeArea()
                             .transition(.move(edge: .bottom))
                             .onChange(of: calendar.component(.year, from: birthday)) { _ in
                                 self.hasYearChanged = true
@@ -175,6 +156,7 @@ struct ViewForResearch: View {
                             }
                         }.pickerStyle(.wheel)
                             .background(Color("keyboardBackground") )
+                            .ignoresSafeArea()
                             .transition(.move(edge: .bottom))
                             .onChange(of: bloodType) { newValue in
                                 focus(at: .none)
@@ -182,8 +164,15 @@ struct ViewForResearch: View {
                             }
                     }
                     
-                }
-            }
+                }.background(
+                Rectangle()
+                    .foregroundColor(.clear)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        focus(at: .none)
+                    }
+                )
+            
         }
         
     }
@@ -219,6 +208,9 @@ struct ViewForResearch: View {
 struct ViewForResearch_Previews: PreviewProvider {
     @State static private var output: Result<LuckyPrefacture, AFError>? = nil
     static var previews: some View {
-        ViewForResearch(output:$output)
+//        GeometryReader{geo in
+            ViewForResearch(output:$output)
+//            ViewForResearch(viewSize: geo.size, output:$output)
+//        }
     }
 }
