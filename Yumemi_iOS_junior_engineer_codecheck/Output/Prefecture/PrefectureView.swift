@@ -22,30 +22,31 @@ struct PrefectureView: View {
     
     
     ///initialize prefecture placeholder
-    init(){
-        let prefacture = Prefecture(name: "~~~",
-                                    brief: "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
-                                    capital: "~~~",
-                                    citizenDay: nil,
-                                    hasCoastLine: false,
-                                    logoUrl: Bundle.main.url(forResource: "japan", withExtension: "png")!)
-        
-        let imagesInfo:[PrefectureImageInfo] = [.init(id: "0",
-                                                      url: Bundle.main.url(forResource: "photo", withExtension: "png")!,
-                                                      title: "~~~",
-                                                      author: "~~~",
-                                                      prefCodeStr: "", pref: "")]
-        
-        self.prefacture = prefacture
-        self.imagesInfo = imagesInfo
-    }
+//    init(){
+//        let prefacture = Prefecture(name: "~~~",
+//                                    brief: "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+//                                    capital: "~~~",
+//                                    citizenDay: nil,
+//                                    hasCoastLine: false,
+//                                    logoUrl: Bundle.main.url(forResource: "japan", withExtension: "png")!)
+//
+//        let imagesInfo:[PrefectureImageInfo] = [.init(id: "0",
+//                                                      url: Bundle.main.url(forResource: "photo", withExtension: "png")!,
+//                                                      title: "~~~",
+//                                                      author: "~~~",
+//                                                      prefCodeStr: "", pref: "")]
+//
+//        self.prefacture = prefacture
+//        self.imagesInfo = imagesInfo
+//    }
     
     var body: some View {
         GeometryReader{proxy in
             VStack{
-                ImagePageView(imagesInfo: imagesInfo, viewSize: proxy.size)
+                ImagePageView(imagesInfo: imagesInfo, viewSize: CGSize(width: proxy.size.width, height: 450) )
+//                    .background(.ultraThinMaterial)
                 InfoView(prefecture: prefacture,isBreafViewExpanded:$isBreafViewExpanded)
-            }
+            }.background(Color(.systemBackground))
             .blur(radius: isBreafViewExpanded ? 10 : 0)
                 .overlay{
                     if isBreafViewExpanded{
@@ -55,9 +56,8 @@ struct PrefectureView: View {
 
                     }
                 }
-            
         }
-        .background(.ultraThinMaterial)
+        
     }
 }
 
@@ -74,8 +74,8 @@ struct PrefectureView_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        PrefectureView()
-//        PrefectureView(prefacture:luckyPrefecture, imagesInfo: luckyPrefectureImageInfoSets!)
+//        PrefectureView()
+        PrefectureView(prefacture:luckyPrefecture, imagesInfo: luckyPrefectureImageInfoSets!)
     }
 }
 

@@ -10,29 +10,56 @@ import SwiftUI
 struct ImagePageView: View {
     let imagesInfo:[PrefectureImageInfo]
     let viewSize:CGSize
+    let imageHeight:CGFloat = 300
+    var reflectionHeight:CGFloat{viewSize.height - imageHeight}
+    let blurRadius:CGFloat = 3
+    
     var body: some View {
         TabView{
             ForEach(imagesInfo){ imageInfo in
-                VStack{
-                    AsyncImage(url: imageInfo.url){ image in
+                
+                AsyncImage(url: imageInfo.url){ image in
+                    VStack(spacing: 0){
                         image
                             .resizable()
                             .scaledToFill()
-                            .frame(width: viewSize.width, height: 300)
+                            .frame(width: viewSize.width, height: imageHeight)
                             .clipped()
-                    } placeholder: {
-                        ProgressView()
-                            .frame(width: viewSize.width, height: 300)
+                        
+                        //reflected image
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: viewSize.width, height: imageHeight)
+                            .clipped()
+                        //reflection effects
+                            .rotation3DEffect(Angle(degrees: 180), axis: (x: 1, y: 0, z: 0) )
+                            .frame( height: reflectionHeight)
+                            .offset(y: (imageHeight/2 - reflectionHeight/2))
+                            .blur(radius: blurRadius)
+                            .clipped()
                     }
-                    
-                    HStack{
-                        Text("\"\(imageInfo.title)\" © \(imageInfo.author) \n(Licensed under CC BY 4.0)")
-                        Spacer()
-                    }.padding()
+                } placeholder: {
+                    ProgressView()
+                        .frame(width: viewSize.width, height: viewSize.height)
                 }
+                .overlay{
+                    VStack(spacing: 0){
+                        Spacer()
+                            .frame(width: viewSize.width, height: imageHeight)
+                        HStack{
+                            Text("\"\(imageInfo.title)\" © \(imageInfo.author) \n(Licensed under CC BY 4.0)")
+                                .shadow(color: Color(.systemBackground), radius: 8)
+                            Spacer()
+                        }.padding()
+                        Spacer()
+                        
+                    } .frame(height: viewSize.height)
+                }
+                
             }
         }.tabViewStyle(.page)
-            .frame(height: 450)
+            .frame(height: viewSize.height)
     }
 }
 

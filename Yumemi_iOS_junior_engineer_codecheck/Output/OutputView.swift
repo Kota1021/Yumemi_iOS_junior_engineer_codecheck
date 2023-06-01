@@ -26,8 +26,8 @@ struct OutputView: View {
     var body: some View {
         Group{
             if output == nil {
-                PrefectureView()//placeholder
-                
+//                PrefectureView()//placeholder
+                EmptyView()
             }else if let prefecture = self.luckyPrefecture{
                 PrefectureView(prefacture: prefecture, imagesInfo:luckyPrefectureImageInfoSets!)
                 

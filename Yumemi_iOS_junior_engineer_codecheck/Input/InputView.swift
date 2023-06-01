@@ -64,75 +64,86 @@ struct InputView: View {
                 .shadow(color: isBloodTypeFocused ? .white : .clear, radius: 8)
                     .onTapGesture { focus(at: .bloodType) }
                 
-                if isFetchFortuneButtonDisplayed{
-                    Button{
-                        fetchLuckyPrefecture()
-                        fetchButtonTapped = true
-//                        print("fetch button tapped")
-//                        print("input: \(input)")
-//                        if input.isValid{
-//                            Task{
-//                                output = await Yumemi_iOS_junior_engineer_codecheck
-//                                    .fetchLuckyPrefecture(input: input)
-//                            }
-//                        }
-                    }label:{
-                        Image(systemName: "paperplane.fill")
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                        
-                    }.buttonStyle(.borderedProminent)
-                        .compositingGroup()
-                        .shadow(color: .white ,radius: 8)
-                }
+//                if isFetchFortuneButtonDisplayed{
+//                    Button{
+//                        fetchLuckyPrefectureButton()
+//                    }label:{
+//                        Image(systemName: "paperplane.fill")
+//                            .resizable()
+//                            .frame(width: 50, height: 50)
+//
+//                    }.buttonStyle(.borderedProminent)
+//                        .compositingGroup()
+//                        .shadow(color: .white ,radius: 8)
+//                }
             }
             // this padding allows this view to adopt to keyboard hight.
             .padding(.bottom, isTextFieldFocused ? geometry.safeAreaInsets.bottom : 40)
             
             
             if isBirthdayFocused{
-                DatePicker("Birthday", selection: $birthday,displayedComponents: [.date])
-//                DatePicker("Birthday", selection: $birthday,displayedComponents: [.date])
-                    .datePickerStyle(.wheel)
-                    .labelsHidden()
-                    .frame(width: geometry.size.width)
-                //                            .frame(width: viewSize.width)
-                    .background(Color("keyboardBackground") )
-                    .ignoresSafeArea()
-                    .transition(.move(edge: .bottom))
-                    .onChange(of: calendar.component(.year, from: birthday)) { _ in
-                        self.hasYearChanged = true
-                    }
-                    .onChange(of: calendar.component(.month, from: birthday)) { _ in
-                        self.hasMonthChanged = true
-                    }
-                    .onChange(of: calendar.component(.day, from: birthday)) { _ in
-                        self.hasDayChanged = true
-                    }
-                    .onChange(of: hasYearChanged && hasMonthChanged && hasDayChanged) { hasYearMonthDayChanged in
-                        //rough　probability　of changing all of Year,Month and Day is 87%.  59/60(year) * 11/12(month) * 29/30(day)
-                        //releasing around 87% of individuals from an effort to change focus
-                        if hasYearMonthDayChanged{ focus(at: .bloodType) }
-                    }
-                    .onDisappear{
-                        self.hasYearChanged = false
-                        self.hasMonthChanged = false
-                        self.hasDayChanged = false
-                    }
+                HStack{
+                    DatePicker("Birthday", selection: $birthday,displayedComponents: [.date])
+                        .datePickerStyle(.wheel)
+                        .labelsHidden()
+//                        .onChange(of: calendar.component(.year, from: birthday)) { _ in
+//                            self.hasYearChanged = true
+//                        }
+//                        .onChange(of: calendar.component(.month, from: birthday)) { _ in
+//                            self.hasMonthChanged = true
+//                        }
+//                        .onChange(of: calendar.component(.day, from: birthday)) { _ in
+//                            self.hasDayChanged = true
+//                        }
+//                        .onChange(of: hasYearChanged && hasMonthChanged && hasDayChanged) { hasYearMonthDayChanged in
+//                            //rough　probability　of changing all of Year,Month and Day is 87%.  59/60(year) * 11/12(month) * 29/30(day)
+//                            //releasing around 87% of individuals from an effort to change focus
+//                            if hasYearMonthDayChanged{ focus(at: .bloodType) }
+//                        }
+//                        .onDisappear{
+//                            self.hasYearChanged = false
+//                            self.hasMonthChanged = false
+//                            self.hasDayChanged = false
+//                        }
+                    Button("Next") {
+                        focus(at: .bloodType)
+                    }.buttonStyle(.borderedProminent)
+                }
+                .transition(.move(edge: .bottom))
+                .ignoresSafeArea()
+                .frame(width: geometry.size.width)
+                .background(Color("keyboardBackground") )
                 
             }else if isBloodTypeFocused{
-                Picker("BloodType", selection: $bloodType){
-                    ForEach(ABOBloodType.allCases){  bloodType in
-                        Text(bloodType.rawValue).tag(bloodType)
-                    }
-                }.pickerStyle(.wheel)
-                    .background(Color("keyboardBackground") )
-                    .ignoresSafeArea()
-                    .transition(.move(edge: .bottom))
-                    .onChange(of: bloodType) { newValue in
+                HStack{
+                    Picker("BloodType", selection: $bloodType){
+                        ForEach(ABOBloodType.allCases){  bloodType in
+                            Text(bloodType.rawValue).tag(bloodType)
+                        }
+                    }.pickerStyle(.wheel)
+//                        .onChange(of: bloodType) { newValue in
+//                            focus(at: .none)
+//                            isFetchFortuneButtonDisplayed = true
+//                        }
+                    Button("See Fortune") {
                         focus(at: .none)
-                        isFetchFortuneButtonDisplayed = true
-                    }
+                        fetchLuckyPrefectureButton()
+                    }.buttonStyle(.borderedProminent)
+                }
+                .background(Color("keyboardBackground") )
+                .ignoresSafeArea()
+                .transition(.move(edge: .bottom))
+            }else if isFetchFortuneButtonDisplayed{
+                Button{
+                    fetchLuckyPrefectureButton()
+                }label:{
+                    Image(systemName: "paperplane.fill")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                    
+                }.buttonStyle(.borderedProminent)
+                    .compositingGroup()
+                    .shadow(color: .white ,radius: 8)
             }
             
         }.background(
@@ -175,6 +186,11 @@ struct InputView: View {
     
     private enum Field:Hashable{
         case name, birthday, bloodType
+    }
+    
+    private func fetchLuckyPrefectureButton(){
+        fetchLuckyPrefecture()
+        fetchButtonTapped = true
     }
     
     private func fetchLuckyPrefecture(){
