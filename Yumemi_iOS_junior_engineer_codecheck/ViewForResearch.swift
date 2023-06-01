@@ -20,10 +20,15 @@ struct ViewForResearch: View {
     @State private var hasDayChanged = false
     
     @State private var bloodType:ABOBloodType = .a
+    @State private var hasBloodTypeChanged = false
     
     @FocusState private var isTextFieldFocused:Bool
-    @State private var isBirthdayPickerDisplayed = false
-    @State private var isBloodTypePickerDisplayed = false
+    @State private var isBirthdayFocused = false
+    @State private var isBloodTypeFocused = false
+//    private var isAnyFieldFocused:Bool{ isTextFieldFocused || isBirthdayFocused || isBloodTypeFocused }
+    
+    @State private var isFetchFortuneButtonDisplayed = false
+
     
     var body: some View {
         GeometryReader{ geo in
@@ -33,7 +38,7 @@ struct ViewForResearch: View {
                     .scaledToFill()
                     .ignoresSafeArea()
                     .frame(width: geo.size.width, height: geo.size.height)
-                    .offset(x: colorScheme == .light ? 160 : -250, y: 0)//iPhone 14 Proのoffset
+                    .offset(x: colorScheme == .light ? 160 : -250, y: 0)// on iPhone 14 pro
                 
                     .overlay{
                         VStack{
@@ -58,41 +63,59 @@ struct ViewForResearch: View {
                                 .focused($isTextFieldFocused)
                                 .padding()
                                 .submitLabel(.next)
-                                .onSubmit {
-                                    focus(at: .birthday)
-                                }
+                                .onSubmit { focus(at: .birthday) }
                             Spacer()
-                        }.contentShape(Rectangle() )
-                            .onTapGesture {
-                                focus(at: .name)
-                            }
-                        
+                        }
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .foregroundColor(Color(.systemGray6) )
+                        )
+                        .compositingGroup()
+                        .shadow(color: isTextFieldFocused ? .white : .clear, radius: 8)
+                        .onTapGesture { focus(at: .name) }
                         
                         HStack{
                             Text("birthday")
                                 .padding()
                             Spacer()
-                        }.contentShape(Rectangle() )
-                        .onTapGesture {
-                            focus(at: .birthday)
                         }
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .foregroundColor(Color(.systemGray6) )
+                        )
+                        .compositingGroup()
+                        .shadow(color: isBirthdayFocused ? .white : .clear, radius: 8)
+                        .onTapGesture { focus(at: .birthday) }
                         
                         HStack{
                             Text("blood type")
                                 .padding()
                             Spacer()
-                        }.contentShape(Rectangle() )
-                        .onTapGesture {
-                            focus(at: .bloodType)
                         }
-                    }.background(
-                        RoundedRectangle(cornerRadius: 8)
-                            .foregroundColor(Color(.systemBackground) )
-                    )
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .foregroundColor(Color(.systemGray6) )
+                        )
+                        .compositingGroup()
+                        .shadow(color: isBloodTypeFocused ? .white : .clear, radius: 8)
+                        .onTapGesture { focus(at: .bloodType) }
+                    }
                         .padding(.bottom)
                         .padding(.horizontal)
+                        
                     
-                    if isBirthdayPickerDisplayed{
+                    if isFetchFortuneButtonDisplayed{
+                        Button{}label:{
+                            Image(systemName: "paperplane.fill")
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                                
+                        }.buttonStyle(.borderedProminent)
+                            .compositingGroup()
+                            .shadow(color: .white ,radius: 8)
+                    }
+                    
+                    if isBirthdayFocused{
                         DatePicker("Birthday", selection: $birthday,displayedComponents: [.date])
                             .datePickerStyle(.wheel)
                             .labelsHidden()
@@ -109,6 +132,8 @@ struct ViewForResearch: View {
                                 self.hasDayChanged = true
                             }
                             .onChange(of: hasYearChanged && hasMonthChanged && hasDayChanged) { hasYearMonthDayChanged in
+                                //rough　probability　of changing all of Year,Month and Day ==  59/60(year) * 11/12(month) * 29/30(day)
+                                //releasing around 87% of individuals from an effort to change focus
                                 if hasYearMonthDayChanged{ focus(at: .bloodType) }
                             }
                             .onDisappear{
@@ -117,8 +142,7 @@ struct ViewForResearch: View {
                                 self.hasDayChanged = false
                             }
                         
-                    }
-                    if isBloodTypePickerDisplayed{
+                    }else if isBloodTypeFocused{
                         Picker("BloodType", selection: $bloodType){
                             ForEach(ABOBloodType.allCases){  bloodType in
                                 Text(bloodType.rawValue).tag(bloodType)
@@ -126,6 +150,10 @@ struct ViewForResearch: View {
                         }.pickerStyle(.wheel)
                             .background(Color("keyboardBackground") )
                             .transition(.move(edge: .bottom))
+                            .onChange(of: bloodType) { newValue in
+                                focus(at: .none)
+                                isFetchFortuneButtonDisplayed = true
+                            }
                     }
                     
                 }
@@ -134,12 +162,11 @@ struct ViewForResearch: View {
         
     }
     
-    private func focus(at field:FocusedField?){
+    private func focus(at field:Field?){
         withAnimation{
-            
-                    isTextFieldFocused = false
-                    isBirthdayPickerDisplayed = false
-                    isBloodTypePickerDisplayed = false
+            isTextFieldFocused = false
+            isBirthdayFocused = false
+            isBloodTypeFocused = false
             
             switch field{
             case .none:
@@ -148,16 +175,17 @@ struct ViewForResearch: View {
                 isTextFieldFocused = true
                 
             case .birthday:
-                isBirthdayPickerDisplayed = true
+                isBirthdayFocused = true
                 
             case .bloodType:
-                isBloodTypePickerDisplayed = true
+                isBloodTypeFocused = true
+                
             }
         }
         
     }
     
-    private enum FocusedField:Hashable{
+    private enum Field:Hashable{
         case name, birthday, bloodType
     }
 }
