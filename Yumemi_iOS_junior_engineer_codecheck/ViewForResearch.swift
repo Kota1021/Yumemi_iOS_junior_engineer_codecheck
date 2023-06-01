@@ -11,8 +11,9 @@ import Alamofire
 struct ViewForResearch: View {
     
 //    let viewSize:CGSize
-    @Binding var output:Result<LuckyPrefacture, AFError>?
     
+    @Binding var output:Result<LuckyPrefacture, AFError>?
+    let geometry:GeometryProxy
     
     @State private var name:String = ""
     
@@ -33,98 +34,103 @@ struct ViewForResearch: View {
 
     
     var body: some View {
-        GeometryReader{ geo in
+//        GeometryReader{ geometry in
                 VStack{
                     Spacer()
-                    Group{
-                        HStack{
-//                            HStack{
+                    VStack{
+                        Group{
+                            HStack{
+                                //                            HStack{
                                 Text("Name")
                                 Spacer()
-//                            }.frame(width: 100)
-                            TextField("John Doe",text: $name)
-                                .focused($isTextFieldFocused)
-                                .multilineTextAlignment(.trailing)
-                                .submitLabel(.next)
-                                .onSubmit { focus(at: .birthday) }
+                                //                            }.frame(width: 100)
+                                TextField("John Doe",text: $name)
+                                    .focused($isTextFieldFocused)
+                                    .multilineTextAlignment(.trailing)
+                                    .submitLabel(.next)
+                                    .onSubmit { focus(at: .birthday) }
+                                
+                                //                            Spacer()
+                            }.padding()
+                                .background(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .foregroundColor(Color(.systemGray6) )
+                                )
+                                .compositingGroup()
+                                .shadow(color: isTextFieldFocused ? .white : .clear, radius: 8)
+                                .onTapGesture { focus(at: .name) }
                             
-//                            Spacer()
-                        }.padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .foregroundColor(Color(.systemGray6) )
-                        )
-                        .compositingGroup()
-                        .shadow(color: isTextFieldFocused ? .white : .clear, radius: 8)
-                        .onTapGesture { focus(at: .name) }
-                        
-                        HStack{
-//                            HStack{
-                            Text("Birthday")
-                            Spacer()
-//                            }.frame(width: 100)
-                            Text("\(YearMonthDay(from: self.birthday).toString())")
-//                            Spacer()
+                            HStack{
+                                //                            HStack{
+                                Text("Birthday")
+                                Spacer()
+                                //                            }.frame(width: 100)
+                                Text("\(YearMonthDay(from: self.birthday).toString())")
+                                //                            Spacer()
+                                
+                            }.padding()
+                                .background(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .foregroundColor(Color(.systemGray6) )
+                                )
+                                .compositingGroup()
+                                .shadow(color: isBirthdayFocused ? .white : .clear, radius: 8)
+                                .onTapGesture { focus(at: .birthday) }
                             
-                        }.padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .foregroundColor(Color(.systemGray6) )
-                        )
-                        .compositingGroup()
-                        .shadow(color: isBirthdayFocused ? .white : .clear, radius: 8)
-                        .onTapGesture { focus(at: .birthday) }
-                        
-                        HStack{
-//                            HStack{
+                            HStack{
+                                //                            HStack{
                                 Text("Blood Type")
                                 Spacer()
-//                            }.frame(width: 100)
-                            Text(bloodType.rawValue)
-//                            Spacer()
-                        }.padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .foregroundColor(Color(.systemGray6) )
-                        )
-                        .compositingGroup()
-                        .shadow(color: isBloodTypeFocused ? .white : .clear, radius: 8)
-                        .onTapGesture { focus(at: .bloodType) }
-                    }
+                                //                            }.frame(width: 100)
+                                Text(bloodType.rawValue)
+                                //                            Spacer()
+                            }.padding()
+                                .background(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .foregroundColor(Color(.systemGray6) )
+                                )
+                                .compositingGroup()
+                                .shadow(color: isBloodTypeFocused ? .white : .clear, radius: 8)
+                                .onTapGesture { focus(at: .bloodType) }
+                            
+                            if isFetchFortuneButtonDisplayed{
+                                Button{
+                                    print("fetch button tapped")
+                                    let birthday = YearMonthDay(from: self.birthday)
+                                    print("bloodtype: \(bloodType)")
+                                    let today = YearMonthDay(from: Date() )
+                                    
+                                    let input = FortuneInput(name: self.name,
+                                                             birthday: birthday,
+                                                             bloodType: self.bloodType,
+                                                             today: today)
+                                    print("input: \(input)")
+                                    Task{
+                                        output = await fetchLuckyPrefecture(input: input)
+                                    }
+                                }label:{
+                                    Image(systemName: "paperplane.fill")
+                                        .resizable()
+                                        .frame(width: 50, height: 50)
+                                    
+                                }.buttonStyle(.borderedProminent)
+                                    .compositingGroup()
+                                    .shadow(color: .white ,radius: 8)
+                            }
+                        }
                         .padding(.bottom)
                         .padding(.horizontal)
+                    }
+                        .padding(.bottom, isTextFieldFocused ? geometry.safeAreaInsets.bottom : 40)
                         
                     
-                    if isFetchFortuneButtonDisplayed{
-                        Button{
-                            print("fetch button tapped")
-                            let birthday = YearMonthDay(from: self.birthday)
-                            print("bloodtype: \(bloodType)")
-                            let today = YearMonthDay(from: Date() )
-                        
-                            let input = FortuneInput(name: self.name,
-                                                     birthday: birthday,
-                                                     bloodType: self.bloodType,
-                                                     today: today)
-                            print("input: \(input)")
-                            Task{
-                                output = await fetchLuckyPrefecture(input: input)
-                            }
-                        }label:{
-                            Image(systemName: "paperplane.fill")
-                                .resizable()
-                                .frame(width: 50, height: 50)
-                                
-                        }.buttonStyle(.borderedProminent)
-                            .compositingGroup()
-                            .shadow(color: .white ,radius: 8)
-                    }
+                    
                     
                     if isBirthdayFocused{
                         DatePicker("Birthday", selection: $birthday,displayedComponents: [.date])
                             .datePickerStyle(.wheel)
                             .labelsHidden()
-                            .frame(width: geo.size.width)
+                            .frame(width: geometry.size.width)
 //                            .frame(width: viewSize.width)
                             .background(Color("keyboardBackground") )
                             .ignoresSafeArea()
@@ -172,8 +178,10 @@ struct ViewForResearch: View {
                         focus(at: .none)
                     }
                 )
+                
+                
             
-        }
+//        }
         
     }
     
@@ -208,9 +216,10 @@ struct ViewForResearch: View {
 struct ViewForResearch_Previews: PreviewProvider {
     @State static private var output: Result<LuckyPrefacture, AFError>? = nil
     static var previews: some View {
-//        GeometryReader{geo in
-            ViewForResearch(output:$output)
+        GeometryReader{geo in
+//            ViewForResearch(output:$output)
 //            ViewForResearch(viewSize: geo.size, output:$output)
-//        }
+            ViewForResearch(output:$output, geometry: geo)
+        }
     }
 }

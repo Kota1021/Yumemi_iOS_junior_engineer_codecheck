@@ -22,28 +22,30 @@ struct ContentView: View {
         
         ZStack{
             BackgroundView()
-            // this ScrollView wraps VtabView so that it can fill the screen to the full. cf.https://stackoverflow.com/questions/62593923/edgesignoringsafearea-on-tabview-with-pagetabviewstyle-not-working
-            ScrollView (.horizontal){
-//                VTabView(selection: $displayedPage, indexPosition: .trailing){
-                VTabView(selection: $displayedPage){
-                    ViewForResearch(output: $output).tag(Pages.input)
-                        .safeAreaInset(edge: .bottom){
-                            Spacer().frame(height: 20)
+            
+            // this GeometryReader helps ViewForResearch to move input forms upwards when keyboard is displayed.
+            GeometryReader{ geo in
+                
+                // this ScrollView wraps VtabView so that it can fill the screen to the full. cf.https://stackoverflow.com/questions/62593923/edgesignoringsafearea-on-tabview-with-pagetabviewstyle-not-working
+                ScrollView (.horizontal){
+                    VTabView(selection: $displayedPage){
+                        ViewForResearch(output: $output, geometry:geo).tag(Pages.input)
+                        
+                        if let luckyPrefecture = self.luckyPrefecture{
+                            OutputView(prefacture: luckyPrefecture).tag(Pages.output)
                         }
-                    if let luckyPrefecture = self.luckyPrefecture{
-                           OutputView(prefacture: luckyPrefecture).tag(Pages.output)
-                       }
-                       if let errorInFetchingFortune = self.errorInFetchingFortune{
-                           ErrorView(error:errorInFetchingFortune).tag(Pages.output)
-                       }
-                   MapView().tag(Pages.map)
-                   HistoryView().tag(Pages.history)
-                }.frame(
-                    width: UIScreen.main.bounds.width ,
-                    height: UIScreen.main.bounds.height
-                )
-                .tabViewStyle(.page(indexDisplayMode: .never))
-            } .ignoresSafeArea(.all)
+                        if let errorInFetchingFortune = self.errorInFetchingFortune{
+                            ErrorView(error:errorInFetchingFortune).tag(Pages.output)
+                        }
+                        MapView().tag(Pages.map)
+                        HistoryView().tag(Pages.history)
+                    }.frame(
+                        width: UIScreen.main.bounds.width ,
+                        height: UIScreen.main.bounds.height
+                    )
+                    .tabViewStyle(.page(indexDisplayMode: .never))
+                } .ignoresSafeArea(.all)
+            }
         }
         .onChange(of: output) { newValue in
             do{
