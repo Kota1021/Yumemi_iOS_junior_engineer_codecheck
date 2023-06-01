@@ -29,7 +29,7 @@ struct ContentView: View {
                 // this ScrollView wraps VtabView so that it can fill the screen to the full. cf.https://stackoverflow.com/questions/62593923/edgesignoringsafearea-on-tabview-with-pagetabviewstyle-not-working
                 ScrollView (.horizontal){
                     VTabView(selection: $displayedPage){
-                        ViewForResearch(output: $output, geometry:geo).tag(Pages.input)
+                        InputView(output: $output, geometry:geo).tag(Pages.input)
                         
                         if let luckyPrefecture = self.luckyPrefecture{
                             OutputView(prefacture: luckyPrefecture).tag(Pages.output)

@@ -10,7 +10,7 @@
 		671A35252A27462900F6358D /* OutputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A35242A27462900F6358D /* OutputView.swift */; };
 		671A35272A2759FD00F6358D /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A35262A2759FD00F6358D /* ErrorView.swift */; };
 		671A352E2A276A5700F6358D /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A352D2A276A5700F6358D /* LicenseView.swift */; };
-		67450FC02A27864F00DAC98D /* ViewForResearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67450FBF2A27864F00DAC98D /* ViewForResearch.swift */; };
+		67450FC02A27864F00DAC98D /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67450FBF2A27864F00DAC98D /* InputView.swift */; };
 		676ABFFA2A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */; };
 		676ABFFC2A270E94009F34E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ABFFB2A270E94009F34E9 /* ContentView.swift */; };
 		676ABFFE2A270E95009F34E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 676ABFFD2A270E95009F34E9 /* Assets.xcassets */; };
@@ -53,7 +53,7 @@
 		671A35242A27462900F6358D /* OutputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputView.swift; sourceTree = "<group>"; };
 		671A35262A2759FD00F6358D /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		671A352D2A276A5700F6358D /* LicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
-		67450FBF2A27864F00DAC98D /* ViewForResearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewForResearch.swift; sourceTree = "<group>"; };
+		67450FBF2A27864F00DAC98D /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		676ABFF62A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yumemi_iOS_junior_engineer_codecheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yumemi_iOS_junior_engineer_codecheckApp.swift; sourceTree = "<group>"; };
 		676ABFFB2A270E94009F34E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 				676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */,
 				676ABFFB2A270E94009F34E9 /* ContentView.swift */,
 				676EA8CD2A285ACD005C455B /* BackgroundView.swift */,
-				67450FBF2A27864F00DAC98D /* ViewForResearch.swift */,
+				67450FBF2A27864F00DAC98D /* InputView.swift */,
 				671A35262A2759FD00F6358D /* ErrorView.swift */,
 				671A35242A27462900F6358D /* OutputView.swift */,
 				676EA8C92A28584E005C455B /* MapView.swift */,
@@ -342,7 +342,7 @@
 				676AC0292A2710FA009F34E9 /* FortuneAPI.swift in Sources */,
 				676AC0062A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.xcdatamodeld in Sources */,
 				671A352E2A276A5700F6358D /* LicenseView.swift in Sources */,
-				67450FC02A27864F00DAC98D /* ViewForResearch.swift in Sources */,
+				67450FC02A27864F00DAC98D /* InputView.swift in Sources */,
 				671A35272A2759FD00F6358D /* ErrorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
