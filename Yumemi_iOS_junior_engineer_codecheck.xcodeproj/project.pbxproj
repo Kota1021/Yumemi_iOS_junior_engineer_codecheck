@@ -30,6 +30,7 @@
 		676EA8CC2A285853005C455B /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676EA8CB2A285853005C455B /* HistoryView.swift */; };
 		676EA8CE2A285ACD005C455B /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676EA8CD2A285ACD005C455B /* BackgroundView.swift */; };
 		676EA90A2A2876E1005C455B /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676EA9092A2876E1005C455B /* InputView.swift */; };
+		676EA9102A288B79005C455B /* find47images.json in Resources */ = {isa = PBXBuildFile; fileRef = 676EA90F2A288B79005C455B /* find47images.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		676EA8CB2A285853005C455B /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		676EA8CD2A285ACD005C455B /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		676EA9092A2876E1005C455B /* InputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		676EA90F2A288B79005C455B /* find47images.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = find47images.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				676AC0312A2711FB009F34E9 /* Models */,
 				676ABFFD2A270E95009F34E9 /* Assets.xcassets */,
 				676AC0022A270E95009F34E9 /* Persistence.swift */,
+				676EA90F2A288B79005C455B /* find47images.json */,
 				676AC0042A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.xcdatamodeld */,
 				676ABFFF2A270E95009F34E9 /* Preview Content */,
 			);
@@ -295,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				676AC0012A270E95009F34E9 /* Preview Assets.xcassets in Resources */,
+				676EA9102A288B79005C455B /* find47images.json in Resources */,
 				676ABFFE2A270E95009F34E9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,7 +18,7 @@ struct PrefectureView: View {
                     Image("35")
                         .resizable()
                         .scaledToFill()
-                        
+                    
                     Image("92")
                         .resizable()
                         .scaledToFill()
@@ -26,47 +26,49 @@ struct PrefectureView: View {
                         .resizable()
                         .scaledToFill()
                 }.tabViewStyle(.page)
-                .frame(width: proxy.size.width,height: 300)
+                    .frame(width: proxy.size.width,height: 300)
                     .clipped()
-                
-                HStack{
-                    Text(prefacture.name)
-//                        .foregroundColor(.white)
-                        .fontWeight(.black)
-                        .font(.system(size: 60))
-                        .shadow(radius: 20)
-                        .padding(10)
-//                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 8)
-//                        )
-                    
-                    AsyncImage(url: prefacture.logoUrl){ image in
-                        image
-                            .resizable()
-                            .scaledToFit()
-                    } placeholder: {
-                        ProgressView()
-                    }//.shadow(color: .white, radius: 8)
-                    Spacer()
-                }.frame(height: 100)
-                HStack(spacing: 0){
-                    Text("県庁所在地：　")
-                    Text("\(prefacture.capital)")
-                    Spacer()
-                }
-                HStack(spacing: 0){
-                    Text("市民の日：　")
-                    Text(prefacture.citizenDay?.toString() ?? "なし")
-                    Spacer()
-                }
-                HStack(spacing: 0){
-                    Text("海：　")
-                    Text(prefacture.hasCoastLine ? "あり":"なし")
-                    Spacer()
-                }
-                HStack(spacing: 0){
-                    Text("概要：　" + prefacture.brief)
-                    Spacer()
-                }
+          
+                VStack{
+                    HStack{
+                        Text(prefacture.name)
+                        //                        .foregroundColor(.white)
+                            .fontWeight(.black)
+                            .font(.system(size: 60))
+                            .shadow(radius: 20)
+                            .padding(10)
+                        //                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 8)
+                        //                        )
+                        
+                        AsyncImage(url: prefacture.logoUrl){ image in
+                            image
+                                .resizable()
+                                .scaledToFit()
+                        } placeholder: {
+                            ProgressView()
+                        }//.shadow(color: .white, radius: 8)
+                        Spacer()
+                    }.frame(height: 100)
+                    HStack(spacing: 0){
+                        Text("県庁所在地：　")
+                        Text("\(prefacture.capital)")
+                        Spacer()
+                    }
+                    HStack(spacing: 0){
+                        Text("市民の日：　")
+                        Text(prefacture.citizenDay?.toString() ?? "なし")
+                        Spacer()
+                    }
+                    HStack(spacing: 0){
+                        Text("海：　")
+                        Text(prefacture.hasCoastLine ? "あり":"なし")
+                        Spacer()
+                    }
+                    HStack(spacing: 0){
+                        Text("概要：　" + prefacture.brief)
+                        Spacer()
+                    }
+                }.padding(.horizontal)
             }
         }
         .background(.ultraThinMaterial)
