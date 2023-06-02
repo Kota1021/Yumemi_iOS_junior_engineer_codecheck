@@ -70,6 +70,6 @@ struct ImagePageView: View {
 struct ImagePageView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ImagePageView(imagesInfo: PreviewData.luckyPrefectureImageInfoSets!, viewSize: PreviewData.screenSize)
+        ImagePageView(imagesInfo: PreviewData.prefecture.images, viewSize: PreviewData.screenSize)
     }
 }

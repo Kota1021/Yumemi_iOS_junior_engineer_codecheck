@@ -9,9 +9,7 @@ import SwiftUI
 
 struct PrefectureView: View {
     
-    let prefacture:Prefecture
-    let imagesInfo:[PrefectureImageInfo]
-    let position: PinLocation
+    let prefacture: Prefecture
     
     @State private var isMapPoppedOver = false
     @State private var isBriefPoppedOver = false
@@ -22,7 +20,7 @@ struct PrefectureView: View {
         GeometryReader{proxy in
             VStack{
                 
-                ImagePageView(imagesInfo: imagesInfo, viewSize: CGSize(width: proxy.size.width, height: 450) )
+                ImagePageView(imagesInfo: prefacture.images, viewSize: CGSize(width: proxy.size.width, height: 450) )
                 DetailView(prefecture: prefacture,
                          isBreafViewExpanded:$isBriefPoppedOver,
                          isMapExpanded: $isMapPoppedOver)
@@ -39,7 +37,7 @@ struct PrefectureView: View {
 
                     }
                     if isMapPoppedOver{
-                        MapView(isDisplayed:$isMapPoppedOver, viewSize:proxy.size, pinLocation:  position)
+                        MapView(isDisplayed:$isMapPoppedOver, viewSize:proxy.size, pinLocation:  prefacture.location)
                         
                     }
                 }
@@ -51,7 +49,7 @@ struct PrefectureView: View {
 struct PrefectureView_Previews: PreviewProvider {
     
     static var previews: some View {
-        PrefectureView(prefacture:PreviewData.luckyPrefecture, imagesInfo: PreviewData.luckyPrefectureImageInfoSets!, position: PinLocation(lat: 39, long: 138))
+        PrefectureView(prefacture:PreviewData.prefecture)
     }
 }
 

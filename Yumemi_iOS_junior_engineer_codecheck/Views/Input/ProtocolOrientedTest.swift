@@ -19,12 +19,13 @@ enum Field:Hashable{
 
 class TestViewModel:ObservableObject,TestProtocol{
     // Below send output and flag to ParentView.
-    @Published var output:Result<Prefecture, AFError>? = nil
     @Published var fetchButtonTapped = false
     
     @Published  var name:String = ""
     @Published  var birthday:Date = Date()
     @Published  var bloodType:ABOBloodType = .a
+    
+    @ObservedObject var prefModel = PrefectureModel()
     
     var input:FortuneInput{
         .init(name: name,
@@ -43,7 +44,7 @@ class TestViewModel:ObservableObject,TestProtocol{
        if input.isValid{
            print("input: \(input)")
            Task{
-               output = await Yumemi_iOS_junior_engineer_codecheck.fetchLuckyPrefecture(input: input)
+               prefModel.fetchLuckyPrefecture(input: input)
            }
        }else{
            print("input invalid")
@@ -122,7 +123,7 @@ struct ProtocolOrientedTestView: View {
 }
 
 struct ViewForResearch_Previews: PreviewProvider {
-    @State static private var output: Result<Prefecture, AFError>? = nil
+    @State static private var output: Result<LuckyPrefecture, AFError>? = nil
     @State static private var fetchButtonTapped = false
     static var previews: some View {
         GeometryReader{geo in

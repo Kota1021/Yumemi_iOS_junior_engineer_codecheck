@@ -8,7 +8,7 @@
 import Foundation
 
 ///prefacture
-struct Prefecture:Decodable{
+struct LuckyPrefecture:Decodable{
     public let name:String
     public let brief:String
     public let capital:String
@@ -17,8 +17,8 @@ struct Prefecture:Decodable{
     public let logoUrl:URL
 }
 
-extension Prefecture:Equatable{
-    static func == (lhs: Prefecture, rhs: Prefecture) -> Bool {
+extension LuckyPrefecture:Equatable{
+    static func == (lhs: LuckyPrefecture, rhs: LuckyPrefecture) -> Bool {
         lhs.name == rhs.name
     }
 }

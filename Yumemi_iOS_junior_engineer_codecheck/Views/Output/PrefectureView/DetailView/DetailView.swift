@@ -111,7 +111,7 @@ struct InfoView_Previews: PreviewProvider {
     @State static var isMapDisplayed = false
     
     static var previews: some View {
-        DetailView(prefecture: PreviewData.luckyPrefecture, isBreafViewExpanded: $isDetailDisplayed, isMapExpanded: $isMapDisplayed)
+        DetailView(prefecture: PreviewData.prefecture, isBreafViewExpanded: $isDetailDisplayed, isMapExpanded: $isMapDisplayed)
     }
 }
 

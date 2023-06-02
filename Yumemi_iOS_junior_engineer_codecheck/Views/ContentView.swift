@@ -12,22 +12,18 @@ import Alamofire
 struct ContentView: View {
     //    @Environment(\.managedObjectContext) private var viewContext
     
-    @State private var output: Result<Prefecture, AFError>? = nil
     @State private var fetchPrefectureButtonTapped = false
     @State private var displayedPage = Pages.input
+    @ObservedObject var prefectureModel = PrefectureModel()
     
     var body: some View {
-        
         /// this GeometryReader helps InputView to move input forms upwards when keyboard is displayed.
         /// InputView is inside MaximumVerticalPageView, which ignores safe area.
         GeometryReader{ geo in
             MaximumVerticalPageView(selection: $displayedPage){
-//                InputView(output: $output,
-//                          fetchButtonTapped: $fetchPrefectureButtonTapped,
-//                          geometry:geo)
-//                    .tag(Pages.input)
+                ProtocolOrientedTestView(geometry: geo)
                 
-                OutputView(output: $output)
+                OutputView(prefectureModel: prefectureModel)
                     .tag(Pages.output)
                 
                 HistoryView()
@@ -35,19 +31,6 @@ struct ContentView: View {
                 
             }
         }.background(BackgroundView() )
-            .onChange(of: fetchPrefectureButtonTapped) { tapped in
-                print("button tapped observed in ContentView")
-                if tapped{
-                    print("fetchPrefectureButtonTapped true")
-                    Task{
-                        try? await Task.sleep(nanoseconds:0_300_000_000)
-                        withAnimation{
-                            displayedPage = .output
-                        }
-                    }
-                }
-                fetchPrefectureButtonTapped = false
-            }
     }
     
     private enum Pages{

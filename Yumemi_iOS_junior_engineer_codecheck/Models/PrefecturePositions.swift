@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 fileprivate struct PrefectureLocation: Decodable {
     let prefecture:String
     let latitude:Double
@@ -14,12 +15,12 @@ fileprivate struct PrefectureLocation: Decodable {
 
 struct PrefectureLocations{
     
-    private let data:[PrefectureLocation] = load("prefLatiLong.json")
+    private static let data:[PrefectureLocation] = load("prefLatiLong.json")
     
-    func location(of prefecture:String)->PinLocation{
+    static func location(of prefecture:String)->PinLocation{
         
         guard let prefLocation = data.first(where: {$0.prefecture == prefecture} )else {
-            fatalError("no position data for prefecture: \(prefecture)") }
+            fatalError("no location data for prefecture: \(prefecture)") }
         
         return PinLocation(lat: prefLocation.latitude, long: prefLocation.longitude)
     }
