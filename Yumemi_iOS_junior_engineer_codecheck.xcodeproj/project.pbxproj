@@ -138,9 +138,8 @@
 			children = (
 				671A35242A27462900F6358D /* PrefectureView.swift */,
 				672DB20F2A28D9570041BD60 /* ImagePageView.swift */,
+				672DB2132A28DD4A0041BD60 /* InfoView */,
 				6769D8922A29E90100F49219 /* GlowBorder.swift */,
-				676EA8C92A28584E005C455B /* MapView.swift */,
-				672DB2132A28DD4A0041BD60 /* Info */,
 				672DB2032A2893610041BD60 /* LoadJson.swift */,
 				672DB2052A2893B90041BD60 /* PrefectureImageInfo.swift */,
 			);
@@ -157,13 +156,14 @@
 			path = Input;
 			sourceTree = "<group>";
 		};
-		672DB2132A28DD4A0041BD60 /* Info */ = {
+		672DB2132A28DD4A0041BD60 /* InfoView */ = {
 			isa = PBXGroup;
 			children = (
 				672DB2112A28DD330041BD60 /* InfoView.swift */,
+				676EA8C92A28584E005C455B /* MapView.swift */,
 				672DB2082A28B86E0041BD60 /* BriefCardView.swift */,
 			);
-			path = Info;
+			path = InfoView;
 			sourceTree = "<group>";
 		};
 		672DB2182A28EB0B0041BD60 /* Output */ = {

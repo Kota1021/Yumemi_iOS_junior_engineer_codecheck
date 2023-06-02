@@ -12,7 +12,9 @@ struct PrefectureView: View {
     let prefacture:Prefecture
     let imagesInfo:[PrefectureImageInfo]
     
+    @State private var isMapExpanded = false
     @State private var isBreafViewExpanded = false
+    
     
     init(prefacture: Prefecture, imagesInfo: [PrefectureImageInfo], isBreafViewExpanded: Bool = false) {
         self.prefacture = prefacture
@@ -20,32 +22,13 @@ struct PrefectureView: View {
         self.isBreafViewExpanded = isBreafViewExpanded
     }
     
-    
-    ///initialize prefecture placeholder
-//    init(){
-//        let prefacture = Prefecture(name: "~~~",
-//                                    brief: "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
-//                                    capital: "~~~",
-//                                    citizenDay: nil,
-//                                    hasCoastLine: false,
-//                                    logoUrl: Bundle.main.url(forResource: "japan", withExtension: "png")!)
-//
-//        let imagesInfo:[PrefectureImageInfo] = [.init(id: "0",
-//                                                      url: Bundle.main.url(forResource: "photo", withExtension: "png")!,
-//                                                      title: "~~~",
-//                                                      author: "~~~",
-//                                                      prefCodeStr: "", pref: "")]
-//
-//        self.prefacture = prefacture
-//        self.imagesInfo = imagesInfo
-//    }
-    
     var body: some View {
         GeometryReader{proxy in
             VStack{
                 ImagePageView(imagesInfo: imagesInfo, viewSize: CGSize(width: proxy.size.width, height: 450) )
-//                    .background(.ultraThinMaterial)
-                InfoView(prefecture: prefacture,isBreafViewExpanded:$isBreafViewExpanded)
+                InfoView(prefecture: prefacture,
+                         isBreafViewExpanded:$isBreafViewExpanded,
+                         isMapExpanded: $isMapExpanded)
             }.background(Color(.systemBackground))
             .blur(radius: isBreafViewExpanded ? 10 : 0)
                 .overlay{
@@ -54,6 +37,9 @@ struct PrefectureView: View {
                                       text: prefacture.brief,
                                       viewSize: proxy.size)
 
+                    }
+                    if isMapExpanded{
+                        MapView(isDisplayed:$isMapExpanded, viewSize:proxy.size,pinPosition:  IdentifiablePlace(lat: 39, long: 138))
                     }
                 }
         }

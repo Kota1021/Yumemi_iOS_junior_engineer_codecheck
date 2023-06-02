@@ -11,6 +11,7 @@ import AudioToolbox
 struct InfoView: View {
     let prefecture:Prefecture
     @Binding var isBreafViewExpanded:Bool
+    @Binding var isMapExpanded:Bool
     var body: some View {
         VStack(alignment: .leading){
             HStack{
@@ -24,6 +25,19 @@ struct InfoView: View {
                     image
                         .resizable()
                         .scaledToFit()
+                        .overlay{
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color(.systemGray6))
+                        }
+                        .onTapGesture {}//this empty .onTapGesture() helps ParentView's ScrollView to work smoothly
+                        .onLongPressGesture(minimumDuration: 0.2) {
+                            withAnimation{
+                                isMapExpanded = true
+                            }
+                            UIImpactFeedbackGenerator(style: .heavy)
+                                .impactOccurred()
+                        }
+                    
                 } placeholder: {
                     ProgressView()
                 }
