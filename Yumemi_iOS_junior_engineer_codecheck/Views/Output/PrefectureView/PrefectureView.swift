@@ -26,7 +26,7 @@ struct PrefectureView: View {
                 DetailView(prefecture: prefacture,
                          isBreafViewExpanded:$isBriefPoppedOver,
                          isMapExpanded: $isMapPoppedOver)
-                
+                Spacer()
             }.frame(width: UIScreen.main.bounds.width,
                     height: UIScreen.main.bounds.height)
             .background(Color(.systemBackground) )

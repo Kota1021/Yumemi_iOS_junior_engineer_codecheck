@@ -13,9 +13,6 @@ struct FortuneAPI{
     private let endPoint = "/my_fortune"
     private let version = "v1"
     
-}
-
-extension FortuneAPI{
     public var headers:HTTPHeaders{ ["API-Version" : self.version] }
     public var url:URL{
         guard let url = URL(string: self.baseURL + self.endPoint) else {
@@ -23,4 +20,5 @@ extension FortuneAPI{
         }
         return url
     }
+    
 }

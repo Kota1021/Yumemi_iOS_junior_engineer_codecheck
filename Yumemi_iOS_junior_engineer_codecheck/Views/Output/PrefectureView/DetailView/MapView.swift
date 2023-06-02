@@ -10,31 +10,45 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
+    
     @Binding var isDisplayed: Bool
+    @State private var region:MKCoordinateRegion
     let viewSize:CGSize
     let pinLocation:PinLocation
     
     
-    @State private var region = MKCoordinateRegion(
-        //Mapの中心の緯度経度
-        center: CLLocationCoordinate2D(latitude: 38,
-                                       longitude: 137),
-        //緯度の表示領域(m)
-        latitudinalMeters: 1500*1000,
-        //経度の表示領域(m)
-        longitudinalMeters: 1500*1000
-    )
+    init(isDisplayed: Binding<Bool>,
+         viewSize: CGSize,
+         pinLocation: PinLocation) {
+        
+        self._isDisplayed = isDisplayed
+        self._region = State(initialValue:
+            MKCoordinateRegion(
+            //Mapの中心の緯度経度
+            center: CLLocationCoordinate2D(latitude: pinLocation.location.latitude,
+                                           longitude: pinLocation.location.longitude),
+            //緯度の表示領域(m)
+            latitudinalMeters: 1500*1000,
+            //経度の表示領域(m)
+            longitudinalMeters: 1500*1000
+        ) )
+        self.viewSize = viewSize
+        self.pinLocation = pinLocation
+        
+    }
+    
     
     var body: some View {
+        
         Map(coordinateRegion: $region,
             //Mapの操作の指定
-            interactionModes: .zoom,
+            interactionModes: .all,
             //現在地の表示
             showsUserLocation: true,
             //現在地の追従
             userTrackingMode: .constant(MapUserTrackingMode.follow),
             annotationItems: [pinLocation]
-        ){place in
+        ){ place in
             MapMarker(coordinate: place.location,
                       tint: Color.orange)
         }

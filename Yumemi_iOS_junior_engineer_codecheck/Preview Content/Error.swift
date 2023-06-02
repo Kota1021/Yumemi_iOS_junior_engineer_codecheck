@@ -3,10 +3,10 @@
 //  Yumemi_iOS_junior_engineer_codecheck
 //
 //  Created by 松本幸太郎 on 2023/06/02.
-//
+
 
 //import Foundation
-
+//
 //    func errorFetcher(){
 //        // generates an intended error for testing ErrorView
 //        let name = "AAA"
@@ -23,7 +23,7 @@
 //    }
 
 // HOW TO USE
-//
+
 //        .onAppear{
 //            errorFetcher()
 //        }

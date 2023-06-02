@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 struct PrefectureImageInfo: Decodable,Identifiable {
     let id: String
     let url: URL
@@ -31,8 +32,6 @@ struct PrefectureImageInfo: Decodable,Identifiable {
         case pref
     }
 }
-
-
 
 struct PrefectureImageInfoSets{
     let imageInfoSets:[PrefectureImageInfo] = load("find47images.json")
