@@ -7,27 +7,54 @@
 
 import SwiftUI
 
-struct KeyboardAlikeView<Content:View>: View {
-    let content: ()->Content
+//struct KeyboardAlikeView<Content:View>: View {
+//    let content: ()->Content
+//    let width:CGFloat
+//    init(@ViewBuilder content: @escaping () -> Content) {
+//        self.content = content
+//
+//        self.width = UIScreen.main.bounds.width
+//    }
+//    var body: some View {
+//        content()
+//            .transition(.move(edge: .bottom))
+//            .ignoresSafeArea()
+//            .frame(width:width)
+//            .padding(.bottom)
+//            .background(Color("keyboardBackground") )
+//    }
+//}
+//
+//struct KeyboardAlikeView_Previews: PreviewProvider {
+//
+//    static var previews: some View {
+//        KeyboardAlikeView{ Text("aaa") }
+//
+//    }
+//}
+
+struct KeyboardAlike: ViewModifier {
+    
     let width:CGFloat
-    init(@ViewBuilder content: @escaping () -> Content) {
-        self.content = content
-        
+    init(){
         self.width = UIScreen.main.bounds.width
     }
-    var body: some View {
-        content()
+    
+    func body(content: Content) -> some View {
+        content
             .transition(.move(edge: .bottom))
             .ignoresSafeArea()
             .frame(width:width)
             .padding(.bottom)
             .background(Color("keyboardBackground") )
-            
     }
 }
 
-struct KeyboardAlikeView_Previews: PreviewProvider {
-    static var previews: some View {
-        KeyboardAlikeView{ Text("aaa") }
+extension View{
+//    func keyboardAlike() -> some View{
+//        self.modifier(KeyboardAlike())
+//    }
+    var keyboardAlike: some View{
+        self.modifier(KeyboardAlike())
     }
 }

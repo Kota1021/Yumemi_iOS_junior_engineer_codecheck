@@ -85,19 +85,20 @@ struct InputView: View {
             
             
             if isBirthdayFocused{
-                KeyboardAlikeView{
+            
                     HStack{
                         DatePicker("Birthday", selection: $birthday,displayedComponents: [.date])
                             .datePickerStyle(.wheel)
                             .labelsHidden()
+                        
                         Button("Next") {
                             focus(at: .bloodType)
                         }.buttonStyle(.borderedProminent)
-                    }
-                }
+                    }.keyboardAlike
+                
                 
             }else if isBloodTypeFocused{
-                KeyboardAlikeView{
+                
                     HStack{
                         Picker("BloodType", selection: $bloodType){
                             ForEach(ABOBloodType.allCases){  bloodType in
@@ -110,9 +111,8 @@ struct InputView: View {
                             fetchLuckyPrefectureButton()
                         }.buttonStyle(.borderedProminent)
                             .disabled( !input.isValid)
-                    }
+                    }.keyboardAlike
                     
-                }
             }
 
         }.background(
