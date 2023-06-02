@@ -38,11 +38,11 @@ struct MapView: View {
             MapMarker(coordinate: place.location,
                       tint: Color.orange)
         }
-        .padding()
+        .padding(10)
         .background(
             RoundedRectangle(cornerRadius: 8).foregroundColor(Color(.secondarySystemBackground)))
         .transition(AnyTransition.scale.combined(with:.move(edge: .bottom)))
-        .padding()
+        .padding(50)
         .background(
             Rectangle()
                 .frame(width: viewSize.width, height: viewSize.height)

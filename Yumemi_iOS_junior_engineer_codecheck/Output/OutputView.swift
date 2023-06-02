@@ -22,14 +22,17 @@ struct OutputView: View {
        return  PrefectureImageInfoSets().infoSets(of: prefCode)
     }
     
+    private var location:IdentifiablePlace?{
+        guard let prefecture = luckyPrefecture else{ return nil }
+        return PrefectureLocations().location(of: prefecture.name)
+    }
+    
     
     var body: some View {
         Group{
-            if output == nil {
-//                PrefectureView()//placeholder
-                EmptyView()
-            }else if let prefecture = self.luckyPrefecture{
-                PrefectureView(prefacture: prefecture, imagesInfo:luckyPrefectureImageInfoSets!)
+            if let prefecture = self.luckyPrefecture{
+                PrefectureView(prefacture: prefecture, imagesInfo:luckyPrefectureImageInfoSets!,
+                               position: location!)
                 
             }else if let errorInFetchingFortune = self.errorInFetchingFortune{
                 ErrorView(error:errorInFetchingFortune)

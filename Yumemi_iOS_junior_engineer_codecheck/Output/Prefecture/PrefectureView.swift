@@ -11,16 +11,11 @@ struct PrefectureView: View {
     
     let prefacture:Prefecture
     let imagesInfo:[PrefectureImageInfo]
+    let position: IdentifiablePlace
     
     @State private var isMapExpanded = false
     @State private var isBreafViewExpanded = false
     
-    
-    init(prefacture: Prefecture, imagesInfo: [PrefectureImageInfo], isBreafViewExpanded: Bool = false) {
-        self.prefacture = prefacture
-        self.imagesInfo = imagesInfo
-        self.isBreafViewExpanded = isBreafViewExpanded
-    }
     
     var body: some View {
         GeometryReader{proxy in
@@ -39,7 +34,7 @@ struct PrefectureView: View {
 
                     }
                     if isMapExpanded{
-                        MapView(isDisplayed:$isMapExpanded, viewSize:proxy.size,pinPosition:  IdentifiablePlace(lat: 39, long: 138))
+                        MapView(isDisplayed:$isMapExpanded, viewSize:proxy.size, pinPosition:  position)
                     }
                 }
         }
@@ -61,7 +56,7 @@ struct PrefectureView_Previews: PreviewProvider {
     
     static var previews: some View {
 //        PrefectureView()
-        PrefectureView(prefacture:luckyPrefecture, imagesInfo: luckyPrefectureImageInfoSets!)
+        PrefectureView(prefacture:luckyPrefecture, imagesInfo: luckyPrefectureImageInfoSets!, position: IdentifiablePlace(lat: 39, long: 138))
     }
 }
 
