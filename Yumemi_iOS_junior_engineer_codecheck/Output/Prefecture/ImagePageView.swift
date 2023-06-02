@@ -32,7 +32,7 @@ struct ImagePageView: View {
                             .scaledToFill()
                             .frame(width: viewSize.width, height: imageHeight)
                             .clipped()
-                        //reflection effects
+                            //reflection effects
                             .rotation3DEffect(Angle(degrees: 180), axis: (x: 1, y: 0, z: 0) )
                             .frame( height: reflectionHeight)
                             .offset(y: (imageHeight/2 - reflectionHeight/2))
@@ -49,7 +49,9 @@ struct ImagePageView: View {
                             .frame(width: viewSize.width, height: imageHeight)
                         HStack{
                             Text("\"\(imageInfo.title)\" © \(imageInfo.author) \n(Licensed under CC BY 4.0)")
-                                .shadow(color: Color(.systemBackground), radius: 8)
+                                .fontWeight(.bold)
+                                .glowBorder(color: Color(.systemBackground), lineWidth: 3)
+//                                    .padding()
                             Spacer()
                         }.padding()
                         Spacer()
