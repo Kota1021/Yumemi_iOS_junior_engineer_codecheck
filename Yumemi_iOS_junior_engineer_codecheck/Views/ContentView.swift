@@ -22,17 +22,19 @@ struct ContentView: View {
         /// InputView is inside MaximumVerticalPageView, which ignores safe area.
         GeometryReader{ geo in
             MaximumVerticalPageView(selection: $displayedPage){
-                    InputView(output: $output,
-                              fetchButtonTapped: $fetchPrefectureButtonTapped,
-                              geometry:geo)
+                InputView(output: $output,
+                          fetchButtonTapped: $fetchPrefectureButtonTapped,
+                          geometry:geo)
                     .tag(Pages.input)
-                    OutputView(output: $output)
+                
+                OutputView(output: $output)
                     .tag(Pages.output)
-                    HistoryView()
+                
+                HistoryView()
                     .tag(Pages.history)
+                
             }
-        }.background( BackgroundView() )
-        
+        }.background(BackgroundView() )
             .onChange(of: fetchPrefectureButtonTapped) { tapped in
                 print("button tapped observed in ContentView")
                 if tapped{

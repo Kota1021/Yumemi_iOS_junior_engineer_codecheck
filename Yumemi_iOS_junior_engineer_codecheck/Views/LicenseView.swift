@@ -9,9 +9,6 @@ import SwiftUI
 
 struct LicenseView: View {
     var body: some View {
-        //        List(Library.libraries, id: \.name) { library in
-        //                   Text(library.name)
-        //               }
         VStack{
             Text("Alamofire: MIT License ......")
             Text("photos from FIND/47 https://find47.jp via https://github.com/code4fukui/find47")

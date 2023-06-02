@@ -12,7 +12,7 @@ import MapKit
 struct MapView: View {
     @Binding var isDisplayed: Bool
     let viewSize:CGSize
-    let pinPosition:IdentifiablePlace
+    let pinLocation:PinLocation
     
     
     @State private var region = MKCoordinateRegion(
@@ -33,7 +33,7 @@ struct MapView: View {
             showsUserLocation: true,
             //現在地の追従
             userTrackingMode: .constant(MapUserTrackingMode.follow),
-            annotationItems: [pinPosition]
+            annotationItems: [pinLocation]
         ){place in
             MapMarker(coordinate: place.location,
                       tint: Color.orange)
@@ -41,7 +41,7 @@ struct MapView: View {
         .padding(10)
         .background(
             RoundedRectangle(cornerRadius: 8).foregroundColor(Color(.secondarySystemBackground)))
-        .transition(AnyTransition.scale.combined(with:.move(edge: .bottom)))
+        .transition(.scale(scale: 0,anchor: UnitPoint(x: 0.7, y: 0.7)))
         .padding(50)
         .background(
             Rectangle()
@@ -61,17 +61,8 @@ struct MapView: View {
 struct MapView_Previews: PreviewProvider {
     @State static private var isDisplayed = true
     static var previews: some View {
-        MapView(isDisplayed:$isDisplayed, viewSize:CGSize(width: 300, height: 300),pinPosition:  IdentifiablePlace(lat: 39, long: 138))
+        MapView(isDisplayed:$isDisplayed, viewSize:CGSize(width: 300, height: 300),pinLocation:  PinLocation(lat: 39, long: 138))
     }
 }
 
-struct IdentifiablePlace: Identifiable {
-    let id: UUID
-    let location: CLLocationCoordinate2D
-    init(id: UUID = UUID(), lat: Double, long: Double) {
-        self.id = id
-        self.location = CLLocationCoordinate2D(
-            latitude: lat,
-            longitude: long)
-    }
-}
+

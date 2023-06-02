@@ -118,7 +118,7 @@ struct InputView: View {
         }.background(
             Rectangle()
                 .foregroundColor(.clear)
-                .contentShape(Rectangle())
+                .contentShape(Rectangle() )
                 .onTapGesture {
                     focus(at: .none)
                 }
@@ -173,8 +173,6 @@ struct ViewForResearch_Previews: PreviewProvider {
     @State static private var fetchButtonTapped = false
     static var previews: some View {
         GeometryReader{geo in
-            //            ViewForResearch(output:$output)
-            //            ViewForResearch(viewSize: geo.size, output:$output)
             InputView(output:$output, fetchButtonTapped: $fetchButtonTapped, geometry: geo)
         }
     }

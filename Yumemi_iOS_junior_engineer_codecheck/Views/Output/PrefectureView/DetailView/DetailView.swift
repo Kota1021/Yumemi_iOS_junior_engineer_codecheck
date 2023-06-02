@@ -8,7 +8,7 @@
 import SwiftUI
 import AudioToolbox
 
-struct InfoView: View {
+struct DetailView: View {
     let prefecture:Prefecture
     @Binding var isBreafViewExpanded:Bool
     @Binding var isMapExpanded:Bool
@@ -48,9 +48,17 @@ struct InfoView: View {
                 }
                 
                 AsyncImage(url: prefecture.logoUrl){ image in
-                    image
-                        .resizable()
-                        .scaledToFit()
+                    VStack{
+                        image
+                            .resizable()
+                            .scaledToFit()
+                        HStack{
+                            Spacer()
+                            Text("位置を表示")
+                            Image(systemName: "hand.tap.fill")
+                        }.foregroundColor(.gray)
+                    }
+                    .padding()
                         .overlay{
                             RoundedRectangle(cornerRadius: 8)
                                 .stroke(Color(.systemGray6))
@@ -101,11 +109,9 @@ struct InfoView: View {
 struct InfoView_Previews: PreviewProvider {
     @State static var isDetailDisplayed = false
     @State static var isMapDisplayed = false
-    static let prefecture = Prefecture(name: "徳島県", brief: "徳島県（とくしまけん）は、日本の四国地方に位置する県。県庁所在地は徳島市。\n※出典: フリー百科事典『ウィキペディア（Wikipedia）』", capital: "徳島市", citizenDay: nil, hasCoastLine: true, logoUrl: URL(string: "https://japan-map.com/wp-content/uploads/tokushima.png")!)
-    
     
     static var previews: some View {
-        InfoView(prefecture: prefecture, isBreafViewExpanded: $isDetailDisplayed, isMapExpanded: $isMapDisplayed)
+        DetailView(prefecture: PreviewData.luckyPrefecture, isBreafViewExpanded: $isDetailDisplayed, isMapExpanded: $isMapDisplayed)
     }
 }
 

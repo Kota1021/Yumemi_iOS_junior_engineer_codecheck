@@ -7,6 +7,29 @@
 
 import SwiftUI
 
+struct KeyboardAlike: ViewModifier {
+    
+    let width:CGFloat
+    init(){
+        self.width = UIScreen.main.bounds.width
+    }
+    
+    func body(content: Content) -> some View {
+        content
+            .transition(.move(edge: .bottom))
+            .ignoresSafeArea()
+            .frame(width:width)
+            .padding(.bottom)
+            .background(Color("keyboardBackground") )
+    }
+}
+
+extension View{
+    var keyboardAlike: some View{
+        self.modifier(KeyboardAlike())
+    }
+}
+
 //struct KeyboardAlikeView<Content:View>: View {
 //    let content: ()->Content
 //    let width:CGFloat
@@ -32,29 +55,3 @@ import SwiftUI
 //
 //    }
 //}
-
-struct KeyboardAlike: ViewModifier {
-    
-    let width:CGFloat
-    init(){
-        self.width = UIScreen.main.bounds.width
-    }
-    
-    func body(content: Content) -> some View {
-        content
-            .transition(.move(edge: .bottom))
-            .ignoresSafeArea()
-            .frame(width:width)
-            .padding(.bottom)
-            .background(Color("keyboardBackground") )
-    }
-}
-
-extension View{
-//    func keyboardAlike() -> some View{
-//        self.modifier(KeyboardAlike())
-//    }
-    var keyboardAlike: some View{
-        self.modifier(KeyboardAlike())
-    }
-}

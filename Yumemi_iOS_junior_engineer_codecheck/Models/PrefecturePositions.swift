@@ -16,12 +16,12 @@ struct PrefectureLocations{
     
     private let data:[PrefectureLocation] = load("prefLatiLong.json")
     
-    func location(of prefecture:String)->IdentifiablePlace{
+    func location(of prefecture:String)->PinLocation{
         
         guard let prefLocation = data.first(where: {$0.prefecture == prefecture} )else {
             fatalError("no position data for prefecture: \(prefecture)") }
         
-        return IdentifiablePlace(lat: prefLocation.latitude, long: prefLocation.longitude)
+        return PinLocation(lat: prefLocation.latitude, long: prefLocation.longitude)
     }
 }
 

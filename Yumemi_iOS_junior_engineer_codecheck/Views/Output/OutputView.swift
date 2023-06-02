@@ -11,9 +11,9 @@ struct OutputView: View {
     
     @Binding var output: Result<Prefecture, AFError>?
     @State private var luckyPrefecture:Prefecture? = nil
-    @State private var errorInFetchingFortune:Error? = nil
+    @State private var errorWhileFetchingLuckyPrefecture:Error? = nil
     
-    private var luckyPrefectureImageInfoSets:[PrefectureImageInfo]?{
+    private var prefectureImageInfoSets:[PrefectureImageInfo]?{
         guard let prefecture = luckyPrefecture else{ return nil }
         let prefCode = prefectureCode(from: prefecture.name)
         guard let prefCode = prefCode else{
@@ -22,7 +22,7 @@ struct OutputView: View {
        return  PrefectureImageInfoSets().infoSets(of: prefCode)
     }
     
-    private var location:IdentifiablePlace?{
+    private var location:PinLocation?{
         guard let prefecture = luckyPrefecture else{ return nil }
         return PrefectureLocations().location(of: prefecture.name)
     }
@@ -31,20 +31,20 @@ struct OutputView: View {
     var body: some View {
         Group{
             if let prefecture = self.luckyPrefecture{
-                PrefectureView(prefacture: prefecture, imagesInfo:luckyPrefectureImageInfoSets!,
+                PrefectureView(prefacture: prefecture, imagesInfo:prefectureImageInfoSets!,
                                position: location!)
                 
-            }else if let errorInFetchingFortune = self.errorInFetchingFortune{
+            }else if let errorInFetchingFortune = self.errorWhileFetchingLuckyPrefecture{
                 ErrorView(error:errorInFetchingFortune)
                 
             }
         }.onChange(of: output) { newValue in
                     do{
-                        errorInFetchingFortune = nil
+                        errorWhileFetchingLuckyPrefecture = nil
                         luckyPrefecture = try output?.get()
                     }catch{
                         luckyPrefecture = nil
-                        errorInFetchingFortune = error
+                        errorWhileFetchingLuckyPrefecture = error
                     }
                 }
     }
