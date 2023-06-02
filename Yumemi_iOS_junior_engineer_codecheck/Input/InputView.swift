@@ -9,37 +9,37 @@ import SwiftUI
 import Alamofire
 
 struct InputView: View {
+    
     @Binding var output:Result<Prefecture, AFError>?
     @Binding var fetchButtonTapped:Bool
     let geometry:GeometryProxy
     
     @State private var name:String = ""
-    
     @State private var birthday:Date = Date()
-    private let calendar = Calendar(identifier: .gregorian)
-    @State private var hasYearChanged = false
-    @State private var hasMonthChanged = false
-    @State private var hasDayChanged = false
-    
     @State private var bloodType:ABOBloodType = .a
-    @State private var hasBloodTypeChanged = false
+    
+    private var input:FortuneInput{
+        .init(name: name,
+              birthday: YearMonthDay(from: birthday),
+              bloodType: bloodType,
+              today: YearMonthDay(from: Date() ) )
+    }
     
     @FocusState private var isTextFieldFocused:Bool
     @State private var isBirthdayFocused = false
     @State private var isBloodTypeFocused = false
     
-    @State private var isFetchFortuneButtonDisplayed = false
-    
-//    @State private var input = FortuneInput()
+    private var isFetchFortuneButtonDisplayed:Bool{
+        (!isTextFieldFocused && !isBirthdayFocused && !isBloodTypeFocused) && input.isValid
+    }
     
     
     var body: some View {
-        //        GeometryReader{ geometry in
+        
         VStack{
             Spacer()
             VStack{
                 InputForm("Name"){
-//                    TextField("John Doe",text: $input.name)
                     TextField("John Doe",text: $name)
                         .multilineTextAlignment(.trailing)
                         .submitLabel(.next)
@@ -57,95 +57,64 @@ struct InputView: View {
                 .onTapGesture { focus(at: .birthday) }
                 
                 InputForm("Blood Type"){
-//                    Text(input.bloodType.rawValue)
                     Text(bloodType.rawValue)
                     
                 }
                 .shadow(color: isBloodTypeFocused ? .white : .clear, radius: 8)
                     .onTapGesture { focus(at: .bloodType) }
                 
-//                if isFetchFortuneButtonDisplayed{
-//                    Button{
-//                        fetchLuckyPrefectureButton()
-//                    }label:{
-//                        Image(systemName: "paperplane.fill")
-//                            .resizable()
-//                            .frame(width: 50, height: 50)
-//
-//                    }.buttonStyle(.borderedProminent)
-//                        .compositingGroup()
-//                        .shadow(color: .white ,radius: 8)
-//                }
+                
+
+                if isFetchFortuneButtonDisplayed{
+                    Button{
+                        fetchLuckyPrefectureButton()
+                    }label:{
+                        HStack{
+                            Image(systemName: "paperplane.fill")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                            Text("See Lucky Prefecture")
+                        }
+                    }.buttonStyle(.borderedProminent)
+                        .compositingGroup()
+                        .shadow(color: .white ,radius: 8)
+                }
             }
             // this padding allows this view to adopt to keyboard hight.
             .padding(.bottom, isTextFieldFocused ? geometry.safeAreaInsets.bottom : 40)
             
             
             if isBirthdayFocused{
-                HStack{
-                    DatePicker("Birthday", selection: $birthday,displayedComponents: [.date])
-                        .datePickerStyle(.wheel)
-                        .labelsHidden()
-//                        .onChange(of: calendar.component(.year, from: birthday)) { _ in
-//                            self.hasYearChanged = true
-//                        }
-//                        .onChange(of: calendar.component(.month, from: birthday)) { _ in
-//                            self.hasMonthChanged = true
-//                        }
-//                        .onChange(of: calendar.component(.day, from: birthday)) { _ in
-//                            self.hasDayChanged = true
-//                        }
-//                        .onChange(of: hasYearChanged && hasMonthChanged && hasDayChanged) { hasYearMonthDayChanged in
-//                            //rough　probability　of changing all of Year,Month and Day is 87%.  59/60(year) * 11/12(month) * 29/30(day)
-//                            //releasing around 87% of individuals from an effort to change focus
-//                            if hasYearMonthDayChanged{ focus(at: .bloodType) }
-//                        }
-//                        .onDisappear{
-//                            self.hasYearChanged = false
-//                            self.hasMonthChanged = false
-//                            self.hasDayChanged = false
-//                        }
-                    Button("Next") {
-                        focus(at: .bloodType)
-                    }.buttonStyle(.borderedProminent)
+                KeyboardAlikeView{
+                    HStack{
+                        DatePicker("Birthday", selection: $birthday,displayedComponents: [.date])
+                            .datePickerStyle(.wheel)
+                            .labelsHidden()
+                        Button("Next") {
+                            focus(at: .bloodType)
+                        }.buttonStyle(.borderedProminent)
+                    }
                 }
-                .transition(.move(edge: .bottom))
-                .ignoresSafeArea()
-                .frame(width: geometry.size.width)
-                .background(Color("keyboardBackground") )
                 
             }else if isBloodTypeFocused{
-                HStack{
-                    Picker("BloodType", selection: $bloodType){
-                        ForEach(ABOBloodType.allCases){  bloodType in
-                            Text(bloodType.rawValue).tag(bloodType)
-                        }
-                    }.pickerStyle(.wheel)
-//                        .onChange(of: bloodType) { newValue in
-//                            focus(at: .none)
-//                            isFetchFortuneButtonDisplayed = true
-//                        }
-                    Button("See Fortune") {
-                        focus(at: .none)
-                        fetchLuckyPrefectureButton()
-                    }.buttonStyle(.borderedProminent)
-                }
-                .background(Color("keyboardBackground") )
-                .ignoresSafeArea()
-                .transition(.move(edge: .bottom))
-            }else if isFetchFortuneButtonDisplayed{
-                Button{
-                    fetchLuckyPrefectureButton()
-                }label:{
-                    Image(systemName: "paperplane.fill")
-                        .resizable()
-                        .frame(width: 50, height: 50)
+                KeyboardAlikeView{
+                    HStack{
+                        Picker("BloodType", selection: $bloodType){
+                            ForEach(ABOBloodType.allCases){  bloodType in
+                                Text(bloodType.rawValue).tag(bloodType)
+                            }
+                        }.pickerStyle(.wheel)
+                        
+                        Button("See Fortune") {
+                            focus(at: .none)
+                            fetchLuckyPrefectureButton()
+                        }.buttonStyle(.borderedProminent)
+                            .disabled( !input.isValid)
+                    }
                     
-                }.buttonStyle(.borderedProminent)
-                    .compositingGroup()
-                    .shadow(color: .white ,radius: 8)
+                }
             }
-            
+
         }.background(
             Rectangle()
                 .foregroundColor(.clear)
@@ -154,10 +123,6 @@ struct InputView: View {
                     focus(at: .none)
                 }
         )
-        
-        
-        
-        //        }
         
     }
     
@@ -189,19 +154,8 @@ struct InputView: View {
     }
     
     private func fetchLuckyPrefectureButton(){
-        fetchLuckyPrefecture()
-        fetchButtonTapped = true
-    }
-    
-    private func fetchLuckyPrefecture(){
         print("fetch button tapped")
-        let birthday = YearMonthDay(from: self.birthday)
-        let today = YearMonthDay(from: Date() )
-
-        let input = FortuneInput(name: self.name,
-                                 birthday: birthday,
-                                 bloodType: self.bloodType,
-                                 today: today)
+        
         if input.isValid{
             print("input: \(input)")
             Task{ 
@@ -210,6 +164,7 @@ struct InputView: View {
         }else{
             print("input invalid")
         }
+        fetchButtonTapped = true
     }
 }
 

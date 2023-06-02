@@ -32,6 +32,7 @@ struct ContentView: View {
                     .tag(Pages.history)
             }
         }.background( BackgroundView() )
+        
             .onChange(of: fetchPrefectureButtonTapped) { tapped in
                 print("button tapped observed in ContentView")
                 if tapped{

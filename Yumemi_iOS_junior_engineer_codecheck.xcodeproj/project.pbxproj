@@ -26,6 +26,7 @@
 		6769D8932A29E90100F49219 /* GlowBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6769D8922A29E90100F49219 /* GlowBorder.swift */; };
 		6769D8952A29F24B00F49219 /* prefLatiLong.json in Resources */ = {isa = PBXBuildFile; fileRef = 6769D8942A29F24B00F49219 /* prefLatiLong.json */; };
 		6769D8972A29FCC400F49219 /* PrefecturePositions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6769D8962A29FCC400F49219 /* PrefecturePositions.swift */; };
+		6769D8992A2A0C0B00F49219 /* KeyboardAlikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6769D8982A2A0C0B00F49219 /* KeyboardAlikeView.swift */; };
 		676ABFFA2A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */; };
 		676ABFFC2A270E94009F34E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ABFFB2A270E94009F34E9 /* ContentView.swift */; };
 		676ABFFE2A270E95009F34E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 676ABFFD2A270E95009F34E9 /* Assets.xcassets */; };
@@ -85,6 +86,7 @@
 		6769D8922A29E90100F49219 /* GlowBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowBorder.swift; sourceTree = "<group>"; };
 		6769D8942A29F24B00F49219 /* prefLatiLong.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = prefLatiLong.json; sourceTree = "<group>"; };
 		6769D8962A29FCC400F49219 /* PrefecturePositions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefecturePositions.swift; sourceTree = "<group>"; };
+		6769D8982A2A0C0B00F49219 /* KeyboardAlikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAlikeView.swift; sourceTree = "<group>"; };
 		676ABFF62A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yumemi_iOS_junior_engineer_codecheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yumemi_iOS_junior_engineer_codecheckApp.swift; sourceTree = "<group>"; };
 		676ABFFB2A270E94009F34E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				676EA9092A2876E1005C455B /* InputView.swift */,
+				6769D8982A2A0C0B00F49219 /* KeyboardAlikeView.swift */,
 				672DB20A2A28CE5A0041BD60 /* InputForm.swift */,
 				672DB20D2A28D09D0041BD60 /* FetchLuckyPrefectureButton.swift */,
 			);
@@ -437,6 +440,7 @@
 				676EA8CE2A285ACD005C455B /* BackgroundView.swift in Sources */,
 				6769D8972A29FCC400F49219 /* PrefecturePositions.swift in Sources */,
 				676AC0292A2710FA009F34E9 /* FortuneAPI.swift in Sources */,
+				6769D8992A2A0C0B00F49219 /* KeyboardAlikeView.swift in Sources */,
 				676AC0062A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.xcdatamodeld in Sources */,
 				671A352E2A276A5700F6358D /* LicenseView.swift in Sources */,
 				671A35272A2759FD00F6358D /* ErrorView.swift in Sources */,

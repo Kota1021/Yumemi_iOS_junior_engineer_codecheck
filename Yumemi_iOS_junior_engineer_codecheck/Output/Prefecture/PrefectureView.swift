@@ -15,6 +15,7 @@ struct PrefectureView: View {
     
     @State private var isMapExpanded = false
     @State private var isBreafViewExpanded = false
+    private var isBulured: Bool{ isMapExpanded || isBreafViewExpanded }
     
     
     var body: some View {
@@ -25,7 +26,7 @@ struct PrefectureView: View {
                          isBreafViewExpanded:$isBreafViewExpanded,
                          isMapExpanded: $isMapExpanded)
             }.background(Color(.systemBackground))
-            .blur(radius: isBreafViewExpanded ? 10 : 0)
+            .blur(radius: isBulured ? 10 : 0)
                 .overlay{
                     if isBreafViewExpanded{
                         BriefCardView(isDisplayed: $isBreafViewExpanded,

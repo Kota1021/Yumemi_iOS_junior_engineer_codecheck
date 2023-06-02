@@ -91,8 +91,7 @@ struct InfoView: View {
                 UIImpactFeedbackGenerator(style: .heavy)
                     .impactOccurred()
             }
-            .padding(.bottom)
-            
+    
         }.padding(.horizontal)
         
     }
