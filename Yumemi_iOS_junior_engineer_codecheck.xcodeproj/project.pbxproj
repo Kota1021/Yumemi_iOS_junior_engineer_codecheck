@@ -24,6 +24,7 @@
 		672DB2222A290B2D0041BD60 /* 2270.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 672DB2212A290B2D0041BD60 /* 2270.jpg */; };
 		672DB2242A290CCC0041BD60 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 672DB2232A290CCC0041BD60 /* photo.png */; };
 		6769D8932A29E90100F49219 /* GlowBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6769D8922A29E90100F49219 /* GlowBorder.swift */; };
+		6769D8952A29F24B00F49219 /* prefLatiLong.json in Resources */ = {isa = PBXBuildFile; fileRef = 6769D8942A29F24B00F49219 /* prefLatiLong.json */; };
 		676ABFFA2A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */; };
 		676ABFFC2A270E94009F34E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ABFFB2A270E94009F34E9 /* ContentView.swift */; };
 		676ABFFE2A270E95009F34E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 676ABFFD2A270E95009F34E9 /* Assets.xcassets */; };
@@ -81,6 +82,7 @@
 		672DB2212A290B2D0041BD60 /* 2270.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2270.jpg; sourceTree = "<group>"; };
 		672DB2232A290CCC0041BD60 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
 		6769D8922A29E90100F49219 /* GlowBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowBorder.swift; sourceTree = "<group>"; };
+		6769D8942A29F24B00F49219 /* prefLatiLong.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = prefLatiLong.json; sourceTree = "<group>"; };
 		676ABFF62A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yumemi_iOS_junior_engineer_codecheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yumemi_iOS_junior_engineer_codecheckApp.swift; sourceTree = "<group>"; };
 		676ABFFB2A270E94009F34E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				672DB21F2A2909C10041BD60 /* japan.png */,
 				676ABFFD2A270E95009F34E9 /* Assets.xcassets */,
 				672DB2212A290B2D0041BD60 /* 2270.jpg */,
+				6769D8942A29F24B00F49219 /* prefLatiLong.json */,
 				676EA90F2A288B79005C455B /* find47images.json */,
 			);
 			path = Resources;
@@ -377,6 +380,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				676AC0012A270E95009F34E9 /* Preview Assets.xcassets in Resources */,
+				6769D8952A29F24B00F49219 /* prefLatiLong.json in Resources */,
 				676EA9102A288B79005C455B /* find47images.json in Resources */,
 				672DB2242A290CCC0041BD60 /* photo.png in Resources */,
 				672DB2222A290B2D0041BD60 /* 2270.jpg in Resources */,
