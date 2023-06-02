@@ -30,13 +30,15 @@ struct ImagePageView: View {
                         image
                             .resizable()
                             .scaledToFill()
-                            .frame(width: viewSize.width, height: imageHeight)
+                        /// 1. First, make the image wider/taller by blurRadius*2, because .blur modifier mixes border's color with backgroud. and i dont want it happen.
+                            .frame(width: viewSize.width + blurRadius*2, height: imageHeight + blurRadius*2)
                             .clipped()
                             //reflection effects
                             .rotation3DEffect(Angle(degrees: 180), axis: (x: 1, y: 0, z: 0) )
-                            .frame( height: reflectionHeight)
-                            .offset(y: (imageHeight/2 - reflectionHeight/2))
                             .blur(radius: blurRadius)
+                        ///2. And then returns to wanted size.
+                            .frame(width: viewSize.width , height: reflectionHeight)
+                            .offset(y: (imageHeight/2 - reflectionHeight/2))
                             .clipped()
                     }
                 } placeholder: {
@@ -51,7 +53,7 @@ struct ImagePageView: View {
                             Text("\"\(imageInfo.title)\" © \(imageInfo.author) \n(Licensed under CC BY 4.0)")
                                 .fontWeight(.bold)
                                 .glowBorder(color: Color(.systemBackground), lineWidth: 3)
-//                                    .padding()
+                            
                             Spacer()
                         }.padding()
                         Spacer()
