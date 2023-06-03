@@ -10,37 +10,80 @@ import Alamofire
 
 
 
-struct InputView: View {
-    @StateObject var viewLogic:ViewLogic
-    
-    // Below is to move views with keyboard's movement
-    let geometry:GeometryProxy
-    
-    private var isFetchButtonDisplayed:Bool{
-        (!viewLogic.isTextFieldFocused && !viewLogic.isBirthdayFocused && !viewLogic.isBloodTypeFocused) && viewLogic.input.isValid
-    }
+struct InputView<Model>: View where Model: InputViewModel{
+    @StateObject var viewModel:Model
+    @FocusState private var isTextFieldFocused:Bool
     
     var body: some View {
-        
         VStack{
             Spacer()
             
             VStack{
-                InputForms(name: $viewLogic.name, birthday: $viewLogic.birthday, bloodType: $viewLogic.bloodType, isTextFieldFocused: viewLogic.$isTextFieldFocused, isBirthdayFocused: $viewLogic.isBirthdayFocused, isBloodTypeFocused: $viewLogic.isBloodTypeFocused, vm: viewLogic)
+                InputForm("Name"){
+                    TextField("John Doe",text: $viewModel.name)
+                        .multilineTextAlignment(.trailing)
+                        .submitLabel(.next)
+
+                }.shadow(color: viewModel.isTextFieldFocused ? .white : .clear, radius: 8)
+                    .focused(self.$isTextFieldFocused)
+                    .onAppear { self.isTextFieldFocused = viewModel.isTextFieldFocused}
+                    .onChange(of: self.isTextFieldFocused) { viewModel.isTextFieldFocused = $0 }
+                    .onChange(of: viewModel.isTextFieldFocused) { self.isTextFieldFocused = $0 }
                 
-                if isFetchButtonDisplayed{
-                    FetchButton(vm: viewLogic)
+                    .onSubmit { viewModel.focus(at: .birthday) }
+                    .onTapGesture { viewModel.focus(at: .name) }
+
+                InputForm("Birthday"){
+                    Text("\(YearMonthDay(from: viewModel.birthday).toString())")
+
+                }
+                .shadow(color: viewModel.isBirthdayFocused ? .white : .clear, radius: 8)
+                .onTapGesture { viewModel.focus(at: .birthday) }
+
+                InputForm("Blood Type"){
+                    Text(viewModel.bloodType.rawValue)
+
+                }
+                .shadow(color: viewModel.isBloodTypeFocused ? .white : .clear, radius: 8)
+                .onTapGesture { viewModel.focus(at: .bloodType) }
+                
+                if viewModel.isFetchButtonDisplayed{
+                    FetchButton(action: viewModel.fetchLuckyPrefectureButton)
                 }
             }
             // this padding allows this view to adopt to keyboard hight.
-            .padding(.bottom, viewLogic.isTextFieldFocused ? geometry.safeAreaInsets.bottom : 40)
+//            .padding(.bottom, viewModel.bottomSafeArea)
             
             
-            if viewLogic.isBirthdayFocused{
-                BirthdayPicker(birthday: $viewLogic.birthday, vm: viewLogic)
+            if viewModel.isBirthdayFocused{
+                KeyboardAlikeView{
+                    HStack{
+                        DatePicker("Birthday", selection: $viewModel.birthday,displayedComponents: [.date])
+                            .datePickerStyle(.wheel)
+                            .labelsHidden()
+                        
+                        Button("Next") {
+                            viewModel.focus(at: .bloodType)
+                        }.buttonStyle(.borderedProminent)
+                    }
+                }
                 
-            }else if viewLogic.isBloodTypeFocused{
-                BloodTypePicker(bloodType: $viewLogic.bloodType, disabled: !viewLogic.input.isValid, vm: viewLogic)
+            }else if viewModel.isBloodTypeFocused{
+                KeyboardAlikeView{
+                    HStack{
+                        Picker("BloodType", selection: $viewModel.bloodType){
+                            ForEach(ABOBloodType.allCases){  bloodType in
+                                Text(bloodType.rawValue).tag(bloodType)
+                            }
+                        }.pickerStyle(.wheel)
+                        
+                        Button("See Fortune") {
+                            viewModel.fetchLuckyPrefectureButton()
+                            viewModel.focus(at: .none)
+                        }.buttonStyle(.borderedProminent)
+                            .disabled(!viewModel.input.isValid)
+                    }
+                }
             }
 
         }.background(
@@ -48,7 +91,7 @@ struct InputView: View {
                 .foregroundColor(.clear)
                 .contentShape(Rectangle() )
                 .onTapGesture {
-                    viewLogic.focus(at: .none)
+                    viewModel.focus(at: .none)
                 }
         )
         
@@ -59,7 +102,7 @@ struct InputView: View {
 struct ViewForResearch_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader{geo in
-            InputView(viewLogic: ViewLogic(prefectureModel:PrefectureModel()), geometry: geo)
+            InputView(viewModel: InputViewLogic(prefectureModel:PrefectureModel(),geometry: geo))
         }
     }
 }

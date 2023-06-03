@@ -17,11 +17,11 @@ struct ContentView: View {
     @ObservedObject var prefectureModel = PrefectureModel()
     
     var body: some View {
-        /// this GeometryReader helps InputView to move input forms upwards when keyboard is displayed.
+        /// this GeometryReader tells InputViewModel the safe area.
         /// InputView is inside MaximumVerticalPageView, which ignores safe area.
-        GeometryReader{ geo in
+//        GeometryReader{ geo in
             MaximumVerticalPageView(selection: $displayedPage){
-                InputView(viewLogic: ViewLogic(prefectureModel:prefectureModel), geometry: geo)
+                InputView(viewModel: InputViewLogic(prefectureModel:prefectureModel/*, geometry: geo*/) )
                 
                 if let prefecture = self.prefectureModel.prefecture{
                     PrefectureView(prefacture: prefecture)
@@ -33,8 +33,9 @@ struct ContentView: View {
                 HistoryView()
                     .tag(Pages.history)
                 
-            }
-        }.background(BackgroundView() )
+            }.environmentObject(MaximumVerticalPageViewLogic())
+//        }
+        .background(BackgroundView() )
     }
     
     private enum Pages{

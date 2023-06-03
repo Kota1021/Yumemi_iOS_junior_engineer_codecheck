@@ -43,10 +43,7 @@
 		676AC02C2A271115009F34E9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 676AC02B2A271115009F34E9 /* Alamofire */; };
 		676AC02E2A27113B009F34E9 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AC02D2A27113B009F34E9 /* Input.swift */; };
 		676AC0302A2711F5009F34E9 /* Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AC02F2A2711F5009F34E9 /* Output.swift */; };
-		676AD3C82A2ABD900047ED58 /* InputViewLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AD3C72A2ABD900047ED58 /* InputViewLogic.swift */; };
-		676AD3CA2A2AC00D0047ED58 /* InputForms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AD3C92A2AC00D0047ED58 /* InputForms.swift */; };
-		676AD3CC2A2AC27D0047ED58 /* BirthdayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AD3CB2A2AC27D0047ED58 /* BirthdayPicker.swift */; };
-		676AD3CE2A2AC2A00047ED58 /* BloodTypePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AD3CD2A2AC2A00047ED58 /* BloodTypePicker.swift */; };
+		676AD3C82A2ABD900047ED58 /* InputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AD3C72A2ABD900047ED58 /* InputViewModel.swift */; };
 		676AD3D02A2AC2B20047ED58 /* FetchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AD3CF2A2AC2B20047ED58 /* FetchButton.swift */; };
 		676EA8C42A285572005C455B /* VTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 676EA8C32A285572005C455B /* VTabView */; };
 		676EA8CA2A28584E005C455B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676EA8C92A28584E005C455B /* MapView.swift */; };
@@ -111,10 +108,7 @@
 		676AC0282A2710FA009F34E9 /* FortuneAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneAPI.swift; sourceTree = "<group>"; };
 		676AC02D2A27113B009F34E9 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		676AC02F2A2711F5009F34E9 /* Output.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Output.swift; sourceTree = "<group>"; };
-		676AD3C72A2ABD900047ED58 /* InputViewLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewLogic.swift; sourceTree = "<group>"; };
-		676AD3C92A2AC00D0047ED58 /* InputForms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputForms.swift; sourceTree = "<group>"; };
-		676AD3CB2A2AC27D0047ED58 /* BirthdayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayPicker.swift; sourceTree = "<group>"; };
-		676AD3CD2A2AC2A00047ED58 /* BloodTypePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodTypePicker.swift; sourceTree = "<group>"; };
+		676AD3C72A2ABD900047ED58 /* InputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewModel.swift; sourceTree = "<group>"; };
 		676AD3CF2A2AC2B20047ED58 /* FetchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchButton.swift; sourceTree = "<group>"; };
 		676EA8C92A28584E005C455B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		676EA8CB2A285853005C455B /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
@@ -162,12 +156,8 @@
 		672DB20C2A28CE5F0041BD60 /* Input */ = {
 			isa = PBXGroup;
 			children = (
-				676AD3C72A2ABD900047ED58 /* InputViewLogic.swift */,
 				672EE5B82A2A798A007EA3F3 /* InputViews.swift */,
 				676AD3CF2A2AC2B20047ED58 /* FetchButton.swift */,
-				676AD3CD2A2AC2A00047ED58 /* BloodTypePicker.swift */,
-				676AD3CB2A2AC27D0047ED58 /* BirthdayPicker.swift */,
-				676AD3C92A2AC00D0047ED58 /* InputForms.swift */,
 				672DB20A2A28CE5A0041BD60 /* InputForm.swift */,
 			);
 			path = Input;
@@ -251,6 +241,7 @@
 			children = (
 				676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */,
 				6769D89E2A2A2D4900F49219 /* Views */,
+				676AD3D12A2B146C0047ED58 /* ViewModels */,
 				676AC0312A2711FB009F34E9 /* Models */,
 				676EA9112A288BBD005C455B /* Resources */,
 				6769D8A02A2A2F5E00F49219 /* CoreData */,
@@ -299,6 +290,14 @@
 				676AC0282A2710FA009F34E9 /* FortuneAPI.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		676AD3D12A2B146C0047ED58 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				676AD3C72A2ABD900047ED58 /* InputViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		676EA9112A288BBD005C455B /* Resources */ = {
@@ -462,7 +461,6 @@
 				6769D89D2A2A2CFB00F49219 /* PinLocation.swift in Sources */,
 				672DB2102A28D9570041BD60 /* ImagePageView.swift in Sources */,
 				672DB20B2A28CE5A0041BD60 /* InputForm.swift in Sources */,
-				676AD3CC2A2AC27D0047ED58 /* BirthdayPicker.swift in Sources */,
 				676AC02E2A27113B009F34E9 /* Input.swift in Sources */,
 				672DB2172A28E8710041BD60 /* OutputView.swift in Sources */,
 				676AC0032A270E95009F34E9 /* Persistence.swift in Sources */,
@@ -475,10 +473,9 @@
 				672DB21C2A28EE150041BD60 /* MaximumVerticalPageView.swift in Sources */,
 				672DB2122A28DD330041BD60 /* DetailView.swift in Sources */,
 				671A35252A27462900F6358D /* PrefectureView.swift in Sources */,
-				676AD3C82A2ABD900047ED58 /* InputViewLogic.swift in Sources */,
+				676AD3C82A2ABD900047ED58 /* InputViewModel.swift in Sources */,
 				6769D89B2A2A2ADA00F49219 /* PreviewData.swift in Sources */,
 				672DB21A2A28EC0D0041BD60 /* Error.swift in Sources */,
-				676AD3CE2A2AC2A00047ED58 /* BloodTypePicker.swift in Sources */,
 				676EA8CC2A285853005C455B /* HistoryView.swift in Sources */,
 				676EA8CA2A28584E005C455B /* MapView.swift in Sources */,
 				6769D8932A29E90100F49219 /* GlowBorder.swift in Sources */,
@@ -491,7 +488,6 @@
 				676AC0062A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.xcdatamodeld in Sources */,
 				671A352E2A276A5700F6358D /* LicenseView.swift in Sources */,
 				671A35272A2759FD00F6358D /* ErrorView.swift in Sources */,
-				676AD3CA2A2AC00D0047ED58 /* InputForms.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

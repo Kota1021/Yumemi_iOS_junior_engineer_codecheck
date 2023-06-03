@@ -7,10 +7,10 @@
 
 import SwiftUI
 struct FetchButton: View {
-    let vm:ViewLogicProtocol
+    let action: ()->Void
     var body: some View {
         Button{
-            vm.fetchLuckyPrefectureButton()
+            action()
         }label:{
             HStack{
                 Image(systemName: "paperplane.fill")

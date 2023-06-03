@@ -8,11 +8,20 @@
 import SwiftUI
 import VTabView
 
+protocol MaximumVerticalPageViewModel{
+    var geo:GeometryProxy? {get set}
+}
+
+class MaximumVerticalPageViewLogic:ObservableObject{
+    @Published var geo:GeometryProxy?
+}
+
 /// ignores safe area.
 struct MaximumVerticalPageView<Content,Selection>: View where Content:View, Selection:Hashable{
     
     let content: ()->Content
     private var selection:Binding<Selection>?
+    @EnvironmentObject var model: MaximumVerticalPageViewLogic
     
     init(selection:Binding<Selection>?, @ViewBuilder content: @escaping ()->Content) {
         
@@ -24,14 +33,17 @@ struct MaximumVerticalPageView<Content,Selection>: View where Content:View, Sele
     }
     
     var body: some View {
-        /// this ScrollView wraps VTabView so that VTabView can fill the screen to the full.
-        ///cf.https://stackoverflow.com/questions/62593923/edgesignoringsafearea-on-tabview-with-pagetabviewstyle-not-working
-        ScrollView (.horizontal,showsIndicators: false){
-            VTabView(selection: selection){
-                content()
-            }.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-                .tabViewStyle(.page(indexDisplayMode: .never))
-        }.ignoresSafeArea(.all)
+        GeometryReader{ proxy in
+            /// this ScrollView wraps VTabView so that VTabView can fill the screen to the full.
+            ///cf.https://stackoverflow.com/questions/62593923/edgesignoringsafearea-on-tabview-with-pagetabviewstyle-not-working
+            ScrollView (.horizontal,showsIndicators: false){
+                VTabView(selection: selection){
+                    content()
+                }.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                    .tabViewStyle(.page(indexDisplayMode: .never))
+            }.ignoresSafeArea(.all)
+                .onAppear{ model.geo = proxy }
+        }
     }
 }
 
