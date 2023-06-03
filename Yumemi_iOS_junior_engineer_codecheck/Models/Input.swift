@@ -25,7 +25,7 @@ struct YearMonthDay:Codable{
 
 extension YearMonthDay{
     init(from date:Date){
-        let calendar = Calendar.current
+        let calendar = Calendar(identifier: .gregorian)
         
         self.year = calendar.component(.year, from: date)
         self.month = calendar.component(.month, from: date)
@@ -34,28 +34,33 @@ extension YearMonthDay{
 }
 
 extension YearMonthDay{
+    
+    /// avoiding  hard-coding date's format.
     public func toString()->String{
         let calendar = Calendar.current
         let formatter = DateFormatter()
         formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyydMMM", options: 0, locale: Locale(identifier: "ja_JP"))
         return formatter.string(from: self.toDate())
     }
+    
     private func toDate()->Date{
         let calendar = Calendar(identifier: .gregorian)
         let dateComponents = DateComponents(year:self.year, month: self.month, day: self.day)
         guard let date = calendar.date(from: dateComponents ) else{ fatalError("invalid date") }
         return date
     }
+    
 }
 
-// Now only considering ABO blood group. not RH etc...
+///Now only considering ABO blood group. not RH etc...
 enum ABOBloodType:String,Codable{
     case a = "a"
     case b = "b"
     case ab = "ab"
     case o = "o"
 }
-//conform to CaseIterable and Identifiable to be used in ForEach
+
+///conform to CaseIterable and Identifiable to be used in ForEach
 extension ABOBloodType:CaseIterable,Identifiable{
     var id: String { rawValue }
 }

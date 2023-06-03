@@ -8,26 +8,29 @@
 import SwiftUI
 
 struct InputForm<Content:View>: View {
-    let content:Content
+    
+    let content:()-> Content
     let title:String
-    init(_ title:String,@ViewBuilder content: () -> Content) {
+    
+    init(_ title:String,@ViewBuilder content: @escaping () -> Content) {
         self.title = title
-        self.content = content()
+        self.content = content
     }
+    
     var body: some View {
         HStack{
             Text(title)
             Spacer()
-            content
+            content()
         }
-            .padding()
-            .background(
-                RoundedRectangle(cornerRadius: 8)
-                    .foregroundColor(Color(.systemGray6) )
-            )
-            .compositingGroup()
-            .padding(.bottom)
-            .padding(.horizontal)
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                .foregroundColor(Color(.systemGray6) )
+        )
+        .compositingGroup()
+        .padding(.bottom)
+        .padding(.horizontal)
     }
 }
 

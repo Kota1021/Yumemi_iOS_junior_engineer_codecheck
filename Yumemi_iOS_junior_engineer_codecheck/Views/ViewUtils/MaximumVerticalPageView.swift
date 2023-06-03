@@ -8,12 +8,8 @@
 import SwiftUI
 import VTabView
 
-protocol MaximumVerticalPageViewModel{
-    var geo:GeometryProxy? {get set}
-}
-
-class MaximumVerticalPageViewLogic:ObservableObject{
-    @Published var geo:GeometryProxy?
+class SafeArea:ObservableObject{
+    @Published var insets = EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
 }
 
 /// ignores safe area.
@@ -21,7 +17,7 @@ struct MaximumVerticalPageView<Content,Selection>: View where Content:View, Sele
     
     let content: ()->Content
     private var selection:Binding<Selection>?
-    @EnvironmentObject var model: MaximumVerticalPageViewLogic
+    @EnvironmentObject var safeArea: SafeArea
     
     init(selection:Binding<Selection>?, @ViewBuilder content: @escaping ()->Content) {
         
@@ -30,21 +26,35 @@ struct MaximumVerticalPageView<Content,Selection>: View where Content:View, Sele
         
         self.selection = selection
         self.content = content
+        
     }
     
     var body: some View {
+        
+        /// this GeometryReader tells the safe area towards the  SafeArea EnvironmentObject.
+        /// InputView is inside MaximumVerticalPageView, which ignores safe area.
         GeometryReader{ proxy in
+            
             /// this ScrollView wraps VTabView so that VTabView can fill the screen to the full.
             ///cf.https://stackoverflow.com/questions/62593923/edgesignoringsafearea-on-tabview-with-pagetabviewstyle-not-working
             ScrollView (.horizontal,showsIndicators: false){
                 VTabView(selection: selection){
                     content()
-                }.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-                    .tabViewStyle(.page(indexDisplayMode: .never))
-            }.ignoresSafeArea(.all)
-                .onAppear{ model.geo = proxy }
+                    
+                }
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                .tabViewStyle(.page(indexDisplayMode: .never))
+                
+            }
+            .ignoresSafeArea(.all)
+            .onChange(of: proxy.safeAreaInsets) { newValue in
+                withAnimation { safeArea.insets = newValue }
+            }
+            
         }
+        
     }
+    
 }
 
 

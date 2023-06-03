@@ -5,23 +5,27 @@
 //  Created by 松本幸太郎 on 2023/05/31.
 //
 
+import Combine
 import SwiftUI
 import CoreData
 import Alamofire
 
-struct ContentView: View {
+struct ContentView<PrefectureModel:PrefectureModelProtocol,InputVM:InputViewModelProtocol>: View {
     //    @Environment(\.managedObjectContext) private var viewContext
     
-    @State private var fetchPrefectureButtonTapped = false
+    @ObservedObject var prefectureModel:PrefectureModel
+    let inputViewModel:InputViewLogic<PrefectureModel>
     @State private var displayedPage = Pages.input
-    @ObservedObject var prefectureModel = PrefectureModel()
+    
+    init(prefectureModel: PrefectureModel) {
+        self.prefectureModel = prefectureModel
+        self.inputViewModel =  InputViewLogic(prefectureModel:prefectureModel)
+    }
     
     var body: some View {
-        /// this GeometryReader tells InputViewModel the safe area.
-        /// InputView is inside MaximumVerticalPageView, which ignores safe area.
-//        GeometryReader{ geo in
             MaximumVerticalPageView(selection: $displayedPage){
-                InputView(viewModel: InputViewLogic(prefectureModel:prefectureModel/*, geometry: geo*/) )
+//                InputView(viewModel: InputViewLogic(prefectureModel:prefectureModel) )
+                InputView(viewModel: inputViewModel)
                 
                 if let prefecture = self.prefectureModel.prefecture{
                     PrefectureView(prefacture: prefecture)
@@ -33,9 +37,13 @@ struct ContentView: View {
                 HistoryView()
                     .tag(Pages.history)
                 
-            }.environmentObject(MaximumVerticalPageViewLogic())
-//        }
+                ///MaximumVerticalPageView ignores safe area.
+                /// To tell the safe area to views inside MaximumVerticalPageView, you need to set an environmentObject.
+            }.environmentObject(SafeArea() )
         .background(BackgroundView() )
+//        .onReceive($prefectureModel.prefecture) { _ in
+//            withAnimation{ displayedPage = .output }
+//        }
     }
     
     private enum Pages{
@@ -47,7 +55,8 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(prefectureModel: PrefectureModel())
+            .environmentObject(SafeArea())
         //.environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

@@ -12,11 +12,10 @@ struct DetailView: View {
     let prefecture:Prefecture
     @Binding var isBreafViewExpanded:Bool
     @Binding var isMapExpanded:Bool
+    
     var body: some View {
-        
         VStack(alignment: .leading){
             HStack{
-                
                 VStack(alignment: .leading){
                     
                     Text(prefecture.name)
@@ -92,7 +91,7 @@ struct DetailView: View {
                     .stroke(Color(.systemGray6))
             }
             .onTapGesture {}//this empty .onTapGesture() helps ParentView's ScrollView to work smoothly
-            .onLongPressGesture(minimumDuration: 0.2) {
+            .onLongPressGesture(minimumDuration: 0.1) {
                 withAnimation{
                     isBreafViewExpanded = true
                 }

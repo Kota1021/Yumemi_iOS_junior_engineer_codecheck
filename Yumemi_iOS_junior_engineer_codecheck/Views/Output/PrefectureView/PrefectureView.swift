@@ -15,32 +15,31 @@ struct PrefectureView: View {
     @State private var isBriefPoppedOver = false
     private var isThereAnyPopOver: Bool{ isMapPoppedOver || isBriefPoppedOver }
     
-    
     var body: some View {
-        GeometryReader{proxy in
+        GeometryReader{ proxy in
             VStack{
                 
-                ImagePageView(imagesInfo: prefacture.images, viewSize: CGSize(width: proxy.size.width, height: 450) )
+                ImagePageView(imagesInfo: prefacture.images, viewSize: CGSize(width: proxy.size.width, height: 400) )
                 DetailView(prefecture: prefacture,
-                         isBreafViewExpanded:$isBriefPoppedOver,
-                         isMapExpanded: $isMapPoppedOver)
+                           isBreafViewExpanded:$isBriefPoppedOver,
+                           isMapExpanded: $isMapPoppedOver)
                 Spacer()
             }.frame(width: UIScreen.main.bounds.width,
                     height: UIScreen.main.bounds.height)
             .background(Color(.systemBackground) )
             .blur(radius: isThereAnyPopOver ? 10 : 0)
-                .overlay{
-                    if isBriefPoppedOver{
-                        BriefCardView(isDisplayed: $isBriefPoppedOver,
-                                      text: prefacture.brief,
-                                      viewSize: proxy.size)
-
-                    }
-                    if isMapPoppedOver{
-                        MapView(isDisplayed:$isMapPoppedOver, viewSize:proxy.size, pinLocation:  prefacture.location)
-                        
-                    }
+            .overlay{
+                if isBriefPoppedOver{
+                    BriefCardView(isDisplayed: $isBriefPoppedOver,
+                                  text: prefacture.brief,
+                                  viewSize: proxy.size)
+                    
                 }
+                if isMapPoppedOver{
+                    MapView(isDisplayed:$isMapPoppedOver, viewSize:proxy.size, pinLocation:  prefacture.location)
+                    
+                }
+            }
         }
         
     }

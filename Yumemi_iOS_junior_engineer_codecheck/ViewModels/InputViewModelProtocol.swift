@@ -7,31 +7,33 @@
 
 import SwiftUI
 
-protocol InputViewModel:ObservableObject{
+
+//this time I only wrote a ViewModel for InputView, which is I think complicated enough to need one.
+
+//wanted to try protocol oriented programming.
+protocol InputViewModelProtocol:ObservableObject{
     var name:String { get set }
     var birthday:Date { get set }
     var bloodType:ABOBloodType { get set }
+    var input:FortuneInput { get }
+    
     var isTextFieldFocused:Bool{ get set }
     var isBirthdayFocused:Bool { get set }
     var isBloodTypeFocused:Bool { get set }
     var isFetchButtonDisplayed:Bool{ get }
-//    var bottomSafeArea:CGFloat { get }
-    var input:FortuneInput { get }
-    func fetchLuckyPrefectureButton()
+    
+    func fetchLuckyPrefecture()
     func focus(at:InputField?)
 }
 
-class InputViewLogic:ObservableObject,InputViewModel{
+
+class InputViewLogic<PrefectureModel:PrefectureModelProtocol>:ObservableObject,InputViewModelProtocol{
     
-    init(prefectureModel:PrefectureModel/*,geometry:GeometryProxy*/){
+    init(prefectureModel:PrefectureModel){
         self.prefectureModel = prefectureModel
-//        self.geometry = geometry
     }
     
     let prefectureModel:PrefectureModel
-    
-    // Below sends flag to ParentView.
-    @Published var fetchButtonTapped = false
     
     @Published  var name:String = ""
     @Published  var birthday:Date = Date()
@@ -52,24 +54,15 @@ class InputViewLogic:ObservableObject,InputViewModel{
         (!isTextFieldFocused && !isBirthdayFocused && !isBloodTypeFocused) && input.isValid
     }
     
-    
-    // Below is to move views with keyboard's movement
-//    let geometry:GeometryProxy?
-//    var bottomSafeArea:CGFloat{ isTextFieldFocused ? geometry.safeAreaInsets.bottom : 40 }
-    
-    
-    func fetchLuckyPrefectureButton(){
+    func fetchLuckyPrefecture(){
        print("fetch button tapped")
-
+        
        if input.isValid{
            print("input: \(input)")
-           Task{
-               prefectureModel.fetchLuckyPrefecture(input: input)
-           }
+           Task{ prefectureModel.fetchLuckyPrefecture(input: input) }
        }else{
            print("input invalid")
        }
-       fetchButtonTapped = true
    }
    
     func focus(at field:InputField?){

@@ -10,8 +10,10 @@ import Alamofire
 
 
 
-struct InputView<Model>: View where Model: InputViewModel{
+struct InputView<Model>: View where Model: InputViewModelProtocol{
     @StateObject var viewModel:Model
+    @EnvironmentObject var safeArea:SafeArea
+    
     @FocusState private var isTextFieldFocused:Bool
     
     var body: some View {
@@ -25,6 +27,7 @@ struct InputView<Model>: View where Model: InputViewModel{
                         .submitLabel(.next)
 
                 }.shadow(color: viewModel.isTextFieldFocused ? .white : .clear, radius: 8)
+                /// setting FocusState to Name TextField, and sync it with viewModel's Published<Bool> property. Wanna write in a cleaner way.
                     .focused(self.$isTextFieldFocused)
                     .onAppear { self.isTextFieldFocused = viewModel.isTextFieldFocused}
                     .onChange(of: self.isTextFieldFocused) { viewModel.isTextFieldFocused = $0 }
@@ -48,11 +51,13 @@ struct InputView<Model>: View where Model: InputViewModel{
                 .onTapGesture { viewModel.focus(at: .bloodType) }
                 
                 if viewModel.isFetchButtonDisplayed{
-                    FetchButton(action: viewModel.fetchLuckyPrefectureButton)
+                    FetchButton(action: viewModel.fetchLuckyPrefecture)
+                    
                 }
+                
             }
-            // this padding allows this view to adopt to keyboard hight.
-//            .padding(.bottom, viewModel.bottomSafeArea)
+            .padding(.bottom,40)
+            .padding(.bottom, safeArea.insets.bottom)
             
             
             if viewModel.isBirthdayFocused{
@@ -78,7 +83,7 @@ struct InputView<Model>: View where Model: InputViewModel{
                         }.pickerStyle(.wheel)
                         
                         Button("See Fortune") {
-                            viewModel.fetchLuckyPrefectureButton()
+                            viewModel.fetchLuckyPrefecture()
                             viewModel.focus(at: .none)
                         }.buttonStyle(.borderedProminent)
                             .disabled(!viewModel.input.isValid)
@@ -102,7 +107,8 @@ struct InputView<Model>: View where Model: InputViewModel{
 struct ViewForResearch_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader{geo in
-            InputView(viewModel: InputViewLogic(prefectureModel:PrefectureModel(),geometry: geo))
+            InputView(viewModel: InputViewLogic(prefectureModel:PrefectureModel() ))
+                .environmentObject(SafeArea() )
         }
     }
 }
