@@ -77,10 +77,14 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
                             .datePickerStyle(.wheel)
                             .labelsHidden()
                         
-                        Button("Next") {
+                        Button{
                             viewModel.focus(at: .bloodType)
-                        }.buttonStyle(.borderedProminent)
-                    }
+                        }label:{
+                            Image(systemName: "checkmark")
+                        }
+                        .buttonStyle(.borderedProminent)
+                    } 
+                .padding(.horizontal)
                 }
                 
             }else if viewModel.isBloodTypeFocused{
@@ -100,6 +104,7 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
                         }.buttonStyle(.borderedProminent)
                             .disabled(!viewModel.input.isValid)
                     }
+                    .padding(.horizontal)
                 }
             }
 

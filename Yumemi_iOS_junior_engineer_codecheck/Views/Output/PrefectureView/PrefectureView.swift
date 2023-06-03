@@ -19,7 +19,7 @@ struct PrefectureView: View {
         GeometryReader{ proxy in
             VStack{
                 
-                ImagePageView(imagesInfo: prefacture.images, viewSize: CGSize(width: proxy.size.width, height: 400) )
+                ImagePageView(imagesInfo: prefacture.images, viewSize: CGSize(width: proxy.size.width, height: proxy.size.height/2) )
                 DetailView(prefecture: prefacture,
                            isBreafViewExpanded:$isBriefPoppedOver,
                            isMapExpanded: $isMapPoppedOver)

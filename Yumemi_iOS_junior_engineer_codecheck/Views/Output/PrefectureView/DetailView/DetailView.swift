@@ -46,34 +46,27 @@ struct DetailView: View {
                         .padding(.top)
                 }
                 
-                AsyncImage(url: prefecture.logoUrl){ image in
-                    VStack{
-                        image
-                            .resizable()
-                            .scaledToFit()
-                        HStack{
-                            Spacer()
-                            Text("位置を表示")
-                            Image(systemName: "hand.tap.fill")
-                        }.foregroundColor(.gray)
-                    }
-                    .padding()
-                        .overlay{
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color(.systemGray6))
+                Button{
+                    withAnimation{ isMapExpanded = true }
+                }label: {
+                    AsyncImage(url: prefecture.logoUrl){ image in
+                        VStack{
+                            image
+                                .resizable()
+                                .scaledToFit()
+                            HStack{
+                                Spacer()
+                                Text("位置")
+                                Image(systemName: "hand.point.up.left.fill")
+                            }.foregroundColor(.gray)
                         }
-                        .onTapGesture {}//this empty .onTapGesture() helps ParentView's ScrollView to work smoothly
-                        .onLongPressGesture(minimumDuration: 0.2) {
-                            withAnimation{
-                                isMapExpanded = true
-                            }
-                            UIImpactFeedbackGenerator(style: .heavy)
-                                .impactOccurred()
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 8)
+                            .foregroundColor(Color(.secondarySystemBackground)))
+                    } placeholder: {
+                            ProgressView()
                         }
-                    
-                } placeholder: {
-                    ProgressView()
-                }.layoutPriority(-1)
+                    }.layoutPriority(-1)
             }
             
             
@@ -86,15 +79,11 @@ struct DetailView: View {
                 }.foregroundColor(.gray)
             }
             .padding()
-            .overlay{
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color(.systemGray6))
-            }
+            .background(RoundedRectangle(cornerRadius: 8)
+                .foregroundColor(Color(.secondarySystemBackground)))
             .onTapGesture {}//this empty .onTapGesture() helps ParentView's ScrollView to work smoothly
             .onLongPressGesture(minimumDuration: 0.1) {
-                withAnimation{
-                    isBreafViewExpanded = true
-                }
+                withAnimation{ isBreafViewExpanded = true }
                 UIImpactFeedbackGenerator(style: .heavy)
                     .impactOccurred()
             }

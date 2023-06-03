@@ -14,6 +14,15 @@ struct MapView: View {
     @Binding var isDisplayed: Bool
     @State private var region:MKCoordinateRegion
     let viewSize:CGSize
+    var mapSize:CGSize{
+        let width = viewSize.width
+        let height = viewSize.height
+        if width < height{
+            return CGSize(width: width * 4/5, height: width * 5/5)
+        }else{
+            return CGSize(width: height * 5/5, height: height * 4/5)
+        }
+    }
     let pinLocation:PinLocation
     
     
@@ -56,7 +65,7 @@ struct MapView: View {
         .background(
             RoundedRectangle(cornerRadius: 8).foregroundColor(Color(.secondarySystemBackground)))
         .transition(.scale(scale: 0,anchor: UnitPoint(x: 0.7, y: 0.7)))
-        .padding(50)
+        .frame(width: mapSize.width, height: mapSize.height)
         .background(
             Rectangle()
                 .frame(width: viewSize.width, height: viewSize.height)
@@ -75,8 +84,9 @@ struct MapView: View {
 struct MapView_Previews: PreviewProvider {
     @State static private var isDisplayed = true
     static var previews: some View {
-        MapView(isDisplayed:$isDisplayed, viewSize:CGSize(width: 300, height: 300),pinLocation:  PinLocation(lat: 39, long: 138))
-    }
+        GeometryReader{ geo in
+            MapView(isDisplayed:$isDisplayed, viewSize:geo.size ,pinLocation:  PinLocation(lat: 39, long: 138))
+        }}
 }
 
 
