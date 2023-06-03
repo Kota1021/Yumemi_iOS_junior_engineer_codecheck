@@ -64,32 +64,32 @@ struct DetailView: View {
                         .background(RoundedRectangle(cornerRadius: 8)
                             .foregroundColor(Color(.secondarySystemBackground)))
                     } placeholder: {
-                            ProgressView()
-                        }
-                    }.layoutPriority(-1)
+                        ProgressView()
+                    }
+                }.layoutPriority(-1)
             }
             
-            
-            VStack{
-                Text( prefecture.brief )
-                HStack{
-                    Spacer()
-                    Text("長押しで続きを読む")
-                    Image(systemName: "hand.tap.fill")
-                }.foregroundColor(.gray)
-            }
-            .padding()
-            .background(RoundedRectangle(cornerRadius: 8)
-                .foregroundColor(Color(.secondarySystemBackground)))
-            .onTapGesture {}//this empty .onTapGesture() helps ParentView's ScrollView to work smoothly
-            .onLongPressGesture(minimumDuration: 0.1) {
+            LongPressButton(minimumDuration: 0.2,
+                            unpressed: Color(.secondarySystemBackground),
+                            pressed: Color.clear){
+                
                 withAnimation{ isBreafViewExpanded = true }
                 UIImpactFeedbackGenerator(style: .heavy)
                     .impactOccurred()
+                
+            }label:{
+                VStack{
+                    Text( prefecture.brief )
+                    HStack{
+                        Spacer()
+                        Text("長押しで続きを読む")
+                        Image(systemName: "hand.tap.fill")
+                    }.foregroundColor(.gray)
+                }.padding()
             }
-    
+            
         }.padding(.horizontal)
-        
+            .padding(.bottom)
     }
 }
 
