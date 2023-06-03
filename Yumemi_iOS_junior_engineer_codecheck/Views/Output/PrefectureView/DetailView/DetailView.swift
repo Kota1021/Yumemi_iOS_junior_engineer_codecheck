@@ -46,8 +46,13 @@ struct DetailView: View {
                         .padding(.top)
                 }
                 
-                Button{
+                LongPressButton(minimumDuration: 0.2,
+                                unpressed: Color(.secondarySystemBackground),
+                                pressed: Color.clear){
                     withAnimation{ isMapExpanded = true }
+                    UIImpactFeedbackGenerator(style: .heavy)
+                        .impactOccurred()
+                    
                 }label: {
                     AsyncImage(url: prefecture.logoUrl){ image in
                         VStack{
@@ -61,8 +66,6 @@ struct DetailView: View {
                             }.foregroundColor(.gray)
                         }
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 8)
-                            .foregroundColor(Color(.secondarySystemBackground)))
                     } placeholder: {
                         ProgressView()
                     }
