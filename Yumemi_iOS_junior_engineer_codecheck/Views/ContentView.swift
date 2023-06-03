@@ -21,10 +21,14 @@ struct ContentView: View {
         /// InputView is inside MaximumVerticalPageView, which ignores safe area.
         GeometryReader{ geo in
             MaximumVerticalPageView(selection: $displayedPage){
-                ProtocolOrientedTestView(geometry: geo)
+                InputView(viewLogic: ViewLogic(prefectureModel:prefectureModel), geometry: geo)
                 
-                OutputView(prefectureModel: prefectureModel)
-                    .tag(Pages.output)
+                if let prefecture = self.prefectureModel.prefecture{
+                    PrefectureView(prefacture: prefecture)
+                        .tag(Pages.output)
+                }else if let error = self.prefectureModel.error{
+                    ErrorView(error: error)
+                }
                 
                 HistoryView()
                     .tag(Pages.history)

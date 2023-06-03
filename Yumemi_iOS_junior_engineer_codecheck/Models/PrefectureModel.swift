@@ -11,24 +11,9 @@ import Alamofire
 
 class PrefectureModel: ObservableObject {
     
-    public var prefecture:Prefecture?{
-        guard let luckyPrefecture = luckyPrefecture else { return nil }
-
-        let location: PinLocation = PrefectureLocations.location(of: luckyPrefecture.name)
-        let images: [PrefectureImageInfo] = PrefectureImageInfoSets.infoSets(of: luckyPrefecture.name)
-        
-        return .init(name: luckyPrefecture.name,
-                     brief: luckyPrefecture.brief,
-                     capital: luckyPrefecture.capital,
-                     citizenDay: luckyPrefecture.citizenDay,
-                     hasCoastLine: luckyPrefecture.hasCoastLine,
-                     logoUrl: luckyPrefecture.logoUrl,
-                     location: location,
-                     images: images)
-    }
-    
-    @Published var luckyPrefecture:LuckyPrefecture? = nil
+    @Published public var prefecture:Prefecture?
     @Published var error:Error? = nil
+    
     
     public func fetchLuckyPrefecture(input:FortuneInput) {
         print("fetchAPI called")
@@ -42,17 +27,38 @@ class PrefectureModel: ObservableObject {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
-        Task{
-            let result = await AF.request(api.url, method: .post, parameters: input, encoder: .json(encoder: encoder), headers: api.headers).serializingDecodable(LuckyPrefecture.self, decoder: decoder).result
-            
-            do{
-                self.luckyPrefecture = try result.get()
-            }catch{
-                self.error = error
+        print("ganna make a request")
+        AF.request(api.url, method: .post, parameters: input, encoder: .json(encoder: encoder), headers: api.headers)
+            .responseDecodable(of: LuckyPrefecture.self, decoder: decoder){response in
+                switch response.result {
+                case .success:
+                    if let luckyPrefecture = response.value {
+                        self.setPrefecture(luckyPrefecture: luckyPrefecture)
+                        print("luckyPrefecture:\(luckyPrefecture)")
+                    } else {
+                        print("luckyPrefecture is nil")
+                    }
+                case .failure(let error):
+                    self.error = error
+                    print("failed to fetch luckyPrefecture")
+                }
             }
-            
-        }
         
+        print("went over AF")
+    }
+    
+    private func setPrefecture(luckyPrefecture:LuckyPrefecture){
+        let location: PinLocation = PrefectureLocations.location(of: luckyPrefecture.name)
+        let images: [PrefectureImageInfo] = PrefectureImageInfoSets.infoSets(of: luckyPrefecture.name)
+        
+        self.prefecture = Prefecture(name: luckyPrefecture.name,
+                                     brief: luckyPrefecture.brief,
+                                     capital: luckyPrefecture.capital,
+                                     citizenDay: luckyPrefecture.citizenDay,
+                                     hasCoastLine: luckyPrefecture.hasCoastLine,
+                                     logoUrl: luckyPrefecture.logoUrl,
+                                     location: location,
+                                     images: images)
     }
 }
 
