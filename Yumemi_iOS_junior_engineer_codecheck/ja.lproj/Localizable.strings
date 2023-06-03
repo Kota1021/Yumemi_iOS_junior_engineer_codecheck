@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  Yumemi_iOS_junior_engineer_codecheck
+
+  Created by 松本幸太郎 on 2023/06/04.
+  
+*/
+"LuckyPrefecture" = "あなたに最高の\n都道府県は？";
+"Name" = "名前";
+"JohnDoe" = "松本　幸太郎";
+"Birthday" = "誕生日";
+"BloodType" = "血液型";
+"SeeLuckyPrefecture" = "結果を見る";
+"SeeFortune" = "占う";
+"CapitalCity" = "県庁所在地";
+"Citizen'sDay" =  "市民の日";
+"Coastline" =  "海";
+"Brief" =  "概要";
+"Location" =  "位置";
+"LongPressToRead" = "長押しで続きを読む";

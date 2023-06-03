@@ -20,7 +20,7 @@ struct DetailView: View {
                     
                     Text(prefecture.name)
                         .fontWeight(.black)
-                        .font(.system(size: 60))
+                        .font(.system(size: 55))
                         .shadow(radius: 20)
                         .padding(10)
                     

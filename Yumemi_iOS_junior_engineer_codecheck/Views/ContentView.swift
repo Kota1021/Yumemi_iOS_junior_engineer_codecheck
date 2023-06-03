@@ -19,6 +19,7 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
     @State private var displayedPage = Pages.input
     
     var body: some View {
+        //MaximumVerticalPageView fills the screen, ignoring the safe area.
         MaximumVerticalPageView(selection: $displayedPage){
             InputView(viewModel:InputViewModel(prefectureModel: prefectureModel), shouldShowOutput: $displayOutputView)
                 .tag(Pages.input)
@@ -28,25 +29,26 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
                     PrefectureView(prefacture: prefecture)
                 }else if let error = self.prefectureModel.error{
                     ErrorView(error: error)
-                }}.tag(Pages.output)
+                }
+                
+            }.tag(Pages.output)
             
             HistoryView()
                 .tag(Pages.history)
             
-            
         }
-            .background(BackgroundView() )
-            .onReceive(Just(displayOutputView)) { shouldShow in
-                if shouldShow{
-                    Task(priority: .background) {
-                        try await Task.sleep(nanoseconds: UInt64(0.3 * 1_000_000_000) )
-                        Task{ @MainActor in
-                            withAnimation{ displayedPage = .output }
-                        }
+        .background(BackgroundView() )
+        .onReceive(Just(displayOutputView)) { shouldShow in
+            if shouldShow{
+                Task(priority: .background) {
+                    try await Task.sleep(nanoseconds: UInt64(0.3 * 1_000_000_000) )
+                    Task{ @MainActor in
+                        withAnimation{ displayedPage = .output }
                     }
                 }
-                
             }
+            
+        }
     }
     
     private enum Pages{
@@ -61,7 +63,7 @@ struct ContentView_Previews: PreviewProvider {
         ForEach(PreviewData.devices) { device in
             ContentView<PrefectureModel>(prefectureModel: PrefectureModel())
                 .environmentObject(ScreenSize(size: PreviewData.screenSize))
-//                .environmentObject(SafeArea())
+            //                .environmentObject(SafeArea())
             //.environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
                 .previewDevice(PreviewDevice(rawValue: device.name))
                 .previewDisplayName(device.previewTitle)

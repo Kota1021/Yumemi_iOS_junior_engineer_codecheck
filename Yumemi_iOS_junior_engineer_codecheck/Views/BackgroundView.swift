@@ -21,10 +21,11 @@ struct BackgroundView: View {
                 .frame(width: screen.width, height: screen.height)
                 .overlay{
                     VStack{
-                        Text("Lucky Prefecture")
-                            .foregroundColor(.white)
+                        Text("LuckyPrefecture")
+                            .multilineTextAlignment(.center)
                             .fontWeight(.black)
                             .font(.largeTitle)
+                            .foregroundColor(.white)
                             .shadow(radius: 8)
                             .padding(.top, 40)
                         Spacer()

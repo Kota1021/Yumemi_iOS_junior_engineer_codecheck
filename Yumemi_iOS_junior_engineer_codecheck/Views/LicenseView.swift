@@ -14,6 +14,7 @@ struct LicenseView: View {
             Text("images from: FIND/47 https://find47.jp via https://github.com/code4fukui/find47")
             Text("images from: https://japan-map.com/")
             Text("GlowBorder by Samuel Doe from: https://github.com/SamuelDo02/swiftuitutorials/blob/main/GlowBorder.swift")
+            Text("SwiftyUserDefaults :MIT License......")
         }
         
     }

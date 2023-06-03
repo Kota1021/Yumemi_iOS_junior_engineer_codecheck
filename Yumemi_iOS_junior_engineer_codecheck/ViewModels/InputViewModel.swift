@@ -6,11 +6,11 @@
 //
 
 import SwiftUI
+import SwiftyUserDefaults
 
 
 //this time I only wrote a ViewModel for InputView, which is I think complicated enough to need one.
 
-//wanted to try protocol oriented programming.
 protocol InputViewModelProtocol:ObservableObject{
     var name:String { get set }
     var birthday:Date { get set }
@@ -22,17 +22,33 @@ protocol InputViewModelProtocol:ObservableObject{
     var isBloodTypeFocused:Bool { get set }
     var isFetchButtonDisplayed:Bool{ get }
     
+    var dateRange:ClosedRange<Date>{ get }
     func fetchLuckyPrefecture(onReceive action:@escaping ()->Void)
-//    func fetchLuckyPrefecture()
     func focus(at:InputField?)
+    func viewDidDisappear()
 }
 
 
 class InputViewModel<PrefectureModel:PrefectureModelProtocol>:ObservableObject,InputViewModelProtocol{
     
+    
     init(prefectureModel:PrefectureModel){
         self.prefectureModel = prefectureModel
+        
+        //Loading user info from User Defaults
+        print("loading user info: \(Defaults[\.userInfo])")
+        let userInfo = Defaults[\.userInfo]
+        self.name = userInfo.name
+        self.birthday = userInfo.birthday.toDate()
+        self.bloodType = userInfo.bloodType
     }
+    
+    func viewDidDisappear(){
+        print("input: \(input)")
+        print("saving to user info: \(Defaults[\.userInfo])")
+        Defaults[\.userInfo] = input
+    }
+    
     
     let prefectureModel:PrefectureModel
     
@@ -54,6 +70,13 @@ class InputViewModel<PrefectureModel:PrefectureModelProtocol>:ObservableObject,I
     var isFetchButtonDisplayed:Bool{
         (!isTextFieldFocused && !isBirthdayFocused && !isBloodTypeFocused) && input.isValid
     }
+    
+    var dateRange: ClosedRange<Date>{
+            let calendar = Calendar.current
+            let start = calendar.date(byAdding: .year, value: -100, to: Date())!
+            let today = Date()
+            return start...today
+        }
     
     func fetchLuckyPrefecture(onReceive action:@escaping ()->Void){
        print("fetch button tapped")

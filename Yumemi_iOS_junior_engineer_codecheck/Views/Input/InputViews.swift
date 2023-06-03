@@ -21,7 +21,7 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
             
             VStack{
                 InputForm("Name"){
-                    TextField("John Doe",text: $viewModel.name)
+                    TextField("JohnDoe",text: $viewModel.name)
                         .multilineTextAlignment(.trailing)
                         .submitLabel(.next)
 
@@ -42,7 +42,7 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
                 .shadow(color: viewModel.isBirthdayFocused ? .white : .clear, radius: 8)
                 .onTapGesture { viewModel.focus(at: .birthday) }
 
-                InputForm("Blood Type"){
+                InputForm("BloodType"){
                     Text(viewModel.bloodType.rawValue)
 
                 }
@@ -59,7 +59,7 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
                             Image(systemName: "paperplane.fill")
                                 .resizable()
                                 .frame(width: 30, height: 30)
-                            Text("See Lucky Prefecture")
+                            Text("SeeLuckyPrefecture")
                         }
                     }.buttonStyle(.borderedProminent)
                         .compositingGroup()
@@ -73,7 +73,7 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
             if viewModel.isBirthdayFocused{
                 KeyboardAlikeView{
                     HStack{
-                        DatePicker("Birthday", selection: $viewModel.birthday,displayedComponents: [.date])
+                        DatePicker("Birthday", selection: $viewModel.birthday,in: viewModel.dateRange, displayedComponents: [.date])
                             .datePickerStyle(.wheel)
                             .labelsHidden()
                         
@@ -96,7 +96,7 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
                             }
                         }.pickerStyle(.wheel)
                         
-                        Button("See Fortune") {
+                        Button("SeeFortune") {
                             viewModel.fetchLuckyPrefecture(onReceive: {
                                         self.shouldShowOutput = true
                             })
@@ -116,6 +116,7 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
                     viewModel.focus(at: .none)
                 }
         )
+        .onDisappear{viewModel.viewDidDisappear()}
         
     }
     

@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import SwiftyUserDefaults
 
-struct FortuneInput:Encodable{
+struct FortuneInput:Codable{
     public let name:String // no more than 127 characters
     public let birthday:YearMonthDay
     public let bloodType:ABOBloodType
@@ -16,6 +17,8 @@ struct FortuneInput:Encodable{
     public var isValid:Bool{ !name.isEmpty && name.count < 128 }
 
 }
+
+extension FortuneInput:DefaultsSerializable{}
 
 struct YearMonthDay:Codable{
     public let year:Int
@@ -43,7 +46,7 @@ extension YearMonthDay{
         return formatter.string(from: self.toDate())
     }
     
-    private func toDate()->Date{
+    public func toDate()->Date{
         let calendar = Calendar(identifier: .gregorian)
         let dateComponents = DateComponents(year:self.year, month: self.month, day: self.day)
         guard let date = calendar.date(from: dateComponents ) else{ fatalError("invalid date") }

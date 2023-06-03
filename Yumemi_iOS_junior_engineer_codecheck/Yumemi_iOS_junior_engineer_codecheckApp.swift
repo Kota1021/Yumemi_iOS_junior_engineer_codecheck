@@ -20,12 +20,11 @@ struct Yumemi_iOS_junior_engineer_codecheckApp: App {
                 .onAppear {
                     guard let window = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
                         fatalError("could not get window size") }
-//                    self.screenSize.size = UIScreen.main.bounds.size
                     self.screenSize = window.screen.bounds.size
                     print("screenSize: \(self.screenSize)")
                 }
+            // setting ScreenSize in environmentObject because UIScreen.main will be deplicated
                 .environmentObject(ScreenSize(size: self.screenSize))
-//                .environmentObject(screenSize)
         }
     }
 }
