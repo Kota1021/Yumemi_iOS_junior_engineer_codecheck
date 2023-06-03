@@ -22,7 +22,8 @@ protocol InputViewModelProtocol:ObservableObject{
     var isBloodTypeFocused:Bool { get set }
     var isFetchButtonDisplayed:Bool{ get }
     
-    func fetchLuckyPrefecture()
+    func fetchLuckyPrefecture(onReceive action:@escaping ()->Void)
+//    func fetchLuckyPrefecture()
     func focus(at:InputField?)
 }
 
@@ -54,15 +55,19 @@ class InputViewModel<PrefectureModel:PrefectureModelProtocol>:ObservableObject,I
         (!isTextFieldFocused && !isBirthdayFocused && !isBloodTypeFocused) && input.isValid
     }
     
-    func fetchLuckyPrefecture(){
+    func fetchLuckyPrefecture(onReceive action:@escaping ()->Void){
        print("fetch button tapped")
         
        if input.isValid{
            print("input: \(input)")
-           Task{ prefectureModel.fetchLuckyPrefecture(input: input) }
+               prefectureModel.fetchLuckyPrefecture(input: input){
+               action()
+           }
+               
        }else{
            print("input invalid")
        }
+        
    }
    
     func focus(at field:InputField?){

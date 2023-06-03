@@ -52,9 +52,7 @@ struct MaximumVerticalPageView<Content,Selection>: View where Content:View, Sele
             }
             
         }
-        
     }
-    
 }
 
 
@@ -65,22 +63,23 @@ struct IgnoreSafeAreaView_Previews: PreviewProvider {
     enum ABC{ case a,b,c }
     
     static var previews: some View {
-        MaximumVerticalPageView(selection:$selection){
-            Text("View1!")
-                .frame(width: PreviewData.screenSize.width, height: PreviewData.screenSize.height)
-                .background(.red)
-                .tag(ABC.a)
-            
-            Text("View2!")
-                .frame(width: PreviewData.screenSize.width, height: PreviewData.screenSize.height)
-                .background(.green)
-                .tag(ABC.b)
-            
-            Text("View3")
-                .frame(width: PreviewData.screenSize.width, height: PreviewData.screenSize.height)
-                .background(.yellow)
-                .tag(ABC.c)
-            
-        }
+            MaximumVerticalPageView(selection:$selection){
+                Text("View1!")
+                    .frame(width: PreviewData.screenSize.width, height: PreviewData.screenSize.height)
+                    .background(.red)
+                    .tag(ABC.a)
+                
+                Text("View2!")
+                    .frame(width: PreviewData.screenSize.width, height: PreviewData.screenSize.height)
+                    .background(.green)
+                    .tag(ABC.b)
+                
+                Text("View3")
+                    .frame(width: PreviewData.screenSize.width, height: PreviewData.screenSize.height)
+                    .background(.yellow)
+                    .tag(ABC.c)
+                
+            }
+        
     }
 }

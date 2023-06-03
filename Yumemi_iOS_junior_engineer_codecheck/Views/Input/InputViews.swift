@@ -8,12 +8,11 @@
 import SwiftUI
 import Alamofire
 
-
-
 struct InputView<Model>: View where Model: InputViewModelProtocol{
     @StateObject var viewModel:Model
-    @EnvironmentObject var safeArea:SafeArea
+    @Binding var shouldShowOutput:Bool
     
+    @EnvironmentObject var safeArea:SafeArea
     @FocusState private var isTextFieldFocused:Bool
     
     var body: some View {
@@ -27,7 +26,7 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
                         .submitLabel(.next)
 
                 }.shadow(color: viewModel.isTextFieldFocused ? .white : .clear, radius: 8)
-                /// setting FocusState to Name TextField, and sync it with viewModel's Published<Bool> property. Wanna write in a cleaner way.
+                /// below sets FocusState to Name TextField, and sync it with viewModel's Published<Bool> property. Wanna write in a cleaner way.
                     .focused(self.$isTextFieldFocused)
                     .onAppear { self.isTextFieldFocused = viewModel.isTextFieldFocused}
                     .onChange(of: self.isTextFieldFocused) { viewModel.isTextFieldFocused = $0 }
@@ -51,14 +50,25 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
                 .onTapGesture { viewModel.focus(at: .bloodType) }
                 
                 if viewModel.isFetchButtonDisplayed{
-                    FetchButton(action: viewModel.fetchLuckyPrefecture)
-                    
+                    Button{
+                        viewModel.fetchLuckyPrefecture(onReceive: {
+                                    self.shouldShowOutput = true
+                        })
+                    }label:{
+                        HStack{
+                            Image(systemName: "paperplane.fill")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                            Text("See Lucky Prefecture")
+                        }
+                    }.buttonStyle(.borderedProminent)
+                        .compositingGroup()
+                        .shadow(color: .white ,radius: 8)
                 }
                 
             }
             .padding(.bottom,40)
             .padding(.bottom, safeArea.insets.bottom)
-            
             
             if viewModel.isBirthdayFocused{
                 KeyboardAlikeView{
@@ -83,7 +93,9 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
                         }.pickerStyle(.wheel)
                         
                         Button("See Fortune") {
-                            viewModel.fetchLuckyPrefecture()
+                            viewModel.fetchLuckyPrefecture(onReceive: {
+                                        self.shouldShowOutput = true
+                            })
                             viewModel.focus(at: .none)
                         }.buttonStyle(.borderedProminent)
                             .disabled(!viewModel.input.isValid)
@@ -105,9 +117,11 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
 }
 
 struct ViewForResearch_Previews: PreviewProvider {
+    @State static var shouldShowOutput = false
     static var previews: some View {
         GeometryReader{geo in
-            InputView(viewModel: InputViewModel(prefectureModel:PrefectureModel() ))
+            InputView(viewModel: InputViewModel(prefectureModel:PrefectureModel() ),
+                      shouldShowOutput: $shouldShowOutput )
                 .environmentObject(SafeArea() )
         }
     }

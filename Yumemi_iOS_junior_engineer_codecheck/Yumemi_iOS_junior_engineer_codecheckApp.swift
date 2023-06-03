@@ -13,7 +13,7 @@ struct Yumemi_iOS_junior_engineer_codecheckApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(prefectureModel: PrefectureModel())
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

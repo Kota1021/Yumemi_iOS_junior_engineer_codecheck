@@ -23,3 +23,8 @@ struct Prefecture{
     let images:[PrefectureImageInfo]
 }
 
+extension Prefecture:Equatable{
+    static func == (lhs: Prefecture, rhs: Prefecture) -> Bool {
+        lhs.name == rhs.name
+    }
+}

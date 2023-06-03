@@ -13,7 +13,7 @@ import Combine
 protocol PrefectureModelProtocol:ObservableObject{
     var prefecture:Prefecture? { get }
     var error:AFError? { get }
-    func fetchLuckyPrefecture(input:FortuneInput)
+    func fetchLuckyPrefecture(input:FortuneInput,onReceive action: @escaping ()->Void)
 }
 
 //PrefectureModel does not know view
@@ -22,7 +22,7 @@ class PrefectureModel: ObservableObject, PrefectureModelProtocol{
     @Published private(set) var prefecture:Prefecture?
     @Published private(set) var error:AFError? = nil
     
-    public func fetchLuckyPrefecture(input:FortuneInput) {
+    public func fetchLuckyPrefecture(input:FortuneInput,onReceive action: @escaping ()->Void) {
         let api = FortuneAPI()
         
         /// If you set JSONDecoder.keyDecodingStrategy's value into .convertFromSnakeCase, it will automatically change snake_case into camelCase, and vice versa.
@@ -47,6 +47,7 @@ class PrefectureModel: ObservableObject, PrefectureModelProtocol{
                     self.error = error
                     print("failed to fetch luckyPrefecture")
                 }
+                action()
             }
     }
     
