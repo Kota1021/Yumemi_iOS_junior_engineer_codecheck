@@ -107,7 +107,7 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
 struct ViewForResearch_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader{geo in
-            InputView(viewModel: InputViewLogic(prefectureModel:PrefectureModel() ))
+            InputView(viewModel: InputViewModel(prefectureModel:PrefectureModel() ))
                 .environmentObject(SafeArea() )
         }
     }

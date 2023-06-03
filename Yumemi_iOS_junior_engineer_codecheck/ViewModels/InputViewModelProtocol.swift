@@ -27,7 +27,7 @@ protocol InputViewModelProtocol:ObservableObject{
 }
 
 
-class InputViewLogic<PrefectureModel:PrefectureModelProtocol>:ObservableObject,InputViewModelProtocol{
+class InputViewModel<PrefectureModel:PrefectureModelProtocol>:ObservableObject,InputViewModelProtocol{
     
     init(prefectureModel:PrefectureModel){
         self.prefectureModel = prefectureModel

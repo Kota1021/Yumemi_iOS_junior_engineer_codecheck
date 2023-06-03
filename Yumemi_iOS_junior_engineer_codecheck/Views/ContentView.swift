@@ -14,12 +14,12 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol,InputVM:InputViewMode
     //    @Environment(\.managedObjectContext) private var viewContext
     
     @ObservedObject var prefectureModel:PrefectureModel
-    let inputViewModel:InputViewLogic<PrefectureModel>
+    let inputViewModel:InputViewModel<PrefectureModel>
     @State private var displayedPage = Pages.input
     
     init(prefectureModel: PrefectureModel) {
         self.prefectureModel = prefectureModel
-        self.inputViewModel =  InputViewLogic(prefectureModel:prefectureModel)
+        self.inputViewModel =  InputViewModel(prefectureModel:prefectureModel)
     }
     
     var body: some View {
