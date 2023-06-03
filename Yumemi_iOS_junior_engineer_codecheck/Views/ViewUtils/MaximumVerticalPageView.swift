@@ -13,11 +13,13 @@ class SafeArea:ObservableObject{
 }
 
 /// ignores safe area.
+/// Use SafeArea() environmentObject inside MaximumVerticalPageView
 struct MaximumVerticalPageView<Content,Selection>: View where Content:View, Selection:Hashable{
     
     let content: ()->Content
     private var selection:Binding<Selection>?
-    @EnvironmentObject var safeArea: SafeArea
+    @ObservedObject var safeArea = SafeArea()
+    @EnvironmentObject var screen: ScreenSize
     
     init(selection:Binding<Selection>?, @ViewBuilder content: @escaping ()->Content) {
         
@@ -42,7 +44,7 @@ struct MaximumVerticalPageView<Content,Selection>: View where Content:View, Sele
                     content()
                     
                 }
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                .frame(width: screen.width, height: screen.height)
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 
             }
@@ -50,8 +52,7 @@ struct MaximumVerticalPageView<Content,Selection>: View where Content:View, Sele
             .onChange(of: proxy.safeAreaInsets) { newValue in
                 withAnimation { safeArea.insets = newValue }
             }
-            
-        }
+        }.environmentObject(safeArea)
     }
 }
 
@@ -79,7 +80,7 @@ struct IgnoreSafeAreaView_Previews: PreviewProvider {
                     .background(.yellow)
                     .tag(ABC.c)
                 
-            }
+            }.environmentObject(ScreenSize(size: PreviewData.screenSize))
         
     }
 }

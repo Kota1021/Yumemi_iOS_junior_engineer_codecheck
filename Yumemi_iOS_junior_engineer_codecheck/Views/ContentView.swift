@@ -33,8 +33,8 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
             HistoryView()
                 .tag(Pages.history)
             
-            ///This SafeArea() environmentObject is to tell the safe area to views inside MaximumVerticalPageView, which  ignores safe area.
-        }.environmentObject(SafeArea() )
+            
+        }
             .background(BackgroundView() )
             .onReceive(Just(displayOutputView)) { shouldShow in
                 if shouldShow{
@@ -60,7 +60,8 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(PreviewData.devices) { device in
             ContentView<PrefectureModel>(prefectureModel: PrefectureModel())
-                .environmentObject(SafeArea())
+                .environmentObject(ScreenSize(size: PreviewData.screenSize))
+//                .environmentObject(SafeArea())
             //.environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
                 .previewDevice(PreviewDevice(rawValue: device.name))
                 .previewDisplayName(device.previewTitle)

@@ -8,18 +8,17 @@
 import SwiftUI
 
 struct KeyboardAlikeView<Content:View>: View {
+    @EnvironmentObject var screen:ScreenSize
     let content: ()->Content
-    let width:CGFloat
+    
     init(@ViewBuilder content: @escaping () -> Content) {
         self.content = content
-
-        self.width = UIScreen.main.bounds.width
     }
     var body: some View {
         content()
             .transition(.move(edge: .bottom))
             .ignoresSafeArea()
-            .frame(width:width)
+            .frame(width:screen.width)
             .padding(.bottom)
             .background(Color("keyboardBackground") )
     }
@@ -29,6 +28,7 @@ struct KeyboardAlikeView_Previews: PreviewProvider {
 
     static var previews: some View {
         KeyboardAlikeView{ Text("aaa") }
+            .environmentObject(ScreenSize(size: PreviewData.screenSize))
 
     }
 }

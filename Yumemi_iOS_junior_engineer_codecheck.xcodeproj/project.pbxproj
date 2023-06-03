@@ -18,9 +18,6 @@
 		672DB2122A28DD330041BD60 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB2112A28DD330041BD60 /* DetailView.swift */; };
 		672DB21A2A28EC0D0041BD60 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB2192A28EC0D0041BD60 /* Error.swift */; };
 		672DB21C2A28EE150041BD60 /* MaximumVerticalPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB21B2A28EE150041BD60 /* MaximumVerticalPageView.swift */; };
-		672DB2202A2909C10041BD60 /* japan.png in Resources */ = {isa = PBXBuildFile; fileRef = 672DB21F2A2909C10041BD60 /* japan.png */; };
-		672DB2222A290B2D0041BD60 /* 2270.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 672DB2212A290B2D0041BD60 /* 2270.jpg */; };
-		672DB2242A290CCC0041BD60 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 672DB2232A290CCC0041BD60 /* photo.png */; };
 		672EE5B92A2A798A007EA3F3 /* InputViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672EE5B82A2A798A007EA3F3 /* InputViews.swift */; };
 		672EE5BB2A2A96EA007EA3F3 /* PrefectureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672EE5BA2A2A96EA007EA3F3 /* PrefectureModel.swift */; };
 		6769D8932A29E90100F49219 /* GlowBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6769D8922A29E90100F49219 /* GlowBorder.swift */; };
@@ -83,9 +80,6 @@
 		672DB2112A28DD330041BD60 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		672DB2192A28EC0D0041BD60 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		672DB21B2A28EE150041BD60 /* MaximumVerticalPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaximumVerticalPageView.swift; sourceTree = "<group>"; };
-		672DB21F2A2909C10041BD60 /* japan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = japan.png; sourceTree = "<group>"; };
-		672DB2212A290B2D0041BD60 /* 2270.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2270.jpg; sourceTree = "<group>"; };
-		672DB2232A290CCC0041BD60 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
 		672EE5B82A2A798A007EA3F3 /* InputViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViews.swift; sourceTree = "<group>"; };
 		672EE5BA2A2A96EA007EA3F3 /* PrefectureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefectureModel.swift; sourceTree = "<group>"; };
 		6769D8922A29E90100F49219 /* GlowBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowBorder.swift; sourceTree = "<group>"; };
@@ -194,6 +188,7 @@
 				672DB2182A28EB0B0041BD60 /* Output */,
 				676EA8CB2A285853005C455B /* HistoryView.swift */,
 				671A352D2A276A5700F6358D /* LicenseView.swift */,
+				676EA8CD2A285ACD005C455B /* BackgroundView.swift */,
 				6769D89F2A2A2DF300F49219 /* ViewUtils */,
 			);
 			path = Views;
@@ -205,7 +200,6 @@
 				67F2D1222A2BC31500BF713F /* LongPressButton.swift */,
 				6769D8922A29E90100F49219 /* GlowBorder.swift */,
 				672DB21B2A28EE150041BD60 /* MaximumVerticalPageView.swift */,
-				676EA8CD2A285ACD005C455B /* BackgroundView.swift */,
 				6769D8982A2A0C0B00F49219 /* KeyboardAlike.swift */,
 			);
 			path = ViewUtils;
@@ -309,10 +303,7 @@
 		676EA9112A288BBD005C455B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				672DB2232A290CCC0041BD60 /* photo.png */,
-				672DB21F2A2909C10041BD60 /* japan.png */,
 				676ABFFD2A270E95009F34E9 /* Assets.xcassets */,
-				672DB2212A290B2D0041BD60 /* 2270.jpg */,
 				6769D8942A29F24B00F49219 /* prefLatiLong.json */,
 				676EA90F2A288B79005C455B /* find47images.json */,
 			);
@@ -435,10 +426,7 @@
 				676AC0012A270E95009F34E9 /* Preview Assets.xcassets in Resources */,
 				6769D8952A29F24B00F49219 /* prefLatiLong.json in Resources */,
 				676EA9102A288B79005C455B /* find47images.json in Resources */,
-				672DB2242A290CCC0041BD60 /* photo.png in Resources */,
-				672DB2222A290B2D0041BD60 /* 2270.jpg in Resources */,
 				676ABFFE2A270E95009F34E9 /* Assets.xcassets in Resources */,
-				672DB2202A2909C10041BD60 /* japan.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

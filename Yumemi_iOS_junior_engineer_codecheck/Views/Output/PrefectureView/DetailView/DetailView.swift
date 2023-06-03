@@ -62,7 +62,7 @@ struct DetailView: View {
                             HStack{
                                 Spacer()
                                 Text("位置")
-                                Image(systemName: "hand.point.up.left.fill")
+                                Image(systemName: "hand.tap.fill")
                             }.foregroundColor(.gray)
                         }
                         .padding()
