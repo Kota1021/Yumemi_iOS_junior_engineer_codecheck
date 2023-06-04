@@ -9,11 +9,14 @@ import SwiftUI
 
 struct HistoryView<PrefectureModel>: View where PrefectureModel: PrefectureModelProtocol{
     
-    @Binding var shouldShowOutput: Bool
-//    @State private var blurStrength:Double = 0
     
-    let viewSize:CGSize
     @ObservedObject var prefectureModel:PrefectureModel
+    @Binding var shouldShowOutput: Bool
+    let viewSize:CGSize
+    
+    @State private var selectedPrefecture: Prefecture? = nil
+    
+    let histories:[History] = [PreviewData.history,PreviewData.history,PreviewData.history] //ここあとでcoredata で、検索者の情報なども伴って。
     
     init(size: CGSize,shouldShowOutput:Binding<Bool>, prefectureModel:PrefectureModel) {
         self.prefectureModel = prefectureModel
@@ -21,18 +24,14 @@ struct HistoryView<PrefectureModel>: View where PrefectureModel: PrefectureModel
         self._shouldShowOutput = shouldShowOutput
     }
     
-    func cardTapped(prefecture:String){
-        
-    }
-    
     var body: some View {
         ScrollView(.horizontal){
             HStack{
-                ForEach(1..<10) { _ in
+                ForEach(0..<histories.count) { index in
                     Button{
-                        cardTapped(prefecture:"")
+                        self.selectedPrefecture =  histories[index].prefecture
                     }label:{
-                        HistoryCardView()
+                        HistoryCardView(history:histories[index])
                     }.buttonStyle(.plain)
                 }
             }

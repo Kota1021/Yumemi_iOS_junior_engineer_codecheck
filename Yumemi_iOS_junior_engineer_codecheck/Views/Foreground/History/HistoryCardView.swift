@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HistoryCardView: View {
+    let history:History
     let width:CGFloat = 200
     let height:CGFloat = 300
     
@@ -27,12 +28,12 @@ struct HistoryCardView: View {
             .frame(width: imageWidth, height: imageHeight)
                 
                 VStack(alignment: .leading){
-                    Text("Prefecture")
+                    Text(history.prefecture.name)
                         .font(.largeTitle)
-                    Text("Name")
-                    Text("Birthday")
-                    Text("BloodType")
-                    Text("Date")
+                    Text(history.input.name)
+                    Text(history.input.birthday.toString())
+                    Text(history.input.bloodType.rawValue)
+                    Text(history.input.today.toString())
                 }.padding()
                 Spacer()
             }.frame(width: width,height: height)
@@ -44,6 +45,11 @@ struct HistoryCardView: View {
 
 struct HistoryCardView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryCardView()
+        HistoryCardView(history: PreviewData.history)
     }
+}
+
+struct History{
+    let prefecture:Prefecture
+    let input:UserInput
 }

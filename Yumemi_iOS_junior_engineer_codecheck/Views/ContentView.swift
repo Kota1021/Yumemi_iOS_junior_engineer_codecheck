@@ -34,7 +34,7 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
                 
             }.tag(Pages.output)
             
-            HistoryView(size:screen.size,shouldShowOutput: $displayOutputView)
+            HistoryView(size:screen.size,shouldShowOutput: $displayOutputView, prefectureModel: prefectureModel)
                 .tag(Pages.history)
             
             LicenseView(size:screen.size)

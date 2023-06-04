@@ -15,7 +15,7 @@ protocol InputViewModelProtocol:ObservableObject{
     var name:String { get set }
     var birthday:Date { get set }
     var bloodType:ABOBloodType { get set }
-    var input:FortuneInput { get }
+    var input:UserInput { get }
     
     var isTextFieldFocused:Bool{ get set }
     var isBirthdayFocused:Bool { get set }
@@ -55,7 +55,7 @@ class InputViewModel<PrefectureModel:PrefectureModelProtocol>:ObservableObject,I
     @Published  var birthday:Date = Date()
     @Published  var bloodType:ABOBloodType = .a
     
-    var input:FortuneInput{
+    var input:UserInput{
         .init(name: name,
               birthday: YearMonthDay(from: birthday),
               bloodType: bloodType,

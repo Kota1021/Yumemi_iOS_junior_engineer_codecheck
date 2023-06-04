@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyUserDefaults
 
-struct FortuneInput:Codable{
+struct UserInput:Codable{
     public let name:String // no more than 127 characters
     public let birthday:YearMonthDay
     public let bloodType:ABOBloodType
@@ -18,7 +18,7 @@ struct FortuneInput:Codable{
 
 }
 
-extension FortuneInput:DefaultsSerializable{}
+extension UserInput:DefaultsSerializable{}
 
 struct YearMonthDay:Codable{
     public let year:Int
