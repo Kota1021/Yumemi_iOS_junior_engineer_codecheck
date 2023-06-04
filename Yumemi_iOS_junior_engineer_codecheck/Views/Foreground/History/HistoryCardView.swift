@@ -10,12 +10,24 @@ import SwiftUI
 struct HistoryCardView: View {
 //    @EnvironmentObject var screen:ScreenSize
     
-    let width:CGFloat = 150
-    let height:CGFloat = 150
+    let width:CGFloat = 200
+    let height:CGFloat = 300
+    
+    var imageWidth:CGFloat = 200
+    var imageHeight:CGFloat = 150
     
     var body: some View {
-        GeometryReader{ geo in
-            HStack{
+            VStack{
+                AsyncImage(url: URL(string: "https://find47.jp/ja/i/vqLsw/image_file?type=detail_thumb")) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .clipped()
+                } placeholder: {
+                    ProgressView()
+                }
+            .frame(width: imageWidth, height: imageHeight)
+                
                 VStack(alignment: .leading){
                     Text("Prefecture")
                         .font(.largeTitle)
@@ -25,24 +37,10 @@ struct HistoryCardView: View {
                     Text("Date")
                 }.padding()
                 Spacer()
-                
-                AsyncImage(url: URL(string: "https://find47.jp/ja/i/vqLsw/image_file?type=detail_thumb")) { image in
-                    image
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: width, height: height)
-                        .clipped()
-                } placeholder: {
-                    ProgressView()
-                }
-                
-            }
-                .background(Color(.systemGroupedBackground) )
-                .clipShape(RoundedRectangle(
-                                cornerRadius: 8,
-                                style: .continuous ) )
-                .padding()
-        }
+            }.frame(width: width,height: height)
+            .background(Color(.secondarySystemBackground) )
+            .clipShape(RoundedRectangle(cornerRadius: 8) )
+            .padding()
     }
 }
 

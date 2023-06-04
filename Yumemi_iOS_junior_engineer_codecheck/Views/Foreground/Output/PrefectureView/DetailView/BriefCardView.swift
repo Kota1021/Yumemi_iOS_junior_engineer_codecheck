@@ -14,6 +14,7 @@ struct BriefCardView: View {
     
     var body: some View {
         Text(text)
+            .textSelection(.enabled)
             .padding()
             .background(Color(.secondarySystemBackground) )
             .clipShape(RoundedRectangle(cornerRadius: 8))

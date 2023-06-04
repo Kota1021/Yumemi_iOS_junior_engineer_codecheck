@@ -52,6 +52,7 @@
 		67EE94C02A2BFE6000349ADF /* SwiftyUserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EE94BF2A2BFE6000349ADF /* SwiftyUserDefaultKeys.swift */; };
 		67EE94C22A2C0AF500349ADF /* HistoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EE94C12A2C0AF500349ADF /* HistoryCardView.swift */; };
 		67EE94C72A2C0C3C00349ADF /* TextAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EE94C62A2C0C3C00349ADF /* TextAlignment.swift */; };
+		67EE94C92A2C223300349ADF /* URLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EE94C82A2C223300349ADF /* URLButton.swift */; };
 		67F2D1232A2BC31500BF713F /* LongPressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F2D1222A2BC31500BF713F /* LongPressButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +120,7 @@
 		67EE94BF2A2BFE6000349ADF /* SwiftyUserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyUserDefaultKeys.swift; sourceTree = "<group>"; };
 		67EE94C12A2C0AF500349ADF /* HistoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCardView.swift; sourceTree = "<group>"; };
 		67EE94C62A2C0C3C00349ADF /* TextAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAlignment.swift; sourceTree = "<group>"; };
+		67EE94C82A2C223300349ADF /* URLButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLButton.swift; sourceTree = "<group>"; };
 		67F2D1222A2BC31500BF713F /* LongPressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,6 +210,7 @@
 				6769D8922A29E90100F49219 /* GlowBorder.swift */,
 				6769D8982A2A0C0B00F49219 /* KeyboardAlike.swift */,
 				67EE94C62A2C0C3C00349ADF /* TextAlignment.swift */,
+				67EE94C82A2C223300349ADF /* URLButton.swift */,
 			);
 			path = ViewUtils;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				672EE5B92A2A798A007EA3F3 /* InputViews.swift in Sources */,
 				676AD3D02A2AC2B20047ED58 /* FetchButton.swift in Sources */,
 				6769D8972A29FCC400F49219 /* PrefectureLocation.swift in Sources */,
+				67EE94C92A2C223300349ADF /* URLButton.swift in Sources */,
 				676AC0292A2710FA009F34E9 /* FortuneAPI.swift in Sources */,
 				676AD3D52A2BA3860047ED58 /* VPageViewAnimationTest.swift in Sources */,
 				6769D8992A2A0C0B00F49219 /* KeyboardAlike.swift in Sources */,

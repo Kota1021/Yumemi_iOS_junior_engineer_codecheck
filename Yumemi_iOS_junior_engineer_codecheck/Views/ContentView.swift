@@ -15,6 +15,7 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
     //    @Environment(\.managedObjectContext) private var viewContext
     
     @ObservedObject var prefectureModel: PrefectureModel
+    @EnvironmentObject var screen:ScreenSize
     @State private var displayOutputView = false
     @State private var displayedPage = Pages.input
     
@@ -33,10 +34,10 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
                 
             }.tag(Pages.output)
             
-            HistoryView()
+            HistoryView(size:screen.size)
                 .tag(Pages.history)
             
-            LicenseView()
+            LicenseView(size:screen.size)
                 .tag(Pages.license)
             
         }

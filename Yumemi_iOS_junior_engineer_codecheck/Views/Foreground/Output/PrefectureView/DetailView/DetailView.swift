@@ -46,12 +46,11 @@ struct DetailView: View {
                         .padding(.top)
                 }
                 
-                LongPressButton(minimumDuration: 0.2,
-                                unpressed: Color(.secondarySystemBackground),
-                                pressed: Color.clear){
+//                LongPressButton(minimumDuration: 0.2, unpressed: Color(.secondarySystemBackground), pressed: Color.clear){
+                Button{
                     withAnimation{ isMapExpanded = true }
-                    UIImpactFeedbackGenerator(style: .heavy)
-                        .impactOccurred()
+//                    UIImpactFeedbackGenerator(style: .heavy)
+//                        .impactOccurred()
                     
                 }label: {
                     AsyncImage(url: prefecture.logoUrl){ image in
@@ -61,7 +60,8 @@ struct DetailView: View {
                                 .scaledToFit()
                             HStack{
                                 Spacer()
-                                Text("位置")
+                                Text("位置を確認")
+                                    .lineLimit(1)
                                 Image(systemName: "hand.tap.fill")
                             }.foregroundColor(.gray)
                         }
@@ -70,26 +70,29 @@ struct DetailView: View {
                         ProgressView()
                     }
                 }.layoutPriority(-1)
+                    .background(Color(.secondarySystemBackground))
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
             }
             
-            LongPressButton(minimumDuration: 0.2,
-                            unpressed: Color(.secondarySystemBackground),
-                            pressed: Color.clear){
-                
+//                LongPressButton(minimumDuration: 0.2, unpressed: Color(.secondarySystemBackground), pressed: Color.clear){
+                Button{
                 withAnimation{ isBreafViewExpanded = true }
-                UIImpactFeedbackGenerator(style: .heavy)
-                    .impactOccurred()
+//                UIImpactFeedbackGenerator(style: .heavy)
+//                    .impactOccurred()
                 
             }label:{
                 VStack{
                     Text( prefecture.brief )
                     HStack{
                         Spacer()
-                        Text("長押しで続きを読む")
+                        Text("続きを読む")
+                            .lineLimit(1)
                         Image(systemName: "hand.tap.fill")
                     }.foregroundColor(.gray)
                 }.padding()
-            }
+            }.buttonStyle(.plain)
+                .background(Color(.secondarySystemBackground))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
             
         }.padding(.horizontal)
             .padding(.bottom)
