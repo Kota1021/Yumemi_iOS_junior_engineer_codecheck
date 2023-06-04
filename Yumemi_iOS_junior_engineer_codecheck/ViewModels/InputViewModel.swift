@@ -44,8 +44,7 @@ class InputViewModel<PrefectureModel:PrefectureModelProtocol>:ObservableObject,I
     }
     
     func viewDidDisappear(){
-        print("input: \(input)")
-        print("saving to user info: \(Defaults[\.userInfo])")
+        print("saving input as userInfo into UserDefaults: ")
         Defaults[\.userInfo] = input
     }
     

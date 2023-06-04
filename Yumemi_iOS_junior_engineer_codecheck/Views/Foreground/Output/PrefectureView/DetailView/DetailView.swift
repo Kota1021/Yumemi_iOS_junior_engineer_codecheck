@@ -106,13 +106,3 @@ struct InfoView_Previews: PreviewProvider {
     }
 }
 
-//cf. https://www.objc.io/blog/2020/03/05/swiftui-alignment-guides/
-struct CustomAlignment: AlignmentID {
-    static func defaultValue(in context: ViewDimensions) -> CGFloat {
-        return context[.leading]
-    }
-}
-
-extension HorizontalAlignment {
-    static let custom: HorizontalAlignment = HorizontalAlignment(CustomAlignment.self)
-}

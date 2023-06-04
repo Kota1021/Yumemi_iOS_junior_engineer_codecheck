@@ -36,6 +36,9 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
             HistoryView()
                 .tag(Pages.history)
             
+            LicenseView()
+                .tag(Pages.license)
+            
         }
         .background(BackgroundView() )
         .onReceive(Just(displayOutputView)) { shouldShow in
@@ -52,7 +55,7 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
     }
     
     private enum Pages{
-        case input, output, history
+        case input, output, history, license
     }
     
 }
