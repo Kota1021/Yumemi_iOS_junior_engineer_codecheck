@@ -26,9 +26,7 @@ struct BriefCardView: View {
                     .foregroundColor(.clear)
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        withAnimation{
-                            isDisplayed = false
-                        }
+                        withAnimation{ isDisplayed = false }
                     }
             )
     }

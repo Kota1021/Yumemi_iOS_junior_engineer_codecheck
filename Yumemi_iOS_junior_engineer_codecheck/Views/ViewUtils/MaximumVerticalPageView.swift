@@ -33,8 +33,9 @@ struct MaximumVerticalPageView<Content,Selection>: View where Content:View, Sele
     
     var body: some View {
         
-        /// this GeometryReader tells the safe area towards the  SafeArea EnvironmentObject.
-        /// InputView is inside MaximumVerticalPageView, which ignores safe area.
+        /// this GeometryReader sets SafeArea EnvironmentObject.
+        /// Views inside MaximumVerticalPageView ignores safe area.
+        /// But, sometimes wanna get it.
         GeometryReader{ proxy in
             
             /// this ScrollView wraps VTabView so that VTabView can fill the screen to the full.

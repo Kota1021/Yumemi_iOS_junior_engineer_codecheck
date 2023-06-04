@@ -34,7 +34,7 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
                 
             }.tag(Pages.output)
             
-            HistoryView(size:screen.size)
+            HistoryView(size:screen.size,shouldShowOutput: $displayOutputView)
                 .tag(Pages.history)
             
             LicenseView(size:screen.size)
@@ -67,7 +67,6 @@ struct ContentView_Previews: PreviewProvider {
         ForEach(PreviewData.devices) { device in
             ContentView<PrefectureModel>(prefectureModel: PrefectureModel())
                 .environmentObject(ScreenSize(size: PreviewData.screenSize))
-            //                .environmentObject(SafeArea())
             //.environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
                 .previewDevice(PreviewDevice(rawValue: device.name))
                 .previewDisplayName(device.previewTitle)

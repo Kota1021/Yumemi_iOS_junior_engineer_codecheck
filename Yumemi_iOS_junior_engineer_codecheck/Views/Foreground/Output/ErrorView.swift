@@ -11,7 +11,7 @@ import Alamofire
 struct ErrorView: View {
     let error:Error
     var body: some View {
-        Text("Error occored while fetching a lucky prefecture.\nPlease contact to the developper.\nContact:#####")
+        Text("Error occored while fetching a lucky prefecture.\nPlease contact to the developper.\nContact:松本幸太郎#####")
         Text(error.localizedDescription)
     }
 }

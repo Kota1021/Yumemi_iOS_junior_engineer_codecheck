@@ -11,7 +11,7 @@ import Alamofire
 import Combine
 
 protocol PrefectureModelProtocol:ObservableObject{
-    var prefecture:Prefecture? { get }
+    var prefecture:Prefecture? { get set }
     var error:AFError? { get }
     func fetchLuckyPrefecture(input:FortuneInput,onReceive action: @escaping ()->Void)
 }
@@ -19,7 +19,7 @@ protocol PrefectureModelProtocol:ObservableObject{
 //PrefectureModel does not know view
 class PrefectureModel: ObservableObject, PrefectureModelProtocol{
     
-    @Published private(set) var prefecture:Prefecture?
+    @Published public var prefecture:Prefecture?
     @Published private(set) var error:AFError? = nil
     
     public func fetchLuckyPrefecture(input:FortuneInput,onReceive action: @escaping ()->Void) {

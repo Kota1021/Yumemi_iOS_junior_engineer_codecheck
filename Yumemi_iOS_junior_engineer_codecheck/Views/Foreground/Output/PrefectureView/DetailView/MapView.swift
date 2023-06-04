@@ -13,7 +13,9 @@ struct MapView: View {
     
     @Binding var isDisplayed: Bool
     @State private var region:MKCoordinateRegion
+    
     let viewSize:CGSize
+    
     var mapSize:CGSize{
         let width = viewSize.width
         let height = viewSize.height
@@ -23,6 +25,7 @@ struct MapView: View {
             return CGSize(width: height * 5/5, height: height * 4/5)
         }
     }
+    
     let pinLocation:PinLocation
     
     
@@ -52,10 +55,7 @@ struct MapView: View {
         Map(coordinateRegion: $region,
             //Mapの操作の指定
             interactionModes: .all,
-            //現在地の表示
-            showsUserLocation: true,
-            //現在地の追従
-            userTrackingMode: .constant(MapUserTrackingMode.follow),
+            showsUserLocation: false,
             annotationItems: [pinLocation]
         ){ place in
             MapMarker(coordinate: place.location,
@@ -72,9 +72,7 @@ struct MapView: View {
                 .foregroundColor(.clear)
                 .contentShape(Rectangle())
                 .onTapGesture {
-                    withAnimation{
-                        isDisplayed = false
-                    }
+                    withAnimation{ isDisplayed = false }
                 }
         )
         

@@ -59,7 +59,7 @@ struct LicenseView: View {
                 }
                 
                 URLButton(URL(string: "https://japan-map.com")!){
-                    Text("Map illust from: 日本地図の無料イラスト素材集")
+                    Text("Map illusts from: 日本地図の無料イラスト素材集")
                         .multilineTextAlignment(.leading)
                     
                 }

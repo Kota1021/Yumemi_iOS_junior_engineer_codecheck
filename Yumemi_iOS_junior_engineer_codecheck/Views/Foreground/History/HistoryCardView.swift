@@ -8,13 +8,11 @@
 import SwiftUI
 
 struct HistoryCardView: View {
-//    @EnvironmentObject var screen:ScreenSize
-    
     let width:CGFloat = 200
     let height:CGFloat = 300
     
-    var imageWidth:CGFloat = 200
-    var imageHeight:CGFloat = 150
+    let imageWidth:CGFloat = 200
+    let imageHeight:CGFloat = 150
     
     var body: some View {
             VStack{
@@ -47,6 +45,5 @@ struct HistoryCardView: View {
 struct HistoryCardView_Previews: PreviewProvider {
     static var previews: some View {
         HistoryCardView()
-            .environmentObject(ScreenSize(size: PreviewData.screenSize))
     }
 }
