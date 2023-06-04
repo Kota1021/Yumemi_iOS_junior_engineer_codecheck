@@ -11,6 +11,8 @@ import Alamofire
 struct InputView<Model>: View where Model: InputViewModelProtocol{
     @StateObject var viewModel:Model
     @Binding var shouldShowOutput:Bool
+//    @Binding var shouldSaveUserInput:Bool
+//    @Binding var userInputToSave:UserInput
     
     @EnvironmentObject var safeArea:SafeArea
     @FocusState private var isTextFieldFocused:Bool
@@ -51,9 +53,7 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
                 
                 if viewModel.isFetchButtonDisplayed{
                     Button{
-                        viewModel.fetchLuckyPrefecture(onReceive: {
-                                    self.shouldShowOutput = true
-                        })
+                        fetchButtonAction()
                     }label:{
                         HStack{
                             Image(systemName: "paperplane.fill")
@@ -97,10 +97,8 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
                         }.pickerStyle(.wheel)
                         
                         Button("SeeFortune") {
-                            viewModel.fetchLuckyPrefecture(onReceive: {
-                                        self.shouldShowOutput = true
-                            })
                             viewModel.focus(at: .none)
+                            fetchButtonAction()
                         }.buttonStyle(.borderedProminent)
                             .disabled(!viewModel.input.isValid)
                     }
@@ -112,33 +110,33 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
             Rectangle()
                 .foregroundColor(.clear)
                 .contentShape(Rectangle() )
-                .onTapGesture {
-                    viewModel.focus(at: .none)
-                }
+                .onTapGesture { viewModel.focus(at: .none) }
         )
-        .onDisappear{viewModel.viewDidDisappear()}
+        .onDisappear{ viewModel.viewDidDisappear() }
         
+    }
+    
+    func fetchButtonAction(){
+        print("InputViews: on receive, setting shouldShowOutput to true \n\n\n")
+        viewModel.fetchLuckyPrefecture(onReceive: { self.shouldShowOutput = true })
     }
     
 }
 
 struct ViewForResearch_Previews: PreviewProvider {
     @State static var shouldShowOutput = false
+    @State static var shouldSaveUserInput = false
+    @State static var userInputToSave = PreviewData.input
+    
     static var previews: some View {
         GeometryReader{geo in
             InputView(viewModel: InputViewModel(prefectureModel:PrefectureModel() ),
-                      shouldShowOutput: $shouldShowOutput )
+                      shouldShowOutput: $shouldShowOutput)
+//            InputView(viewModel: InputViewModel(prefectureModel:PrefectureModel() ),
+//                      shouldShowOutput: $shouldShowOutput,
+//                      shouldSaveUserInput: $shouldSaveUserInput,
+//                      userInputToSave: $userInputToSave )
                 .environmentObject(SafeArea() )
         }
     }
 }
-
-
-
-
-
-
-
-
-
-

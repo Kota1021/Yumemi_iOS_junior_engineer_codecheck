@@ -12,17 +12,29 @@ import Alamofire
 import Combine
 
 struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
-    //    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.managedObjectContext) private var viewContext
     
     @ObservedObject var prefectureModel: PrefectureModel
     @EnvironmentObject var screen:ScreenSize
-    @State private var displayOutputView = false
+    
+    @State private var displayOutputViewFlag = false
+//    @State private var saveUserInputFlag = false
+//    @State private var userInputToSave = UserInput(name: "", birthday: YearMonthDay(from: Date()), bloodType: .a, today: YearMonthDay(from: Date()))
     @State private var displayedPage = Pages.input
+    
     
     var body: some View {
         //MaximumVerticalPageView fills the screen, ignoring the safe area.
         MaximumVerticalPageView(selection: $displayedPage){
-            InputView(viewModel:InputViewModel(prefectureModel: prefectureModel), shouldShowOutput: $displayOutputView)
+            
+            InputView(viewModel: InputViewModel(prefectureModel: prefectureModel),
+                      shouldShowOutput: $displayOutputViewFlag)
+            
+//            InputView(viewModel: InputViewModel(prefectureModel: prefectureModel),
+//
+//                      shouldShowOutput: $displayOutputViewFlag,
+//                      shouldSaveUserInput: $saveUserInputFlag,
+//                      userInputToSave: $userInputToSave)
                 .tag(Pages.input)
             
             Group{
@@ -34,7 +46,7 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
                 
             }.tag(Pages.output)
             
-            HistoryView(size:screen.size,shouldShowOutput: $displayOutputView, prefectureModel: prefectureModel)
+            HistoryView(size:screen.size,shouldShowOutput: $displayOutputViewFlag, prefectureModel: prefectureModel)
                 .tag(Pages.history)
             
             LicenseView(size:screen.size)
@@ -42,7 +54,10 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
             
         }
         .background(BackgroundView() )
-        .onReceive(Just(displayOutputView)) { shouldShow in
+        .onReceive(Just(displayOutputViewFlag)) { shouldShow in
+            print("ContentView: displayOutputViewFlag sent \(shouldShow)")
+            print("ContentView: self.prefectureModel.prefecture\n\(self.prefectureModel.prefecture )\n")
+            
             if shouldShow{
                 Task(priority: .background) {
                     try await Task.sleep(nanoseconds: UInt64(0.3 * 1_000_000_000) )
@@ -53,6 +68,22 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
             }
             
         }
+//        .onReceive(Just(saveUserInputFlag)) { shouldSave in
+//            print("ContentView: saveUserInputFlag sent: \(shouldSave)\n")
+//            if shouldSave{
+//                //この辺に保存の処理
+//                let newUserInput = SavedUserInput(context: viewContext)
+//                newUserInput.name = userInputToSave.name
+//                newUserInput.birthday = userInputToSave.birthday.toDate()
+//                newUserInput.bloodType = userInputToSave.bloodType
+//                newUserInput.fetchedAt = userInputToSave.today.toDate()
+//                
+//                try? viewContext.save()
+//                
+//                print("ContentView: userInput saved to CoreData:\n\(userInputToSave)\n")
+//            }
+//            
+//        }
     }
     
     private enum Pages{

@@ -23,6 +23,7 @@ protocol InputViewModelProtocol:ObservableObject{
     var isFetchButtonDisplayed:Bool{ get }
     
     var dateRange:ClosedRange<Date>{ get }
+//    func fetchLuckyPrefecture()
     func fetchLuckyPrefecture(onReceive action:@escaping ()->Void)
     func focus(at:InputField?)
     func viewDidDisappear()
@@ -36,15 +37,15 @@ class InputViewModel<PrefectureModel:PrefectureModelProtocol>:ObservableObject,I
         self.prefectureModel = prefectureModel
         
         //Loading user info from User Defaults
-        print("loading user info: \(Defaults[\.userInfo])")
+        print("InputViewModel: loading latest userInput from User Defaults:\n\(Defaults[\.userInfo])")
         let userInfo = Defaults[\.userInfo]
         self.name = userInfo.name
         self.birthday = userInfo.birthday.toDate()
         self.bloodType = userInfo.bloodType
     }
     
-    func viewDidDisappear(){
-        print("saving input as userInfo into UserDefaults: ")
+    public func viewDidDisappear(){
+        print("InputViewModel: saving latest userInput into User Defaults:\n\(input)")
         Defaults[\.userInfo] = input
     }
     
@@ -66,33 +67,61 @@ class InputViewModel<PrefectureModel:PrefectureModelProtocol>:ObservableObject,I
     @Published  var isBirthdayFocused = false
     @Published  var isBloodTypeFocused = false
     
-    var isFetchButtonDisplayed:Bool{
+    public var isFetchButtonDisplayed:Bool{
         (!isTextFieldFocused && !isBirthdayFocused && !isBloodTypeFocused) && input.isValid
     }
     
-    var dateRange: ClosedRange<Date>{
+    public var dateRange: ClosedRange<Date>{
             let calendar = Calendar.current
             let start = calendar.date(byAdding: .year, value: -100, to: Date())!
             let today = Date()
             return start...today
         }
     
-    func fetchLuckyPrefecture(onReceive action:@escaping ()->Void){
-       print("fetch button tapped")
-        
+    public func fetchLuckyPrefecture(onReceive actionOnReceive:@escaping ()->Void){
+       print("InputViewModel: fetch button tapped")
+
        if input.isValid{
-           print("input: \(input)")
-               prefectureModel.fetchLuckyPrefecture(input: input){
-               action()
-           }
-               
+           print("InputViewModel: fetching luckyPrefecture with:\n\(input)")
+           prefectureModel.fetchLuckyPrefecture(input: input, onReceive: {
+               actionOnReceive()
+               self.storeUserInfoIntoCoreData()
+           })
        }else{
-           print("input invalid")
+           print("InputViewModel: input invalid")
        }
-        
    }
-   
-    func focus(at field:InputField?){
+    
+//    public func fetchLuckyPrefecture(){
+//       print("InputViewModel: fetch button tapped")
+//
+//       if input.isValid{
+//           print("InputViewModel: fetching luckyPrefecture with:\n\(input)")
+//           prefectureModel.fetchLuckyPrefecture(input: input, onReceive: {
+//               self.storeUserInfoIntoCoreData()
+//           } )
+//
+//       }else{
+//           print("InputViewModel: input invalid")
+//       }
+//
+//   }
+    
+    // not sure if it is good to have InputViewModel deal with CoreData
+    private func storeUserInfoIntoCoreData(){
+        //この辺に保存の処理
+        let viewContext = PersistenceController.shared.container.viewContext
+        let newUserInput = SavedUserInput(context: viewContext)
+        newUserInput.name = input.name
+        newUserInput.birthday = input.birthday.toDate()
+        newUserInput.bloodType = input.bloodType
+        newUserInput.fetchedAt = input.today.toDate()
+        
+        print("InputViewModel: saving userInfo into Core Data")
+        try? viewContext.save()
+    }
+    
+    public func focus(at field:InputField?){
        withAnimation{
            isTextFieldFocused = false
            isBirthdayFocused = false

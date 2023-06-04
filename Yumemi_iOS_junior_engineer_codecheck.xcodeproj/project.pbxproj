@@ -20,6 +20,7 @@
 		672DB21C2A28EE150041BD60 /* MaximumVerticalPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB21B2A28EE150041BD60 /* MaximumVerticalPageView.swift */; };
 		672EE5B92A2A798A007EA3F3 /* InputViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672EE5B82A2A798A007EA3F3 /* InputViews.swift */; };
 		672EE5BB2A2A96EA007EA3F3 /* PrefectureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672EE5BA2A2A96EA007EA3F3 /* PrefectureModel.swift */; };
+		673556FB2A2D055500C7C22E /* SavedPrefecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673556FA2A2D055500C7C22E /* SavedPrefecture.swift */; };
 		6769D8932A29E90100F49219 /* GlowBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6769D8922A29E90100F49219 /* GlowBorder.swift */; };
 		6769D8952A29F24B00F49219 /* prefLatiLong.json in Resources */ = {isa = PBXBuildFile; fileRef = 6769D8942A29F24B00F49219 /* prefLatiLong.json */; };
 		6769D8972A29FCC400F49219 /* PrefectureLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6769D8962A29FCC400F49219 /* PrefectureLocation.swift */; };
@@ -91,6 +92,7 @@
 		672DB21B2A28EE150041BD60 /* MaximumVerticalPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaximumVerticalPageView.swift; sourceTree = "<group>"; };
 		672EE5B82A2A798A007EA3F3 /* InputViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViews.swift; sourceTree = "<group>"; };
 		672EE5BA2A2A96EA007EA3F3 /* PrefectureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefectureModel.swift; sourceTree = "<group>"; };
+		673556FA2A2D055500C7C22E /* SavedPrefecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPrefecture.swift; sourceTree = "<group>"; };
 		6769D8922A29E90100F49219 /* GlowBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowBorder.swift; sourceTree = "<group>"; };
 		6769D8942A29F24B00F49219 /* prefLatiLong.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = prefLatiLong.json; sourceTree = "<group>"; };
 		6769D8962A29FCC400F49219 /* PrefectureLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefectureLocation.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			children = (
 				676AC0042A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.xcdatamodeld */,
 				67DFBAC82A2CD0B200124EAE /* SavedUserInput.swift */,
+				673556FA2A2D055500C7C22E /* SavedPrefecture.swift */,
 				676AC0022A270E95009F34E9 /* Persistence.swift */,
 				67EE94CA2A2C583A00349ADF /* History.swift */,
 				67DFBAC42A2C835E00124EAE /* PrefectureTransformer.swift */,
@@ -526,6 +529,7 @@
 				676AC0032A270E95009F34E9 /* Persistence.swift in Sources */,
 				672DB2092A28B86E0041BD60 /* BriefCardView.swift in Sources */,
 				676ABFFC2A270E94009F34E9 /* ContentView.swift in Sources */,
+				673556FB2A2D055500C7C22E /* SavedPrefecture.swift in Sources */,
 				672DB2042A2893610041BD60 /* LoadJson.swift in Sources */,
 				672DB2062A2893B90041BD60 /* PrefectureImageInfo.swift in Sources */,
 				676ABFFA2A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift in Sources */,

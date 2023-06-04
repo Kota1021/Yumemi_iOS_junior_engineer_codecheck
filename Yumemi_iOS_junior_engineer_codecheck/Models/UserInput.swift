@@ -18,6 +18,7 @@ struct UserInput:Codable{
     
 }
 
+// conforms to DefaultsSerializable so that it can be saved in userdefaults with SwiftyUserDefaults
 extension UserInput:DefaultsSerializable{}
 
 struct YearMonthDay:Codable{

@@ -23,6 +23,7 @@ class PrefectureModel: ObservableObject, PrefectureModelProtocol{
     @Published private(set) var error:AFError? = nil
     
     public func fetchLuckyPrefecture(input:UserInput,onReceive action: @escaping ()->Void) {
+        print("PrefectureModel: fetchLuckyPrefecture called")
         let api = FortuneAPI()
         
         /// If you set JSONDecoder.keyDecodingStrategy's value into .convertFromSnakeCase, it will automatically change snake_case into camelCase, and vice versa.
@@ -39,13 +40,13 @@ class PrefectureModel: ObservableObject, PrefectureModelProtocol{
                 case .success:
                     if let luckyPrefecture = response.value {
                         self.setPrefecture(luckyPrefecture: luckyPrefecture)
-                        print("luckyPrefecture:\(luckyPrefecture)")
+                        print("PrefectureModel: fetched:\n\(luckyPrefecture)")
                     } else {
-                        print("luckyPrefecture is nil")
+                        print("PrefectureModel: luckyPrefecture is nil")
                     }
                 case .failure(let error):
                     self.error = error
-                    print("failed to fetch luckyPrefecture")
+                    print("PrefectureModel: failed to fetch luckyPrefecture")
                 }
                 action()
             }

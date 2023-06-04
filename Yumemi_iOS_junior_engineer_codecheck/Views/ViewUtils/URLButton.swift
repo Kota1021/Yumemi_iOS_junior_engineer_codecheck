@@ -21,7 +21,7 @@ struct URLButton<Label>: View where Label : View {
                 UIApplication.shared.open(url,
                                           options: [.universalLinksOnly: false],
                                           completionHandler: {completed in
-                    print(completed)
+                    print("URLButton: \(completed.description)")
                 })
         }label: { label }
         

@@ -17,13 +17,13 @@ struct Yumemi_iOS_junior_engineer_codecheckApp: App {
         WindowGroup {
             ContentView(prefectureModel: PrefectureModel())
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                // setting ScreenSize in environmentObject because UIScreen.main will be deplicated
                 .onAppear {
                     guard let window = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
                         fatalError("could not get window size") }
                     self.screenSize = window.screen.bounds.size
-                    print("screenSize: \(self.screenSize)")
+                    print("App: screenSize: \(self.screenSize)")
                 }
-            // setting ScreenSize in environmentObject because UIScreen.main will be deplicated
                 .environmentObject(ScreenSize(size: self.screenSize))
         }
     }
