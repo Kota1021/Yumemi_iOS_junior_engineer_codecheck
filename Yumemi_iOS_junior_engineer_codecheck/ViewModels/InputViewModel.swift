@@ -50,22 +50,22 @@ class InputViewModel<PrefectureModel:PrefectureModelProtocol>:ObservableObject,I
     }
     
     
-    let prefectureModel:PrefectureModel
+    private let prefectureModel:PrefectureModel
     
-    @Published  var name:String = ""
-    @Published  var birthday:Date = Date()
-    @Published  var bloodType:ABOBloodType = .a
+    @Published  public var name:String = ""
+    @Published  public var birthday:Date = Date()
+    @Published  public var bloodType:ABOBloodType = .a
     
-    var input:UserInput{
+    public var input:UserInput{
         .init(name: name,
               birthday: YearMonthDay(from: birthday),
               bloodType: bloodType,
               today: YearMonthDay(from: Date() ) )
     }
     
-    @Published  var isTextFieldFocused = false
-    @Published  var isBirthdayFocused = false
-    @Published  var isBloodTypeFocused = false
+    @Published public var isTextFieldFocused = false
+    @Published public var isBirthdayFocused = false
+    @Published public var isBloodTypeFocused = false
     
     public var isFetchButtonDisplayed:Bool{
         (!isTextFieldFocused && !isBirthdayFocused && !isBloodTypeFocused) && input.isValid
@@ -83,10 +83,12 @@ class InputViewModel<PrefectureModel:PrefectureModelProtocol>:ObservableObject,I
 
        if input.isValid{
            print("InputViewModel: fetching luckyPrefecture with:\n\(input)")
+           
            prefectureModel.fetchLuckyPrefecture(input: input, onReceive: {
                actionOnReceive()
                self.storeUserInfoIntoCoreData()
            })
+           
        }else{
            print("InputViewModel: input invalid")
        }
@@ -107,11 +109,13 @@ class InputViewModel<PrefectureModel:PrefectureModelProtocol>:ObservableObject,I
 //
 //   }
     
+    
     // not sure if it is good to have InputViewModel deal with CoreData
+    private let viewContext = PersistenceController.shared.container.viewContext
     private func storeUserInfoIntoCoreData(){
         //この辺に保存の処理
-        let viewContext = PersistenceController.shared.container.viewContext
-        let newUserInput = SavedUserInput(context: viewContext)
+        
+        let newUserInput = StoredUserInput(context: viewContext)
         newUserInput.name = input.name
         newUserInput.birthday = input.birthday.toDate()
         newUserInput.bloodType = input.bloodType

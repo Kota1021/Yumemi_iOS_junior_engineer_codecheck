@@ -16,10 +16,10 @@ struct Prefecture{
     let hasCoastLine:Bool
     let logoUrl:URL
     
-    //from JSON
+    //from JSON file in bundle
     let location:PinLocation
     
-    //from JSON and then website "find47"
+    //from JSON file in bundle and then website "find47"
     let images:[PrefectureImageInfo]
 }
 

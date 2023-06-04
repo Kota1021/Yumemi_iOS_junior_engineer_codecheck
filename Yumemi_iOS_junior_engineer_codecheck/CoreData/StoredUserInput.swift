@@ -9,14 +9,14 @@
 import CoreData
 
 @objc(SavedUserInput)
-public class SavedUserInput: NSManagedObject {
+public class StoredUserInput: NSManagedObject {
 
 }
 
-extension SavedUserInput {
+extension StoredUserInput {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<SavedUserInput> {
-        return NSFetchRequest<SavedUserInput>(entityName: "SavedUserInput")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<StoredUserInput> {
+        return NSFetchRequest<StoredUserInput>(entityName: "SavedUserInput")
     }
 
     @NSManaged public var name: String
@@ -26,7 +26,7 @@ extension SavedUserInput {
 
 }
 
-extension SavedUserInput{
+extension StoredUserInput{
     var bloodType:ABOBloodType{
         get {
             guard let bloodType = ABOBloodType(rawValue: self.bloodTypeString) else {
@@ -40,6 +40,6 @@ extension SavedUserInput{
 }
 
 
-extension SavedUserInput : Identifiable {
+extension StoredUserInput : Identifiable {
 
 }

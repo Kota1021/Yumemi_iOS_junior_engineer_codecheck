@@ -7,7 +7,7 @@
 
 import Foundation
 
-// from website find/47
+///Photos from website find/47
 struct PrefectureImageInfo: Decodable,Identifiable {
     let id: String
     let url: URL

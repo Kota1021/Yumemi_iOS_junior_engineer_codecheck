@@ -40,7 +40,9 @@ class PrefectureModel: ObservableObject, PrefectureModelProtocol{
                 case .success:
                     if let luckyPrefecture = response.value {
                         self.setPrefecture(luckyPrefecture: luckyPrefecture)
-                        print("PrefectureModel: fetched:\n\(luckyPrefecture)")
+                        print("PrefectureModel: fetched:\n\(luckyPrefecture)\n")
+                        self.storeLuckyPrefectureCoreData(luckyPrefecture: luckyPrefecture)
+                        print("PrefectureModel: and stored it in CoreData.\n\n")
                     } else {
                         print("PrefectureModel: luckyPrefecture is nil")
                     }
@@ -65,33 +67,24 @@ class PrefectureModel: ObservableObject, PrefectureModelProtocol{
                                      location: location,
                                      images: images)
     }
-}
-
-struct LuckyPrefecture:Decodable{
-    public let name:String
-    public let brief:String
-    public let capital:String
-    public let citizenDay:MonthDay?
-    public let hasCoastLine:Bool
-    public let logoUrl:URL
-}
-
-struct MonthDay:Codable{
-    let month:Int
-    let day:Int
-}
-
-extension MonthDay{
-    public func toString()->String{
-        let formatter = DateFormatter()
-        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "dMMM", options: 0, locale: Locale(identifier: "ja_JP"))
-        return formatter.string(from: self.toDate())
+    
+    
+    
+    private let viewContext = PersistenceController.shared.container.viewContext
+    private func storeLuckyPrefectureCoreData(luckyPrefecture:LuckyPrefecture){
+        //この辺に保存の処理
+        
+        let newLuckPrefecture = SavedLuckyPrefecture(context: viewContext)
+        newLuckPrefecture.name = luckyPrefecture.name
+        newLuckPrefecture.brief = luckyPrefecture.brief
+        newLuckPrefecture.capital = luckyPrefecture.capital
+        newLuckPrefecture.citizenDay = luckyPrefecture.citizenDay?.toDate()
+        newLuckPrefecture.hasCoastLine = luckyPrefecture.hasCoastLine
+        newLuckPrefecture.logoURL = luckyPrefecture.logoUrl
+        
+        print("InputViewModel: saving userInfo into Core Data")
+        try? viewContext.save()
     }
     
-    public func toDate()->Date{
-        let calendar = Calendar(identifier: .gregorian)
-        let dateComponents = DateComponents(month: self.month, day: self.day)
-        guard let date = calendar.date(from: dateComponents ) else{ fatalError("invalid date") }
-        return date
-    }
 }
+

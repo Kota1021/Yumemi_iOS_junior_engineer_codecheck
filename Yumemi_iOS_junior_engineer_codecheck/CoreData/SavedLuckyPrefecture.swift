@@ -1,5 +1,5 @@
 //
-//  SavedPrefecture.swift
+//  SavedLuckyPrefecture.swift
 //  Yumemi_iOS_junior_engineer_codecheck
 //
 //  Created by 松本幸太郎 on 2023/06/05.
@@ -7,15 +7,18 @@
 
 import CoreData
 
-@objc(SavedPrefecture)
-public class SavedPrefecture: NSManagedObject {
+///saving LuckyPrefecture, not Prefecture, this is because Prefecture = LuckyPrefecture + PinLocation + PrefectureImageInfo
+///PinLocation and PrefectureImageInfo data is derived from JSON.
+///To make it SSOT, you cant save those data.
+@objc(SavedLuckyPrefecture)
+public class SavedLuckyPrefecture: NSManagedObject {
 
 }
 
-extension SavedPrefecture {
+extension SavedLuckyPrefecture {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<SavedPrefecture> {
-        return NSFetchRequest<SavedPrefecture>(entityName: "SavedPrefecture")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<SavedLuckyPrefecture> {
+        return NSFetchRequest<SavedLuckyPrefecture>(entityName: "SavedLuckyPrefecture")
     }
 
     @NSManaged public var name: String
@@ -24,19 +27,11 @@ extension SavedPrefecture {
     @NSManaged public var citizenDay: Date?
     @NSManaged public var hasCoastLine: Bool
     @NSManaged private var logoURLString: String
-    @NSManaged public var location: Data
-    @NSManaged public var images: Data
-    
-//    //from JSON
-//    let location:PinLocation
-//
-//    //from JSON and then website "find47"
-//    let images:[PrefectureImageInfo]
 
 }
 
-extension SavedPrefecture{
-    var logoURL:URL{
+extension SavedLuckyPrefecture{
+    public var logoURL:URL{
         get {
             guard let url = URL(string: self.logoURLString) else {
                 fatalError("logoURLString in CoreData Entity could not be transformed into URL") }
@@ -49,6 +44,6 @@ extension SavedPrefecture{
 }
 
 
-extension SavedPrefecture : Identifiable {
+extension SavedLuckyPrefecture : Identifiable {
 
 }

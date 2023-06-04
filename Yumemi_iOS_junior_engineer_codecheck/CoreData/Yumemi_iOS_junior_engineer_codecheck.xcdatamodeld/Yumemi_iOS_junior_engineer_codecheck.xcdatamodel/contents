@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22C65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="SavedPrefecture" representedClassName="SavedPrefecture" syncable="YES">
+    <entity name="SavedLuckyPrefecture" representedClassName="SavedLuckyPrefecture" syncable="YES">
         <attribute name="brief" attributeType="String"/>
         <attribute name="capital" attributeType="String"/>
         <attribute name="citizenDay" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="hasCoastLine" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="imagesInfo" attributeType="Transformable"/>
-        <attribute name="location" attributeType="Transformable"/>
         <attribute name="logoURLString" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
     </entity>
-    <entity name="SavedUserInput" representedClassName="SavedUserInput" syncable="YES">
+    <entity name="StoredUserInput" representedClassName="StoredUserInput" syncable="YES">
         <attribute name="birthday" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="bloodTypeString" attributeType="String"/>
         <attribute name="fetchedAt" attributeType="Date" usesScalarValueType="NO"/>

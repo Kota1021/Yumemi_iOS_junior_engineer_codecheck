@@ -18,8 +18,6 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
     @EnvironmentObject var screen:ScreenSize
     
     @State private var displayOutputViewFlag = false
-//    @State private var saveUserInputFlag = false
-//    @State private var userInputToSave = UserInput(name: "", birthday: YearMonthDay(from: Date()), bloodType: .a, today: YearMonthDay(from: Date()))
     @State private var displayedPage = Pages.input
     
     
@@ -29,12 +27,6 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
             
             InputView(viewModel: InputViewModel(prefectureModel: prefectureModel),
                       shouldShowOutput: $displayOutputViewFlag)
-            
-//            InputView(viewModel: InputViewModel(prefectureModel: prefectureModel),
-//
-//                      shouldShowOutput: $displayOutputViewFlag,
-//                      shouldSaveUserInput: $saveUserInputFlag,
-//                      userInputToSave: $userInputToSave)
                 .tag(Pages.input)
             
             Group{

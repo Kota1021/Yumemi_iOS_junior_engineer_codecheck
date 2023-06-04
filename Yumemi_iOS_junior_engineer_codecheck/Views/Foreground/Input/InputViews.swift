@@ -11,8 +11,6 @@ import Alamofire
 struct InputView<Model>: View where Model: InputViewModelProtocol{
     @StateObject var viewModel:Model
     @Binding var shouldShowOutput:Bool
-//    @Binding var shouldSaveUserInput:Bool
-//    @Binding var userInputToSave:UserInput
     
     @EnvironmentObject var safeArea:SafeArea
     @FocusState private var isTextFieldFocused:Bool
@@ -132,10 +130,6 @@ struct ViewForResearch_Previews: PreviewProvider {
         GeometryReader{geo in
             InputView(viewModel: InputViewModel(prefectureModel:PrefectureModel() ),
                       shouldShowOutput: $shouldShowOutput)
-//            InputView(viewModel: InputViewModel(prefectureModel:PrefectureModel() ),
-//                      shouldShowOutput: $shouldShowOutput,
-//                      shouldSaveUserInput: $shouldSaveUserInput,
-//                      userInputToSave: $userInputToSave )
                 .environmentObject(SafeArea() )
         }
     }

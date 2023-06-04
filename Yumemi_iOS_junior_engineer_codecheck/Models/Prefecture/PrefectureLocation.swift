@@ -7,12 +7,7 @@
 
 import Foundation
 
-fileprivate struct PrefectureLocation: Decodable {
-    let prefecture:String
-    let latitude:Double
-    let longitude:Double
-}
-
+///location infomation from JSON file in Bundle
 struct PrefectureLocations{
     
     private static let data:[PrefectureLocation] = load("prefLatiLong.json")
@@ -26,4 +21,10 @@ struct PrefectureLocations{
     }
 }
 
+
+fileprivate struct PrefectureLocation: Decodable {
+    let prefecture:String
+    let latitude:Double
+    let longitude:Double
+}
 
