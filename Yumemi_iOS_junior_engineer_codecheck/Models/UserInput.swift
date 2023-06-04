@@ -13,9 +13,9 @@ struct UserInput:Codable{
     public let birthday:YearMonthDay
     public let bloodType:ABOBloodType
     public let today:YearMonthDay
-
+    
     public var isValid:Bool{ !name.isEmpty && name.count < 128 }
-
+    
 }
 
 extension UserInput:DefaultsSerializable{}
@@ -38,7 +38,7 @@ extension YearMonthDay{
 
 extension YearMonthDay{
     
-    /// avoiding  hard-coding date's format.
+    /// avoiding  hard-coding date format.
     public func toString()->String{
         let calendar = Calendar.current
         let formatter = DateFormatter()
@@ -67,3 +67,7 @@ enum ABOBloodType:String,Codable{
 extension ABOBloodType:CaseIterable,Identifiable{
     var id: String { rawValue }
 }
+
+
+
+

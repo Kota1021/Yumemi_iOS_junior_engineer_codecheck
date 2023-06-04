@@ -20,6 +20,7 @@ struct LicenseView: View {
             Group{
                 Text("Liblaries,")
                     .font(.system(size: 70))
+                    .padding(.top)
                 Text("Materials,")
                     .font(.system(size: 70))
                 Text("and")
@@ -30,6 +31,7 @@ struct LicenseView: View {
             }
             .lineLimit(1)
             .minimumScaleFactor(0.5)
+            
             
             Spacer()
             Group{

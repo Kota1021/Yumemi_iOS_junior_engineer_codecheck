@@ -30,10 +30,10 @@ struct HistoryCardView: View {
                 VStack(alignment: .leading){
                     Text(history.prefecture.name)
                         .font(.largeTitle)
-                    Text(history.input.name)
-                    Text(history.input.birthday.toString())
-                    Text(history.input.bloodType.rawValue)
-                    Text(history.input.today.toString())
+                    Text(history.userInput.name)
+                    Text(history.userInput.birthday.toString())
+                    Text(history.userInput.bloodType.rawValue)
+                    Text(history.userInput.today.toString())
                 }.padding()
                 Spacer()
             }.frame(width: width,height: height)
@@ -49,7 +49,4 @@ struct HistoryCardView_Previews: PreviewProvider {
     }
 }
 
-struct History{
-    let prefecture:Prefecture
-    let input:UserInput
-}
+

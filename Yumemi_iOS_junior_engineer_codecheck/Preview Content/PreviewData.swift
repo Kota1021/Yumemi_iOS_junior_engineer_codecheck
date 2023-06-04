@@ -22,7 +22,7 @@ struct PreviewData{
                                    .init(name: "iPhone SE (3rd generation)", previewTitle: "iPhone SE 3rd gen 4.7")]
     
     static let input = UserInput(name: "asg", birthday: YearMonthDay(from: Date() ), bloodType: .a, today: YearMonthDay(from: Date() ) )
-    static let history:History = .init(prefecture: prefecture, input: input)
+    static let history:History = .init(prefecture: prefecture, userInput: input)
 }
 
 struct Device:Hashable,Identifiable{

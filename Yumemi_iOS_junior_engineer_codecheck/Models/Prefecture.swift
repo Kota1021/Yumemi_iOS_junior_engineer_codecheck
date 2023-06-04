@@ -28,3 +28,6 @@ extension Prefecture:Equatable{
         lhs.name == rhs.name
     }
 }
+
+
+

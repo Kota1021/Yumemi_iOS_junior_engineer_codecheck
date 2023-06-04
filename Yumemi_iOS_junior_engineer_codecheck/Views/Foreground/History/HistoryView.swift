@@ -14,8 +14,6 @@ struct HistoryView<PrefectureModel>: View where PrefectureModel: PrefectureModel
     @Binding var shouldShowOutput: Bool
     let viewSize:CGSize
     
-    @State private var selectedPrefecture: Prefecture? = nil
-    
     let histories:[History] = [PreviewData.history,PreviewData.history,PreviewData.history] //ここあとでcoredata で、検索者の情報なども伴って。
     
     init(size: CGSize,shouldShowOutput:Binding<Bool>, prefectureModel:PrefectureModel) {
@@ -29,7 +27,10 @@ struct HistoryView<PrefectureModel>: View where PrefectureModel: PrefectureModel
             HStack{
                 ForEach(0..<histories.count) { index in
                     Button{
-                        self.selectedPrefecture =  histories[index].prefecture
+                        let prefecture =  histories[index].prefecture
+                        prefectureModel.prefecture = prefecture
+                        shouldShowOutput = true
+                        
                     }label:{
                         HistoryCardView(history:histories[index])
                     }.buttonStyle(.plain)
@@ -40,19 +41,7 @@ struct HistoryView<PrefectureModel>: View where PrefectureModel: PrefectureModel
                 Color.clear
                     .background(.ultraThinMaterial)
                     .opacity(1)
-//                    .opacity(blurStrength)
             )
-//            .onAppear {
-//                
-//                Task(priority: .background){
-//                    try await Task.sleep(nanoseconds: UInt64(0.5 * 1_000_000_000) )
-//                        Task{ @MainActor in
-//                        withAnimation {
-//                            blurStrength = 1
-//                        }
-//                    }
-//                }
-//            }
     }
 }
 

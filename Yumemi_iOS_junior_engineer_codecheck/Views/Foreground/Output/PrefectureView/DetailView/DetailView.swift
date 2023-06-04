@@ -46,11 +46,8 @@ struct DetailView: View {
                         .padding(.top)
                 }
                 
-//                LongPressButton(minimumDuration: 0.2, unpressed: Color(.secondarySystemBackground), pressed: Color.clear){
                 Button{
                     withAnimation{ isMapExpanded = true }
-//                    UIImpactFeedbackGenerator(style: .heavy)
-//                        .impactOccurred()
                     
                 }label: {
                     AsyncImage(url: prefecture.logoUrl){ image in
@@ -74,11 +71,8 @@ struct DetailView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 8))
             }
             
-//                LongPressButton(minimumDuration: 0.2, unpressed: Color(.secondarySystemBackground), pressed: Color.clear){
                 Button{
                 withAnimation{ isBreafViewExpanded = true }
-//                UIImpactFeedbackGenerator(style: .heavy)
-//                    .impactOccurred()
                 
             }label:{
                 VStack{
