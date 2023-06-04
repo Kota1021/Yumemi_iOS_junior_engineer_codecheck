@@ -62,8 +62,8 @@ struct MapView: View {
                       tint: Color.orange)
         }
         .padding(10)
-        .background(
-            RoundedRectangle(cornerRadius: 8).foregroundColor(Color(.secondarySystemBackground)))
+        .background(Color(.secondarySystemBackground) )
+        .clipShape(RoundedRectangle(cornerRadius: 8))
         .transition(.scale(scale: 0,anchor: UnitPoint(x: 0.7, y: 0.7)))
         .frame(width: mapSize.width, height: mapSize.height)
         .background(

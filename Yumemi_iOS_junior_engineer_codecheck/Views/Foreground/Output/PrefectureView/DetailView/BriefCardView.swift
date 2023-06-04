@@ -15,8 +15,8 @@ struct BriefCardView: View {
     var body: some View {
         Text(text)
             .padding()
-            .background(
-                RoundedRectangle(cornerRadius: 8).foregroundColor(Color(.secondarySystemBackground)))
+            .background(Color(.secondarySystemBackground) )
+            .clipShape(RoundedRectangle(cornerRadius: 8))
             .transition(AnyTransition.scale.combined(with:.move(edge: .bottom)))
             .padding()
             .background(

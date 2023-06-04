@@ -43,8 +43,8 @@ struct LongPressButton<Content:View>: View {
 
     var body: some View {
         content()
-            .background(RoundedRectangle(cornerRadius: 8)
-                .foregroundColor((self.isDetectingLongPress ?  pressed : unpressed) ) )
+            .background(self.isDetectingLongPress ?  pressed : unpressed )
+            .clipShape(RoundedRectangle(cornerRadius: 8) )
             .gesture(longPress)
     }
 }

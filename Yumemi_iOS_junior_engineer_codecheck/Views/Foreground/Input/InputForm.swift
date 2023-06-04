@@ -29,10 +29,8 @@ struct InputForm<Content:View>: View {
             content()
         }
         .padding()
-        .background(
-            RoundedRectangle(cornerRadius: 8)
-                .foregroundColor(Color(.systemGray6) )
-        )
+        .background(Color(.systemGray6))
+        .clipShape(RoundedRectangle(cornerRadius: 8))
         .compositingGroup()
         .padding(.bottom)
         .padding(.horizontal)
