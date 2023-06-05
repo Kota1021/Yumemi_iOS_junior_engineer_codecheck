@@ -26,13 +26,11 @@ protocol InputViewModelProtocol:ObservableObject{
     
     var dateRange:ClosedRange<Date>{ get }
     func fetchLuckyPrefecture(onReceive actionOnReceive:@escaping ()->Void)
-//    func fetchLuckyPrefecture(onSuccess actionOnSuccess:@escaping ()->Void,onFailure actionOnFailure:@escaping ()->Void)
     func focus(at:InputField?)
     func viewDidDisappear()
 }
 
 class InputViewModel<PrefectureModel:PrefectureModelProtocol>:ObservableObject,InputViewModelProtocol{
-    
     
     init(prefectureModel:PrefectureModel){
         self.prefectureModel = prefectureModel
@@ -47,8 +45,10 @@ class InputViewModel<PrefectureModel:PrefectureModelProtocol>:ObservableObject,I
         
     }
     
+    // called on .onDsappear()
     public func viewDidDisappear(){
         print("InputViewModel: saving latest userInput into User Defaults:\n\(input)")
+        //saving input to userdefaults
         Defaults[\.userInfo] = input
     }
     

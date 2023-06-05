@@ -14,13 +14,13 @@ struct HistoryView<PrefectureModel>: View where PrefectureModel: PrefectureModel
     private var histories: FetchedResults<History>
     
     @ObservedObject var prefectureModel:PrefectureModel
-    @Binding var shouldShowOutput: Bool
+    @Binding var shouldShowPrefecture: Bool
     let viewSize:CGSize
     
     init(size: CGSize,shouldShowOutput:Binding<Bool>, prefectureModel:PrefectureModel) {
         self.prefectureModel = prefectureModel
         self.viewSize = size
-        self._shouldShowOutput = shouldShowOutput
+        self._shouldShowPrefecture = shouldShowOutput
     }
     
     
@@ -30,7 +30,7 @@ struct HistoryView<PrefectureModel>: View where PrefectureModel: PrefectureModel
                 ForEach(histories){ history in
                     Button{
                         prefectureModel.setPrefecture(name: history.prefecture)
-                        shouldShowOutput = true
+                        shouldShowPrefecture = true
 
                     }label:{
                         HistoryCardView(thumbnailURL: ImageInfoSets.thumbnailURL(of: history.prefecture)
@@ -56,6 +56,7 @@ struct HistoryView<PrefectureModel>: View where PrefectureModel: PrefectureModel
 
 struct HistoryView_Previews: PreviewProvider {
     @State static var shouldShowOutput = false
+    
     static var previews: some View {
         HistoryView(size: PreviewData.screenSize, shouldShowOutput: $shouldShowOutput, prefectureModel: PrefectureModel())
     }
