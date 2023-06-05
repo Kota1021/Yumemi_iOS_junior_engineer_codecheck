@@ -24,15 +24,15 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
                     TextField("JohnDoe",text: $viewModel.name)
                         .multilineTextAlignment(.trailing)
                         .submitLabel(.next)
+                    /// Below sets FocusState to Name TextField, and sync it with viewModel's Published<Bool> property. Wanna write in a cleaner way.
+                        .focused(self.$isTextFieldFocused)
+                        .onAppear { self.isTextFieldFocused = viewModel.isTextFieldFocused}
+                        .onChange(of: self.isTextFieldFocused) { viewModel.isTextFieldFocused = $0 }
+                        .onChange(of: viewModel.isTextFieldFocused) { self.isTextFieldFocused = $0 }
 
                 }.shadow(color: viewModel.isTextFieldFocused ? .white : .clear, radius: 8)
                     .onSubmit { viewModel.focus(at: .birthday) }
                     .onTapGesture { viewModel.focus(at: .name) }
-                /// Below sets FocusState to Name TextField, and sync it with viewModel's Published<Bool> property. Wanna write in a cleaner way.
-                    .focused(self.$isTextFieldFocused)
-                    .onAppear { self.isTextFieldFocused = viewModel.isTextFieldFocused}
-                    .onChange(of: self.isTextFieldFocused) { viewModel.isTextFieldFocused = $0 }
-                    .onChange(of: viewModel.isTextFieldFocused) { self.isTextFieldFocused = $0 }
                 
                 InputForm("Birthday"){
                     Text("\(YearMonthDay(from: viewModel.birthday).toString())")
