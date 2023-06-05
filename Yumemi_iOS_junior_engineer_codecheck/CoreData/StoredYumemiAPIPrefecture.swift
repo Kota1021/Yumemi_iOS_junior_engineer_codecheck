@@ -29,27 +29,26 @@ extension StoredYumemiAPIPrefecture {
 
 }
 
-extension StoredYumemiAPIPrefecture{
-    public var logoURL:URL{
+extension StoredYumemiAPIPrefecture {
+    public var logoURL: URL {
         get {
             guard let url = URL(string: self.logoURLString) else {
-                fatalError("logoURLString in CoreData Entity could not be transformed into URL") }
+                fatalError("logoURLString in CoreData Entity could not be transformed into URL")
+            }
             return url
         }
         set {
             self.logoURLString = newValue.absoluteString
         }
     }
-    
-    var citizenDay:MonthDay?{
-        get{
-            guard let citizenDayInDate = citizenDayInDate else{ return nil }
+
+    var citizenDay: MonthDay? {
+        get {
+            guard let citizenDayInDate = citizenDayInDate else { return nil }
             return MonthDay(from: citizenDayInDate)
-        }set{
+        }
+        set {
             self.citizenDayInDate = newValue?.toDate()
         }
     }
 }
-
-
-

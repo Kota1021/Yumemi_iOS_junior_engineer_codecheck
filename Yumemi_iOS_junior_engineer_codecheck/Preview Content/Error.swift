@@ -4,7 +4,6 @@
 //
 //  Created by 松本幸太郎 on 2023/06/02.
 
-
 //import Foundation
 //
 //    func errorFetcher(){

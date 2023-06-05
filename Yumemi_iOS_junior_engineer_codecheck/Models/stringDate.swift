@@ -6,9 +6,10 @@
 //
 import Foundation
 
-func stringDate(from date:Date)->String{
+func stringDate(from date: Date) -> String {
     let calendar = Calendar.current
     let formatter = DateFormatter()
-    formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyydMMM", options: 0, locale: Locale(identifier: "ja_JP"))
+    formatter.dateFormat = DateFormatter.dateFormat(
+        fromTemplate: "yyyydMMM", options: 0, locale: Locale(identifier: "ja_JP"))
     return formatter.string(from: date)
 }

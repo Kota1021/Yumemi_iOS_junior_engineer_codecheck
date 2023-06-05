@@ -7,19 +7,21 @@
 
 import SwiftUI
 
-struct TestView:View{
-    @State private var selection:ABC = .a
+struct TestView: View {
+    @State private var selection: ABC = .a
     @State private var isViewBDisplayed = false
-    enum ABC{ case a,b,c }
-    var body: some View{
-        MaximumVerticalPageView(selection:$selection){
+    enum ABC { case a, b, c }
+    var body: some View {
+        MaximumVerticalPageView(selection: $selection) {
             Text("View1!")
                 .frame(width: PreviewData.screenSize.width, height: PreviewData.screenSize.height)
                 .background(.red)
                 .tag(ABC.a)
-            if isViewBDisplayed{
+            if isViewBDisplayed {
                 Text("View2!")
-                    .frame(width: PreviewData.screenSize.width, height: PreviewData.screenSize.height)
+                    .frame(
+                        width: PreviewData.screenSize.width, height: PreviewData.screenSize.height
+                    )
                     .background(.green)
                     .tag(ABC.b)
             }
@@ -27,9 +29,9 @@ struct TestView:View{
                 .frame(width: PreviewData.screenSize.width, height: PreviewData.screenSize.height)
                 .background(.yellow)
                 .tag(ABC.c)
-            
-        }.overlay{
-            VStack{
+
+        }.overlay {
+            VStack {
                 Spacer()
                 Button("change pages to view2") {
                     print("tapped")
@@ -39,15 +41,14 @@ struct TestView:View{
             }
         }
     }
-    func displayViewB(){
+    func displayViewB() {
         isViewBDisplayed = true
-        
+
         withAnimation {
             selection = ABC.b
         }
     }
 }
-
 
 struct Previews_VPageViewAnimationTest_Previews: PreviewProvider {
     static var previews: some View {

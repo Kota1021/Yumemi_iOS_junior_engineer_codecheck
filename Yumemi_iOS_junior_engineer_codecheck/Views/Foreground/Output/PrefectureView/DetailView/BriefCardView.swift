@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct BriefCardView: View {
-    let text:String
-    
+    let text: String
+
     var body: some View {
         Text(text)
             .textSelection(.enabled)
             .padding()
-            .background(Color(.secondarySystemBackground) )
+            .background(Color(.secondarySystemBackground))
             .clipShape(RoundedRectangle(cornerRadius: 8))
-            .transition(AnyTransition.scale.combined(with:.move(edge: .bottom)))
+            .transition(AnyTransition.scale.combined(with: .move(edge: .bottom)))
             .padding()
     }
 }
@@ -24,6 +24,6 @@ struct BriefCardView: View {
 struct BriefView_Previews: PreviewProvider {
     static let text = "aaaaaaaaaaaaa"
     static var previews: some View {
-        BriefCardView(text:text)
+        BriefCardView(text: text)
     }
 }

@@ -8,98 +8,101 @@
 import SwiftUI
 
 struct ImagePageView: View {
-    let imagesInfo:[PrefectureImageInfo]
-    let viewSize:CGSize
-    private var imageHeight:CGFloat{ viewSize.height * 4/5}
-    private var reflectionHeight:CGFloat{ viewSize.height - imageHeight }
-    private let blurRadius:CGFloat = 3
-    
-    @State private var imageSelection:Int = 0
-    
+    let imagesInfo: [PrefectureImageInfo]
+    let viewSize: CGSize
+    private var imageHeight: CGFloat { viewSize.height * 4 / 5 }
+    private var reflectionHeight: CGFloat { viewSize.height - imageHeight }
+    private let blurRadius: CGFloat = 3
+
+    @State private var imageSelection: Int = 0
+
     var body: some View {
-        TabView(selection: $imageSelection){
+        TabView(selection: $imageSelection) {
             // below enumrated for tagging pageIndex
-            ForEach( Array(imagesInfo.enumerated()), id:\.offset){ (pageIndex, imageInfo) in
-                AsyncImage(url: imageInfo.url){ image in
-                    VStack(spacing: 0){
+            ForEach(Array(imagesInfo.enumerated()), id: \.offset) { (pageIndex, imageInfo) in
+                AsyncImage(url: imageInfo.url) { image in
+                    VStack(spacing: 0) {
                         image
                             .resizable()
                             .scaledToFill()
                             .frame(width: viewSize.width, height: imageHeight)
                             .clipped()
-                        
+
                         //reflected image
                         image
                             .resizable()
                             .scaledToFill()
-                        /// 1. First, make the image wider/taller by blurRadius*2, because .blur modifier mixes border's color with the backgroud. and i dont want it happen.
-                            .frame(width: viewSize.width + blurRadius*2, height: imageHeight + blurRadius*2)
+                            /// 1. First, make the image wider/taller by blurRadius*2, because .blur modifier mixes border's color with the backgroud. and i dont want it happen.
+                            .frame(
+                                width: viewSize.width + blurRadius * 2,
+                                height: imageHeight + blurRadius * 2
+                            )
                             .clipped()
                             //reflection effects
-                            .rotation3DEffect(Angle(degrees: 180), axis: (x: 1, y: 0, z: 0) )
+                            .rotation3DEffect(Angle(degrees: 180), axis: (x: 1, y: 0, z: 0))
                             .blur(radius: blurRadius)
-                        ///2. And then returns back to wanted size.
-                            .frame(width: viewSize.width , height: reflectionHeight)
-                            .offset(y: (imageHeight/2 - reflectionHeight/2))
+                            ///2. And then returns back to wanted size.
+                            .frame(width: viewSize.width, height: reflectionHeight)
+                            .offset(y: (imageHeight / 2 - reflectionHeight / 2))
                             .clipped()
                     }
                 } placeholder: {
                     ProgressView()
                         .frame(width: viewSize.width, height: viewSize.height)
                 }
-                .overlay{
-                    VStack(alignment: .leading,spacing: 0){
+                .overlay {
+                    VStack(alignment: .leading, spacing: 0) {
                         Spacer()
                             .frame(width: viewSize.width, height: imageHeight)
-                        
+
                         Text("\"\(imageInfo.title)\" © \(imageInfo.author)")
-                                .fontWeight(.bold)
-                                .glowBorder(color: Color(.systemBackground), lineWidth: 3)
-                                .padding(.top)
-                                .padding(.leading)
-                         
+                            .fontWeight(.bold)
+                            .glowBorder(color: Color(.systemBackground), lineWidth: 3)
+                            .padding(.top)
+                            .padding(.leading)
+
                         Text("(Licensed under CC BY 4.0)")
                             .glowBorder(color: Color(.systemBackground), lineWidth: 3)
                             .padding(.leading)
                         Spacer()
-                        
+
                     }
                     .frame(height: viewSize.height)
-                    
+
                 }.tag(pageIndex)
             }
         }
         .tabViewStyle(.page)
         .frame(height: viewSize.height)
-        
+
         //Below shortcut for Mac and iPad
         .background(
-            HStack{
-                Button{
-                    if imageSelection > 0{
+            HStack {
+                Button {
+                    if imageSelection > 0 {
                         imageSelection -= 1
                     }
-                }label:{
+                } label: {
                     Image(systemName: "chevron.left.square.fill")
-                    
+
                 }.keyboardShortcut(.leftArrow, modifiers: [])
-                
-                Button{
-                    if imageSelection < imagesInfo.count - 1{
+
+                Button {
+                    if imageSelection < imagesInfo.count - 1 {
                         imageSelection += 1
                     }
-                }label:{
+                } label: {
                     Image(systemName: "chevron.right.square.fill")
-                    
+
                 }.keyboardShortcut(.rightArrow, modifiers: [])
             }.foregroundColor(Color(.systemBackground))
         )
-        
+
     }
 }
 
 struct ImagePageView_Previews: PreviewProvider {
-    
+
     static var previews: some View {
         ImagePageView(imagesInfo: PreviewData.prefecture.images, viewSize: PreviewData.screenSize)
     }

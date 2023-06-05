@@ -9,24 +9,24 @@ import Foundation
 import MapKit
 
 ///location infomation from JSON file in Bundle
-struct PrefectureLocations{
-    
-    private init(){} // Singleton like. No need for initializing this data holding struct.
-    private static let data:[PrefectureLocation] = load("prefLatiLong.json")
-    
-    static func location(of prefecture:String)->PinLocation{
-        guard let prefLocation = data.first(where: {$0.prefecture == prefecture} )else {
+struct PrefectureLocations {
+
+    private init() {}  // Singleton like. No need for initializing this data holding struct.
+    private static let data: [PrefectureLocation] = load("prefLatiLong.json")
+
+    static func location(of prefecture: String) -> PinLocation {
+        guard let prefLocation = data.first(where: { $0.prefecture == prefecture }) else {
             fatalError("no location data for prefecture: \(prefecture)")
-            
+
         }
-        
+
         return PinLocation(lat: prefLocation.latitude, long: prefLocation.longitude)
     }
-    
+
     private struct PrefectureLocation: Decodable {
-        let prefecture:String
-        let latitude:Double
-        let longitude:Double
+        let prefecture: String
+        let latitude: Double
+        let longitude: Double
     }
 }
 

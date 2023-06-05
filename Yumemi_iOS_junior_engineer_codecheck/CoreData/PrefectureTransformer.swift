@@ -9,7 +9,7 @@
 ////import AppKit
 //
 //class PrefectureTransformer:ValueTransformer{
-//    
+//
 //    /// from Object to CoreData
 //    override func transformedValue(_ value: Any?) -> Any? {
 //        guard let prefecture = value as? Prefecture else { return nil }
@@ -20,7 +20,7 @@
 //            return nil
 //        }
 //    }
-//    
+//
 //    /// ///from CoreData to Object
 //    override func reverseTransformedValue(_ value: Any?) -> Any? {
 //        guard let data = value as? Data else { return nil }

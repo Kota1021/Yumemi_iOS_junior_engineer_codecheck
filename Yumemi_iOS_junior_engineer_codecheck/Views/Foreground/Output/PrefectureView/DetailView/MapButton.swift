@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct MapButton: View {
-    @Binding var isMapExpanded:Bool
-    let imageURL:URL
+    @Binding var isMapExpanded: Bool
+    let imageURL: URL
     var body: some View {
-        Button{
-            withAnimation{ isMapExpanded = true }
-        }label: {
-            AsyncImage(url: imageURL){ image in
-                VStack{
+        Button {
+            withAnimation { isMapExpanded = true }
+        } label: {
+            AsyncImage(url: imageURL) { image in
+                VStack {
                     image
                         .resizable()
                         .scaledToFit()
-                    HStack{
+                    HStack {
                         Spacer()
                         Text("位置を確認")
                             .lineLimit(1)

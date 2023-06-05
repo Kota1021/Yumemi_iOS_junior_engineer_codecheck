@@ -8,66 +8,83 @@
 import SwiftUI
 
 struct LicenseView: View {
-    let viewSize:CGSize
+    let viewSize: CGSize
     //    @State private var blurStrength:Double = 0
-    let width:CGFloat
-    
+    let width: CGFloat
+
     init(size: CGSize) {
         self.viewSize = size
         self.width = size.width
     }
-    
+
     var body: some View {
-        VStack(alignment: .leading,spacing: 0){
-            
+        VStack(alignment: .leading, spacing: 0) {
+
             //making a boaring licence display a little bit sexier.
             Text("Liblaries,\nMaterials,\nand\nLicenses.")
-            .font(.system(size: width/6))
-            .lineLimit(4)
-            .minimumScaleFactor(0.8)
-            
-            
+                .font(.system(size: width / 6))
+                .lineLimit(4)
+                .minimumScaleFactor(0.8)
+
             Spacer()
-            Group{
-                HStack{
-                    URLButton("Alamofire", url: URL(string: "https://github.com/Alamofire/Alamofire")!)
-                        .layoutPriority(1)
-                    URLButton("MIT License", url: URL(string: "https://github.com/Alamofire/Alamofire/blob/master/LICENSE")!)
+            Group {
+                HStack {
+                    URLButton(
+                        "Alamofire", url: URL(string: "https://github.com/Alamofire/Alamofire")!
+                    )
+                    .layoutPriority(1)
+                    URLButton(
+                        "MIT License",
+                        url: URL(
+                            string: "https://github.com/Alamofire/Alamofire/blob/master/LICENSE")!)
                 }
-                
-                HStack{
-                    URLButton("SwiftyUserDefaults", url: URL(string: "https://github.com/sunshinejr/SwiftyUserDefaults")!)
-                        .layoutPriority(1)
-                    URLButton("MIT License", url: URL(string: "https://github.com/sunshinejr/SwiftyUserDefaults/blob/master/LICENSE")!)
+
+                HStack {
+                    URLButton(
+                        "SwiftyUserDefaults",
+                        url: URL(string: "https://github.com/sunshinejr/SwiftyUserDefaults")!
+                    )
+                    .layoutPriority(1)
+                    URLButton(
+                        "MIT License",
+                        url: URL(
+                            string:
+                                "https://github.com/sunshinejr/SwiftyUserDefaults/blob/master/LICENSE"
+                        )!)
                 }
-                
-                HStack{
-                    URLButton("GlowBorder by Samuel Doe", url: URL(string: "https://github.com/SamuelDo02/swiftuitutorials/blob/main/GlowBorder.swift")!)
+
+                HStack {
+                    URLButton(
+                        "GlowBorder by Samuel Doe",
+                        url: URL(
+                            string:
+                                "https://github.com/SamuelDo02/swiftuitutorials/blob/main/GlowBorder.swift"
+                        )!)
                 }
-                
-                
+
                 URLButton("Photos from: FIND/47", url: URL(string: "https://find47.jp")!)
                     .layoutPriority(1)
-                HStack{
+                HStack {
                     Text("     via")
-                    
-                    URLButton("Code for FUKUI", url: URL(string: "https://github.com/code4fukui/find47")!)
+
+                    URLButton(
+                        "Code for FUKUI", url: URL(string: "https://github.com/code4fukui/find47")!)
                 }
-                
-                URLButton(URL(string: "https://japan-map.com")!){
+
+                URLButton(URL(string: "https://japan-map.com")!) {
                     Text("Map illusts from: 日本地図の無料イラスト素材集")
                         .multilineTextAlignment(.leading)
-                    
+
                 }
-                
+
             }.padding(.horizontal)
-                .padding(.vertical,5)
+                .padding(.vertical, 5)
                 .foregroundColor(Color(.label))
                 .layoutPriority(1)
             Spacer()
             Spacer()
         }.padding()
-            .padding(.vertical,40)
+            .padding(.vertical, 40)
             .fontWeight(.bold)
             .glowBorder(color: Color(.systemBackground), lineWidth: 3)
             .background(

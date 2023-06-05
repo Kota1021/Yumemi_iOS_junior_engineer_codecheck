@@ -5,8 +5,8 @@
 //  Created by Samuel Doe
 //  from.  https://www.youtube.com/watch?v=MJLoKS1i1oQ
 
-
 import SwiftUI
+
 struct GlowBorder: ViewModifier {
     var color: Color
     var lineWidth: Int
@@ -19,8 +19,8 @@ struct GlowBorder: ViewModifier {
     }
 }
 
-extension View{
-    func glowBorder(color:Color, lineWidth: Int) -> some View{
+extension View {
+    func glowBorder(color: Color, lineWidth: Int) -> some View {
         self.modifier(GlowBorder(color: color, lineWidth: lineWidth))
     }
 }

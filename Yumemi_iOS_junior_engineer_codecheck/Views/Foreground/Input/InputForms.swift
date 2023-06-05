@@ -15,7 +15,7 @@
 //    @Binding var isBirthdayFocused:Bool
 //    @Binding var isBloodTypeFocused:Bool
 //    let vm:ViewLogicProtocol
-//    
+//
 //    var body: some View {
 //        VStack{
 //            InputForm("Name"){

@@ -9,14 +9,14 @@
 //import Alamofire
 //struct OutputView: View {
 //    @ObservedObject var prefectureModel:PrefectureModel
-//    
+//
 //    var body: some View {
 //            if let prefecture = self.prefectureModel.prefecture{
 //                PrefectureView(prefacture: prefecture)
-//                
+//
 //            }else if let errorInFetchingFortune = self.prefectureModel.error{
 //                ErrorView(error:errorInFetchingFortune)
-//                
+//
 //            }
 //    }
 //}

@@ -11,7 +11,7 @@
 //    @Binding var bloodType:ABOBloodType
 //    let disabled:Bool
 //    let buttonAction:()->Void
-//    
+//
 //    var body: some View {
 //        KeyboardAlikeView{
 //            HStack{
@@ -20,7 +20,7 @@
 //                        Text(bloodType.rawValue).tag(bloodType)
 //                    }
 //                }.pickerStyle(.wheel)
-//                
+//
 //                Button("See Fortune") {
 //                    buttonAction()
 //                }.buttonStyle(.borderedProminent)

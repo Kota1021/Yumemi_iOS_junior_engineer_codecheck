@@ -7,23 +7,23 @@
 
 import SwiftUI
 
-struct InputForm<Content:View>: View {
-    
-    let content:()-> Content
-    let title:String
-    
-    init(_ titleKey:String.LocalizationValue,@ViewBuilder content: @escaping () -> Content) {
+struct InputForm<Content: View>: View {
+
+    let content: () -> Content
+    let title: String
+
+    init(_ titleKey: String.LocalizationValue, @ViewBuilder content: @escaping () -> Content) {
         self.title = String(localized: titleKey)
         self.content = content
     }
-    
+
     var body: some View {
-        HStack{
+        HStack {
             Text(title)
             Spacer()
             content()
         }
-        .frame(maxWidth: 300)// setting maxWidth for ipad
+        .frame(maxWidth: 300)  // setting maxWidth for ipad
         .padding()
         .background(Color(.systemGray6))
         .clipShape(RoundedRectangle(cornerRadius: 8))
@@ -35,7 +35,7 @@ struct InputForm<Content:View>: View {
 
 struct InputFormView_Previews: PreviewProvider {
     static var previews: some View {
-        InputForm("hello"){
+        InputForm("hello") {
             Text("hi")
         }
     }

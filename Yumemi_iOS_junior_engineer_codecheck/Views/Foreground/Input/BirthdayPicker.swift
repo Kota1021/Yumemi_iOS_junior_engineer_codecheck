@@ -10,15 +10,15 @@
 //struct BirthdayPicker: View {
 //    @Binding var birthday:Date
 //    let buttonAction:()->Void
-//    
+//
 //    var body: some View {
-//        
+//
 //        KeyboardAlikeView{
 //            HStack{
 //                DatePicker("Birthday", selection: $birthday,displayedComponents: [.date])
 //                    .datePickerStyle(.wheel)
 //                    .labelsHidden()
-//                
+//
 //                Button("Next") {
 //                    buttonAction()
 //                }.buttonStyle(.borderedProminent)

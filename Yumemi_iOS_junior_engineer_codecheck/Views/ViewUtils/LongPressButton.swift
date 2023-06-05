@@ -9,13 +9,13 @@
 //
 /////cf. https://developer.apple.com/documentation/swiftui/longpressgesture
 //struct LongPressButton<Content:View>: View {
-//    
+//
 //    let minimumDuration:Double
 //    let unpressed:Color
 //    let pressed:Color
 //    let action: () -> Void
 //    let content:() -> Content
-//    
+//
 //    init(minimumDuration: Double,
 //         unpressed: Color = .clear,
 //         pressed: Color = .clear,
@@ -27,7 +27,7 @@
 //        self.action = action
 //        self.content = content
 //    }
-//    
+//
 //    @GestureState private var isDetectingLongPress = false
 //    var longPress: some Gesture {
 //        LongPressGesture(minimumDuration: minimumDuration)
