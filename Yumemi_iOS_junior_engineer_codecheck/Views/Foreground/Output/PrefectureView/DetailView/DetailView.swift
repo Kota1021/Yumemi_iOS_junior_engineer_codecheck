@@ -14,7 +14,8 @@ struct DetailView: View {
     @Binding var isMapExpanded:Bool
     
     var body: some View {
-        VStack(alignment: .leading){
+        VStack{
+//        VStack(alignment: .leading){
             HStack{
                 VStack(alignment: .leading){
                     

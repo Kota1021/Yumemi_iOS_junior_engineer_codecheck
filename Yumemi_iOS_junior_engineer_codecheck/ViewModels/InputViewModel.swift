@@ -9,13 +9,14 @@ import SwiftUI
 import SwiftyUserDefaults
 
 
-//this time I only wrote a ViewModel for InputView, which is I think complicated enough to need one.
+//this time I only made a ViewModel for InputView, which is I think complicated enough to need one.
+//Not MVVM, however, Views know the Model and Model is independent of Views.
 
 protocol InputViewModelProtocol:ObservableObject{
     var name:String { get set }
     var birthday:Date { get set }
     var bloodType:ABOBloodType { get set }
-    var input:UserInput { get }
+    var input:FetchInput { get }
     
     var isTextFieldFocused:Bool{ get set }
     var isBirthdayFocused:Bool { get set }
@@ -23,12 +24,11 @@ protocol InputViewModelProtocol:ObservableObject{
     var isFetchButtonDisplayed:Bool{ get }
     
     var dateRange:ClosedRange<Date>{ get }
-//    func fetchLuckyPrefecture()
-    func fetchLuckyPrefecture(onReceive action:@escaping ()->Void)
+    func fetchLuckyPrefecture(onReceive actionOnReceive:@escaping ()->Void)
+//    func fetchLuckyPrefecture(onSuccess actionOnSuccess:@escaping ()->Void,onFailure actionOnFailure:@escaping ()->Void)
     func focus(at:InputField?)
     func viewDidDisappear()
 }
-
 
 class InputViewModel<PrefectureModel:PrefectureModelProtocol>:ObservableObject,InputViewModelProtocol{
     
@@ -56,11 +56,10 @@ class InputViewModel<PrefectureModel:PrefectureModelProtocol>:ObservableObject,I
     @Published  public var birthday:Date = Date()
     @Published  public var bloodType:ABOBloodType = .a
     
-    public var input:UserInput{
+    public var input:FetchInput{
         .init(name: name,
               birthday: YearMonthDay(from: birthday),
-              bloodType: bloodType,
-              today: YearMonthDay(from: Date() ) )
+              bloodType: bloodType,today: YearMonthDay(from: Date() ) )
     }
     
     @Published public var isTextFieldFocused = false
@@ -84,42 +83,29 @@ class InputViewModel<PrefectureModel:PrefectureModelProtocol>:ObservableObject,I
        if input.isValid{
            print("InputViewModel: fetching luckyPrefecture with:\n\(input)")
            
-           prefectureModel.fetchLuckyPrefecture(input: input, onReceive: {
+           prefectureModel.fetchLuckyPrefecture(input: input){
                actionOnReceive()
-               self.storeUserInfoIntoCoreData()
-           })
+           }onSuccess: { yumemiAPIprefecture in
+               self.storeUserInfoIntoCoreData(prefecture: yumemiAPIprefecture.name)
+           }onFailure: {
+           }
            
        }else{
            print("InputViewModel: input invalid")
        }
    }
     
-//    public func fetchLuckyPrefecture(){
-//       print("InputViewModel: fetch button tapped")
-//
-//       if input.isValid{
-//           print("InputViewModel: fetching luckyPrefecture with:\n\(input)")
-//           prefectureModel.fetchLuckyPrefecture(input: input, onReceive: {
-//               self.storeUserInfoIntoCoreData()
-//           } )
-//
-//       }else{
-//           print("InputViewModel: input invalid")
-//       }
-//
-//   }
-    
-    
     // not sure if it is good to have InputViewModel deal with CoreData
     private let viewContext = PersistenceController.shared.container.viewContext
-    private func storeUserInfoIntoCoreData(){
+    private func storeUserInfoIntoCoreData(prefecture:String){
         //この辺に保存の処理
         
-        let newUserInput = StoredUserInput(context: viewContext)
-        newUserInput.name = input.name
-        newUserInput.birthday = input.birthday.toDate()
-        newUserInput.bloodType = input.bloodType
-        newUserInput.fetchedAt = input.today.toDate()
+        let newHistory = StoredHistory(context: viewContext)
+        newHistory.prefecture = prefecture
+        newHistory.name = input.name
+        newHistory.birthday = input.birthday.toDate()
+        newHistory.bloodType = input.bloodType
+        newHistory.fetchedAt = Date()
         
         print("InputViewModel: saving userInfo into Core Data")
         try? viewContext.save()

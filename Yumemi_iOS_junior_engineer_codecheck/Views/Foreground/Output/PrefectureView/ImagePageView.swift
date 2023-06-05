@@ -10,7 +10,6 @@ import SwiftUI
 struct ImagePageView: View {
     let imagesInfo:[PrefectureImageInfo]
     let viewSize:CGSize
-//    private let imageHeight:CGFloat = 300
     private var imageHeight:CGFloat{ viewSize.height * 4/5}
     private var reflectionHeight:CGFloat{ viewSize.height - imageHeight }
     private let blurRadius:CGFloat = 3

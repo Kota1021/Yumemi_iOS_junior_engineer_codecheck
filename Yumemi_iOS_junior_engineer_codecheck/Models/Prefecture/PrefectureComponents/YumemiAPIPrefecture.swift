@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct LuckyPrefecture:Decodable{
+///from Yumemi API
+struct YumemiAPIPrefecture:Decodable{
     public let name:String
     public let brief:String
     public let capital:String
@@ -23,9 +24,10 @@ struct MonthDay:Codable{
 
 extension MonthDay{
     public func toString()->String{
-        let formatter = DateFormatter()
-        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "dMMM", options: 0, locale: Locale(identifier: "ja_JP"))
-        return formatter.string(from: self.toDate())
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "dMMM", options: 0, locale: Locale(identifier: "ja_JP"))
+//        return formatter.string(from: self.toDate())
+        return stringDate(from: self.toDate())
     }
     
     public func toDate()->Date{

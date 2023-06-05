@@ -10,15 +10,14 @@ import CoreData
 ///saving LuckyPrefecture, not Prefecture, this is because Prefecture = LuckyPrefecture + PinLocation + PrefectureImageInfo
 ///PinLocation and PrefectureImageInfo data is derived from JSON.
 ///To make it SSOT, you cant save those data.
-@objc(SavedLuckyPrefecture)
-public class SavedLuckyPrefecture: NSManagedObject {
+@objc(StoredYumemiAPIPrefecture)
+public class StoredYumemiAPIPrefecture: NSManagedObject {}
+//extension StoredLuckyPrefecture : Identifiable {}
 
-}
+extension StoredYumemiAPIPrefecture {
 
-extension SavedLuckyPrefecture {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<SavedLuckyPrefecture> {
-        return NSFetchRequest<SavedLuckyPrefecture>(entityName: "SavedLuckyPrefecture")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<StoredYumemiAPIPrefecture> {
+        return NSFetchRequest<StoredYumemiAPIPrefecture>(entityName: "StoredYumemiAPIPrefecture")
     }
 
     @NSManaged public var name: String
@@ -30,7 +29,7 @@ extension SavedLuckyPrefecture {
 
 }
 
-extension SavedLuckyPrefecture{
+extension StoredYumemiAPIPrefecture{
     public var logoURL:URL{
         get {
             guard let url = URL(string: self.logoURLString) else {
@@ -44,6 +43,4 @@ extension SavedLuckyPrefecture{
 }
 
 
-extension SavedLuckyPrefecture : Identifiable {
 
-}

@@ -11,7 +11,7 @@ import SwiftUI
 struct PreviewData{
     
     static var screenSize:CGSize = UIScreen.main.bounds.size
-    static var luckyPrefecture = LuckyPrefecture(name: "徳島県", brief: "徳島県（とくしまけん）は、日本の四国地方に位置する県。県庁所在地は徳島市。\n※出典: フリー百科事典『ウィキペディア（Wikipedia）』", capital: "徳島市", citizenDay: nil, hasCoastLine: true, logoUrl: URL(string: "https://japan-map.com/wp-content/uploads/tokushima.png")!)
+    static var luckyPrefecture = YumemiAPIPrefecture(name: "徳島県", brief: "徳島県（とくしまけん）は、日本の四国地方に位置する県。県庁所在地は徳島市。\n※出典: フリー百科事典『ウィキペディア（Wikipedia）』", capital: "徳島市", citizenDay: nil, hasCoastLine: true, logoUrl: URL(string: "https://japan-map.com/wp-content/uploads/tokushima.png")!)
     
     static var prefecture = Prefecture(name: "徳島県", brief: "徳島県（とくしまけん）は、日本の四国地方に位置する県。県庁所在地は徳島市。\n※出典: フリー百科事典『ウィキペディア（Wikipedia）』", capital: "徳島市", citizenDay: nil, hasCoastLine: true, logoUrl: URL(string: "https://japan-map.com/wp-content/uploads/tokushima.png")!, location: PinLocation(lat: 34.065732, long: 134.559293), images: [PrefectureImageInfo(id: "", url: URL(string: "https://find47.jp/ja/i/vqLsw/image_file?type=detail_thumb")!, title: "test", author: "test", prefCodeStr: "1", pref: "test ")])
     
@@ -21,8 +21,8 @@ struct PreviewData{
                                    .init(name: "iPhone 11 Pro", previewTitle: "iPhone 11 Pro 5.85"),
                                    .init(name: "iPhone SE (3rd generation)", previewTitle: "iPhone SE 3rd gen 4.7")]
     
-    static let input = UserInput(name: "asg", birthday: YearMonthDay(from: Date() ), bloodType: .a, today: YearMonthDay(from: Date() ) )
-    static let history:History = .init(prefecture: prefecture, userInput: input)
+    static let input = FetchInput(name: "asg", birthday: YearMonthDay(from: Date() ), bloodType: .a, today: YearMonthDay(from: Date() ))
+//    static let history:History = .init(prefecture: prefecture.name, fetchedAt: Date(), userInput: input)
 }
 
 struct Device:Hashable,Identifiable{

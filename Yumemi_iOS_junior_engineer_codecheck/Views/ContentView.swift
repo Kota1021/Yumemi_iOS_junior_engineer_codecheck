@@ -39,6 +39,7 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
             }.tag(Pages.output)
             
             HistoryView(size:screen.size,shouldShowOutput: $displayOutputViewFlag, prefectureModel: prefectureModel)
+//            HistoryView(size:screen.size,shouldShowOutput: $displayOutputViewFlag, prefectureModel: prefectureModel)
                 .tag(Pages.history)
             
             LicenseView(size:screen.size)
@@ -47,9 +48,7 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
         }
         .background(BackgroundView() )
         .onReceive(Just(displayOutputViewFlag)) { shouldShow in
-            print("ContentView: displayOutputViewFlag sent \(shouldShow)")
-            print("ContentView: self.prefectureModel.prefecture\n\(self.prefectureModel.prefecture )\n")
-            
+//            print("ContentView: displayOutputViewFlag sent \(shouldShow)")
             if shouldShow{
                 Task(priority: .background) {
                     try await Task.sleep(nanoseconds: UInt64(0.3 * 1_000_000_000) )
@@ -58,24 +57,7 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
                     }
                 }
             }
-            
         }
-//        .onReceive(Just(saveUserInputFlag)) { shouldSave in
-//            print("ContentView: saveUserInputFlag sent: \(shouldSave)\n")
-//            if shouldSave{
-//                //この辺に保存の処理
-//                let newUserInput = SavedUserInput(context: viewContext)
-//                newUserInput.name = userInputToSave.name
-//                newUserInput.birthday = userInputToSave.birthday.toDate()
-//                newUserInput.bloodType = userInputToSave.bloodType
-//                newUserInput.fetchedAt = userInputToSave.today.toDate()
-//                
-//                try? viewContext.save()
-//                
-//                print("ContentView: userInput saved to CoreData:\n\(userInputToSave)\n")
-//            }
-//            
-//        }
     }
     
     private enum Pages{
@@ -90,7 +72,7 @@ struct ContentView_Previews: PreviewProvider {
         ForEach(PreviewData.devices) { device in
             ContentView<PrefectureModel>(prefectureModel: PrefectureModel())
                 .environmentObject(ScreenSize(size: PreviewData.screenSize))
-            //.environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+//            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
                 .previewDevice(PreviewDevice(rawValue: device.name))
                 .previewDisplayName(device.previewTitle)
         }

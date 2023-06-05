@@ -34,12 +34,12 @@ struct PrefectureView: View {
                                   text: prefacture.brief,
                                   viewSize: proxy.size)
                     
-                }
-                if isMapPoppedOver{
+                }else if isMapPoppedOver{
                     MapView(isDisplayed:$isMapPoppedOver, viewSize:proxy.size, pinLocation:  prefacture.location)
                     
                 }
             }
+            
         }
         
     }

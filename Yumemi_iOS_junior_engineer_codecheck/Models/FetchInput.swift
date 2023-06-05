@@ -8,18 +8,19 @@
 import Foundation
 import SwiftyUserDefaults
 
-struct UserInput:Codable{
+struct FetchInput:Codable{
     public let name:String // no more than 127 characters
     public let birthday:YearMonthDay
     public let bloodType:ABOBloodType
     public let today:YearMonthDay
     
+    public var fetchedAt:Date{ Date() }
     public var isValid:Bool{ !name.isEmpty && name.count < 128 }
     
 }
 
 // conforms to DefaultsSerializable so that it can be saved in userdefaults with SwiftyUserDefaults
-extension UserInput:DefaultsSerializable{}
+extension FetchInput:DefaultsSerializable{}
 
 struct YearMonthDay:Codable{
     public let year:Int
@@ -41,10 +42,11 @@ extension YearMonthDay{
     
     /// avoiding  hard-coding date format.
     public func toString()->String{
-        let calendar = Calendar.current
-        let formatter = DateFormatter()
-        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyydMMM", options: 0, locale: Locale(identifier: "ja_JP"))
-        return formatter.string(from: self.toDate())
+//        let calendar = Calendar.current
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyydMMM", options: 0, locale: Locale(identifier: "ja_JP"))
+//        return formatter.string(from: self.toDate())
+        return stringDate(from: self.toDate() )
     }
     
     public func toDate()->Date{

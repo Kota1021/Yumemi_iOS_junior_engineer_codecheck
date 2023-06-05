@@ -8,7 +8,7 @@
 import Foundation
 
 struct Prefecture{
-    //from Yumemi API. In other words, from "LuckyPrefecture"
+    //from Yumemi's FortuneAPI. In other words, from "LuckyPrefecture"
     let name:String
     let brief:String
     let capital:String
@@ -16,10 +16,10 @@ struct Prefecture{
     let hasCoastLine:Bool
     let logoUrl:URL
     
-    //from JSON file in bundle
+    //from JSON file in Bundle
     let location:PinLocation
     
-    //from JSON file in bundle and then website "find47"
+    //from JSON file in Bundle and then website "find/47"
     let images:[PrefectureImageInfo]
 }
 

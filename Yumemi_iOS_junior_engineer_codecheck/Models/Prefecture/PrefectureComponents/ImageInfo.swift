@@ -7,6 +7,23 @@
 
 import Foundation
 
+///this holds imageInfoSets data.
+struct PrefectureImageInfoSets{
+    
+    private init(){} // Singleton like. No need for initializing this data holding struct.
+    static public let imageInfoSets:[PrefectureImageInfo] = load("find47images.json")
+    static public func infoSets(of prefecture: String) -> [PrefectureImageInfo]{
+        return imageInfoSets.filter{$0.pref == prefecture }
+    }
+    static public func thumbnailURL(of prefecture: String) -> URL{
+        let prefectureImageInfoSets = imageInfoSets.filter{$0.pref == prefecture }
+        guard let imageInfo = prefectureImageInfoSets.shuffled().first else {
+            fatalError("PrefectureImageInfoSets: image info not found. of \(prefecture)")
+        }
+        return imageInfo.url
+    }
+}
+
 ///Photos from website find/47
 struct PrefectureImageInfo: Decodable,Identifiable {
     let id: String
@@ -31,13 +48,5 @@ struct PrefectureImageInfo: Decodable,Identifiable {
         case author
         case prefCodeStr = "pref_code"
         case pref
-    }
-}
-
-struct PrefectureImageInfoSets{
-    static let imageInfoSets:[PrefectureImageInfo] = load("find47images.json")
-    
-    static public func infoSets(of prefecture: String)-> [PrefectureImageInfo]{
-        return imageInfoSets.filter{$0.pref == prefecture }
     }
 }

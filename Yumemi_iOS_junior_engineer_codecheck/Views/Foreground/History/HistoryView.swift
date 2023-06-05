@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct HistoryView<PrefectureModel>: View where PrefectureModel: PrefectureModelProtocol{
-    @FetchRequest(entity: StoredUserInput.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \StoredUserInput.fetchedAt, ascending: true)],animation: .default)
-    private var userInputs: FetchedResults<StoredUserInput>
+    @FetchRequest(entity: StoredHistory.entity(),
+                  sortDescriptors: [NSSortDescriptor(keyPath: \StoredHistory.fetchedAt, ascending: false)],
+                  animation: .default)
+    private var fetchedHistories: FetchedResults<StoredHistory>
     
-    @FetchRequest(entity: SavedLuckyPrefecture.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \SavedLuckyPrefecture.name, ascending: true)],animation: .default)
-    private var luckyPrefectures: FetchedResults<SavedLuckyPrefecture>
+//    private var histories:[History]{ fetchedHistories.map{ HistoryFrom(history: $0) } }
     
     @ObservedObject var prefectureModel:PrefectureModel
     @Binding var shouldShowOutput: Bool
@@ -26,30 +27,29 @@ struct HistoryView<PrefectureModel>: View where PrefectureModel: PrefectureModel
     
     var body: some View {
         ScrollView(.horizontal){
-            VStack{
-                HStack{
-                    ForEach(0..<userInputs.count) { index in
-                        Text(userInputs[index].name)
-                    }
-                }
-                HStack{
-                    ForEach(0..<luckyPrefectures.count) { index in
-                        Text(luckyPrefectures[index].name)
-                    }
-                }
-            }
-//            HStack{
-//                ForEach(0..<historiesTest.count) { index in
-//                    Button{
-//                        let prefecture =  historiesTest[index].prefecture
+            HStack{
+                
+                ForEach(0..<fetchedHistories.count) { index in
+                    Button{
+//                        let prefecture =  prefectureModel.setPrefecture(name: history.prefecture)
 //                        prefectureModel.prefecture = prefecture
 //                        shouldShowOutput = true
+
+                    }label:{
+                        HistoryCardView(history:fetchedHistories[index], thumbnailURL: PrefectureImageInfoSets.thumbnailURL(of: fetchedHistories[index].prefecture))
+                    }.buttonStyle(.plain)
+                }
+//                ForEach(histories) { history in
+//                    Button{
+////                        let prefecture =  prefectureModel.setPrefecture(name: history.prefecture)
+////                        prefectureModel.prefecture = prefecture
+////                        shouldShowOutput = true
 //
 //                    }label:{
-//                        HistoryCardView(history:historiesTest[index])
+//                        HistoryCardView(history:history, thumbnailURL: PrefectureImageInfoSets.thumbnailURL(of: history.prefecture))
 //                    }.buttonStyle(.plain)
 //                }
-//            }
+            }
         }.frame(width: viewSize.width, height: viewSize.height)
             .background(
                 Color.clear
@@ -65,3 +65,5 @@ struct HistoryView_Previews: PreviewProvider {
         HistoryView(size: PreviewData.screenSize, shouldShowOutput: $shouldShowOutput, prefectureModel: PrefectureModel())
     }
 }
+
+

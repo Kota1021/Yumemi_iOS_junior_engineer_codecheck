@@ -10,9 +10,9 @@ import CoreData
 struct PersistenceController {
     static let shared = PersistenceController()
 
-//    static var preview: PersistenceController = {
-//        let result = PersistenceController(inMemory: true)
-//        let viewContext = result.container.viewContext
+    static var preview: PersistenceController = {
+        let result = PersistenceController(inMemory: true)
+        let viewContext = result.container.viewContext
 //        for _ in 0..<10 {
 //            let newItem = Item(context: viewContext)
 //            newItem.timestamp = Date()
@@ -25,8 +25,8 @@ struct PersistenceController {
 //            let nsError = error as NSError
 //            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
 //        }
-//        return result
-//    }()
+        return result
+    }()
 
     let container: NSPersistentContainer
 

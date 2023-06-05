@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct HistoryCardView: View {
-    let history:History
+    let history:StoredHistory
+//    let history:History
+    let thumbnailURL:URL
+    
     let width:CGFloat = 200
     let height:CGFloat = 300
     
@@ -17,7 +20,7 @@ struct HistoryCardView: View {
     
     var body: some View {
             VStack{
-                AsyncImage(url: URL(string: "https://find47.jp/ja/i/vqLsw/image_file?type=detail_thumb")) { image in
+                AsyncImage(url: thumbnailURL) { image in
                     image
                         .resizable()
                         .scaledToFill()
@@ -28,13 +31,21 @@ struct HistoryCardView: View {
             .frame(width: imageWidth, height: imageHeight)
                 
                 VStack(alignment: .leading){
-                    Text(history.prefecture.name)
+                    Text(history.prefecture)
                         .font(.largeTitle)
-                    Text(history.userInput.name)
-                    Text(history.userInput.birthday.toString())
-                    Text(history.userInput.bloodType.rawValue)
-                    Text(history.userInput.today.toString())
+                    Text(history.name)
+                    Text(history.stringBirthday )
+                    Text(history.bloodType.rawValue)
+                    Text(history.stringFetchDate )
                 }.padding()
+//                VStack(alignment: .leading){
+//                    Text(history.prefecture)
+//                        .font(.largeTitle)
+//                    Text(history.userInput.name)
+//                    Text(history.userInput.birthday.toString())
+//                    Text(history.userInput.bloodType.rawValue)
+//                    Text(history.fetchDateString)
+//                }.padding()
                 Spacer()
             }.frame(width: width,height: height)
             .background(Color(.secondarySystemBackground) )
@@ -43,10 +54,10 @@ struct HistoryCardView: View {
     }
 }
 
-struct HistoryCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        HistoryCardView(history: PreviewData.history)
-    }
-}
+//struct HistoryCardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HistoryCardView(history: PreviewData.history, thumbnailURL: URL(string: "https://static-cse.canva.com/blob/1064408/1600w-wK95f3XNRaM.jpg")! )
+//    }
+//}
 
 

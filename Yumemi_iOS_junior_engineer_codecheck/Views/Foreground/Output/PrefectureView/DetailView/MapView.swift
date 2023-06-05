@@ -10,12 +10,9 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
-    
     @Binding var isDisplayed: Bool
     @State private var region:MKCoordinateRegion
-    
     let viewSize:CGSize
-    
     var mapSize:CGSize{
         let width = viewSize.width
         let height = viewSize.height
@@ -25,9 +22,7 @@ struct MapView: View {
             return CGSize(width: height * 5/5, height: height * 4/5)
         }
     }
-    
     let pinLocation:PinLocation
-    
     
     init(isDisplayed: Binding<Bool>,
          viewSize: CGSize,
@@ -51,7 +46,6 @@ struct MapView: View {
     
     
     var body: some View {
-        
         Map(coordinateRegion: $region,
             //Mapの操作の指定
             interactionModes: .all,
