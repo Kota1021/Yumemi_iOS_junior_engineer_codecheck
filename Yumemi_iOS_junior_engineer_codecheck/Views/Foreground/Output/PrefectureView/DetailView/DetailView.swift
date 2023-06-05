@@ -9,6 +9,7 @@ import SwiftUI
 import AudioToolbox
 
 struct DetailView: View {
+    @EnvironmentObject var screen:ScreenSize
     let prefecture:Prefecture
     @Binding var isBreafViewExpanded:Bool
     @Binding var isMapExpanded:Bool
@@ -42,34 +43,22 @@ struct DetailView: View {
                             Text(prefecture.hasCoastLine ? "あり":"なし")
                         }
                     }
-                    
+                    Spacer()
                     Text("概要：")
                         .padding(.top)
                 }
                 
-                Button{
-                    withAnimation{ isMapExpanded = true }
+                // How to separate iPadOS from iOS with Conditional compilation block ?
+                if screen.height < 1000{
+                    CollapsedMap(isMapExpanded: $isMapExpanded, url: prefecture.logoUrl)
+                }else{
                     
-                }label: {
-                    AsyncImage(url: prefecture.logoUrl){ image in
-                        VStack{
-                            image
-                                .resizable()
-                                .scaledToFit()
-                            HStack{
-                                Spacer()
-                                Text("位置を確認")
-                                    .lineLimit(1)
-                                Image(systemName: "hand.tap.fill")
-                            }.foregroundColor(.gray)
-                        }
-                        .padding()
-                    } placeholder: {
-                        ProgressView()
-                    }
-                }.layoutPriority(-1)
-                    .background(Color(.secondarySystemBackground))
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                GeometryReader{ proxy in
+                    ExpandedMap(isDisplayed:$isMapExpanded, viewSize:proxy.size, pinLocation:  prefecture.location)
+                }
+                    
+                }
+                
             }
             
                 Button{
@@ -103,4 +92,5 @@ struct InfoView_Previews: PreviewProvider {
         DetailView(prefecture: PreviewData.prefecture, isBreafViewExpanded: $isDetailDisplayed, isMapExpanded: $isMapDisplayed)
     }
 }
+
 

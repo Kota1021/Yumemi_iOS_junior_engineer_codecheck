@@ -12,23 +12,19 @@ import Alamofire
 import Combine
 
 struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
+    @EnvironmentObject var screen:ScreenSize
+    @ObservedObject var prefectureModel: PrefectureModel
     @Environment(\.managedObjectContext) private var viewContext
     
-    @ObservedObject var prefectureModel: PrefectureModel
-    @EnvironmentObject var screen:ScreenSize
+    @FetchRequest(entity: History.entity(),
+                  sortDescriptors: [NSSortDescriptor(keyPath: \History.fetchedAt, ascending: false)],
+                  animation: .default)
+    private var histories: FetchedResults<History>
     
     @State private var displayOutputViewFlag = false
     @State private var displayedPage = Pages.input
-    private var isHistoryViewEnabled:Bool
-    private var isLicenseViewEnabled:Bool
-    
-    init(prefectureModel: PrefectureModel ){
-        self.prefectureModel = prefectureModel
-        
-        self.isHistoryViewEnabled = (LaunchUtil.launchStatus != .FirstLaunch)
-        self.isLicenseViewEnabled = (LaunchUtil.launchStatus != .FirstLaunch)
-    }
-    
+    private var isHistoryViewEnabled:Bool{ histories.count > 0}
+    private var isLicenseViewEnabled:Bool{ histories.count > 0}
     
     var body: some View {
         //MaximumVerticalPageView fills the screen, ignoring the safe area.
@@ -38,15 +34,13 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
                       shouldShowOutput: $displayOutputViewFlag)
                 .tag(Pages.input)
             
-            
-            if let prefecture = self.prefectureModel.prefecture{
-                PrefectureView(prefacture: prefecture)
-                    .tag(Pages.output)
-            }
-            if let error = self.prefectureModel.error{
-                ErrorView(error: error)
-                    .tag(Pages.output)
-            }
+            Group{
+                if let prefecture = self.prefectureModel.prefecture{
+                    PrefectureView(prefecture: prefecture)
+                }else if let error = self.prefectureModel.error{
+                    ErrorView(error: error)
+                }
+            }.tag(Pages.output)
             
             if isHistoryViewEnabled{
                 HistoryView(size:screen.size,shouldShowOutput: $displayOutputViewFlag, prefectureModel: prefectureModel)
@@ -81,6 +75,13 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
+//        ForEach(PreviewData.devices) { device in
+//            ContentView<PrefectureModel>(prefectureModel: PrefectureModel())
+//                .environmentObject(ScreenSize(size: PreviewData.screenSize))
+////            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+//                .previewDevice(PreviewDevice(rawValue: device.name))
+//                .previewDisplayName(device.previewTitle)
+//        }
         ForEach(PreviewData.devices) { device in
             ContentView<PrefectureModel>(prefectureModel: PrefectureModel())
                 .environmentObject(ScreenSize(size: PreviewData.screenSize))

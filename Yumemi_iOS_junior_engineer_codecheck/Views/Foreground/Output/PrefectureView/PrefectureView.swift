@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PrefectureView: View {
     
-    let prefacture: Prefecture
+    let prefecture: Prefecture
     @EnvironmentObject var screen:ScreenSize
     @State private var isMapPoppedOver = false
     @State private var isBriefPoppedOver = false
@@ -19,8 +19,8 @@ struct PrefectureView: View {
     var body: some View {
         GeometryReader{ proxy in
             VStack{
-                ImagePageView(imagesInfo: prefacture.images, viewSize: CGSize(width: proxy.size.width, height: proxy.size.height/2) )
-                DetailView(prefecture: prefacture,
+                ImagePageView(imagesInfo: prefecture.images, viewSize: CGSize(width: proxy.size.width, height: proxy.size.height/2) )
+                DetailView(prefecture: prefecture,
                            isBreafViewExpanded:$isBriefPoppedOver,
                            isMapExpanded: $isMapPoppedOver)
                 Spacer()
@@ -31,11 +31,11 @@ struct PrefectureView: View {
             .overlay{
                 if isBriefPoppedOver{
                     BriefCardView(isDisplayed: $isBriefPoppedOver,
-                                  text: prefacture.brief,
+                                  text: prefecture.brief,
                                   viewSize: proxy.size)
                     
                 }else if isMapPoppedOver{
-                    MapView(isDisplayed:$isMapPoppedOver, viewSize:proxy.size, pinLocation:  prefacture.location)
+                    ExpandedMap(isDisplayed:$isMapPoppedOver, viewSize:proxy.size, pinLocation:  prefecture.location)
                     
                 }
             }
@@ -48,7 +48,7 @@ struct PrefectureView: View {
 struct PrefectureView_Previews: PreviewProvider {
     
     static var previews: some View {
-        PrefectureView(prefacture:PreviewData.prefecture)
+        PrefectureView(prefecture:PreviewData.prefecture)
             .environmentObject(ScreenSize(size: PreviewData.screenSize))
     }
 }

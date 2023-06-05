@@ -22,6 +22,7 @@ struct Yumemi_iOS_junior_engineer_codecheckApp: App {
                         fatalError("could not get window size") }
                     self.screenSize = window.screen.bounds.size
                     print("App: screenSize: \(self.screenSize)")
+                    
                 }.environmentObject(ScreenSize(size: self.screenSize))
         }
     }
@@ -46,4 +47,20 @@ class ScreenSize:ObservableObject{
              height = newValue.height
         }
     }
+    
+    // Wanna separate iPadOS from iOS, but Conditional Compilation Block doesn't work.
+    public var estimatedOS:Plasforms{
+        if height < 1000{
+            return .iOS
+        }else if height < 1500{
+            return .iPadOS
+        }else{
+            return .mac
+        }
+    }
+    
+}
+
+enum Plasforms{
+    case iOS,iPadOS,mac
 }

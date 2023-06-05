@@ -9,9 +9,11 @@
 import SwiftUI
 import MapKit
 
-struct MapView: View {
+struct ExpandedMap: View {
     @Binding var isDisplayed: Bool
     @State private var region:MKCoordinateRegion
+    @EnvironmentObject var screen:ScreenSize
+    
     let viewSize:CGSize
     var mapSize:CGSize{
         let width = viewSize.width
@@ -59,7 +61,6 @@ struct MapView: View {
         .background(Color(.secondarySystemBackground) )
         .clipShape(RoundedRectangle(cornerRadius: 8))
         .transition(.scale(scale: 0,anchor: UnitPoint(x: 0.7, y: 0.7)))
-        .frame(width: mapSize.width, height: mapSize.height)
         .background(
             Color.clear
                 .contentShape(Rectangle())
@@ -68,8 +69,10 @@ struct MapView: View {
                 .gesture(DragGesture())
                 .gesture(MagnificationGesture())
                 .onTapGesture { withAnimation{ isDisplayed = false } }
-            
+
         )
+        .frame(width: screen.estimatedOS == .iOS ? mapSize.width : nil,
+               height: screen.estimatedOS == .iOS ? mapSize.height : nil)
         
     }
 }
@@ -78,7 +81,7 @@ struct MapView_Previews: PreviewProvider {
     @State static private var isDisplayed = true
     static var previews: some View {
         GeometryReader{ geo in
-            MapView(isDisplayed:$isDisplayed, viewSize:geo.size ,pinLocation:  PinLocation(lat: 39, long: 138))
+            ExpandedMap(isDisplayed:$isDisplayed, viewSize:geo.size ,pinLocation:  PinLocation(lat: 39, long: 138))
         }}
 }
 

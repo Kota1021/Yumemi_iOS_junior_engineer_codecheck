@@ -33,13 +33,34 @@ struct HistoryCardView: View {
                 }
             .frame(width: imageWidth, height: imageHeight)
                 
-                VStack(alignment: .leading){
+                
+                VStack(alignment: .custom){
+                    
                     Text(prefecture)
                         .font(.largeTitle)
-                    Text(name)
-                    Text(birthday)
-                    Text(bloodType)
-                    Text(fetchDate)
+                    Group{
+                        HStack{
+                            Image(systemName: "person.fill")
+                                .alignmentGuide(.custom) { d in d[HorizontalAlignment.center] }
+                            Text(name)
+                        }
+                        HStack{
+                            Image(systemName: "birthday.cake.fill")
+                                .alignmentGuide(.custom) { d in d[HorizontalAlignment.center] }
+                            Text(birthday)
+                        }
+                        HStack{
+                            Image(systemName: "syringe.fill")
+                                .alignmentGuide(.custom) { d in d[HorizontalAlignment.center] }
+                            Text(bloodType)
+                        }
+                        HStack{
+                            Image(systemName: "magnifyingglass")
+                                .alignmentGuide(.custom) { d in d[HorizontalAlignment.center] }
+                            Text(fetchDate)
+                        }
+                    }.foregroundColor(.gray)
+                    
                 }.padding()
                 Spacer()
             }.frame(width: width,height: height)

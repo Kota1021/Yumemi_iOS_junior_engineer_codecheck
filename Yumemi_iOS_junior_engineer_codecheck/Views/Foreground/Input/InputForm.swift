@@ -28,6 +28,7 @@ struct InputForm<Content:View>: View {
             Spacer()
             content()
         }
+        .frame(maxWidth: 300)// set maxWidth for ipad
         .padding()
         .background(Color(.systemGray6))
         .clipShape(RoundedRectangle(cornerRadius: 8))

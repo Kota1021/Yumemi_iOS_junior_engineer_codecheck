@@ -23,6 +23,7 @@ protocol InputViewModelProtocol:ObservableObject{
     var isBloodTypeFocused:Bool { get set }
     var isFetchButtonDisplayed:Bool{ get }
     
+    
     var dateRange:ClosedRange<Date>{ get }
     func fetchLuckyPrefecture(onReceive actionOnReceive:@escaping ()->Void)
 //    func fetchLuckyPrefecture(onSuccess actionOnSuccess:@escaping ()->Void,onFailure actionOnFailure:@escaping ()->Void)
@@ -42,6 +43,8 @@ class InputViewModel<PrefectureModel:PrefectureModelProtocol>:ObservableObject,I
         self.name = userInfo.name
         self.birthday = userInfo.birthday.toDate()
         self.bloodType = userInfo.bloodType
+        
+        
     }
     
     public func viewDidDisappear(){
@@ -57,9 +60,10 @@ class InputViewModel<PrefectureModel:PrefectureModelProtocol>:ObservableObject,I
     @Published  public var bloodType:ABOBloodType = .a
     
     public var input:FetchInput{
-        .init(name: name,
+        FetchInput(name: name,
               birthday: YearMonthDay(from: birthday),
               bloodType: bloodType,today: YearMonthDay(from: Date() ) )
+        
     }
     
     @Published public var isTextFieldFocused = false
@@ -98,8 +102,6 @@ class InputViewModel<PrefectureModel:PrefectureModelProtocol>:ObservableObject,I
     // not sure if it is good to have InputViewModel deal with CoreData
     private let viewContext = PersistenceController.shared.container.viewContext
     private func storeUserInfoIntoCoreData(prefecture:String){
-        //この辺に保存の処理
-        
         let newHistory = History(context: viewContext)
         newHistory.prefecture = prefecture
         newHistory.name = input.name

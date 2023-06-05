@@ -22,12 +22,16 @@ struct BackgroundView: View {
                 .overlay{
                     VStack{
                         Text("LuckyPrefecture")
+                            .font(.system(size: 100))
+                            .minimumScaleFactor(0.1)
+                            .lineLimit(2)//日本語タイトルは2行
                             .multilineTextAlignment(.center)
                             .fontWeight(.black)
-                            .font(.largeTitle)
                             .foregroundColor(.white)
                             .shadow(radius: 8)
-                            .padding(.top, 40)
+                            .padding()
+                            .padding(.top)
+                            .padding(.horizontal)
                         Spacer()
                     }
                 }

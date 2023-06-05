@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		67024CA72A2D83A30068DB12 /* LaunchUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67024CA62A2D83A30068DB12 /* LaunchUtil.swift */; };
 		671A35252A27462900F6358D /* PrefectureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A35242A27462900F6358D /* PrefectureView.swift */; };
 		671A35272A2759FD00F6358D /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A35262A2759FD00F6358D /* ErrorView.swift */; };
 		671A352E2A276A5700F6358D /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A352D2A276A5700F6358D /* LicenseView.swift */; };
@@ -22,6 +21,7 @@
 		672EE5B92A2A798A007EA3F3 /* InputViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672EE5B82A2A798A007EA3F3 /* InputViews.swift */; };
 		672EE5BB2A2A96EA007EA3F3 /* PrefectureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672EE5BA2A2A96EA007EA3F3 /* PrefectureModel.swift */; };
 		673556FB2A2D055500C7C22E /* StoredYumemiAPIPrefecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673556FA2A2D055500C7C22E /* StoredYumemiAPIPrefecture.swift */; };
+		67649D4A2A2DA98F00F0B6BA /* CollapsedMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67649D492A2DA98F00F0B6BA /* CollapsedMap.swift */; };
 		6769D8932A29E90100F49219 /* GlowBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6769D8922A29E90100F49219 /* GlowBorder.swift */; };
 		6769D8952A29F24B00F49219 /* prefLatiLong.json in Resources */ = {isa = PBXBuildFile; fileRef = 6769D8942A29F24B00F49219 /* prefLatiLong.json */; };
 		6769D8972A29FCC400F49219 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6769D8962A29FCC400F49219 /* Location.swift */; };
@@ -43,7 +43,7 @@
 		676AD3D32A2B21E90047ED58 /* Prefecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AD3D22A2B21E90047ED58 /* Prefecture.swift */; };
 		676AD3D52A2BA3860047ED58 /* VPageViewAnimationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AD3D42A2BA3860047ED58 /* VPageViewAnimationTest.swift */; };
 		676EA8C42A285572005C455B /* VTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 676EA8C32A285572005C455B /* VTabView */; };
-		676EA8CA2A28584E005C455B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676EA8C92A28584E005C455B /* MapView.swift */; };
+		676EA8CA2A28584E005C455B /* ExpandedMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676EA8C92A28584E005C455B /* ExpandedMap.swift */; };
 		676EA8CC2A285853005C455B /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676EA8CB2A285853005C455B /* HistoryView.swift */; };
 		676EA8CE2A285ACD005C455B /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676EA8CD2A285ACD005C455B /* BackgroundView.swift */; };
 		676EA9102A288B79005C455B /* find47images.json in Resources */ = {isa = PBXBuildFile; fileRef = 676EA90F2A288B79005C455B /* find47images.json */; };
@@ -77,7 +77,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		67024CA62A2D83A30068DB12 /* LaunchUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchUtil.swift; sourceTree = "<group>"; };
 		671A35242A27462900F6358D /* PrefectureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefectureView.swift; sourceTree = "<group>"; };
 		671A35262A2759FD00F6358D /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		671A352D2A276A5700F6358D /* LicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
@@ -92,6 +91,7 @@
 		672EE5B82A2A798A007EA3F3 /* InputViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViews.swift; sourceTree = "<group>"; };
 		672EE5BA2A2A96EA007EA3F3 /* PrefectureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefectureModel.swift; sourceTree = "<group>"; };
 		673556FA2A2D055500C7C22E /* StoredYumemiAPIPrefecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredYumemiAPIPrefecture.swift; sourceTree = "<group>"; };
+		67649D492A2DA98F00F0B6BA /* CollapsedMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsedMap.swift; sourceTree = "<group>"; };
 		6769D8922A29E90100F49219 /* GlowBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowBorder.swift; sourceTree = "<group>"; };
 		6769D8942A29F24B00F49219 /* prefLatiLong.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = prefLatiLong.json; sourceTree = "<group>"; };
 		6769D8962A29FCC400F49219 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 		676AD3C72A2ABD900047ED58 /* InputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewModel.swift; sourceTree = "<group>"; };
 		676AD3D22A2B21E90047ED58 /* Prefecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prefecture.swift; sourceTree = "<group>"; };
 		676AD3D42A2BA3860047ED58 /* VPageViewAnimationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPageViewAnimationTest.swift; sourceTree = "<group>"; };
-		676EA8C92A28584E005C455B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		676EA8C92A28584E005C455B /* ExpandedMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedMap.swift; sourceTree = "<group>"; };
 		676EA8CB2A285853005C455B /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		676EA8CD2A285ACD005C455B /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		676EA90F2A288B79005C455B /* find47images.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = find47images.json; sourceTree = "<group>"; };
@@ -181,7 +181,8 @@
 			isa = PBXGroup;
 			children = (
 				672DB2112A28DD330041BD60 /* DetailView.swift */,
-				676EA8C92A28584E005C455B /* MapView.swift */,
+				67649D492A2DA98F00F0B6BA /* CollapsedMap.swift */,
+				676EA8C92A28584E005C455B /* ExpandedMap.swift */,
 				672DB2082A28B86E0041BD60 /* BriefCardView.swift */,
 			);
 			path = DetailView;
@@ -255,7 +256,6 @@
 			isa = PBXGroup;
 			children = (
 				676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */,
-				67024CA62A2D83A30068DB12 /* LaunchUtil.swift */,
 				6769D89E2A2A2D4900F49219 /* Views */,
 				676AD3D12A2B146C0047ED58 /* ViewModels */,
 				676AC0312A2711FB009F34E9 /* Models */,
@@ -541,8 +541,9 @@
 				6769D89B2A2A2ADA00F49219 /* PreviewData.swift in Sources */,
 				672DB21A2A28EC0D0041BD60 /* Error.swift in Sources */,
 				676EA8CC2A285853005C455B /* HistoryView.swift in Sources */,
+				67649D4A2A2DA98F00F0B6BA /* CollapsedMap.swift in Sources */,
 				67EE94C22A2C0AF500349ADF /* HistoryCardView.swift in Sources */,
-				676EA8CA2A28584E005C455B /* MapView.swift in Sources */,
+				676EA8CA2A28584E005C455B /* ExpandedMap.swift in Sources */,
 				6769D8932A29E90100F49219 /* GlowBorder.swift in Sources */,
 				676EA8CE2A285ACD005C455B /* BackgroundView.swift in Sources */,
 				672EE5B92A2A798A007EA3F3 /* InputViews.swift in Sources */,
@@ -557,7 +558,6 @@
 				671A352E2A276A5700F6358D /* LicenseView.swift in Sources */,
 				67F6037B2A2D163B00E094C7 /* YumemiAPIPrefecture.swift in Sources */,
 				671A35272A2759FD00F6358D /* ErrorView.swift in Sources */,
-				67024CA72A2D83A30068DB12 /* LaunchUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,7 +751,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -782,7 +782,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

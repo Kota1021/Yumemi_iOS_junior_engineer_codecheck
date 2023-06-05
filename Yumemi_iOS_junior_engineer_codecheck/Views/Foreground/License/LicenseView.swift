@@ -10,27 +10,21 @@ import SwiftUI
 struct LicenseView: View {
     let viewSize:CGSize
     //    @State private var blurStrength:Double = 0
+    let width:CGFloat
     
     init(size: CGSize) {
         self.viewSize = size
+        self.width = size.width
     }
     
     var body: some View {
         VStack(alignment: .leading,spacing: 0){
-            Group{
-                Text("Liblaries,")
-                    .font(.system(size: 70))
-                    .padding(.top)
-                Text("Materials,")
-                    .font(.system(size: 70))
-                Text("and")
-                    .font(.system(size: 60))
-                Text("Licenses.")
-                    .font(.system(size: 70))
-                    .padding(.bottom)
-            }
-            .lineLimit(1)
-            .minimumScaleFactor(0.5)
+            
+            //making a boaring licence display a little bit sexier.
+            Text("Liblaries,\nMaterials,\nand\nLicenses.")
+            .font(.system(size: width/6))
+            .lineLimit(4)
+            .minimumScaleFactor(0.8)
             
             
             Spacer()
@@ -69,10 +63,11 @@ struct LicenseView: View {
             }.padding(.horizontal)
                 .padding(.vertical,5)
                 .foregroundColor(Color(.label))
+                .layoutPriority(1)
+            Spacer()
             Spacer()
         }.padding()
             .padding(.vertical,40)
-        //        .tint(Color(.label))
             .fontWeight(.bold)
             .glowBorder(color: Color(.systemBackground), lineWidth: 3)
             .background(

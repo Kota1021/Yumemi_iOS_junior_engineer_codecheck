@@ -37,7 +37,6 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
                 
                 InputForm("Birthday"){
                     Text("\(YearMonthDay(from: viewModel.birthday).toString())")
-
                 }
                 .shadow(color: viewModel.isBirthdayFocused ? .white : .clear, radius: 8)
                 .onTapGesture { viewModel.focus(at: .birthday) }
