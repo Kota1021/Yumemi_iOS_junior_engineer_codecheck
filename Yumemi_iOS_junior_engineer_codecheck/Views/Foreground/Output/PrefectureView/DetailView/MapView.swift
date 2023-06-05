@@ -9,28 +9,13 @@
 import SwiftUI
 import MapKit
 
-struct ExpandedMap: View {
-    @Binding var isDisplayed: Bool
+struct MapView: View {
     @State private var region:MKCoordinateRegion
-    @EnvironmentObject var screen:ScreenSize
-    
-    let viewSize:CGSize
-    var mapSize:CGSize{
-        let width = viewSize.width
-        let height = viewSize.height
-        if width < height{
-            return CGSize(width: width * 4/5, height: width * 5/5)
-        }else{
-            return CGSize(width: height * 5/5, height: height * 4/5)
-        }
-    }
     let pinLocation:PinLocation
     
-    init(isDisplayed: Binding<Bool>,
-         viewSize: CGSize,
-         pinLocation: PinLocation) {
+    init(pinLocation: PinLocation) {
+        self.pinLocation = pinLocation
         
-        self._isDisplayed = isDisplayed
         self._region = State(initialValue:
             MKCoordinateRegion(
             //Mapの中心の緯度経度
@@ -41,11 +26,7 @@ struct ExpandedMap: View {
             //経度の表示領域(m)
             longitudinalMeters: 1500*1000
         ) )
-        self.viewSize = viewSize
-        self.pinLocation = pinLocation
-        
     }
-    
     
     var body: some View {
         Map(coordinateRegion: $region,
@@ -60,20 +41,6 @@ struct ExpandedMap: View {
         .padding(10)
         .background(Color(.secondarySystemBackground) )
         .clipShape(RoundedRectangle(cornerRadius: 8))
-        .transition(.scale(scale: 0,anchor: UnitPoint(x: 0.7, y: 0.7)))
-        .background(
-            Color.clear
-                .contentShape(Rectangle())
-                .frame(width: viewSize.width, height: viewSize.height)
-            // empty gestures avoid unintended scrolling.
-                .gesture(DragGesture())
-                .gesture(MagnificationGesture())
-                .onTapGesture { withAnimation{ isDisplayed = false } }
-
-        )
-        .frame(width: screen.estimatedOS == .iOS ? mapSize.width : nil,
-               height: screen.estimatedOS == .iOS ? mapSize.height : nil)
-        
     }
 }
 
@@ -81,7 +48,7 @@ struct MapView_Previews: PreviewProvider {
     @State static private var isDisplayed = true
     static var previews: some View {
         GeometryReader{ geo in
-            ExpandedMap(isDisplayed:$isDisplayed, viewSize:geo.size ,pinLocation:  PinLocation(lat: 39, long: 138))
+            MapView(/*isDisplayed:$isDisplayed, backgroundSize:geo.size ,*/pinLocation:  PinLocation(lat: 39, long: 138))
         }}
 }
 

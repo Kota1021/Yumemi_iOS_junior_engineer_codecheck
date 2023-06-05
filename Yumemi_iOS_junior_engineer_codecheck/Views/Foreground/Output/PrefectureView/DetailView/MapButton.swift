@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct CollapsedMap: View {
+struct MapButton: View {
     @Binding var isMapExpanded:Bool
-    let url:URL
+    let imageURL:URL
     var body: some View {
         Button{
             withAnimation{ isMapExpanded = true }
         }label: {
-            AsyncImage(url: url){ image in
+            AsyncImage(url: imageURL){ image in
                 VStack{
                     image
                         .resizable()

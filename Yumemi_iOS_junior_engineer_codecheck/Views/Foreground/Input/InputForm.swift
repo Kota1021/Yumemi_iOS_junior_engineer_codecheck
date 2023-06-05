@@ -12,11 +12,6 @@ struct InputForm<Content:View>: View {
     let content:()-> Content
     let title:String
     
-//    init(_ title:String,@ViewBuilder content: @escaping () -> Content) {
-//        self.title = title
-//        self.content = content
-//    }
-    
     init(_ titleKey:String.LocalizationValue,@ViewBuilder content: @escaping () -> Content) {
         self.title = String(localized: titleKey)
         self.content = content
@@ -28,7 +23,7 @@ struct InputForm<Content:View>: View {
             Spacer()
             content()
         }
-        .frame(maxWidth: 300)// set maxWidth for ipad
+        .frame(maxWidth: 300)// setting maxWidth for ipad
         .padding()
         .background(Color(.systemGray6))
         .clipShape(RoundedRectangle(cornerRadius: 8))

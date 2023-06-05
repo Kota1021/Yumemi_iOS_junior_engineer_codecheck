@@ -26,14 +26,13 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
                         .submitLabel(.next)
 
                 }.shadow(color: viewModel.isTextFieldFocused ? .white : .clear, radius: 8)
-                /// below sets FocusState to Name TextField, and sync it with viewModel's Published<Bool> property. Wanna write in a cleaner way.
+                    .onSubmit { viewModel.focus(at: .birthday) }
+                    .onTapGesture { viewModel.focus(at: .name) }
+                /// Below sets FocusState to Name TextField, and sync it with viewModel's Published<Bool> property. Wanna write in a cleaner way.
                     .focused(self.$isTextFieldFocused)
                     .onAppear { self.isTextFieldFocused = viewModel.isTextFieldFocused}
                     .onChange(of: self.isTextFieldFocused) { viewModel.isTextFieldFocused = $0 }
                     .onChange(of: viewModel.isTextFieldFocused) { self.isTextFieldFocused = $0 }
-                
-                    .onSubmit { viewModel.focus(at: .birthday) }
-                    .onTapGesture { viewModel.focus(at: .name) }
                 
                 InputForm("Birthday"){
                     Text("\(YearMonthDay(from: viewModel.birthday).toString())")
@@ -50,7 +49,7 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
                 
                 if viewModel.isFetchButtonDisplayed{
                     Button{
-                        fetchButtonAction()
+                        fetchAction()
                     }label:{
                         HStack{
                             Image(systemName: "paperplane.fill")
@@ -95,7 +94,7 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
                         
                         Button("SeeFortune") {
                             viewModel.focus(at: .none)
-                            fetchButtonAction()
+                            fetchAction()
                         }.buttonStyle(.borderedProminent)
                             .disabled(!viewModel.input.isValid)
                     }
@@ -113,7 +112,7 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
         
     }
     
-    func fetchButtonAction(){
+    func fetchAction(){
         print("InputViews: on receive, setting shouldShowOutput to true \n\n\n")
         viewModel.fetchLuckyPrefecture(onReceive: { self.shouldShowOutput = true })
     }

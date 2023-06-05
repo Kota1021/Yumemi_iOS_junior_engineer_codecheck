@@ -23,6 +23,7 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
     
     @State private var displayOutputViewFlag = false
     @State private var displayedPage = Pages.input
+    //Below if launched for the first time, it would lock the view, only showing the InputView.
     private var isHistoryViewEnabled:Bool{ histories.count > 0}
     private var isLicenseViewEnabled:Bool{ histories.count > 0}
     
@@ -75,13 +76,7 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-//        ForEach(PreviewData.devices) { device in
-//            ContentView<PrefectureModel>(prefectureModel: PrefectureModel())
-//                .environmentObject(ScreenSize(size: PreviewData.screenSize))
-////            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-//                .previewDevice(PreviewDevice(rawValue: device.name))
-//                .previewDisplayName(device.previewTitle)
-//        }
+        // from iPhone SE 3ed gen to 14 pro
         ForEach(PreviewData.devices) { device in
             ContentView<PrefectureModel>(prefectureModel: PrefectureModel())
                 .environmentObject(ScreenSize(size: PreviewData.screenSize))

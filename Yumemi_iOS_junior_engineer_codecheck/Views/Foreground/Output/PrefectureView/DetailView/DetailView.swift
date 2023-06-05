@@ -16,7 +16,6 @@ struct DetailView: View {
     
     var body: some View {
         VStack{
-//        VStack(alignment: .leading){
             HStack{
                 VStack(alignment: .leading){
                     
@@ -49,14 +48,11 @@ struct DetailView: View {
                 }
                 
                 // How to separate iPadOS from iOS with Conditional compilation block ?
-                if screen.height < 1000{
-                    CollapsedMap(isMapExpanded: $isMapExpanded, url: prefecture.logoUrl)
+                if screen.estimatedOS == .iOS{
+                    MapButton(isMapExpanded: $isMapExpanded,
+                              imageURL: prefecture.logoUrl)
                 }else{
-                    
-                GeometryReader{ proxy in
-                    ExpandedMap(isDisplayed:$isMapExpanded, viewSize:proxy.size, pinLocation:  prefecture.location)
-                }
-                    
+                    MapView(pinLocation:  prefecture.location)
                 }
                 
             }
@@ -89,7 +85,9 @@ struct InfoView_Previews: PreviewProvider {
     @State static var isMapDisplayed = false
     
     static var previews: some View {
+        
         DetailView(prefecture: PreviewData.prefecture, isBreafViewExpanded: $isDetailDisplayed, isMapExpanded: $isMapDisplayed)
+            .environmentObject(ScreenSize())
     }
 }
 

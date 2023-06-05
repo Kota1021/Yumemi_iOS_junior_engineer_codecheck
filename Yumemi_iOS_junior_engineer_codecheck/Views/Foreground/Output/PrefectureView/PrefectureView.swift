@@ -11,36 +11,57 @@ struct PrefectureView: View {
     
     let prefecture: Prefecture
     @EnvironmentObject var screen:ScreenSize
-    @State private var isMapPoppedOver = false
+    @State private var isMapPoppingOver = false
     @State private var isBriefPoppedOver = false
     
-    private var isThereAnyPopOver: Bool{ isMapPoppedOver || isBriefPoppedOver }
+    private var isThereAnyPopOver: Bool{ isMapPoppingOver || isBriefPoppedOver }
+    
+    var mapPopOverSize:CGSize{
+        let width = screen.width
+        let height = screen.height
+        if width < height{
+            return CGSize(width: width * 4/5, height: width * 5/5)
+        }else{
+            return CGSize(width: height * 5/5, height: height * 4/5)
+        }
+    }
     
     var body: some View {
-        GeometryReader{ proxy in
             VStack{
-                ImagePageView(imagesInfo: prefecture.images, viewSize: CGSize(width: proxy.size.width, height: proxy.size.height/2) )
+                ImagePageView(imagesInfo: prefecture.images, viewSize: CGSize(width: screen.size.width, height: screen.size.height/2) )
                 DetailView(prefecture: prefecture,
                            isBreafViewExpanded:$isBriefPoppedOver,
-                           isMapExpanded: $isMapPoppedOver)
+                           isMapExpanded: $isMapPoppingOver)
                 Spacer()
             }
             .frame(width: screen.width, height: screen.height)
             .background(Color(.systemBackground) )
+        
+            //Below pop overs
             .blur(radius: isThereAnyPopOver ? 10 : 0)
             .overlay{
                 if isBriefPoppedOver{
                     BriefCardView(isDisplayed: $isBriefPoppedOver,
                                   text: prefecture.brief,
-                                  viewSize: proxy.size)
+                                  viewSize: screen.size)
                     
-                }else if isMapPoppedOver{
-                    ExpandedMap(isDisplayed:$isMapPoppedOver, viewSize:proxy.size, pinLocation:  prefecture.location)
+                }else if isMapPoppingOver{
+                    // map pop over is for iOS
+                    MapView(pinLocation:  prefecture.location)
+                        .transition(.scale(scale: 0,anchor: UnitPoint(x: 0.7, y: 0.7)))
+                        .frame(width:  mapPopOverSize.width,height:  mapPopOverSize.height)
+                        .background(
+                            Color.clear
+                                .contentShape(Rectangle())
+                                .frame(width: screen.size.width, height: screen.size.height)
+                            // Empty gestures prevents unintended scrolling.
+                                .gesture(DragGesture())
+                                .gesture(MagnificationGesture())
+                                .onTapGesture { withAnimation{ isMapPoppingOver = false } }
+                        )
                     
                 }
             }
-            
-        }
         
     }
 }
