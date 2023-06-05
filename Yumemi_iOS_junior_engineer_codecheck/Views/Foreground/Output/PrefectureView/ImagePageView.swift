@@ -14,10 +14,12 @@ struct ImagePageView: View {
     private var reflectionHeight:CGFloat{ viewSize.height - imageHeight }
     private let blurRadius:CGFloat = 3
     
+    @State private var imageSelection:Int = 0
+    
     var body: some View {
-        TabView{
-            ForEach(imagesInfo){ imageInfo in
-                
+        TabView(selection: $imageSelection){
+            // below enumrated for tagging pageIndex
+            ForEach( Array(imagesInfo.enumerated()), id:\.offset){ (pageIndex, imageInfo) in
                 AsyncImage(url: imageInfo.url){ image in
                     VStack(spacing: 0){
                         image
@@ -64,12 +66,35 @@ struct ImagePageView: View {
                     }
                     .frame(height: viewSize.height)
                     
-                }
-                
+                }.tag(pageIndex)
             }
         }
         .tabViewStyle(.page)
         .frame(height: viewSize.height)
+        
+        //Below shortcut for Mac and iPad
+        .background(
+            HStack{
+                Button{
+                    if imageSelection > 0{
+                        imageSelection -= 1
+                    }
+                }label:{
+                    Image(systemName: "chevron.left.square.fill")
+                    
+                }.keyboardShortcut(.leftArrow, modifiers: [])
+                
+                Button{
+                    if imageSelection < imagesInfo.count - 1{
+                        imageSelection += 1
+                    }
+                }label:{
+                    Image(systemName: "chevron.right.square.fill")
+                    
+                }.keyboardShortcut(.rightArrow, modifiers: [])
+            }.foregroundColor(Color(.systemBackground))
+        )
+        
     }
 }
 

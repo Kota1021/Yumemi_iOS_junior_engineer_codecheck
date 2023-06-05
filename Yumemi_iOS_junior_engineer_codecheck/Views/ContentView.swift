@@ -65,14 +65,57 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
                 }
             }
         }
+        //Below shortcut for Mac and iPad
+        .background(
+            HStack{
+                Button{
+                    withAnimation {
+                        displayedPage = displayedPage.previous()
+                    }
+                }label:{Text("Up")}
+                    .keyboardShortcut(.upArrow, modifiers: [])
+                Button{
+                    withAnimation {
+                        displayedPage = displayedPage.next()
+                    }
+                }label:{Text("Down")}
+                    .keyboardShortcut(.downArrow, modifiers: [])
+            }
+        )
+        
+        
+        
     }
     
-    private enum Pages{
+    
+    private enum Pages:CaseIterable{
         case input, output, history, license
     }
     
+  
+    
+    
 }
 
+//cf. https://stackoverflow.com/questions/51103795/how-to-get-next-case-of-enumi-e-write-a-circulating-method-in-swift-4-2
+extension CaseIterable where Self: Equatable {
+    func next() -> Self {
+        let all = Self.allCases
+        let index = all.firstIndex(of: self)!
+        
+        if index == all.index(all.endIndex, offsetBy: -1) { return self }
+        let nextIndex = all.index(index, offsetBy: 1)
+        return all[nextIndex]
+    }
+    func previous() -> Self {
+        let all = Self.allCases
+        let index = all.firstIndex(of: self)!
+        
+        if index == all.startIndex{ return self }
+        let previousIndex = all.index(index, offsetBy: -1)
+        return all[previousIndex]
+    }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

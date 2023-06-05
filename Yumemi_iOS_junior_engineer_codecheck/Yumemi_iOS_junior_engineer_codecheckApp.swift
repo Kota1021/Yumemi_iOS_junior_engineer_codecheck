@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 @main
 struct Yumemi_iOS_junior_engineer_codecheckApp: App {
     let persistenceController = PersistenceController.shared

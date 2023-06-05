@@ -79,6 +79,7 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
                             Image(systemName: "checkmark")
                         }
                         .buttonStyle(.borderedProminent)
+                        .keyboardShortcut(.return, modifiers: [])// for Mac
                     } 
                 .padding(.horizontal)
                 }
@@ -96,6 +97,7 @@ struct InputView<Model>: View where Model: InputViewModelProtocol{
                             viewModel.focus(at: .none)
                             fetchAction()
                         }.buttonStyle(.borderedProminent)
+                            .keyboardShortcut(.return, modifiers: [])// for Mac
                             .disabled(!viewModel.input.isValid)
                     }
                     .padding(.horizontal)
