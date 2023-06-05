@@ -41,13 +41,7 @@ extension YearMonthDay{
 extension YearMonthDay{
     
     /// avoiding  hard-coding date format.
-    public func toString()->String{
-//        let calendar = Calendar.current
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyydMMM", options: 0, locale: Locale(identifier: "ja_JP"))
-//        return formatter.string(from: self.toDate())
-        return stringDate(from: self.toDate() )
-    }
+    public func toString()->String{ stringDate(from: self.toDate() ) }
     
     public func toDate()->Date{
         let calendar = Calendar(identifier: .gregorian)

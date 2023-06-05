@@ -26,7 +26,7 @@ extension StoredHistory {
     @NSManaged public var prefecture: String
     @NSManaged public var name: String
     @NSManaged public var birthday: Date
-    @NSManaged private var bloodTypeString: String // This bloodType data is saved as String scence Core Data cannnot handle enum data. and this property is private, you have to get/set this property via bloodType property
+    @NSManaged private(set) var bloodTypeString: String // This bloodType data is saved as String scence Core Data cannnot handle enum data. and this property is private, you have to get/set this property via bloodType property
     @NSManaged public var fetchedAt: Date
 
 }
@@ -49,3 +49,4 @@ extension StoredHistory{
 
 
 
+extension StoredHistory:Identifiable{}

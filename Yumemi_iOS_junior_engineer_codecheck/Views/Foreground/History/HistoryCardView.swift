@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct HistoryCardView: View {
-    let history:StoredHistory
-//    let history:History
     let thumbnailURL:URL
+    let prefecture: String
+    let name: String
+    let birthday: String
+    let bloodType: String
+    let fetchDate: String
     
     let width:CGFloat = 200
     let height:CGFloat = 300
@@ -31,21 +34,13 @@ struct HistoryCardView: View {
             .frame(width: imageWidth, height: imageHeight)
                 
                 VStack(alignment: .leading){
-                    Text(history.prefecture)
+                    Text(prefecture)
                         .font(.largeTitle)
-                    Text(history.name)
-                    Text(history.stringBirthday )
-                    Text(history.bloodType.rawValue)
-                    Text(history.stringFetchDate )
+                    Text(name)
+                    Text(birthday)
+                    Text(bloodType)
+                    Text(fetchDate)
                 }.padding()
-//                VStack(alignment: .leading){
-//                    Text(history.prefecture)
-//                        .font(.largeTitle)
-//                    Text(history.userInput.name)
-//                    Text(history.userInput.birthday.toString())
-//                    Text(history.userInput.bloodType.rawValue)
-//                    Text(history.fetchDateString)
-//                }.padding()
                 Spacer()
             }.frame(width: width,height: height)
             .background(Color(.secondarySystemBackground) )

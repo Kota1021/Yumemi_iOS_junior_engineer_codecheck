@@ -11,9 +11,7 @@ struct HistoryView<PrefectureModel>: View where PrefectureModel: PrefectureModel
     @FetchRequest(entity: StoredHistory.entity(),
                   sortDescriptors: [NSSortDescriptor(keyPath: \StoredHistory.fetchedAt, ascending: false)],
                   animation: .default)
-    private var fetchedHistories: FetchedResults<StoredHistory>
-    
-//    private var histories:[History]{ fetchedHistories.map{ HistoryFrom(history: $0) } }
+    private var histories: FetchedResults<StoredHistory>
     
     @ObservedObject var prefectureModel:PrefectureModel
     @Binding var shouldShowOutput: Bool
@@ -28,27 +26,22 @@ struct HistoryView<PrefectureModel>: View where PrefectureModel: PrefectureModel
     var body: some View {
         ScrollView(.horizontal){
             HStack{
-                
-                ForEach(0..<fetchedHistories.count) { index in
+                ForEach(histories){ history in
                     Button{
 //                        let prefecture =  prefectureModel.setPrefecture(name: history.prefecture)
-//                        prefectureModel.prefecture = prefecture
 //                        shouldShowOutput = true
 
                     }label:{
-                        HistoryCardView(history:fetchedHistories[index], thumbnailURL: PrefectureImageInfoSets.thumbnailURL(of: fetchedHistories[index].prefecture))
+                        HistoryCardView(thumbnailURL: PrefectureImageInfoSets.thumbnailURL(of: history.prefecture)
+                                        ,
+                                        prefecture: history.prefecture,
+                                        name: history.name,
+                                        birthday: history.stringBirthday,
+                                        bloodType: history.bloodTypeString,
+                                        fetchDate: history.stringFetchDate)
+                        
                     }.buttonStyle(.plain)
                 }
-//                ForEach(histories) { history in
-//                    Button{
-////                        let prefecture =  prefectureModel.setPrefecture(name: history.prefecture)
-////                        prefectureModel.prefecture = prefecture
-////                        shouldShowOutput = true
-//
-//                    }label:{
-//                        HistoryCardView(history:history, thumbnailURL: PrefectureImageInfoSets.thumbnailURL(of: history.prefecture))
-//                    }.buttonStyle(.plain)
-//                }
             }
         }.frame(width: viewSize.width, height: viewSize.height)
             .background(
