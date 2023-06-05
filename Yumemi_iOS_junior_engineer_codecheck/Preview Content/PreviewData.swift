@@ -13,7 +13,7 @@ struct PreviewData{
     static var screenSize:CGSize = UIScreen.main.bounds.size
     static var luckyPrefecture = YumemiAPIPrefecture(name: "徳島県", brief: "徳島県（とくしまけん）は、日本の四国地方に位置する県。県庁所在地は徳島市。\n※出典: フリー百科事典『ウィキペディア（Wikipedia）』", capital: "徳島市", citizenDay: nil, hasCoastLine: true, logoUrl: URL(string: "https://japan-map.com/wp-content/uploads/tokushima.png")!)
     
-    static var prefecture = Prefecture(name: "徳島県", brief: "徳島県（とくしまけん）は、日本の四国地方に位置する県。県庁所在地は徳島市。\n※出典: フリー百科事典『ウィキペディア（Wikipedia）』", capital: "徳島市", citizenDay: nil, hasCoastLine: true, logoUrl: URL(string: "https://japan-map.com/wp-content/uploads/tokushima.png")!, location: PinLocation(lat: 34.065732, long: 134.559293), images: [PrefectureImageInfo(id: "", url: URL(string: "https://find47.jp/ja/i/vqLsw/image_file?type=detail_thumb")!, title: "test", author: "test", prefCodeStr: "1", pref: "test ")])
+    static var prefecture = Prefecture(name: "徳島県", brief: "徳島県（とくしまけん）は、日本の四国地方に位置する県。県庁所在地は徳島市。\n※出典: フリー百科事典『ウィキペディア（Wikipedia）』", capital: "徳島市", citizenDay: nil, hasCoastLine: true, logoUrl: URL(string: "https://japan-map.com/wp-content/uploads/tokushima.png")!, location: PinLocation(lat: 34.065732, long: 134.559293), images: [PrefectureImageInfo(id: "", url: URL(string: "https://find47.jp/ja/i/vqLsw/image_file?type=detail_thumb")!, urlThumb: URL(string: "https://find47.jp/ja/i/vqLsw/image_file?type=detail_thumb")!, title: "test", author: "test", prefCodeStr: "1", pref: "test ")])
     
     static let devices:[Device] = [.init(name: "iPhone 14 Plus", previewTitle: "iPhone 14 Plus 6.7"),
                                    .init(name: "iPhone 14 Pro", previewTitle: "iPhone 14 Pro 6.1"),

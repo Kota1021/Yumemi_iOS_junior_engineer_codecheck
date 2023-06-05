@@ -49,10 +49,11 @@ struct HistoryCardView: View {
     }
 }
 
-//struct HistoryCardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HistoryCardView(history: PreviewData.history, thumbnailURL: URL(string: "https://static-cse.canva.com/blob/1064408/1600w-wK95f3XNRaM.jpg")! )
-//    }
-//}
 
 
+
+struct Previews_HistoryCardView_Previews: PreviewProvider {
+    static var previews: some View {
+        HistoryCardView(thumbnailURL: URL(string: "https://images.unsplash.com/photo-1598439210625-5067c578f3f6")!, prefecture: "prefecture", name: "name", birthday: "yyyyMMdd", bloodType: "a", fetchDate: "yyyyMMdd")
+    }
+}

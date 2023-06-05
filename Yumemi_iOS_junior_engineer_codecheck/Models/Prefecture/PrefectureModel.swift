@@ -18,7 +18,7 @@ protocol PrefectureModelProtocol:ObservableObject{
                               onReceive actionOnReceive: @escaping ()->Void,
                               onSuccess actionOnSuccess: @escaping (YumemiAPIPrefecture)->Void,
                               onFailure actionOnFalure: @escaping ()->Void)
-//    func setFromStoredPrefecture(name:String)
+    func setPrefecture(name: String)
 }
 
 //PrefectureModel does not know view
@@ -64,7 +64,7 @@ class PrefectureModel: ObservableObject, PrefectureModelProtocol{
     
     private func setPrefecture(from luckyPrefecture:YumemiAPIPrefecture){
         let location: PinLocation = PrefectureLocations.location(of: luckyPrefecture.name)
-        let images: [PrefectureImageInfo] = PrefectureImageInfoSets.infoSets(of: luckyPrefecture.name)
+        let images: [PrefectureImageInfo] = ImageInfoSets.items(of: luckyPrefecture.name)
         
         self.prefecture = Prefecture(name: luckyPrefecture.name,
                                      brief: luckyPrefecture.brief,
@@ -76,21 +76,33 @@ class PrefectureModel: ObservableObject, PrefectureModelProtocol{
                                      images: images)
     }
     
+    private func setPrefecture(from luckyPrefecture:StoredYumemiAPIPrefecture){
+        let location: PinLocation = PrefectureLocations.location(of: luckyPrefecture.name)
+        let images: [PrefectureImageInfo] = ImageInfoSets.items(of: luckyPrefecture.name)
+        
+        self.prefecture = Prefecture(name: luckyPrefecture.name,
+                                     brief: luckyPrefecture.brief,
+                                     capital: luckyPrefecture.capital,
+                                     citizenDay: luckyPrefecture.citizenDay,
+                                     hasCoastLine: luckyPrefecture.hasCoastLine,
+                                     logoUrl: luckyPrefecture.logoURL,
+                                     location: location,
+                                     images: images)
+    }
+    
+    
     private let viewContext = PersistenceController.shared.container.viewContext
     
-//    public func searchYumem
-//    public func setFromStoredPrefecture(name:String){
-//        let yumemiAPIPrefecture = fetchYumemiAPIPrefectures().first{$0.name == name}!
-//        //CoreData のPrefectureエンティティをnameで検索し、ヒットしたものを代入
-//
-//
-//        setPrefecture(from: yumemiAPIPrefecture)
-//    }
+    //CoreData のPrefectureエンティティをnameで検索し、ヒットしたものを代入
+    public func setPrefecture(name:String){
+        let yumemiAPIPrefecture = fetchYumemiAPIPrefectures().first{$0.name == name}!
+        setPrefecture(from: yumemiAPIPrefecture)
+    }
     
     private func fetchYumemiAPIPrefectures() -> [StoredYumemiAPIPrefecture] {
         let context: NSManagedObjectContext = viewContext
-
         let request = NSFetchRequest<StoredYumemiAPIPrefecture>(entityName: "StoredYumemiAPIPrefecture")
+        
         do {
             return try context.fetch(request)
         }
@@ -105,7 +117,7 @@ class PrefectureModel: ObservableObject, PrefectureModelProtocol{
         newLuckyPrefecture.name = value.name
         newLuckyPrefecture.brief = value.brief
         newLuckyPrefecture.capital = value.capital
-        newLuckyPrefecture.citizenDay = value.citizenDay?.toDate()
+        newLuckyPrefecture.citizenDay = value.citizenDay
         newLuckyPrefecture.hasCoastLine = value.hasCoastLine
         newLuckyPrefecture.logoURL = value.logoUrl
         
@@ -115,3 +127,6 @@ class PrefectureModel: ObservableObject, PrefectureModelProtocol{
     
 }
 
+func getYumemiAPIPrefecture(from:StoredYumemiAPIPrefecture){
+    
+}

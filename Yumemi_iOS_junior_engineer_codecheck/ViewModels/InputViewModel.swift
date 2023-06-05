@@ -100,7 +100,7 @@ class InputViewModel<PrefectureModel:PrefectureModelProtocol>:ObservableObject,I
     private func storeUserInfoIntoCoreData(prefecture:String){
         //この辺に保存の処理
         
-        let newHistory = StoredHistory(context: viewContext)
+        let newHistory = History(context: viewContext)
         newHistory.prefecture = prefecture
         newHistory.name = input.name
         newHistory.birthday = input.birthday.toDate()

@@ -19,6 +19,15 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
     
     @State private var displayOutputViewFlag = false
     @State private var displayedPage = Pages.input
+    private var isHistoryViewEnabled:Bool
+    private var isLicenseViewEnabled:Bool
+    
+    init(prefectureModel: PrefectureModel ){
+        self.prefectureModel = prefectureModel
+        
+        self.isHistoryViewEnabled = (LaunchUtil.launchStatus != .FirstLaunch)
+        self.isLicenseViewEnabled = (LaunchUtil.launchStatus != .FirstLaunch)
+    }
     
     
     var body: some View {
@@ -29,21 +38,24 @@ struct ContentView<PrefectureModel:PrefectureModelProtocol>:View{
                       shouldShowOutput: $displayOutputViewFlag)
                 .tag(Pages.input)
             
-            Group{
-                if let prefecture = self.prefectureModel.prefecture{
-                    PrefectureView(prefacture: prefecture)
-                }else if let error = self.prefectureModel.error{
-                    ErrorView(error: error)
-                }
-                
-            }.tag(Pages.output)
             
-            HistoryView(size:screen.size,shouldShowOutput: $displayOutputViewFlag, prefectureModel: prefectureModel)
-//            HistoryView(size:screen.size,shouldShowOutput: $displayOutputViewFlag, prefectureModel: prefectureModel)
-                .tag(Pages.history)
+            if let prefecture = self.prefectureModel.prefecture{
+                PrefectureView(prefacture: prefecture)
+                    .tag(Pages.output)
+            }
+            if let error = self.prefectureModel.error{
+                ErrorView(error: error)
+                    .tag(Pages.output)
+            }
             
-            LicenseView(size:screen.size)
-                .tag(Pages.license)
+            if isHistoryViewEnabled{
+                HistoryView(size:screen.size,shouldShowOutput: $displayOutputViewFlag, prefectureModel: prefectureModel)
+                    .tag(Pages.history)
+            }
+            if isLicenseViewEnabled{
+                LicenseView(size:screen.size)
+                    .tag(Pages.license)
+            }
             
         }
         .background(BackgroundView() )

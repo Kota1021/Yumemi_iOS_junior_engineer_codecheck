@@ -11,7 +11,7 @@ import SwiftUI
 struct Yumemi_iOS_junior_engineer_codecheckApp: App {
     let persistenceController = PersistenceController.shared
     @State private var screenSize:CGSize = .zero
-
+    
     var body: some Scene {
         WindowGroup {
             ContentView(prefectureModel: PrefectureModel())

@@ -61,13 +61,14 @@ struct MapView: View {
         .transition(.scale(scale: 0,anchor: UnitPoint(x: 0.7, y: 0.7)))
         .frame(width: mapSize.width, height: mapSize.height)
         .background(
-            Rectangle()
-                .frame(width: viewSize.width, height: viewSize.height)
-                .foregroundColor(.clear)
+            Color.clear
                 .contentShape(Rectangle())
-                .onTapGesture {
-                    withAnimation{ isDisplayed = false }
-                }
+                .frame(width: viewSize.width, height: viewSize.height)
+            // empty gestures avoid unintended scrolling.
+                .gesture(DragGesture())
+                .gesture(MagnificationGesture())
+                .onTapGesture { withAnimation{ isDisplayed = false } }
+            
         )
         
     }

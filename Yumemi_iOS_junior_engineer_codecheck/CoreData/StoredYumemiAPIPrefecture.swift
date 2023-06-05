@@ -23,7 +23,7 @@ extension StoredYumemiAPIPrefecture {
     @NSManaged public var name: String
     @NSManaged public var brief: String
     @NSManaged public var capital: String
-    @NSManaged public var citizenDay: Date?
+    @NSManaged private(set) var citizenDayInDate: Date?
     @NSManaged public var hasCoastLine: Bool
     @NSManaged private var logoURLString: String
 
@@ -38,6 +38,15 @@ extension StoredYumemiAPIPrefecture{
         }
         set {
             self.logoURLString = newValue.absoluteString
+        }
+    }
+    
+    var citizenDay:MonthDay?{
+        get{
+            guard let citizenDayInDate = citizenDayInDate else{ return nil }
+            return MonthDay(from: citizenDayInDate)
+        }set{
+            self.citizenDayInDate = newValue?.toDate()
         }
     }
 }
