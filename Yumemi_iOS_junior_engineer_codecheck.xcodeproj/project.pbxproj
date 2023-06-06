@@ -7,6 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		671A35252A27462900F6358D /* PrefectureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A35242A27462900F6358D /* PrefectureView.swift */; };
+		671A35272A2759FD00F6358D /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A35262A2759FD00F6358D /* ErrorView.swift */; };
+		671A352E2A276A5700F6358D /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A352D2A276A5700F6358D /* LicenseView.swift */; };
+		672DB2042A2893610041BD60 /* LoadJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB2032A2893610041BD60 /* LoadJson.swift */; };
+		672DB2062A2893B90041BD60 /* ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB2052A2893B90041BD60 /* ImageInfo.swift */; };
+		672DB2092A28B86E0041BD60 /* BriefCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB2082A28B86E0041BD60 /* BriefCardView.swift */; };
+		672DB20B2A28CE5A0041BD60 /* InputForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB20A2A28CE5A0041BD60 /* InputForm.swift */; };
+		672DB2102A28D9570041BD60 /* ImagePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB20F2A28D9570041BD60 /* ImagePageView.swift */; };
+		672DB2122A28DD330041BD60 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB2112A28DD330041BD60 /* DetailView.swift */; };
+		672DB21A2A28EC0D0041BD60 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB2192A28EC0D0041BD60 /* Error.swift */; };
+		672DB21C2A28EE150041BD60 /* MaximumVerticalPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB21B2A28EE150041BD60 /* MaximumVerticalPageView.swift */; };
+		672EE5B92A2A798A007EA3F3 /* InputViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672EE5B82A2A798A007EA3F3 /* InputViews.swift */; };
+		672EE5BB2A2A96EA007EA3F3 /* PrefectureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672EE5BA2A2A96EA007EA3F3 /* PrefectureModel.swift */; };
+		673556FB2A2D055500C7C22E /* StoredYumemiAPIPrefecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673556FA2A2D055500C7C22E /* StoredYumemiAPIPrefecture.swift */; };
+		67649D4A2A2DA98F00F0B6BA /* MapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67649D492A2DA98F00F0B6BA /* MapButton.swift */; };
+		67649D4C2A2E2D3C00F0B6BA /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67649D4B2A2E2D3C00F0B6BA /* ScreenSize.swift */; };
+		6769D8932A29E90100F49219 /* GlowBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6769D8922A29E90100F49219 /* GlowBorder.swift */; };
+		6769D8952A29F24B00F49219 /* prefLatiLong.json in Resources */ = {isa = PBXBuildFile; fileRef = 6769D8942A29F24B00F49219 /* prefLatiLong.json */; };
+		6769D8972A29FCC400F49219 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6769D8962A29FCC400F49219 /* Location.swift */; };
+		6769D8992A2A0C0B00F49219 /* KeyboardAlike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6769D8982A2A0C0B00F49219 /* KeyboardAlike.swift */; };
+		6769D89B2A2A2ADA00F49219 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6769D89A2A2A2ADA00F49219 /* PreviewData.swift */; };
 		676ABFFA2A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */; };
 		676ABFFC2A270E94009F34E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676ABFFB2A270E94009F34E9 /* ContentView.swift */; };
 		676ABFFE2A270E95009F34E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 676ABFFD2A270E95009F34E9 /* Assets.xcassets */; };
@@ -16,6 +37,29 @@
 		676AC0102A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AC00F2A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheckTests.swift */; };
 		676AC01A2A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AC0192A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheckUITests.swift */; };
 		676AC01C2A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheckUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AC01B2A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheckUITestsLaunchTests.swift */; };
+		676AC0292A2710FA009F34E9 /* FortuneAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AC0282A2710FA009F34E9 /* FortuneAPI.swift */; };
+		676AC02C2A271115009F34E9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 676AC02B2A271115009F34E9 /* Alamofire */; };
+		676AC02E2A27113B009F34E9 /* FetchInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AC02D2A27113B009F34E9 /* FetchInput.swift */; };
+		676AD3C82A2ABD900047ED58 /* InputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AD3C72A2ABD900047ED58 /* InputViewModel.swift */; };
+		676AD3D32A2B21E90047ED58 /* Prefecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AD3D22A2B21E90047ED58 /* Prefecture.swift */; };
+		676AD3D52A2BA3860047ED58 /* VPageViewAnimationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676AD3D42A2BA3860047ED58 /* VPageViewAnimationTest.swift */; };
+		676EA8C42A285572005C455B /* VTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 676EA8C32A285572005C455B /* VTabView */; };
+		676EA8CA2A28584E005C455B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676EA8C92A28584E005C455B /* MapView.swift */; };
+		676EA8CC2A285853005C455B /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676EA8CB2A285853005C455B /* HistoryView.swift */; };
+		676EA8CE2A285ACD005C455B /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676EA8CD2A285ACD005C455B /* BackgroundView.swift */; };
+		676EA9102A288B79005C455B /* find47images.json in Resources */ = {isa = PBXBuildFile; fileRef = 676EA90F2A288B79005C455B /* find47images.json */; };
+		677B4E5A2A2BEEE30085549F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 677B4E5C2A2BEEE30085549F /* Localizable.strings */; };
+		67AC71ED2A2E9F4700635F48 /* InputViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AC71EC2A2E9F4700635F48 /* InputViewModelProtocol.swift */; };
+		67AC71EF2A2EA20C00635F48 /* enumNextPrev.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AC71EE2A2EA20C00635F48 /* enumNextPrev.swift */; };
+		67DFBAC92A2CD0B200124EAE /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DFBAC82A2CD0B200124EAE /* History.swift */; };
+		67EE94BE2A2BFE1700349ADF /* SwiftyUserDefaults in Frameworks */ = {isa = PBXBuildFile; productRef = 67EE94BD2A2BFE1700349ADF /* SwiftyUserDefaults */; };
+		67EE94C02A2BFE6000349ADF /* SwiftyUserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EE94BF2A2BFE6000349ADF /* SwiftyUserDefaultKeys.swift */; };
+		67EE94C22A2C0AF500349ADF /* HistoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EE94C12A2C0AF500349ADF /* HistoryCardView.swift */; };
+		67EE94C72A2C0C3C00349ADF /* TextAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EE94C62A2C0C3C00349ADF /* TextAlignment.swift */; };
+		67EE94C92A2C223300349ADF /* URLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EE94C82A2C223300349ADF /* URLButton.swift */; };
+		67EE94CB2A2C583A00349ADF /* stringDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EE94CA2A2C583A00349ADF /* stringDate.swift */; };
+		67F2D1232A2BC31500BF713F /* LongPressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F2D1222A2BC31500BF713F /* LongPressButton.swift */; };
+		67F6037B2A2D163B00E094C7 /* YumemiAPIPrefecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F6037A2A2D163B00E094C7 /* YumemiAPIPrefecture.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +80,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		671A35242A27462900F6358D /* PrefectureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefectureView.swift; sourceTree = "<group>"; };
+		671A35262A2759FD00F6358D /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		671A352D2A276A5700F6358D /* LicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
+		672DB2032A2893610041BD60 /* LoadJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadJson.swift; sourceTree = "<group>"; };
+		672DB2052A2893B90041BD60 /* ImageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfo.swift; sourceTree = "<group>"; };
+		672DB2082A28B86E0041BD60 /* BriefCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BriefCardView.swift; sourceTree = "<group>"; };
+		672DB20A2A28CE5A0041BD60 /* InputForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputForm.swift; sourceTree = "<group>"; };
+		672DB20F2A28D9570041BD60 /* ImagePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePageView.swift; sourceTree = "<group>"; };
+		672DB2112A28DD330041BD60 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		672DB2192A28EC0D0041BD60 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		672DB21B2A28EE150041BD60 /* MaximumVerticalPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaximumVerticalPageView.swift; sourceTree = "<group>"; };
+		672EE5B82A2A798A007EA3F3 /* InputViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViews.swift; sourceTree = "<group>"; };
+		672EE5BA2A2A96EA007EA3F3 /* PrefectureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefectureModel.swift; sourceTree = "<group>"; };
+		673556FA2A2D055500C7C22E /* StoredYumemiAPIPrefecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredYumemiAPIPrefecture.swift; sourceTree = "<group>"; };
+		67649D492A2DA98F00F0B6BA /* MapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButton.swift; sourceTree = "<group>"; };
+		67649D4B2A2E2D3C00F0B6BA /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
+		6769D8922A29E90100F49219 /* GlowBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowBorder.swift; sourceTree = "<group>"; };
+		6769D8942A29F24B00F49219 /* prefLatiLong.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = prefLatiLong.json; sourceTree = "<group>"; };
+		6769D8962A29FCC400F49219 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		6769D8982A2A0C0B00F49219 /* KeyboardAlike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAlike.swift; sourceTree = "<group>"; };
+		6769D89A2A2A2ADA00F49219 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		676ABFF62A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yumemi_iOS_junior_engineer_codecheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yumemi_iOS_junior_engineer_codecheckApp.swift; sourceTree = "<group>"; };
 		676ABFFB2A270E94009F34E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,6 +113,27 @@
 		676AC0152A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheckUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Yumemi_iOS_junior_engineer_codecheckUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		676AC0192A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheckUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yumemi_iOS_junior_engineer_codecheckUITests.swift; sourceTree = "<group>"; };
 		676AC01B2A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheckUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yumemi_iOS_junior_engineer_codecheckUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		676AC0282A2710FA009F34E9 /* FortuneAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneAPI.swift; sourceTree = "<group>"; };
+		676AC02D2A27113B009F34E9 /* FetchInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchInput.swift; sourceTree = "<group>"; };
+		676AD3C72A2ABD900047ED58 /* InputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewModel.swift; sourceTree = "<group>"; };
+		676AD3D22A2B21E90047ED58 /* Prefecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prefecture.swift; sourceTree = "<group>"; };
+		676AD3D42A2BA3860047ED58 /* VPageViewAnimationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPageViewAnimationTest.swift; sourceTree = "<group>"; };
+		676EA8C92A28584E005C455B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		676EA8CB2A285853005C455B /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		676EA8CD2A285ACD005C455B /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		676EA90F2A288B79005C455B /* find47images.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = find47images.json; sourceTree = "<group>"; };
+		677B4E5B2A2BEEE30085549F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		677B4E5D2A2BEEE60085549F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		67AC71EC2A2E9F4700635F48 /* InputViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewModelProtocol.swift; sourceTree = "<group>"; };
+		67AC71EE2A2EA20C00635F48 /* enumNextPrev.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enumNextPrev.swift; sourceTree = "<group>"; };
+		67DFBAC82A2CD0B200124EAE /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		67EE94BF2A2BFE6000349ADF /* SwiftyUserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyUserDefaultKeys.swift; sourceTree = "<group>"; };
+		67EE94C12A2C0AF500349ADF /* HistoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCardView.swift; sourceTree = "<group>"; };
+		67EE94C62A2C0C3C00349ADF /* TextAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAlignment.swift; sourceTree = "<group>"; };
+		67EE94C82A2C223300349ADF /* URLButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLButton.swift; sourceTree = "<group>"; };
+		67EE94CA2A2C583A00349ADF /* stringDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stringDate.swift; sourceTree = "<group>"; };
+		67F2D1222A2BC31500BF713F /* LongPressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressButton.swift; sourceTree = "<group>"; };
+		67F6037A2A2D163B00E094C7 /* YumemiAPIPrefecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YumemiAPIPrefecture.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +141,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				676EA8C42A285572005C455B /* VTabView in Frameworks */,
+				67EE94BE2A2BFE1700349ADF /* SwiftyUserDefaults in Frameworks */,
+				676AC02C2A271115009F34E9 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +164,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		672DB2072A28975F0041BD60 /* PrefectureView */ = {
+			isa = PBXGroup;
+			children = (
+				671A35242A27462900F6358D /* PrefectureView.swift */,
+				672DB20F2A28D9570041BD60 /* ImagePageView.swift */,
+				672DB2112A28DD330041BD60 /* DetailView.swift */,
+				67649D492A2DA98F00F0B6BA /* MapButton.swift */,
+				676EA8C92A28584E005C455B /* MapView.swift */,
+				672DB2082A28B86E0041BD60 /* BriefCardView.swift */,
+			);
+			path = PrefectureView;
+			sourceTree = "<group>";
+		};
+		672DB20C2A28CE5F0041BD60 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				672EE5B82A2A798A007EA3F3 /* InputViews.swift */,
+				672DB20A2A28CE5A0041BD60 /* InputForm.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		672DB2182A28EB0B0041BD60 /* Output */ = {
+			isa = PBXGroup;
+			children = (
+				672DB2072A28975F0041BD60 /* PrefectureView */,
+				671A35262A2759FD00F6358D /* ErrorView.swift */,
+			);
+			path = Output;
+			sourceTree = "<group>";
+		};
+		6769D89E2A2A2D4900F49219 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				676ABFFB2A270E94009F34E9 /* ContentView.swift */,
+				67EE94C42A2C0B6700349ADF /* Foreground */,
+				67EE94C52A2C0B7100349ADF /* Background */,
+				6769D89F2A2A2DF300F49219 /* ViewUtils */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6769D89F2A2A2DF300F49219 /* ViewUtils */ = {
+			isa = PBXGroup;
+			children = (
+				672DB21B2A28EE150041BD60 /* MaximumVerticalPageView.swift */,
+				67F2D1222A2BC31500BF713F /* LongPressButton.swift */,
+				6769D8922A29E90100F49219 /* GlowBorder.swift */,
+				6769D8982A2A0C0B00F49219 /* KeyboardAlike.swift */,
+				67EE94C62A2C0C3C00349ADF /* TextAlignment.swift */,
+				67EE94C82A2C223300349ADF /* URLButton.swift */,
+			);
+			path = ViewUtils;
+			sourceTree = "<group>";
+		};
+		6769D8A02A2A2F5E00F49219 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				676AC0042A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.xcdatamodeld */,
+				67DFBAC82A2CD0B200124EAE /* History.swift */,
+				673556FA2A2D055500C7C22E /* StoredYumemiAPIPrefecture.swift */,
+				676AC0022A270E95009F34E9 /* Persistence.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		676ABFED2A270E94009F34E9 = {
 			isa = PBXGroup;
 			children = (
@@ -99,10 +254,12 @@
 			isa = PBXGroup;
 			children = (
 				676ABFF92A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift */,
-				676ABFFB2A270E94009F34E9 /* ContentView.swift */,
-				676ABFFD2A270E95009F34E9 /* Assets.xcassets */,
-				676AC0022A270E95009F34E9 /* Persistence.swift */,
-				676AC0042A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.xcdatamodeld */,
+				6769D89E2A2A2D4900F49219 /* Views */,
+				676AD3D12A2B146C0047ED58 /* ViewModels */,
+				676AC0312A2711FB009F34E9 /* Models */,
+				6769D8A02A2A2F5E00F49219 /* CoreData */,
+				676EA9112A288BBD005C455B /* Resources */,
+				677B4E5C2A2BEEE30085549F /* Localizable.strings */,
 				676ABFFF2A270E95009F34E9 /* Preview Content */,
 			);
 			path = Yumemi_iOS_junior_engineer_codecheck;
@@ -111,7 +268,10 @@
 		676ABFFF2A270E95009F34E9 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				676AD3D42A2BA3860047ED58 /* VPageViewAnimationTest.swift */,
+				672DB2192A28EC0D0041BD60 /* Error.swift */,
 				676AC0002A270E95009F34E9 /* Preview Assets.xcassets */,
+				6769D89A2A2A2ADA00F49219 /* PreviewData.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -133,6 +293,88 @@
 			path = Yumemi_iOS_junior_engineer_codecheckUITests;
 			sourceTree = "<group>";
 		};
+		676AC0312A2711FB009F34E9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				676AC0282A2710FA009F34E9 /* FortuneAPI.swift */,
+				676AC02D2A27113B009F34E9 /* FetchInput.swift */,
+				67F603792A2D161800E094C7 /* Prefecture */,
+				67EE94BF2A2BFE6000349ADF /* SwiftyUserDefaultKeys.swift */,
+				67EE94CA2A2C583A00349ADF /* stringDate.swift */,
+				67649D4B2A2E2D3C00F0B6BA /* ScreenSize.swift */,
+				67AC71EE2A2EA20C00635F48 /* enumNextPrev.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		676AD3D12A2B146C0047ED58 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				676AD3C72A2ABD900047ED58 /* InputViewModel.swift */,
+				67AC71EC2A2E9F4700635F48 /* InputViewModelProtocol.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		676EA9112A288BBD005C455B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				676ABFFD2A270E95009F34E9 /* Assets.xcassets */,
+				672DB2032A2893610041BD60 /* LoadJson.swift */,
+				6769D8942A29F24B00F49219 /* prefLatiLong.json */,
+				676EA90F2A288B79005C455B /* find47images.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		67EE94C32A2C0B0B00349ADF /* History */ = {
+			isa = PBXGroup;
+			children = (
+				676EA8CB2A285853005C455B /* HistoryView.swift */,
+				67EE94C12A2C0AF500349ADF /* HistoryCardView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		67EE94C42A2C0B6700349ADF /* Foreground */ = {
+			isa = PBXGroup;
+			children = (
+				672DB20C2A28CE5F0041BD60 /* Input */,
+				672DB2182A28EB0B0041BD60 /* Output */,
+				67EE94C32A2C0B0B00349ADF /* History */,
+				67EE94CC2A2C5DFC00349ADF /* License */,
+			);
+			path = Foreground;
+			sourceTree = "<group>";
+		};
+		67EE94C52A2C0B7100349ADF /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				676EA8CD2A285ACD005C455B /* BackgroundView.swift */,
+			);
+			path = Background;
+			sourceTree = "<group>";
+		};
+		67EE94CC2A2C5DFC00349ADF /* License */ = {
+			isa = PBXGroup;
+			children = (
+				671A352D2A276A5700F6358D /* LicenseView.swift */,
+			);
+			path = License;
+			sourceTree = "<group>";
+		};
+		67F603792A2D161800E094C7 /* Prefecture */ = {
+			isa = PBXGroup;
+			children = (
+				672EE5BA2A2A96EA007EA3F3 /* PrefectureModel.swift */,
+				676AD3D22A2B21E90047ED58 /* Prefecture.swift */,
+				67F6037A2A2D163B00E094C7 /* YumemiAPIPrefecture.swift */,
+				6769D8962A29FCC400F49219 /* Location.swift */,
+				672DB2052A2893B90041BD60 /* ImageInfo.swift */,
+			);
+			path = Prefecture;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,8 +389,14 @@
 			buildRules = (
 			);
 			dependencies = (
+				671A352C2A276A3800F6358D /* PBXTargetDependency */,
 			);
 			name = Yumemi_iOS_junior_engineer_codecheck;
+			packageProductDependencies = (
+				676AC02B2A271115009F34E9 /* Alamofire */,
+				676EA8C32A285572005C455B /* VTabView */,
+				67EE94BD2A2BFE1700349ADF /* SwiftyUserDefaults */,
+			);
 			productName = Yumemi_iOS_junior_engineer_codecheck;
 			productReference = 676ABFF62A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.app */;
 			productType = "com.apple.product-type.application";
@@ -219,8 +467,14 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 676ABFED2A270E94009F34E9;
+			packageReferences = (
+				676AC02A2A271115009F34E9 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				676EA8C22A285572005C455B /* XCRemoteSwiftPackageReference "swiftui-vertical-tab-view" */,
+				67EE94BC2A2BFE1700349ADF /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */,
+			);
 			productRefGroup = 676ABFF72A270E94009F34E9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -237,7 +491,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				677B4E5A2A2BEEE30085549F /* Localizable.strings in Resources */,
 				676AC0012A270E95009F34E9 /* Preview Assets.xcassets in Resources */,
+				6769D8952A29F24B00F49219 /* prefLatiLong.json in Resources */,
+				676EA9102A288B79005C455B /* find47images.json in Resources */,
 				676ABFFE2A270E95009F34E9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,10 +520,48 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				676AD3D32A2B21E90047ED58 /* Prefecture.swift in Sources */,
+				67F2D1232A2BC31500BF713F /* LongPressButton.swift in Sources */,
+				672EE5BB2A2A96EA007EA3F3 /* PrefectureModel.swift in Sources */,
+				672DB2102A28D9570041BD60 /* ImagePageView.swift in Sources */,
+				67AC71EF2A2EA20C00635F48 /* enumNextPrev.swift in Sources */,
+				672DB20B2A28CE5A0041BD60 /* InputForm.swift in Sources */,
+				676AC02E2A27113B009F34E9 /* FetchInput.swift in Sources */,
+				67EE94C02A2BFE6000349ADF /* SwiftyUserDefaultKeys.swift in Sources */,
+				67EE94C72A2C0C3C00349ADF /* TextAlignment.swift in Sources */,
 				676AC0032A270E95009F34E9 /* Persistence.swift in Sources */,
+				672DB2092A28B86E0041BD60 /* BriefCardView.swift in Sources */,
 				676ABFFC2A270E94009F34E9 /* ContentView.swift in Sources */,
+				673556FB2A2D055500C7C22E /* StoredYumemiAPIPrefecture.swift in Sources */,
+				672DB2042A2893610041BD60 /* LoadJson.swift in Sources */,
+				672DB2062A2893B90041BD60 /* ImageInfo.swift in Sources */,
 				676ABFFA2A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheckApp.swift in Sources */,
+				672DB21C2A28EE150041BD60 /* MaximumVerticalPageView.swift in Sources */,
+				672DB2122A28DD330041BD60 /* DetailView.swift in Sources */,
+				671A35252A27462900F6358D /* PrefectureView.swift in Sources */,
+				676AD3C82A2ABD900047ED58 /* InputViewModel.swift in Sources */,
+				6769D89B2A2A2ADA00F49219 /* PreviewData.swift in Sources */,
+				672DB21A2A28EC0D0041BD60 /* Error.swift in Sources */,
+				676EA8CC2A285853005C455B /* HistoryView.swift in Sources */,
+				67649D4A2A2DA98F00F0B6BA /* MapButton.swift in Sources */,
+				67EE94C22A2C0AF500349ADF /* HistoryCardView.swift in Sources */,
+				676EA8CA2A28584E005C455B /* MapView.swift in Sources */,
+				6769D8932A29E90100F49219 /* GlowBorder.swift in Sources */,
+				676EA8CE2A285ACD005C455B /* BackgroundView.swift in Sources */,
+				672EE5B92A2A798A007EA3F3 /* InputViews.swift in Sources */,
+				67AC71ED2A2E9F4700635F48 /* InputViewModelProtocol.swift in Sources */,
+				6769D8972A29FCC400F49219 /* Location.swift in Sources */,
+				67EE94C92A2C223300349ADF /* URLButton.swift in Sources */,
+				67649D4C2A2E2D3C00F0B6BA /* ScreenSize.swift in Sources */,
+				676AC0292A2710FA009F34E9 /* FortuneAPI.swift in Sources */,
+				676AD3D52A2BA3860047ED58 /* VPageViewAnimationTest.swift in Sources */,
+				6769D8992A2A0C0B00F49219 /* KeyboardAlike.swift in Sources */,
 				676AC0062A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.xcdatamodeld in Sources */,
+				67DFBAC92A2CD0B200124EAE /* History.swift in Sources */,
+				67EE94CB2A2C583A00349ADF /* stringDate.swift in Sources */,
+				671A352E2A276A5700F6358D /* LicenseView.swift in Sources */,
+				67F6037B2A2D163B00E094C7 /* YumemiAPIPrefecture.swift in Sources */,
+				671A35272A2759FD00F6358D /* ErrorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +585,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		671A352C2A276A3800F6358D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 671A352B2A276A3800F6358D /* PrepareLicenseList */;
+		};
 		676AC00D2A270E95009F34E9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 676ABFF52A270E94009F34E9 /* Yumemi_iOS_junior_engineer_codecheck */;
@@ -301,6 +600,18 @@
 			targetProxy = 676AC0162A270E95009F34E9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		677B4E5C2A2BEEE30085549F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				677B4E5B2A2BEEE30085549F /* en */,
+				677B4E5D2A2BEEE60085549F /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		676AC01D2A270E95009F34E9 /* Debug */ = {
@@ -431,8 +742,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -440,6 +751,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kotaroMatsumoto2000.Yumemi-iOS-junior-engineer-codecheck";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -460,8 +774,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -469,6 +783,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kotaroMatsumoto2000.Yumemi-iOS-junior-engineer-codecheck";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -591,6 +908,64 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		671A35282A276A1600F6358D /* XCRemoteSwiftPackageReference "LicenseList" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cybozu/LicenseList";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.1;
+			};
+		};
+		676AC02A2A271115009F34E9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		676EA8C22A285572005C455B /* XCRemoteSwiftPackageReference "swiftui-vertical-tab-view" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-vertical-tab-view.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		67EE94BC2A2BFE1700349ADF /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sunshinejr/SwiftyUserDefaults.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		671A352B2A276A3800F6358D /* PrepareLicenseList */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 671A35282A276A1600F6358D /* XCRemoteSwiftPackageReference "LicenseList" */;
+			productName = "plugin:PrepareLicenseList";
+		};
+		676AC02B2A271115009F34E9 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 676AC02A2A271115009F34E9 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		676EA8C32A285572005C455B /* VTabView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 676EA8C22A285572005C455B /* XCRemoteSwiftPackageReference "swiftui-vertical-tab-view" */;
+			productName = VTabView;
+		};
+		67EE94BD2A2BFE1700349ADF /* SwiftyUserDefaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67EE94BC2A2BFE1700349ADF /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */;
+			productName = SwiftyUserDefaults;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		676AC0042A270E95009F34E9 /* Yumemi_iOS_junior_engineer_codecheck.xcdatamodeld */ = {

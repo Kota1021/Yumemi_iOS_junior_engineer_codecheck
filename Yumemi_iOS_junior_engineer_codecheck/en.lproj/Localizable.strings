@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  Yumemi_iOS_junior_engineer_codecheck
+
+  Created by 松本幸太郎 on 2023/06/04.
+ "" = "";
+*/
+"LuckyPrefecture" = "Lucky Prefecture";
+"Name" = "Name";
+"JohnDoe" = "John Doe";
+"Birthday" = "Birthday";
+"BloodType" = "Blood Type";
+"SeeLuckyPrefecture" = "See Lucky Prefecture";
+"SeeFortune" = "See Fortune";
+"CapitalCity" = "Capital City";
+"Citizen'sDay" =  "Citizen's Day";
+"Coastline" =  "Coastline";
+"Brief" =  "Brief";
+"Location" =  "Location";
+"LongPressToRead" =  "Long Press to Read";
+"Exists" = "Yes";
+"NotExists" = "No";
+"TapToRead" = "Tap to Read";
+//"Date" = "Date";
