@@ -46,7 +46,7 @@ MVVMと異なり、Viewは直接Modelを知っています。ModelはViewを知�
 
 
 ## 今回困ったこと：
-1. 画面遷移とCoreDataへのは誰の担当にするべきか、JSONファイルから展開したデータは誰が保持するか、について悩みました。
+1. 画面遷移とCoreDataへデータ永続化は誰の担当にするべきか、JSONファイルから展開したデータは誰が保持するか、について悩みました。
 InputView→PrefectureView(output)
 HistoryView→PrefectureView
 の遷移は、InputViewとHistoryViewから親viewのContentViewにBindingでフラグを立て、
@@ -60,10 +60,10 @@ HistoryView→PrefectureView
 4. UIの完成度にこだわり、さまざまなmodifierをつけると可読性が下がりました。見通しを良くするために細かく切り出すと、
 逆にボイラープレートが増え分かりずらくなったりし、そのバランスや、そもそも設計が最適なのか悩みました。
 
-5. Macで開いた際、HistoryのScrollViewを矢印キーで左右に移動できるようにしたが、ネイティブな実装でないので動作が不安定なこと。
+5. Macで開いた際、HistoryのScrollViewを矢印キーで左右に移動できるようにしましたが、ネイティブな実装でないので動作が不安定です。
 <br>(iOS 17からできるようになるそうです！https://developer.apple.com/documentation/swiftui/view/scrollposition(id:)?changes=latest_minor )
 
-6. CoreData、API、JSONファイルのそれぞれから取得した都道府県データを名前で照合しているが、本来はIDなどで照合したかった。
+6. CoreData、API、JSONファイルのそれぞれから取得した都道府県データを名前で照合していますが、本来はIDなどで照合したいです。
 
 7. テストコードに初めて挑戦しModelのテストコードはかけた。しかしCoreDataのエンティティをDiskではなくMemory上で展開しUITestをすることで、さまざまなデータを注入してUIを確認したかったので方法を調べたがわからなかった。
 <img width="1280" alt="YUMEMIScreenShotMBA" src="https://github.com/Kota1021/Yumemi_iOS_junior_engineer_codecheck/assets/9388824/aa56ce59-9b4d-4825-a957-20dfbdfdfe9a">
