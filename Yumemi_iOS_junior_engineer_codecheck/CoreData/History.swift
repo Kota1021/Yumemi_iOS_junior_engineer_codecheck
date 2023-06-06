@@ -25,7 +25,8 @@ extension History {
     @NSManaged public var prefecture: String
     @NSManaged public var name: String
     @NSManaged public var birthday: Date
-    @NSManaged private(set) var stringBloodType: String  // This bloodType data is saved as String scence Core Data cannnot handle enum data. and this property is private, you have to get/set this property via bloodType property
+    // Below: bloodType data is saved as String since Core Data cannnot handle enum data. and this property is (set) private, you have to set this property via public bloodType property
+    @NSManaged private(set) var stringBloodType: String
     @NSManaged public var fetchedAt: Date
 
 }

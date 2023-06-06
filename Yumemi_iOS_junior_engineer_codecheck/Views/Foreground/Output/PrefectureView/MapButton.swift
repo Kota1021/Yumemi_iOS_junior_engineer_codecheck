@@ -21,7 +21,7 @@ struct MapButton: View {
                         .scaledToFit()
                     HStack {
                         Spacer()
-                        Text("位置を確認")
+                        Text("Location")
                             .lineLimit(1)
                         Image(systemName: "hand.tap.fill")
                     }.foregroundColor(.gray)

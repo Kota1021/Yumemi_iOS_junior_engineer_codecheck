@@ -39,8 +39,6 @@ extension YearMonthDay {
 }
 
 extension YearMonthDay {
-
-    /// avoiding  hard-coding date format.
     public func toString() -> String { stringDate(from: self.toDate()) }
 
     public func toDate() -> Date {

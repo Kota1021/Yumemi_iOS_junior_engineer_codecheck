@@ -21,7 +21,7 @@ struct HistoryView<PrefectureModel>: View where PrefectureModel: PrefectureModel
     @State private var xOffset = CGFloat.zero
     let cardWidth: CGFloat = 200
     let spacing: CGFloat = 10
-    var leadingItemIndex: Int { Int(xOffset / (cardWidth + spacing)) }
+    var leadingItemIndex: Int { Int(xOffset / (cardWidth + spacing*2)) }
     var lastCardIndex: Int { histories.count - 1 }
 
     init(size: CGSize, shouldShowOutput: Binding<Bool>, prefectureModel: PrefectureModel) {
@@ -33,8 +33,9 @@ struct HistoryView<PrefectureModel>: View where PrefectureModel: PrefectureModel
     var body: some View {
         ScrollViewReader { reader in
             ScrollView(.horizontal) {
-                LazyHStack(spacing: spacing) {
-                    //enumerated for pageIndex for ScrollViewReader for Mac ipad keyboard shortcut.
+                LazyHStack {
+//                LazyHStack(spacing: spacing) {
+                    //enumerated for pageIndex for ScrollViewReader for Mac and ipad keyboard shortcut.
                     ForEach(Array(histories.enumerated()), id: \.offset) { (cardIndex, history) in
                         Button {
                             prefectureModel.setPrefecture(name: history.prefecture)
@@ -50,6 +51,7 @@ struct HistoryView<PrefectureModel>: View where PrefectureModel: PrefectureModel
                                 fetchDate: history.stringFetchDate)
 
                         }.buttonStyle(.plain)
+                            .padding(spacing)
                             .tag(cardIndex)
 
                     }

@@ -6,10 +6,11 @@
 //
 import Foundation
 
+/// avoiding  hard-coding date format.
+/// Shared by History and FetchInput
 func stringDate(from date: Date) -> String {
-    let calendar = Calendar.current
     let formatter = DateFormatter()
     formatter.dateFormat = DateFormatter.dateFormat(
-        fromTemplate: "yyyydMMM", options: 0, locale: Locale(identifier: "ja_JP"))
+        fromTemplate: "yyyydMMM", options: 0, locale: Locale.current)
     return formatter.string(from: date)
 }

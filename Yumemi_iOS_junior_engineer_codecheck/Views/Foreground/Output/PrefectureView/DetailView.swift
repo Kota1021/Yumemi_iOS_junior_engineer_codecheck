@@ -27,23 +27,32 @@ struct DetailView: View {
 
                     VStack(alignment: .custom) {
                         HStack(spacing: 0) {
-                            Text("県庁所在地：　")
+                            Text("CapitalCity")
                                 .alignmentGuide(.custom) { $0[.trailing] }
+                            Text(" ")
                             Text("\(prefecture.capital)")
                         }
                         HStack(spacing: 0) {
-                            Text("市民の日：　")
+                            Text("Citizen'sDay")
                                 .alignmentGuide(.custom) { $0[.trailing] }
-                            Text(prefecture.citizenDay?.toString() ?? "なし")
+                            Text(" ")
+                            // Below: ternary operator cannot handle String and LocalizedStringKey at the same time.
+                            if let citizenDay = prefecture.citizenDay{
+                                Text(citizenDay.toString() )
+                                
+                            }else{
+                                    Text("NotExists")
+                                }
                         }
                         HStack(spacing: 0) {
-                            Text("海：　")
+                            Text("Coastline")
                                 .alignmentGuide(.custom) { $0[.trailing] }
-                            Text(prefecture.hasCoastLine ? "あり" : "なし")
+                            Text(" ")
+                            Text(prefecture.hasCoastLine ? "Exists" : "NotExists")
                         }
                     }
                     Spacer()
-                    Text("概要：")
+                    Text("Brief")
                         .padding(.top)
                 }
 
@@ -66,7 +75,7 @@ struct DetailView: View {
                     Text(prefecture.brief)
                     HStack {
                         Spacer()
-                        Text("続きを読む")
+                        Text("TapToRead")
                             .lineLimit(1)
                         Image(systemName: "hand.tap.fill")
                     }.foregroundColor(.gray)

@@ -16,7 +16,7 @@ struct Yumemi_iOS_junior_engineer_codecheckApp: App {
         WindowGroup {
             ContentView(prefectureModel: PrefectureModel())
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                //Below setting ScreenSize in environmentObject since UIScreen.main will be deplicated
+                //Below setting ScreenSize as an environmentObject since UIScreen.main will be deplicated
                 .onAppear {
                     guard let window = UIApplication.shared.connectedScenes.first as? UIWindowScene
                     else {

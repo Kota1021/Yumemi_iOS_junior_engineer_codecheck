@@ -9,24 +9,8 @@ import SwiftUI
 import SwiftyUserDefaults
 
 //this time I only made a ViewModel for InputView, which is I think complicated enough to need one.
-//Not MVVM, however, Views know the Model and Model is independent of Views.
+//Not MVVM, Views know the Model and Model is independent of Views.
 
-protocol InputViewModelProtocol: ObservableObject {
-    var name: String { get set }
-    var birthday: Date { get set }
-    var bloodType: ABOBloodType { get set }
-    var input: FetchInput { get }
-
-    var isTextFieldFocused: Bool { get set }
-    var isBirthdayFocused: Bool { get set }
-    var isBloodTypeFocused: Bool { get set }
-    var isFetchButtonDisplayed: Bool { get }
-
-    var dateRange: ClosedRange<Date> { get }
-    func fetchLuckyPrefecture(onReceive actionOnReceive: @escaping () -> Void)
-    func focus(at: InputField?)
-    func viewDidDisappear()
-}
 
 class InputViewModel<PrefectureModel: PrefectureModelProtocol>: ObservableObject,
     InputViewModelProtocol

@@ -7,12 +7,11 @@
 
 import CoreData
 
-///saving LuckyPrefecture, not Prefecture, this is because Prefecture = LuckyPrefecture + PinLocation + PrefectureImageInfo
+///Prefecture = YumemiAPIPrefecture + PinLocation + PrefectureImageInfo
 ///PinLocation and PrefectureImageInfo data is derived from JSON.
-///To make it SSOT, you cant save those data.
+///To make it SSOT, only  YumemiAPIPrefecture data is saved.
 @objc(StoredYumemiAPIPrefecture)
 public class StoredYumemiAPIPrefecture: NSManagedObject {}
-//extension StoredLuckyPrefecture : Identifiable {}
 
 extension StoredYumemiAPIPrefecture {
 

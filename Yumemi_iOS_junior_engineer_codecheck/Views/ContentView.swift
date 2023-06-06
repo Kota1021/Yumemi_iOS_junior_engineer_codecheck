@@ -23,7 +23,8 @@ struct ContentView<PrefectureModel: PrefectureModelProtocol>: View {
 
     @State private var displayOutputViewFlag = false
     @State private var displayedPage = Pages.input
-    //Below if launched for the first time, it would lock the view, only showing the InputView.
+    
+    //Below: History/LicenseView are unlocked after the user inputs info and fetched data.
     private var isHistoryViewEnabled: Bool { histories.count > 0 }
     private var isLicenseViewEnabled: Bool { histories.count > 0 }
 
@@ -98,26 +99,6 @@ struct ContentView<PrefectureModel: PrefectureModelProtocol>: View {
         case input, output, history, license
     }
 
-}
-
-//cf. https://stackoverflow.com/questions/51103795/how-to-get-next-case-of-enumi-e-write-a-circulating-method-in-swift-4-2
-extension CaseIterable where Self: Equatable {
-    func next() -> Self {
-        let all = Self.allCases
-        let index = all.firstIndex(of: self)!
-
-        if index == all.index(all.endIndex, offsetBy: -1) { return self }
-        let nextIndex = all.index(index, offsetBy: 1)
-        return all[nextIndex]
-    }
-    func previous() -> Self {
-        let all = Self.allCases
-        let index = all.firstIndex(of: self)!
-
-        if index == all.startIndex { return self }
-        let previousIndex = all.index(index, offsetBy: -1)
-        return all[previousIndex]
-    }
 }
 
 struct ContentView_Previews: PreviewProvider {

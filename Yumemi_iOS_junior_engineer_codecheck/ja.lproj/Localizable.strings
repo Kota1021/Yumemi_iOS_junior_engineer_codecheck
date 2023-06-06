@@ -16,6 +16,8 @@
 "Citizen'sDay" =  "市民の日";
 "Coastline" =  "海";
 "Brief" =  "概要";
+"Exists" = "あり";
+"NotExists" = "なし";
+"TapToRead" = "続きを読む";
 "Location" =  "位置";
-"LongPressToRead" = "長押しで続きを読む";
 //"Date" = "日付";

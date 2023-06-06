@@ -34,9 +34,7 @@ extension MonthDay {
 extension MonthDay {
     public func toString() -> String {
         let formatter = DateFormatter()
-        ///format: ○月○日
-        formatter.dateFormat = DateFormatter.dateFormat(
-            fromTemplate: "dMMM", options: 0, locale: Locale(identifier: "ja_JP"))
+        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "dMMM", options: 0, locale: Locale.current)
         return formatter.string(from: self.toDate())
     }
 

@@ -43,7 +43,7 @@ struct PrefectureView: View {
         .blur(radius: isThereAnyPopOver ? 10 : 0)
         .overlay {
             if isBriefPoppedOver {
-                BriefCardView(text: PreviewData.prefecture.brief)
+                BriefCardView(text: prefecture.brief)
                     .background(
                         Color.clear
                             .contentShape(Rectangle())
@@ -55,7 +55,7 @@ struct PrefectureView: View {
                     )
             } else if isMapPoppingOver {
                 // map pop over is for iOS
-                MapView(pinLocation: PreviewData.prefecture.location)
+                MapView(pinLocation: prefecture.location)
                     .transition(.scale(scale: 0, anchor: UnitPoint(x: 0.7, y: 0.7)))
                     .frame(width: mapPopOverSize.width, height: mapPopOverSize.height)
                     .background(
