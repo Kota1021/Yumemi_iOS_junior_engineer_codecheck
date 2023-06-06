@@ -11,6 +11,8 @@ import SwiftUI
 struct Yumemi_iOS_junior_engineer_codecheckApp: App {
     let persistenceController = PersistenceController.shared
     @State private var screenSize: CGSize = .zero
+    
+
 
     var body: some Scene {
         WindowGroup {
@@ -26,6 +28,13 @@ struct Yumemi_iOS_junior_engineer_codecheckApp: App {
                     print("App: screenSize: \(self.screenSize)")
 
                 }.environmentObject(ScreenSize(size: self.screenSize))
+//                    .onAppear {
+//                        #if DEBUG
+//                        if ProcessInfo.processInfo.environment["UI_TEST"] == "1" {
+//                            CoreDataStack.shared.cleanUp()
+//                        }
+//                        #endif
+//                }
         }
     }
 }

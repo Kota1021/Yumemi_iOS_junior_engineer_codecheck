@@ -65,7 +65,9 @@ class InputViewModel<PrefectureModel: PrefectureModelProtocol>: ObservableObject
         return start...today
     }
 
-    public func fetchLuckyPrefecture(onReceive actionOnReceive: @escaping () -> Void) {
+    public func fetchLuckyPrefecture(onReceive actionOnReceive: @escaping () -> Void,
+                                     onSucess actionOnSuccess:@escaping () -> Void = {},
+                                     onFailure actionOnFailure: @escaping (Error) -> Void = {Error in}) {
         print("InputViewModel: fetch button tapped")
 
         if input.isValid {
@@ -75,7 +77,8 @@ class InputViewModel<PrefectureModel: PrefectureModelProtocol>: ObservableObject
                 actionOnReceive()
             } onSuccess: { yumemiAPIprefecture in
                 self.storeUserInfoIntoCoreData(prefecture: yumemiAPIprefecture.name)
-            } onFailure: {
+            } onFailure: { error in
+                actionOnFailure(error)
             }
 
         } else {

@@ -34,7 +34,6 @@ struct HistoryView<PrefectureModel>: View where PrefectureModel: PrefectureModel
         ScrollViewReader { reader in
             ScrollView(.horizontal) {
                 LazyHStack {
-//                LazyHStack(spacing: spacing) {
                     //enumerated for pageIndex for ScrollViewReader for Mac and ipad keyboard shortcut.
                     ForEach(Array(histories.enumerated()), id: \.offset) { (cardIndex, history) in
                         Button {
@@ -43,7 +42,7 @@ struct HistoryView<PrefectureModel>: View where PrefectureModel: PrefectureModel
 
                         } label: {
                             HistoryCardView(
-                                thumbnailURL: ImageInfoSets.thumbnailURL(of: history.prefecture),
+                                thumbnailURL: ImageInfoSets.randomThumbnailURL(of: history.prefecture),
                                 prefecture: history.prefecture,
                                 name: history.name,
                                 birthday: history.stringBirthday,

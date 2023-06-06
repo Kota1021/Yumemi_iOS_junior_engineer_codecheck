@@ -7,6 +7,7 @@
 
 import Foundation
 
+///these functions are used in selecting views to display
 ///cf. https://stackoverflow.com/questions/51103795/how-to-get-next-case-of-enumi-e-write-a-circulating-method-in-swift-4-2
 extension CaseIterable where Self: Equatable {
     func next() -> Self {
