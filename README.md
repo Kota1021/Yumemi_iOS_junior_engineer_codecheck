@@ -63,7 +63,7 @@ HistoryView→PrefectureView
 逆にボイラープレートが増え分かりずらくなったりし、そのバランスや、そもそも設計が最適なのか悩みました。
 
 5. Macで開いた際、HistoryのScrollViewを矢印キーで左右に移動できるようにしましたが、ネイティブな実装でないので動作が不安定です。
-<br>(iOS 17からできるようになるそうです！https://developer.apple.com/documentation/swiftui/view/scrollposition(id:)?changes=latest_minor )
+<br>(iOS 17からできるようになるそうです！<br>https://developer.apple.com/documentation/swiftui/view/scrollposition(id:)?changes=latest_minor )
 
 6. CoreData、API、JSONファイルのそれぞれから取得した都道府県データを名前で照合していますが、本来はIDなどで照合したいです。
 
