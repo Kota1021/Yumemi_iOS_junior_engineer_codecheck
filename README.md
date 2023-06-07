@@ -50,7 +50,7 @@ MVVMと異なり、Viewは直接Modelを知っています。ModelはViewを知�
 ## 今回困ったこと：
 1. 画面遷移とCoreDataへデータ永続化は誰の担当にするべきか、JSONファイルから展開したデータは誰が保持するか、について悩みました。
 InputView→PrefectureView(output)
-HistoryView→PrefectureView
+HistoryView→PrefectureView<br>
 の遷移は、InputViewとHistoryViewから親viewのContentViewにBindingでフラグを立て、
 それをCombineのJust()でreceiveして、PrefectureViewに遷移してもらっていますが、
 これはContentViewの責務に収めていいのか悩みました。ContentViewにもViewModelを作成するべきなのか考えましたがContentViewにもViewModelを作成した場合、
