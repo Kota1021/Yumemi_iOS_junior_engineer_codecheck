@@ -107,7 +107,7 @@ struct HistoryView<PrefectureModel>: View where PrefectureModel: PrefectureModel
 }
 
 struct HistoryView_Previews: PreviewProvider {
-    @State static var shouldShowOutput = false
+    @State static private var shouldShowOutput = false
 
     static var previews: some View {
         HistoryView(

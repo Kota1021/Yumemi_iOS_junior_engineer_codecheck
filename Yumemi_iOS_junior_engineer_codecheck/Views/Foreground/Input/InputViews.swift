@@ -127,9 +127,9 @@ struct InputView<ViewModel>: View where ViewModel: InputViewModelProtocol {
 }
 
 struct ViewForResearch_Previews: PreviewProvider {
-    @State static var shouldShowOutput = false
-    @State static var shouldSaveUserInput = false
-    @State static var userInputToSave = PreviewData.input
+    @State private static var shouldShowOutput = false
+    @State private static var shouldSaveUserInput = false
+    @State private static var userInputToSave = PreviewData.input
 
     static var previews: some View {
         GeometryReader { geo in

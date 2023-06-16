@@ -90,8 +90,8 @@ struct DetailView: View {
 }
 
 struct InfoView_Previews: PreviewProvider {
-    @State static var isDetailDisplayed = false
-    @State static var isMapDisplayed = false
+    @State private static var isDetailDisplayed = false
+    @State private static var isMapDisplayed = false
 
     static var previews: some View {
 

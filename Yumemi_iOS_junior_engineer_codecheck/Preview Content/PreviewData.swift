@@ -31,7 +31,12 @@ struct PreviewData {
                 title: "test", author: "test", prefCodeStr: "1", pref: "test ")
         ])
 
-    static let devices: [Device] = [
+
+    static let input = FetchInput(
+        name: "asg", birthday: YearMonthDay(from: Date()), bloodType: .a,
+        today: YearMonthDay(from: Date()))
+    
+    static let iPhone: [Device] = [
         .init(name: "iPhone 14 Plus", previewTitle: "iPhone 14 Plus 6.7"),
         .init(name: "iPhone 14 Pro", previewTitle: "iPhone 14 Pro 6.1"),
         .init(name: "iPhone 13 mini", previewTitle: "iPhone 13 mini"),
@@ -39,10 +44,14 @@ struct PreviewData {
         .init(name: "iPhone SE (3rd generation)", previewTitle: "iPhone SE 3rd gen 4.7"),
     ]
 
-    static let input = FetchInput(
-        name: "asg", birthday: YearMonthDay(from: Date()), bloodType: .a,
-        today: YearMonthDay(from: Date()))
-    //    static let history:History = .init(prefecture: prefecture.name, fetchedAt: Date(), userInput: input)
+    
+    static let iPad:[Device] = [
+        .init(name: "iPad Pro (12.9-inch) (6th generation) (16GB)", previewTitle: "iPad Pro 12.9"),
+//        .init(name: "iPhone 14 Pro", previewTitle: "iPhone 14 Pro 6.1"),
+//        .init(name: "iPhone 13 mini", previewTitle: "iPhone 13 mini"),
+//        .init(name: "iPhone 11 Pro", previewTitle: "iPhone 11 Pro 5.85"),
+//        .init(name: "iPhone SE (3rd generation)", previewTitle: "iPhone SE 3rd gen 4.7")
+    ]
 }
 
 struct Device: Hashable, Identifiable {

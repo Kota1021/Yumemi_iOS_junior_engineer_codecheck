@@ -104,7 +104,7 @@ struct ContentView<PrefectureModel: PrefectureModelProtocol>: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         // from iPhone SE 3ed gen to 14 pro
-        ForEach(PreviewData.devices) { device in
+        ForEach(PreviewData.iPhone) { device in
             ContentView<PrefectureModel>(prefectureModel: PrefectureModel())
                 .environmentObject(ScreenSize(size: PreviewData.screenSize))
                 //            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
