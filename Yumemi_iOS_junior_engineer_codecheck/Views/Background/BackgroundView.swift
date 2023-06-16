@@ -9,7 +9,6 @@ import SwiftUI
 
 struct BackgroundView: View {
     @Environment(\.colorScheme) var colorScheme
-    @EnvironmentObject var screen: ScreenSize
 
     var body: some View {
         GeometryReader { geo in
@@ -17,7 +16,9 @@ struct BackgroundView: View {
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
-                .frame(width: screen.width, height: screen.height)
+                .frame(width: Screen.size.width, height: Screen.size.height)
+//                .frame(width: 1024, height: 1366)
+//                .frame(width: geo.size.width, height: geo.size.height)
                 .overlay {
                     VStack {
                         Text("LuckyPrefecture")
@@ -41,6 +42,5 @@ struct BackgroundView: View {
 struct BackgroundView_Previews: PreviewProvider {
     static var previews: some View {
         BackgroundView()
-            .environmentObject(ScreenSize(size: PreviewData.screenSize))
     }
 }

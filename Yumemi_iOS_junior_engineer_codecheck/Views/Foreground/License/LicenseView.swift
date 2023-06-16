@@ -9,7 +9,6 @@ import SwiftUI
 
 struct LicenseView: View {
     let viewSize: CGSize
-    //    @State private var blurStrength:Double = 0
     let width: CGFloat
 
     init(size: CGSize) {

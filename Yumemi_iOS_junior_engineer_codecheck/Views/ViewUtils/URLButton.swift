@@ -45,7 +45,6 @@ extension URLButton where Label == Text {
 
 struct URLButton_Previews: PreviewProvider {
     static var previews: some View {
-        //        URLButton(URL(string: "https://github.com")!, title: "Github")
         URLButton("Github", url: URL(string: "https://github.com")!)
     }
 }

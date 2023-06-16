@@ -11,7 +11,6 @@ import CoreData
 import SwiftUI
 
 struct ContentView<PrefectureModel: PrefectureModelProtocol>: View {
-    @EnvironmentObject var screen: ScreenSize
     @ObservedObject var prefectureModel: PrefectureModel
     @Environment(\.managedObjectContext) private var viewContext
 
@@ -31,7 +30,6 @@ struct ContentView<PrefectureModel: PrefectureModelProtocol>: View {
     var body: some View {
         //MaximumVerticalPageView fills the screen, ignoring the safe area.
         MaximumVerticalPageView(selection: $displayedPage) {
-
             InputView(
                 viewModel: InputViewModel(prefectureModel: prefectureModel),
                 shouldShowOutput: $displayOutputViewFlag
@@ -48,20 +46,19 @@ struct ContentView<PrefectureModel: PrefectureModelProtocol>: View {
 
             if isHistoryViewEnabled {
                 HistoryView(
-                    size: screen.size, shouldShowOutput: $displayOutputViewFlag,
+                    size: Screen.size, shouldShowOutput: $displayOutputViewFlag,
                     prefectureModel: prefectureModel
                 )
                 .tag(Pages.history)
             }
             if isLicenseViewEnabled {
-                LicenseView(size: screen.size)
+                LicenseView(size: Screen.size)
                     .tag(Pages.license)
             }
 
         }
         .background(BackgroundView())
         .onReceive(Just(displayOutputViewFlag)) { shouldShow in
-            //            print("ContentView: displayOutputViewFlag sent \(shouldShow)")
             if shouldShow {
                 Task(priority: .background) {
                     try await Task.sleep(nanoseconds: UInt64(0.3 * 1_000_000_000))
@@ -106,8 +103,10 @@ struct ContentView_Previews: PreviewProvider {
         // from iPhone SE 3ed gen to 14 pro
         ForEach(PreviewData.iPhone) { device in
             ContentView<PrefectureModel>(prefectureModel: PrefectureModel())
-                .environmentObject(ScreenSize(size: PreviewData.screenSize))
-                //            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+                .border(.red)
+                .onAppear(perform: {
+                    print("App: screenSize: \(Screen.size)")
+                })
                 .previewDevice(PreviewDevice(rawValue: device.name))
                 .previewDisplayName(device.previewTitle)
         }

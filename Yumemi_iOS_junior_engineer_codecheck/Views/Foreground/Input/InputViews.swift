@@ -114,6 +114,7 @@ struct InputView<ViewModel>: View where ViewModel: InputViewModelProtocol {
                 .onTapGesture { viewModel.focus(at: .none) }
         )
         .onDisappear { viewModel.viewDidDisappear() }
+        .border(.red)
 
     }
 

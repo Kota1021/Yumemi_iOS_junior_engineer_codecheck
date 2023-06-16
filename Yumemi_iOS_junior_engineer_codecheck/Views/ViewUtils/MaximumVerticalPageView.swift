@@ -19,7 +19,6 @@ struct MaximumVerticalPageView<Content, Selection>: View where Content: View, Se
     let content: () -> Content
     private var selection: Binding<Selection>?
     @ObservedObject var safeArea = SafeArea()
-    @EnvironmentObject var screen: ScreenSize
 
     init(selection: Binding<Selection>?, @ViewBuilder content: @escaping () -> Content) {
 
@@ -45,7 +44,7 @@ struct MaximumVerticalPageView<Content, Selection>: View where Content: View, Se
                     content()
 
                 }
-                .frame(width: screen.width, height: screen.height)
+                .frame(width: Screen.size.width, height: Screen.size.height)
                 .tabViewStyle(.page(indexDisplayMode: .never))
 
             }
@@ -80,7 +79,7 @@ struct IgnoreSafeAreaView_Previews: PreviewProvider {
                 .background(.yellow)
                 .tag(ABC.c)
 
-        }.environmentObject(ScreenSize(size: PreviewData.screenSize))
+        }
 
     }
 }
