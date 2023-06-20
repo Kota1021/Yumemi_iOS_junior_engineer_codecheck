@@ -17,7 +17,7 @@ protocol PrefectureModelProtocol: ObservableObject {
         input: FetchInput,
         onReceive actionOnReceive: @escaping () -> Void,
         onSuccess actionOnSuccess: @escaping (YumemiAPIPrefecture) -> Void,
-        onFailure actionOnFalure: @escaping () -> Void)
+        onFailure actionOnFalure: @escaping (Error) -> Void)
     func setPrefecture(name: String)
 }
 
@@ -30,7 +30,7 @@ class PrefectureModel: ObservableObject, PrefectureModelProtocol {
         input: FetchInput,
         onReceive actionOnReceive: @escaping () -> Void = {},
         onSuccess actionOnSuccess: @escaping (YumemiAPIPrefecture) -> Void = { _ in },
-        onFailure actionOnFalure: @escaping () -> Void = {}
+        onFailure actionOnFalure: @escaping (Error) -> Void = {Error in}
     ) {
         print("PrefectureModel: fetchLuckyPrefecture called")
         let api = FortuneAPI()
@@ -62,7 +62,7 @@ class PrefectureModel: ObservableObject, PrefectureModelProtocol {
             case .failure(let error):
                 self.error = error
                 print("PrefectureModel: failed to fetch luckyPrefecture")
-                actionOnFalure()
+                actionOnFalure(error)
             }
         }
     }
@@ -99,13 +99,16 @@ class PrefectureModel: ObservableObject, PrefectureModelProtocol {
 
     private let viewContext = PersistenceController.shared.container.viewContext
 
-    //CoreData のPrefectureエンティティをnameで検索し、ヒットしたものを代入
+    ///Input: StoredYumemiAPIPrefecture's name property
+    ///
     public func setPrefecture(name: String) {
-        let yumemiAPIPrefecture = fetchYumemiAPIPrefectures().first { $0.name == name }!
-        setPrefecture(from: yumemiAPIPrefecture)
+        guard let storedYumemiAPIPrefecture = fetchStoredYumemiAPIPrefectures().first(where: { $0.name == name }) else{
+            fatalError("prefecture \(name) not found in Core Data")
+        }
+        setPrefecture(from: storedYumemiAPIPrefecture)
     }
 
-    private func fetchYumemiAPIPrefectures() -> [StoredYumemiAPIPrefecture] {
+    private func fetchStoredYumemiAPIPrefectures() -> [StoredYumemiAPIPrefecture] {
         let context: NSManagedObjectContext = viewContext
         let request = NSFetchRequest<StoredYumemiAPIPrefecture>(
             entityName: "StoredYumemiAPIPrefecture")
@@ -130,9 +133,5 @@ class PrefectureModel: ObservableObject, PrefectureModelProtocol {
         print("InputViewModel: saving userInfo into Core Data")
         try? viewContext.save()
     }
-
-}
-
-func getYumemiAPIPrefecture(from: StoredYumemiAPIPrefecture) {
 
 }

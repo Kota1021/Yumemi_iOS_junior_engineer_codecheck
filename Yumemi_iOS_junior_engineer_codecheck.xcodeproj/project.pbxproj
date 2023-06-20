@@ -16,13 +16,12 @@
 		672DB20B2A28CE5A0041BD60 /* InputForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB20A2A28CE5A0041BD60 /* InputForm.swift */; };
 		672DB2102A28D9570041BD60 /* ImagePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB20F2A28D9570041BD60 /* ImagePageView.swift */; };
 		672DB2122A28DD330041BD60 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB2112A28DD330041BD60 /* DetailView.swift */; };
-		672DB21A2A28EC0D0041BD60 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB2192A28EC0D0041BD60 /* Error.swift */; };
 		672DB21C2A28EE150041BD60 /* MaximumVerticalPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DB21B2A28EE150041BD60 /* MaximumVerticalPageView.swift */; };
 		672EE5B92A2A798A007EA3F3 /* InputViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672EE5B82A2A798A007EA3F3 /* InputViews.swift */; };
 		672EE5BB2A2A96EA007EA3F3 /* PrefectureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672EE5BA2A2A96EA007EA3F3 /* PrefectureModel.swift */; };
 		673556FB2A2D055500C7C22E /* StoredYumemiAPIPrefecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673556FA2A2D055500C7C22E /* StoredYumemiAPIPrefecture.swift */; };
 		67649D4A2A2DA98F00F0B6BA /* MapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67649D492A2DA98F00F0B6BA /* MapButton.swift */; };
-		67649D4C2A2E2D3C00F0B6BA /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67649D4B2A2E2D3C00F0B6BA /* ScreenSize.swift */; };
+		67649D4C2A2E2D3C00F0B6BA /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67649D4B2A2E2D3C00F0B6BA /* Screen.swift */; };
 		6769D8932A29E90100F49219 /* GlowBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6769D8922A29E90100F49219 /* GlowBorder.swift */; };
 		6769D8952A29F24B00F49219 /* prefLatiLong.json in Resources */ = {isa = PBXBuildFile; fileRef = 6769D8942A29F24B00F49219 /* prefLatiLong.json */; };
 		6769D8972A29FCC400F49219 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6769D8962A29FCC400F49219 /* Location.swift */; };
@@ -89,13 +88,12 @@
 		672DB20A2A28CE5A0041BD60 /* InputForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputForm.swift; sourceTree = "<group>"; };
 		672DB20F2A28D9570041BD60 /* ImagePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePageView.swift; sourceTree = "<group>"; };
 		672DB2112A28DD330041BD60 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		672DB2192A28EC0D0041BD60 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		672DB21B2A28EE150041BD60 /* MaximumVerticalPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaximumVerticalPageView.swift; sourceTree = "<group>"; };
 		672EE5B82A2A798A007EA3F3 /* InputViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViews.swift; sourceTree = "<group>"; };
 		672EE5BA2A2A96EA007EA3F3 /* PrefectureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefectureModel.swift; sourceTree = "<group>"; };
 		673556FA2A2D055500C7C22E /* StoredYumemiAPIPrefecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredYumemiAPIPrefecture.swift; sourceTree = "<group>"; };
 		67649D492A2DA98F00F0B6BA /* MapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButton.swift; sourceTree = "<group>"; };
-		67649D4B2A2E2D3C00F0B6BA /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
+		67649D4B2A2E2D3C00F0B6BA /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		6769D8922A29E90100F49219 /* GlowBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowBorder.swift; sourceTree = "<group>"; };
 		6769D8942A29F24B00F49219 /* prefLatiLong.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = prefLatiLong.json; sourceTree = "<group>"; };
 		6769D8962A29FCC400F49219 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -269,7 +267,6 @@
 			isa = PBXGroup;
 			children = (
 				676AD3D42A2BA3860047ED58 /* VPageViewAnimationTest.swift */,
-				672DB2192A28EC0D0041BD60 /* Error.swift */,
 				676AC0002A270E95009F34E9 /* Preview Assets.xcassets */,
 				6769D89A2A2A2ADA00F49219 /* PreviewData.swift */,
 			);
@@ -301,7 +298,7 @@
 				67F603792A2D161800E094C7 /* Prefecture */,
 				67EE94BF2A2BFE6000349ADF /* SwiftyUserDefaultKeys.swift */,
 				67EE94CA2A2C583A00349ADF /* stringDate.swift */,
-				67649D4B2A2E2D3C00F0B6BA /* ScreenSize.swift */,
+				67649D4B2A2E2D3C00F0B6BA /* Screen.swift */,
 				67AC71EE2A2EA20C00635F48 /* enumNextPrev.swift */,
 			);
 			path = Models;
@@ -541,7 +538,6 @@
 				671A35252A27462900F6358D /* PrefectureView.swift in Sources */,
 				676AD3C82A2ABD900047ED58 /* InputViewModel.swift in Sources */,
 				6769D89B2A2A2ADA00F49219 /* PreviewData.swift in Sources */,
-				672DB21A2A28EC0D0041BD60 /* Error.swift in Sources */,
 				676EA8CC2A285853005C455B /* HistoryView.swift in Sources */,
 				67649D4A2A2DA98F00F0B6BA /* MapButton.swift in Sources */,
 				67EE94C22A2C0AF500349ADF /* HistoryCardView.swift in Sources */,
@@ -552,7 +548,7 @@
 				67AC71ED2A2E9F4700635F48 /* InputViewModelProtocol.swift in Sources */,
 				6769D8972A29FCC400F49219 /* Location.swift in Sources */,
 				67EE94C92A2C223300349ADF /* URLButton.swift in Sources */,
-				67649D4C2A2E2D3C00F0B6BA /* ScreenSize.swift in Sources */,
+				67649D4C2A2E2D3C00F0B6BA /* Screen.swift in Sources */,
 				676AC0292A2710FA009F34E9 /* FortuneAPI.swift in Sources */,
 				676AD3D52A2BA3860047ED58 /* VPageViewAnimationTest.swift in Sources */,
 				6769D8992A2A0C0B00F49219 /* KeyboardAlike.swift in Sources */,

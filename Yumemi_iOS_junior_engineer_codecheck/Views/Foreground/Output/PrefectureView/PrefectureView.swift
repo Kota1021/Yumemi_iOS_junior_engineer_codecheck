@@ -9,15 +9,14 @@ import SwiftUI
 
 struct PrefectureView: View {
     let prefecture: Prefecture
-    @EnvironmentObject var screen: ScreenSize
     @State private var isMapPoppingOver = false
     @State private var isBriefPoppedOver = false
 
     private var isThereAnyPopOver: Bool { isMapPoppingOver || isBriefPoppedOver }
 
     var mapPopOverSize: CGSize {
-        let width = screen.width
-        let height = screen.height
+        let width = Screen.size.width
+        let height = Screen.size.height
         if width < height {
             return CGSize(width: width * 4 / 5, height: width * 5 / 5)
         } else {
@@ -29,14 +28,14 @@ struct PrefectureView: View {
         VStack {
             ImagePageView(
                 imagesInfo: prefecture.images,
-                viewSize: CGSize(width: screen.size.width, height: screen.size.height / 2))
+                viewSize: CGSize(width: Screen.size.width, height: Screen.size.height / 2))
             DetailView(
                 prefecture: prefecture,
                 isBreafViewExpanded: $isBriefPoppedOver,
                 isMapExpanded: $isMapPoppingOver)
             Spacer()
         }
-        .frame(width: screen.width, height: screen.height)
+        .frame(width: Screen.size.width, height: Screen.size.height)
         .background(Color(.systemBackground))
 
         //Below popups
@@ -47,7 +46,7 @@ struct PrefectureView: View {
                     .background(
                         Color.clear
                             .contentShape(Rectangle())
-                            .frame(width: screen.size.width, height: screen.size.height)
+                            .frame(width: Screen.size.width, height: Screen.size.height)
                             // Empty gestures prevents unintended scrolling.
                             .gesture(DragGesture())
                             .gesture(MagnificationGesture())
@@ -61,7 +60,7 @@ struct PrefectureView: View {
                     .background(
                         Color.clear
                             .contentShape(Rectangle())
-                            .frame(width: screen.size.width, height: screen.size.height)
+                            .frame(width: Screen.size.width, height: Screen.size.height)
                             // Empty gestures prevents unintended scrolling.
                             .gesture(DragGesture())
                             .gesture(MagnificationGesture())
@@ -76,8 +75,8 @@ struct PrefectureView: View {
 
 struct PrefectureView_Previews: PreviewProvider {
 
+    
     static var previews: some View {
         PrefectureView(prefecture: PreviewData.prefecture)
-            .environmentObject(ScreenSize(size: PreviewData.screenSize))
     }
 }

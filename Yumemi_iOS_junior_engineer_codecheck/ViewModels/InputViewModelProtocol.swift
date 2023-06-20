@@ -19,7 +19,7 @@ protocol InputViewModelProtocol: ObservableObject {
     var isFetchButtonDisplayed: Bool { get }
 
     var dateRange: ClosedRange<Date> { get }
-    func fetchLuckyPrefecture(onReceive actionOnReceive: @escaping () -> Void)
+    func fetchLuckyPrefecture(onReceive actionOnReceive: @escaping () -> Void,onSucess actionOnSuccess:@escaping () -> Void, onFailure actionOnFailure: @escaping (Error) -> Void )
     func focus(at: InputField?)
     func viewDidDisappear()
 }

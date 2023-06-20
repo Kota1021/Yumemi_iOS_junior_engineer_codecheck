@@ -14,21 +14,23 @@ struct ImageInfoSets {
     static private let data: [PrefectureImageInfo] = load("find47images.json")
 
     static public func items(of prefecture: String) -> [PrefectureImageInfo] {
-        data.filter { $0.pref == prefecture }
-    }
-
-    static public func thumbnailURL(of prefecture: String) -> URL {
-        let urls = items(of: prefecture).map { $0.urlThumb }
-        guard let url = urls.first else {
-            fatalError("ImageInfoSets: image URL info not found. of \(prefecture)")
+        let prefectureItems = data.filter { $0.pref == prefecture }
+        
+        guard !prefectureItems.isEmpty else {
+            fatalError("ImageInfoSets: items of \(prefecture) not found")
         }
-        return url
+        return prefectureItems
     }
-    //    static public func randomImageURL(of prefecture: String) -> URL{
-    //        let urls = items(of:prefecture).map{ $0.url }
-    //        guard let url = urls.shuffled().first else { fatalError("ImageInfoSets: image URL info not found. of \(prefecture)") }
-    //        return url
-    //    }
+    
+    static public func thumbnailURLs(of prefecture: String) -> [URL]{
+        let urls = items(of:prefecture).map{ $0.urlThumb }
+        return urls
+    }
+    
+    static public func randomThumbnailURL(of prefecture: String) -> URL{
+        self.thumbnailURLs(of: prefecture).shuffled().first!
+    }
+    
 }
 
 ///Photos from website find/47

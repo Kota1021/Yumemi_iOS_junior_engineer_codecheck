@@ -7,9 +7,9 @@
 
 import AudioToolbox
 import SwiftUI
+import UIKit
 
 struct DetailView: View {
-    @EnvironmentObject var screen: ScreenSize
     let prefecture: Prefecture
     @Binding var isBreafViewExpanded: Bool
     @Binding var isMapExpanded: Bool
@@ -56,8 +56,7 @@ struct DetailView: View {
                         .padding(.top)
                 }
 
-                // How to separate iPadOS from iOS with Conditional compilation block ?
-                if screen.estimatedOS == .iOS {
+                if UIDevice.current.userInterfaceIdiom == .phone {
                     MapButton(
                         isMapExpanded: $isMapExpanded,
                         imageURL: prefecture.logoUrl)
@@ -90,15 +89,13 @@ struct DetailView: View {
 }
 
 struct InfoView_Previews: PreviewProvider {
-    @State static var isDetailDisplayed = false
-    @State static var isMapDisplayed = false
+    @State private static var isDetailDisplayed = false
+    @State private static var isMapDisplayed = false
 
     static var previews: some View {
-
         DetailView(
             prefecture: PreviewData.prefecture, isBreafViewExpanded: $isDetailDisplayed,
             isMapExpanded: $isMapDisplayed
         )
-        .environmentObject(ScreenSize())
     }
 }

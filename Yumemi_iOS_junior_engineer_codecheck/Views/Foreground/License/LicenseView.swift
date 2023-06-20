@@ -9,7 +9,6 @@ import SwiftUI
 
 struct LicenseView: View {
     let viewSize: CGSize
-    //    @State private var blurStrength:Double = 0
     let width: CGFloat
 
     init(size: CGSize) {
@@ -19,7 +18,6 @@ struct LicenseView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-
             //making a boaring licence display a little bit sexier.
             Text("Liblaries,\nMaterials,\nand\nLicenses.")
                 .font(.system(size: width / 6))

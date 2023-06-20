@@ -8,8 +8,8 @@
 import Alamofire
 import SwiftUI
 
-struct InputView<Model>: View where Model: InputViewModelProtocol {
-    @StateObject var viewModel: Model
+struct InputView<ViewModel>: View where ViewModel: InputViewModelProtocol {
+    @StateObject var viewModel: ViewModel
     @Binding var shouldShowOutput: Bool
 
     @EnvironmentObject var safeArea: SafeArea
@@ -119,23 +119,23 @@ struct InputView<Model>: View where Model: InputViewModelProtocol {
 
     func fetchAction() {
         print("InputViews: on receive, setting shouldShowOutput to true \n\n\n")
-        viewModel.fetchLuckyPrefecture(onReceive: { self.shouldShowOutput = true })
+        viewModel.fetchLuckyPrefecture(onReceive: { self.shouldShowOutput = true },
+                                       onSucess: {},
+                                       onFailure: {_ in})
     }
 
 }
 
 struct ViewForResearch_Previews: PreviewProvider {
-    @State static var shouldShowOutput = false
-    @State static var shouldSaveUserInput = false
-    @State static var userInputToSave = PreviewData.input
+    @State private static var shouldShowOutput = false
+    @State private static var shouldSaveUserInput = false
+    @State private static var userInputToSave = PreviewData.input
 
     static var previews: some View {
-        GeometryReader { geo in
             InputView(
                 viewModel: InputViewModel(prefectureModel: PrefectureModel()),
                 shouldShowOutput: $shouldShowOutput
             )
             .environmentObject(SafeArea())
         }
-    }
 }

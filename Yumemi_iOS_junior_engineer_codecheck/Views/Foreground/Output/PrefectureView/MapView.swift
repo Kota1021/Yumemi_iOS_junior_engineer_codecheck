@@ -51,9 +51,6 @@ struct MapView: View {
 struct MapView_Previews: PreviewProvider {
     @State static private var isDisplayed = true
     static var previews: some View {
-        GeometryReader { geo in
-            MapView( /*isDisplayed:$isDisplayed, backgroundSize:geo.size ,*/
-                pinLocation: PinLocation(lat: 39, long: 138))
-        }
+            MapView(pinLocation: PinLocation(lat: 39, long: 138) )
     }
 }

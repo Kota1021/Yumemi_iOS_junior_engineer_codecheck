@@ -9,15 +9,14 @@ import SwiftUI
 
 struct BackgroundView: View {
     @Environment(\.colorScheme) var colorScheme
-    @EnvironmentObject var screen: ScreenSize
 
     var body: some View {
-        GeometryReader { geo in
             Image(colorScheme == .light ? "TopImageLightMode" : "TopImageDarkMode")
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
-                .frame(width: screen.width, height: screen.height)
+                .frame(width: Screen.size.width,
+                       height: Screen.size.height)
                 .overlay {
                     VStack {
                         Text("LuckyPrefecture")
@@ -31,16 +30,15 @@ struct BackgroundView: View {
                             .padding()
                             .padding(.top)
                             .padding(.horizontal)
+                            .padding(.top)
                         Spacer()
                     }
                 }
-        }
     }
 }
 
 struct BackgroundView_Previews: PreviewProvider {
     static var previews: some View {
         BackgroundView()
-            .environmentObject(ScreenSize(size: PreviewData.screenSize))
     }
 }
