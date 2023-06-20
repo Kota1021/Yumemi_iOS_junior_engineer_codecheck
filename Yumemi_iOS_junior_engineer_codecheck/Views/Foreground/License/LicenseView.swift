@@ -18,7 +18,6 @@ struct LicenseView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-
             //making a boaring licence display a little bit sexier.
             Text("Liblaries,\nMaterials,\nand\nLicenses.")
                 .font(.system(size: width / 6))

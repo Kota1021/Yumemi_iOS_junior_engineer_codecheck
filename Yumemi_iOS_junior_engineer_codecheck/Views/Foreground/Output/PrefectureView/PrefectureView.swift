@@ -78,6 +78,5 @@ struct PrefectureView_Previews: PreviewProvider {
     
     static var previews: some View {
         PrefectureView(prefecture: PreviewData.prefecture)
-        
     }
 }

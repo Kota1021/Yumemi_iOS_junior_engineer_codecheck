@@ -52,6 +52,4 @@ final class Yumemi_iOS_junior_engineer_codecheckTests: XCTestCase {
         XCTAssertNotNil(PrefectureLocations.location(of: "東京都") )
         }
     
-    
-    
 }

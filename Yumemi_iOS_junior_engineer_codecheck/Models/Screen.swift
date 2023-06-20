@@ -11,9 +11,10 @@ final class Screen{
     private init(){}
     static public var size: CGSize {
         get {
-            guard let window = UIApplication.shared.connectedScenes.first as? UIWindowScene
+            guard let window = UIApplication.shared.connectedScenes.first as? UIWindowScene // crashes on preview since connectedScenes is []
+//            guard let window = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene
             else {
-                fatalError("could not get window size")
+                fatalError("could not get window size: \(UIApplication.shared)")
             }
             return window.screen.bounds.size
         }

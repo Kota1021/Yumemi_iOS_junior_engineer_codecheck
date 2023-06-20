@@ -11,14 +11,12 @@ struct BackgroundView: View {
     @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
-        GeometryReader { geo in
             Image(colorScheme == .light ? "TopImageLightMode" : "TopImageDarkMode")
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
-                .frame(width: Screen.size.width, height: Screen.size.height)
-//                .frame(width: 1024, height: 1366)
-//                .frame(width: geo.size.width, height: geo.size.height)
+                .frame(width: Screen.size.width,
+                       height: Screen.size.height)
                 .overlay {
                     VStack {
                         Text("LuckyPrefecture")
@@ -32,10 +30,10 @@ struct BackgroundView: View {
                             .padding()
                             .padding(.top)
                             .padding(.horizontal)
+                            .padding(.top)
                         Spacer()
                     }
                 }
-        }
     }
 }
 

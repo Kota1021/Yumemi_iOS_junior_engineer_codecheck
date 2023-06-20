@@ -114,7 +114,6 @@ struct InputView<ViewModel>: View where ViewModel: InputViewModelProtocol {
                 .onTapGesture { viewModel.focus(at: .none) }
         )
         .onDisappear { viewModel.viewDidDisappear() }
-        .border(.red)
 
     }
 
@@ -133,12 +132,10 @@ struct ViewForResearch_Previews: PreviewProvider {
     @State private static var userInputToSave = PreviewData.input
 
     static var previews: some View {
-        GeometryReader { geo in
             InputView(
                 viewModel: InputViewModel(prefectureModel: PrefectureModel()),
                 shouldShowOutput: $shouldShowOutput
             )
             .environmentObject(SafeArea())
         }
-    }
 }

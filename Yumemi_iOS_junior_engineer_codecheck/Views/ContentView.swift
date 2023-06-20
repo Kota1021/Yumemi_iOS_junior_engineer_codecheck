@@ -25,8 +25,12 @@ struct ContentView<PrefectureModel: PrefectureModelProtocol>: View {
     
     //Below: History/LicenseView are unlocked after the user inputs info and fetched data.
     private var isHistoryViewEnabled: Bool { histories.count > 0 }
-    private var isLicenseViewEnabled: Bool { histories.count > 0 }
+    private var isLicenseViewEnabled = true
 
+    init(prefectureModel: PrefectureModel) {
+        self.prefectureModel = prefectureModel
+    }
+    
     var body: some View {
         //MaximumVerticalPageView fills the screen, ignoring the safe area.
         MaximumVerticalPageView(selection: $displayedPage) {
@@ -103,10 +107,6 @@ struct ContentView_Previews: PreviewProvider {
         // from iPhone SE 3ed gen to 14 pro
         ForEach(PreviewData.iPhone) { device in
             ContentView<PrefectureModel>(prefectureModel: PrefectureModel())
-                .border(.red)
-                .onAppear(perform: {
-                    print("App: screenSize: \(Screen.size)")
-                })
                 .previewDevice(PreviewDevice(rawValue: device.name))
                 .previewDisplayName(device.previewTitle)
         }
